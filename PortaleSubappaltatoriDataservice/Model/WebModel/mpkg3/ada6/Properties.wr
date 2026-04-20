@@ -1,0 +1,71 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#ada6" name="_Pulizia pre registrazione" defaultSuccessPortDefinition="mpkg3#ada6#spd8" defaultErrorPortDefinition="mpkg3#ada6#epd8" transaction="true">
+  <InputPortDefinition id="mpkg3#ada6#ipd8" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#ada6#ipd8#sf74" to="mpkg3#ada6#dlu1">
+      <ParameterBinding id="mpkg3#ada6#ipd8#sf74#par87" source="mpkg3#ada6#ipd8#pdp26" target="mpkg3#ada6#dlu1#sc21#rcond4.cls4#att20" name="user invitato [Email] - user invitato [Email]"/>
+      <ParameterBinding id="mpkg3#ada6#ipd8#sf74#par88" source="mpkg3#ada6#ipd8#pdp27" target="mpkg3#ada6#dlu1#sc21#acond9" name="Tipo token - Tipo token"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg3#ada6#ipd8#pdp26" array="false" name="user invitato [Email]" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada6#ipd8#pdp27" array="false" name="Tipo token" type="string"/>
+    <DataFlow id="mpkg3#ada6#ipd8#df25" to="mpkg3#ada6#dcnu1">
+      <ParameterBinding id="mpkg3#ada6#ipd8#df25#par89" source="mpkg3#ada6#ipd8#pdp26" target="mpkg3#ada6#dcnu1#sc22#kcond13.cls4#att20" name="user invitato [Email] - KeyCondition13 [Email] [User invitati] [Source]"/>
+    </DataFlow>
+    <DataFlow id="mpkg3#ada6#ipd8#df26" to="mpkg3#ada6#seu12">
+      <ParameterBinding id="mpkg3#ada6#ipd8#df26#par90" source="mpkg3#ada6#ipd8#pdp26" target="mpkg3#ada6#seu12#sc24#rcond5.cls4#att20" name="user invitato [Email] - user invitati [Email]"/>
+    </DataFlow>
+    <DataFlow id="mpkg3#ada6#ipd8#df28" to="mpkg3#ada6#dcnu2">
+      <ParameterBinding id="mpkg3#ada6#ipd8#df28#par92" source="mpkg3#ada6#ipd8#pdp26" target="mpkg3#ada6#dcnu2#sc27#kcond16.cls4#att20" name="user invitato [Email] - KeyCondition16 [Email] [User invitati] [Target]"/>
+    </DataFlow>
+    <DataFlow id="mpkg3#ada6#ipd8#df29" to="mpkg3#ada6#dlu2">
+      <ParameterBinding id="mpkg3#ada6#ipd8#df29#par93" source="mpkg3#ada6#ipd8#pdp26" target="mpkg3#ada6#dlu2#sc28#kcond17.cls4#att20" name="user invitato [Email] - KeyCondition17 [Email]"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#ada6#spd8" name="Success Port" gr:x="0" gr:y="610"/>
+  <ErrorPortDefinition id="mpkg3#ada6#epd8" name="Error Port" gr:x="0" gr:y="100"/>
+  <Operations>
+    <Delete gr:x="295" gr:y="65" id="mpkg3#ada6#dlu1" dataBinding="cls6">
+      <ConditionalExpression id="mpkg3#ada6#dlu1#sc21" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg3#ada6#dlu1#sc21#acond9" name="Tipo token" predicate="eq" booleanOperator="or" implied="false" attributes="as17#role33.cls7#att32"/>
+        <AssociationRoleCondition id="mpkg3#ada6#dlu1#sc21#rcond4" name="user invitato" predicate="in" implied="false" role="as9#role17"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada6#dlu1#sf76" to="mpkg3#ada6#epd8" automaticCoupling="true" code="Not Found"/>
+      <SuccessFlow id="mpkg3#ada6#dlu1#sf79" to="mpkg3#ada6#seu12" automaticCoupling="true"/>
+    </Delete>
+    <Disconnect gr:x="550" gr:y="345" id="mpkg3#ada6#dcnu1" association="as16#role31">
+      <SourceConditionalExpression id="mpkg3#ada6#dcnu1#sc22" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada6#dcnu1#sc22#kcond13" name="KeyCondition13" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg3#ada6#dcnu1#sc23" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada6#dcnu1#sc23#kcond14" name="KeyCondition14" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg3#ada6#dcnu1#sf81" to="mpkg3#ada6#seu13" automaticCoupling="true"/>
+    </Disconnect>
+    <Selector gr:x="365" gr:y="250" id="mpkg3#ada6#seu12" dataBinding="cls1">
+      <SuccessFlow id="mpkg3#ada6#seu12#sf80" to="mpkg3#ada6#dcnu1" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg3#ada6#seu12#sc24" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg3#ada6#seu12#sc24#rcond5" name="user invitati" predicate="in" implied="false" role="as16#role31"/>
+      </ConditionalExpression>
+    </Selector>
+    <Selector gr:x="890" gr:y="360" id="mpkg3#ada6#seu13" dataBinding="cls12">
+      <ConditionalExpression id="mpkg3#ada6#seu13#sc25" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg3#ada6#seu13#sc25#rcond6" name="user invitato" predicate="in" implied="false" role="as18#role35"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada6#seu13#sf83" to="mpkg3#ada6#dcnu2" automaticCoupling="true"/>
+    </Selector>
+    <Disconnect gr:x="1065" gr:y="505" id="mpkg3#ada6#dcnu2" association="as18#role36">
+      <SourceConditionalExpression id="mpkg3#ada6#dcnu2#sc26" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada6#dcnu2#sc26#kcond15" name="KeyCondition15" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg3#ada6#dcnu2#sc27" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada6#dcnu2#sc27#kcond16" name="KeyCondition16" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg3#ada6#dcnu2#sf85" to="mpkg3#ada6#dlu2"/>
+    </Disconnect>
+    <Delete gr:x="1380" gr:y="565" id="mpkg3#ada6#dlu2" dataBinding="cls4">
+      <ConditionalExpression id="mpkg3#ada6#dlu2#sc28" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada6#dlu2#sc28#kcond17" name="KeyCondition17" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada6#dlu2#sf86" to="mpkg3#ada6#spd8" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg3#ada6#dlu2#sf87" to="mpkg3#ada6#epd8" automaticCoupling="true" code="Not Found"/>
+    </Delete>
+  </Operations>
+</ActionDefinition>

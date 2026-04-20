@@ -1,0 +1,53 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg2#adf5" name="_Genera link" type="read" defaultSuccessPortDefinition="mpkg2#adf5#spd12" defaultErrorPortDefinition="mpkg2#adf5#epd12">
+  <InputPortDefinition id="mpkg2#adf5#ipd12" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg2#adf5#ipd12#sf107" to="mpkg2#adf5#switch3">
+      <ParameterBinding id="mpkg2#adf5#ipd12#sf107#par106" source="mpkg2#adf5#ipd12#pdp34" target="mpkg2#adf5#switch3.switch" name="tipo token - Switch"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg2#adf5#ipd12#pdp35" name="token" type="string"/>
+    <PortDefinitionParameter id="mpkg2#adf5#ipd12#pdp34" name="tipo token" type="string"/>
+    <DataFlow id="mpkg2#adf5#ipd12#df33" to="mpkg2#adf5#act12" gr:bendpoints="-1.0 227.0">
+      <ParameterBinding id="mpkg2#adf5#ipd12#df33#par112" source="mpkg2#adf5#ipd12#pdp35" target="mpkg2#adf5#act12.mpkg2#adf4#ipd11#pdp31" name="token - stringa2IN"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg2#adf5#spd12" name="Success Port" gr:x="0" gr:y="420">
+    <PortDefinitionParameter id="mpkg2#adf5#spd12#pdp36" array="false" name="link" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg2#adf5#epd12" name="Error Port" gr:x="0" gr:y="85"/>
+  <Operations>
+    <Switch gr:x="335" gr:y="165" id="mpkg2#adf5#switch3" name="Tipo Token">
+      <SuccessFlow id="mpkg2#adf5#switch3#sf108" to="mpkg2#adf5#epd12" automaticCoupling="true"/>
+      <Case value="${token.psw}"/>
+      <Case value="${token.invito}"/>
+      <SuccessFlow id="mpkg2#adf5#switch3#sf109" to="mpkg2#adf5#act11" code="${token.psw}">
+        <ParameterBinding id="mpkg2#adf5#switch3#sf109#par107" sourceValue="${url.web.base}" target="mpkg2#adf5#act11.mpkg2#adf4#ipd11#pdp32" name="&quot;${url.web.base}&quot; - stringa1IN"/>
+        <ParameterBinding id="mpkg2#adf5#switch3#sf109#par108" sourceValue="${pagina.psw}" target="mpkg2#adf5#act11.mpkg2#adf4#ipd11#pdp31" name="&quot;${pagina.psw}&quot; - stringa2IN"/>
+      </SuccessFlow>
+      <SuccessFlow id="mpkg2#adf5#switch3#sf110" to="mpkg2#adf5#act11" code="${token.invito}">
+        <ParameterBinding id="mpkg2#adf5#switch3#sf110#par109" sourceValue="${url.web.base}" target="mpkg2#adf5#act11.mpkg2#adf4#ipd11#pdp32" name="&quot;${url.web.base}&quot; - stringa1IN"/>
+        <ParameterBinding id="mpkg2#adf5#switch3#sf110#par110" sourceValue="${pagina.invito}" target="mpkg2#adf5#act11.mpkg2#adf4#ipd11#pdp31" name="&quot;${pagina.invito}&quot; - stringa2IN"/>
+      </SuccessFlow>
+    </Switch>
+  </Operations>
+  <Action id="mpkg2#adf5#act11" gr:x="545" gr:y="300" definition="mpkg2#adf4">
+    <Events>
+      <SuccessEvent id="mpkg2#adf5#act11#scce11" definition="mpkg2#adf4#spd11">
+        <SuccessFlow id="mpkg2#adf5#act11#scce11#sf111" to="mpkg2#adf5#act12">
+          <ParameterBinding id="mpkg2#adf5#act11#scce11#sf111#par111" source="mpkg2#adf4#spd11#pdp33" target="mpkg2#adf5#act12.mpkg2#adf4#ipd11#pdp32" name="risultato - stringa1IN"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg2#adf5#act11#erre11" definition="mpkg2#adf4#epd11">
+        <ErrorFlow id="mpkg2#adf5#act11#erre11#ef3" to="mpkg2#adf5#epd12" automaticCoupling="true"/>
+      </ErrorEvent>
+    </Events>
+  </Action>
+  <Action id="mpkg2#adf5#act12" gr:x="655" gr:y="425" definition="mpkg2#adf4">
+    <Events>
+      <SuccessEvent id="mpkg2#adf5#act12#scce12" definition="mpkg2#adf4#spd11">
+        <SuccessFlow id="mpkg2#adf5#act12#scce12#sf112" to="mpkg2#adf5#spd12">
+          <ParameterBinding id="mpkg2#adf5#act12#scce12#sf112#par113" source="mpkg2#adf4#spd11#pdp33" target="mpkg2#adf5#spd12#pdp36" name="risultato - risultato"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg2#adf5#act12#erre12" definition="mpkg2#adf4#epd11"/>
+    </Events>
+  </Action>
+</ActionDefinition>

@@ -1,0 +1,21 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#adf3" name="Is Backoffice" type="read" defaultSuccessPortDefinition="mpkg3#adf3#spd9" defaultErrorPortDefinition="mpkg3#adf3#epd9">
+  <InputPortDefinition id="mpkg3#adf3#ipd9" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#adf3#ipd9#sf90" to="mpkg3#adf3#seu14">
+      <ParameterBinding id="mpkg3#adf3#ipd9#sf90#par95" sourceImplicitParameter="userName" target="mpkg3#adf3#seu14#sc29#acond10" name="User ID - userID"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#adf3#spd9" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg3#adf3#spd9#pdp29" array="false" name="Backoffice" type="boolean"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg3#adf3#epd9" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector id="mpkg3#adf3#seu14" name="Select User" gr:x="445" gr:y="120" dataBinding="User">
+      <SuccessFlow id="mpkg3#adf3#seu14#sf92" to="mpkg3#adf3#spd9">
+        <ParameterBinding id="mpkg3#adf3#seu14#sf92#par96" source="User#att49Array" target="mpkg3#adf3#spd9#pdp29" name="Backoffice - Backoffice"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg3#adf3#seu14#sc29" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg3#adf3#seu14#sc29#acond10" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

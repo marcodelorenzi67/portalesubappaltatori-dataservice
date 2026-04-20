@@ -1,0 +1,136 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#ada5" name="_Creazione utente" defaultSuccessPortDefinition="mpkg3#ada5#spd7" defaultErrorPortDefinition="mpkg3#ada5#epd7" transaction="true">
+  <InputPortDefinition id="mpkg3#ada5#ipd7" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#ada5#ipd7#sf56" to="mpkg3#ada5#svu3">
+      <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par43" source="mpkg3#ada5#ipd7#pdp21" target="mpkg3#ada5#svu3.User#att4" name="Cognome - Cognome"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par44" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#svu3.User#att5" name="Email - Email"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par45" source="mpkg3#ada5#ipd7#pdp23" target="mpkg3#ada5#svu3.User#att3" name="Nome - Nome"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par139" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#svu3.userName" name="Email - User ID"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp21" array="false" name="Cognome" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp22" array="false" name="Email" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp23" array="false" name="Nome" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp24" name="Password" array="true" type="string"/>
+    <DataFlow id="mpkg3#ada5#ipd7#df13" to="mpkg3#ada5#act3" gr:bendpoints="7.0 83.0">
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par52" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#act3._identity_create$email" name="Email - Email"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par53" source="mpkg3#ada5#ipd7#pdp23" target="mpkg3#ada5#act3._identity_create$firstName" name="Nome - First Name"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par54" source="mpkg3#ada5#ipd7#pdp21" target="mpkg3#ada5#act3._identity_create$lastName" name="Cognome - Last Name"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par55" source="mpkg3#ada5#ipd7#pdp24" target="mpkg3#ada5#act3._identity_create$password" name="Password - Password"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par133" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#act3._identity_create$userID" name="Email - User ID"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par134" sourceValue="0" target="mpkg3#ada5#act3._identity_create$attemptsNumber" name="&quot;0&quot; - Attempts Number"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par135" sourceValue="false" target="mpkg3#ada5#act3._identity_create$authAdmin" name="&quot;false&quot; - Is Auth Admin"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par136" sourceValue="false" target="mpkg3#ada5#act3._identity_create$disabled" name="&quot;false&quot; - Is Disabled"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par137" sourceValue="false" target="mpkg3#ada5#act3._identity_create$expired" name="&quot;false&quot; - Is Expired"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par138" sourceValue="false" target="mpkg3#ada5#act3._identity_create$locked" name="&quot;false&quot; - Is Locked"/>
+    </DataFlow>
+    <DataFlow id="mpkg3#ada5#ipd7#df14" to="mpkg3#ada5#seu9" gr:bendpoints="-8.0 146.0">
+      <ParameterBinding id="mpkg3#ada5#ipd7#df14#par79" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#seu9#sc15#rcond2.cls4#att20" name="Email - user [Email]"/>
+    </DataFlow>
+    <DataFlow id="mpkg3#ada5#ipd7#df23" to="mpkg3#ada5#seu11">
+      <ParameterBinding id="mpkg3#ada5#ipd7#df23#par86" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#seu11#sc17#rcond3.cls4#att20" name="Email - user invitato [Email]"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#ada5#spd7" name="Success Port" gr:x="0" gr:y="420"/>
+  <ErrorPortDefinition id="mpkg3#ada5#epd7" name="Error Port" gr:x="0" gr:y="65"/>
+  <Operations>
+    <Save gr:x="-260" gr:y="-5" id="mpkg3#ada5#svu3" action="create" dataBinding="User">
+      <SuccessFlow id="mpkg3#ada5#svu3#sf69" to="mpkg3#ada5#seu11" automaticCoupling="true"/>
+      <DataFlow id="mpkg3#ada5#svu3#df24" to="mpkg3#ada5#cnu3" automaticCoupling="true"/>
+    </Save>
+    <Selector gr:x="550" gr:y="275" id="mpkg3#ada5#seu9" dataBinding="cls12">
+      <ConditionalExpression id="mpkg3#ada5#seu9#sc15" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg3#ada5#seu9#sc15#rcond2" name="user" predicate="in" implied="false" role="as18#role35"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada5#seu9#sf59" to="mpkg3#ada5#lpu1">
+        <ParameterBinding id="mpkg3#ada5#seu9#sf59#par57" source="cls12#att60Array" target="mpkg3#ada5#lpu1.array" name="Descrizione - Input Array"/>
+      </SuccessFlow>
+    </Selector>
+    <Loop gr:x="795" gr:y="345" id="mpkg3#ada5#lpu1" name="ruoli">
+      <SuccessFlow id="mpkg3#ada5#lpu1#sf60" to="mpkg3#ada5#act4" code="next">
+        <ParameterBinding id="mpkg3#ada5#lpu1#sf60#par58" source="next" target="mpkg3#ada5#act4._permission_create$scope" name="Next Element - Scope"/>
+      </SuccessFlow>
+      <DataFlow id="mpkg3#ada5#lpu1#df16" to="mpkg3#ada5#act5">
+        <ParameterBinding id="mpkg3#ada5#lpu1#df16#par63" source="next" target="mpkg3#ada5#act5._permission_create$scope" name="Next Element - Scope"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg3#ada5#lpu1#sf63" to="mpkg3#ada5#act6" code="end">
+        <ParameterBinding id="mpkg3#ada5#lpu1#sf63#par67" sourceValue="${app.web}" target="mpkg3#ada5#act6._permission_create$appID" name="&quot;${app.web}&quot; - App ID"/>
+        <ParameterBinding id="mpkg3#ada5#lpu1#sf63#par68" sourceValue="${scope.passwordChange}" target="mpkg3#ada5#act6._permission_create$scope" name="&quot;${scope.passwordChange}&quot; - Scope"/>
+        <ParameterBinding id="mpkg3#ada5#lpu1#sf63#par71" sourceValue="APPROVED" target="mpkg3#ada5#act6._permission_create$status" name="&quot;APPROVED&quot; - Status"/>
+      </SuccessFlow>
+    </Loop>
+    <Selector gr:x="-100" gr:y="45" id="mpkg3#ada5#seu11" dataBinding="cls1">
+      <ConditionalExpression id="mpkg3#ada5#seu11#sc17" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg3#ada5#seu11#sc17#rcond3" name="user invitato" predicate="in" implied="false" role="as16#role31"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada5#seu11#sf70" to="mpkg3#ada5#cnu3" automaticCoupling="true"/>
+    </Selector>
+    <Connect gr:x="110" gr:y="105" id="mpkg3#ada5#cnu3" association="as1#role1">
+      <SourceConditionalExpression id="mpkg3#ada5#cnu3#sc18" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada5#cnu3#sc18#kcond10" name="KeyCondition10" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg3#ada5#cnu3#sc19" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada5#cnu3#sc19#kcond11" name="KeyCondition11" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg3#ada5#cnu3#sf71" to="mpkg3#ada5#act3" automaticCoupling="true"/>
+    </Connect>
+  </Operations>
+  <Action id="mpkg3#ada5#act3" gr:x="390" gr:y="185" authServiceRes="_identity_create">
+    <Events>
+      <SuccessEvent id="mpkg3#ada5#act3#scce3">
+        <SuccessFlow id="mpkg3#ada5#act3#scce3#sf58" to="mpkg3#ada5#seu9" automaticCoupling="true"/>
+        <DataFlow id="mpkg3#ada5#act3#scce3#df15" to="mpkg3#ada5#act4">
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df15#par59" sourceValue="${app.web}" target="mpkg3#ada5#act4._permission_create$appID" name="&quot;${app.web}&quot; - App ID"/>
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df15#par60" sourceValue="APPROVED" target="mpkg3#ada5#act4._permission_create$status" name="&quot;APPROVED&quot; - Status"/>
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df15#par61" source="_identity_create$userID" target="mpkg3#ada5#act4._permission_create$userID" name="User ID - User ID"/>
+        </DataFlow>
+        <DataFlow id="mpkg3#ada5#act3#scce3#df17" to="mpkg3#ada5#act5" gr:bendpoints="190.0 153.0">
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df17#par64" sourceValue="${app.ds}" target="mpkg3#ada5#act5._permission_create$appID" name="&quot;${app.ds}&quot; - App ID"/>
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df17#par65" sourceValue="APPROVED" target="mpkg3#ada5#act5._permission_create$status" name="&quot;APPROVED&quot; - Status"/>
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df17#par66" source="_identity_create$userID" target="mpkg3#ada5#act5._permission_create$userID" name="User ID - User ID"/>
+        </DataFlow>
+        <DataFlow id="mpkg3#ada5#act3#scce3#df18" to="mpkg3#ada5#act6">
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df18#par73" source="_identity_create$userID" target="mpkg3#ada5#act6._permission_create$userID" name="User ID - User ID"/>
+        </DataFlow>
+        <DataFlow id="mpkg3#ada5#act3#scce3#df19" to="mpkg3#ada5#act7">
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df19#par74" source="_identity_create$userID" target="mpkg3#ada5#act7._permission_create$userID" name="User ID - User ID"/>
+        </DataFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada5#act3#erre3"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada5#act4" gr:x="580" gr:y="530" authServiceRes="_permission_create">
+    <Events>
+      <SuccessEvent id="mpkg3#ada5#act4#scce4">
+        <SuccessFlow id="mpkg3#ada5#act4#scce4#sf61" to="mpkg3#ada5#act5" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada5#act4#erre4"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada5#act5" gr:x="870" gr:y="500" authServiceRes="_permission_create">
+    <Events>
+      <SuccessEvent id="mpkg3#ada5#act5#scce5">
+        <SuccessFlow id="mpkg3#ada5#act5#scce5#sf62" to="mpkg3#ada5#lpu1" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada5#act5#erre5"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada5#act6" gr:x="1035" gr:y="420" authServiceRes="_permission_create">
+    <Events>
+      <SuccessEvent id="mpkg3#ada5#act6#scce6">
+        <SuccessFlow id="mpkg3#ada5#act6#scce6#sf64" to="mpkg3#ada5#act7">
+          <ParameterBinding id="mpkg3#ada5#act6#scce6#sf64#par69" sourceValue="${app.ds}" target="mpkg3#ada5#act7._permission_create$appID" name="&quot;${app.ds}&quot; - App ID"/>
+          <ParameterBinding id="mpkg3#ada5#act6#scce6#sf64#par70" sourceValue="${scope.passwordChange}" target="mpkg3#ada5#act7._permission_create$scope" name="&quot;${scope.passwordChange}&quot; - Scope"/>
+          <ParameterBinding id="mpkg3#ada5#act6#scce6#sf64#par72" sourceValue="APPROVED" target="mpkg3#ada5#act7._permission_create$status" name="&quot;APPROVED&quot; - Status"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada5#act6#erre6"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada5#act7" gr:x="1315" gr:y="420" authServiceRes="_permission_create">
+    <Events>
+      <SuccessEvent id="mpkg3#ada5#act7#scce7">
+        <SuccessFlow id="mpkg3#ada5#act7#scce7#sf65" to="mpkg3#ada5#spd7" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada5#act7#erre7"/>
+    </Events>
+  </Action>
+</ActionDefinition>

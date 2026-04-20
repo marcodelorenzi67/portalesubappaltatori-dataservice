@@ -1,0 +1,28 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada12" name="Aggiungi tipo allegato a tipo azienda" defaultSuccessPortDefinition="mpkg1#ada12#spd18" defaultErrorPortDefinition="mpkg1#ada12#epd18">
+  <InputPortDefinition id="mpkg1#ada12#ipd18" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ada12#ipd18#sf157" to="mpkg1#ada12#cnu4">
+      <ParameterBinding id="mpkg1#ada12#ipd18#sf157#par170" source="mpkg1#ada12#ipd18#pdp58" target="mpkg1#ada12#cnu4#sc44#kcond28.cls10#att45" name="KeyCondition28 [oid] [Tipologia Azienda] [Target] - KeyCondition28 [oid] [Tipologia Azienda] [Target]"/>
+      <ParameterBinding id="mpkg1#ada12#ipd18#sf157#par171" source="mpkg1#ada12#ipd18#pdp59" target="mpkg1#ada12#cnu4#sc43#kcond27.cls8#att37" name="KeyCondition27 [oid] [Tipologia Allegati] [Source] - KeyCondition27 [oid] [Tipologia Allegati] [Source]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ada12#ipd18#pdp58" array="false" name="oid Tipologia Azienda" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada12#ipd18#pdp59" array="true" name="oid Tipologia Allegati" type="integer"/>
+    <DataFlow id="mpkg1#ada12#ipd18#df47" to="mpkg1#ada12#spd18">
+      <ParameterBinding id="mpkg1#ada12#ipd18#df47#par174" source="mpkg1#ada12#ipd18#pdp58" target="mpkg1#ada12#spd18#pdp62" name="oid Tipologia Azienda - oid Tipologia Azienda"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ada12#spd18" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg1#ada12#spd18#pdp62" array="false" name="oid Tipologia Azienda" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg1#ada12#epd18" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Connect gr:x="485" gr:y="120" id="mpkg1#ada12#cnu4" association="as14#role28">
+      <SourceConditionalExpression id="mpkg1#ada12#cnu4#sc43" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada12#cnu4#sc43#kcond27" name="KeyCondition27" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg1#ada12#cnu4#sc44" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada12#cnu4#sc44#kcond28" name="KeyCondition28" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg1#ada12#cnu4#sf158" to="mpkg1#ada12#spd18" automaticCoupling="true"/>
+    </Connect>
+  </Operations>
+</ActionDefinition>

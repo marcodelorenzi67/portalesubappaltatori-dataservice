@@ -1,0 +1,46 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#ada8" name="Reset password" defaultSuccessPortDefinition="mpkg3#ada8#spd14" defaultErrorPortDefinition="mpkg3#ada8#epd14">
+  <InputPortDefinition id="mpkg3#ada8#ipd14" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg3#ada8#ipd14#pdp40" name="Token" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada8#ipd14#pdp39" name="Nuova password" type="string"/>
+    <SuccessFlow id="mpkg3#ada8#ipd14#sf123" to="mpkg3#ada8#seu17">
+      <ParameterBinding id="mpkg3#ada8#ipd14#sf123#par124" source="mpkg3#ada8#ipd14#pdp40" target="mpkg3#ada8#seu17#sc32#kcond19.cls6#att27" name="Token - KeyCondition5 [Descrizione]"/>
+    </SuccessFlow>
+    <DataFlow id="mpkg3#ada8#ipd14#df36" to="mpkg3#ada8#act15">
+      <ParameterBinding id="mpkg3#ada8#ipd14#df36#par128" source="mpkg3#ada8#ipd14#pdp39" target="mpkg3#ada8#act15._identity_update$password" name="Nuova password - Password"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#ada8#spd14" name="Success Port" gr:x="0" gr:y="335"/>
+  <ErrorPortDefinition id="mpkg3#ada8#epd14" name="Error Port" gr:x="0" gr:y="120"/>
+  <Operations>
+    <Selector id="mpkg3#ada8#seu17" name="Check tipo token" gr:x="10" gr:y="25" dataBinding="cls6" distinctAttributes="as7#role13.userName">
+      <ConditionalExpression id="mpkg3#ada8#seu17#sc32" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg3#ada8#seu17#sc32#acond12" name="attivo" predicate="eq" booleanOperator="or" implied="false" attributes="as17#role33.cls7#att31" value="true"/>
+        <AttributesCondition id="mpkg3#ada8#seu17#sc32#acond13" name="codice" predicate="eq" booleanOperator="or" implied="false" attributes="as17#role33.cls7#att32" value="${token.psw}"/>
+        <KeyCondition id="mpkg3#ada8#seu17#sc32#kcond19" name="KeyCondition5" predicate="in" implied="false"/>
+        <AttributesCondition id="mpkg3#ada8#seu17#sc32#acond14" name="is valido" predicate="eq" booleanOperator="or" implied="false" attributes="cls6#att57" value="true"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada8#seu17#sf124" to="mpkg3#ada8#epd14" automaticCoupling="true" code="Not Found"/>
+      <SuccessFlow id="mpkg3#ada8#seu17#sf125" to="mpkg3#ada8#act15">
+        <ParameterBinding id="mpkg3#ada8#seu17#sf125#par125" sourceValue="0" target="mpkg3#ada8#act15._identity_update$attemptsNumber" name="&quot;0&quot; - Attempts Number"/>
+        <ParameterBinding id="mpkg3#ada8#seu17#sf125#par126" sourceValue="false" target="mpkg3#ada8#act15._identity_update$expired" name="&quot;false&quot; - Is Expired"/>
+        <ParameterBinding id="mpkg3#ada8#seu17#sf125#par127" sourceValue="false" target="mpkg3#ada8#act15._identity_update$locked" name="&quot;false&quot; - Is Locked"/>
+        <ParameterBinding id="mpkg3#ada8#seu17#sf125#par129" source="as7#role13$userNameArray" target="mpkg3#ada8#act15._identity_update$userID" name="TokenToUser.User ID - User ID"/>
+      </SuccessFlow>
+      <DataFlow id="mpkg3#ada8#seu17#df37" to="mpkg3#ada8#dlu3" automaticCoupling="true"/>
+    </Selector>
+    <Delete gr:x="490" gr:y="375" id="mpkg3#ada8#dlu3" dataBinding="cls6">
+      <ConditionalExpression id="mpkg3#ada8#dlu3#sc33" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada8#dlu3#sc33#kcond20" name="KeyCondition20" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada8#dlu3#sf127" to="mpkg3#ada8#spd14" automaticCoupling="true"/>
+    </Delete>
+  </Operations>
+  <Action id="mpkg3#ada8#act15" gr:x="225" gr:y="285" authServiceRes="_identity_update">
+    <Events>
+      <SuccessEvent id="mpkg3#ada8#act15#scce15">
+        <SuccessFlow id="mpkg3#ada8#act15#scce15#sf126" to="mpkg3#ada8#dlu3" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada8#act15#erre15"/>
+    </Events>
+  </Action>
+</ActionDefinition>

@@ -1,0 +1,53 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#ada10" name="Verifica OTP" defaultSuccessPortDefinition="mpkg3#ada10#spd16" defaultErrorPortDefinition="mpkg3#ada10#epd16">
+  <InputPortDefinition id="mpkg3#ada10#ipd16" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg3#ada10#ipd16#pdp48" name="OTP" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada10#ipd16#pdp47" name="Password" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada10#ipd16#pdp46" name="userID" type="string"/>
+    <DataFlow id="mpkg3#ada10#ipd16#df46" to="mpkg3#ada10#spd16">
+      <ParameterBinding id="mpkg3#ada10#ipd16#df46#par158" source="mpkg3#ada10#ipd16#pdp47" target="mpkg3#ada10#spd16#pdp49" name="Password - Password"/>
+      <ParameterBinding id="mpkg3#ada10#ipd16#df46#par159" source="mpkg3#ada10#ipd16#pdp46" target="mpkg3#ada10#spd16#pdp50" name="userID - userID"/>
+    </DataFlow>
+    <DataFlow id="mpkg3#ada10#ipd16#sf142" to="mpkg3#ada10#seu19" gr:bendpoints="96,-75,-104,-75">
+      <ParameterBinding id="mpkg3#ada10#ipd16#sf142#par160" source="mpkg3#ada10#ipd16#pdp48" target="mpkg3#ada10#seu19#sc37#kcond23.cls6#att27" name="OTP - KeyCondition5 [Descrizione]"/>
+    </DataFlow>
+    <SuccessFlow id="mpkg3#ada10#ipd16#sf143" to="mpkg3#ada10#seu20">
+      <ParameterBinding id="mpkg3#ada10#ipd16#sf143#par161" source="mpkg3#ada10#ipd16#pdp46" target="mpkg3#ada10#seu20#sc38#acond19" name="userID - userID"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#ada10#spd16" name="Success Port" gr:x="0" gr:y="195">
+    <PortDefinitionParameter id="mpkg3#ada10#spd16#pdp49" array="false" name="Password" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada10#spd16#pdp50" array="false" name="userID" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada10#spd16#pdp51" name="valido" array="true" type="boolean"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg3#ada10#epd16" name="Error Port" gr:x="0" gr:y="80"/>
+  <Operations>
+    <Selector id="mpkg3#ada10#seu19" name="Check token" gr:x="315" gr:y="265" dataBinding="cls6">
+      <ConditionalExpression id="mpkg3#ada10#seu19#sc37" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg3#ada10#seu19#sc37#acond16" name="tipo attivo" predicate="eq" booleanOperator="or" implied="false" attributes="as17#role33.cls7#att31" value="true"/>
+        <AttributesCondition id="mpkg3#ada10#seu19#sc37#acond17" name="codice" predicate="eq" booleanOperator="or" implied="false" attributes="as17#role33.cls7#att32" value="${token.mfa}"/>
+        <KeyCondition id="mpkg3#ada10#seu19#sc37#kcond23" name="KeyCondition5" predicate="in" implied="false"/>
+        <AttributesCondition id="mpkg3#ada10#seu19#sc37#acond18" name="attivo" predicate="eq" booleanOperator="or" implied="false" attributes="cls6#att57" value="true"/>
+        <AssociationRoleCondition id="mpkg3#ada10#seu19#sc37#rcond7" name="user" predicate="in" implied="false" role="as7#role14"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada10#seu19#sf146" to="mpkg3#ada10#spd16" code="Not Found">
+        <ParameterBinding id="mpkg3#ada10#seu19#sf146#par162" sourceValue="false" target="mpkg3#ada10#spd16#pdp51" name="&quot;false&quot; - valido"/>
+      </SuccessFlow>
+      <SuccessFlow id="mpkg3#ada10#seu19#sf147" to="mpkg3#ada10#dlu4" automaticCoupling="true"/>
+    </Selector>
+    <Selector gr:x="275" gr:y="95" id="mpkg3#ada10#seu20" dataBinding="User">
+      <SuccessFlow id="mpkg3#ada10#seu20#sf144" to="mpkg3#ada10#seu19" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg3#ada10#seu20#sc38" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg3#ada10#seu20#sc38#acond19" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada10#seu20#sf145" to="mpkg3#ada10#epd16" automaticCoupling="true" code="Not Found"/>
+    </Selector>
+    <Delete gr:x="690" gr:y="480" id="mpkg3#ada10#dlu4" dataBinding="cls6">
+      <ConditionalExpression id="mpkg3#ada10#dlu4#sc39" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada10#dlu4#sc39#kcond24" name="KeyCondition24" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada10#dlu4#sf148" to="mpkg3#ada10#spd16">
+        <ParameterBinding id="mpkg3#ada10#dlu4#sf148#par163" sourceValue="true" target="mpkg3#ada10#spd16#pdp51" name="&quot;true&quot; - valido"/>
+      </SuccessFlow>
+    </Delete>
+  </Operations>
+</ActionDefinition>

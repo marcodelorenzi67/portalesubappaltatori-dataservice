@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?webml version="9.3.0.4"?>
+
+<WebProject xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:gr="http://www.webratio.com/2006/WebML/Graph" outputPath="${webapps_loc}/${project_name}" gr:showUnitContent="true" gr:showTooltip="true" enableProjectDependencies="true" toolVersion="9.3.1" db:dataServicesSchema="public" db:dataServicesTablePrefix="WR_">
+  <ServiceDataProviders>
+    <IdentityProvider/>
+    <SMTPServer id="smtp1" name="Mail" jndiName="java:comp/env/mail/aws" defaultFrom="tommaso.garimoldi@webratio.com"/>
+  </ServiceDataProviders>
+  <Roles>
+    <Role id="anonymous_user" name="Anonymous User"/>
+    <Role id="rl1" name="Responsabile"/>
+    <Role id="rl2" name="Gestione"/>
+    <Role id="rl3" name="Consultazione"/>
+    <Role id="rl4" name="Fornitore"/>
+    <Role id="rl5" name="Amministratore"/>
+  </Roles>
+</WebProject>

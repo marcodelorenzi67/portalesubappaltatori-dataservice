@@ -1,0 +1,32 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#adf2" name="Get utente invitato" type="read" defaultSuccessPortDefinition="mpkg3#adf2#spd5" defaultErrorPortDefinition="mpkg3#adf2#epd5">
+  <InputPortDefinition id="mpkg3#adf2#ipd5" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#adf2#ipd5#sf39" to="mpkg3#adf2#seu5">
+      <ParameterBinding id="mpkg3#adf2#ipd5#sf39#par33" source="mpkg3#adf2#ipd5#pdp14" target="mpkg3#adf2#seu5#sc9#acond5" name="token - token"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg3#adf2#ipd5#pdp14" array="false" name="token" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#adf2#spd5" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg3#adf2#spd5#pdp15" array="false" name="Nome" type="string"/>
+    <PortDefinitionParameter id="mpkg3#adf2#spd5#pdp16" array="false" name="Cognome" type="string"/>
+    <PortDefinitionParameter id="mpkg3#adf2#spd5#pdp17" array="false" name="Email" type="string"/>
+    <PortDefinitionParameter id="mpkg3#adf2#spd5#pdp18" array="false" name="is token valido" type="boolean"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg3#adf2#epd5" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="395" gr:y="150" id="mpkg3#adf2#seu5" dataBinding="cls4">
+      <SuccessFlow id="mpkg3#adf2#seu5#sf40" to="mpkg3#adf2#spd5">
+        <ParameterBinding id="mpkg3#adf2#seu5#sf40#par34" source="cls4#att18Array" target="mpkg3#adf2#spd5#pdp15" name="Nome - Nome"/>
+        <ParameterBinding id="mpkg3#adf2#seu5#sf40#par35" source="cls4#att19Array" target="mpkg3#adf2#spd5#pdp16" name="Cognome - Cognome"/>
+        <ParameterBinding id="mpkg3#adf2#seu5#sf40#par36" source="cls4#att20Array" target="mpkg3#adf2#spd5#pdp17" name="Email - Email"/>
+        <ParameterBinding id="mpkg3#adf2#seu5#sf40#par37" source="cls4#att58Array" target="mpkg3#adf2#spd5#pdp18" name="is token valido - is token valido"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg3#adf2#seu5#sc9" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg3#adf2#seu5#sc9#acond5" name="token" predicate="eq" booleanOperator="or" implied="false" attributes="cls4#att56"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#adf2#seu5#sf41" to="mpkg3#adf2#spd5" code="Not Found">
+        <ParameterBinding id="mpkg3#adf2#seu5#sf41#par38" sourceValue="false" target="mpkg3#adf2#spd5#pdp18" name="&quot;false&quot; - is token valido"/>
+      </SuccessFlow>
+      <ErrorFlow id="mpkg3#adf2#seu5#ef1" to="mpkg3#adf2#epd5" automaticCoupling="true"/>
+    </Selector>
+  </Operations>
+</ActionDefinition>

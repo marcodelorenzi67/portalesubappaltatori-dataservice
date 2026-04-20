@@ -1,0 +1,35 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg2#ada2" name="_Genera token" defaultSuccessPortDefinition="mpkg2#ada2#spd2" defaultErrorPortDefinition="mpkg2#ada2#epd2">
+  <InputPortDefinition id="mpkg2#ada2#ipd2" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg2#ada2#ipd2#sf5" to="mpkg2#ada2#seu1">
+      <ParameterBinding id="mpkg2#ada2#ipd2#sf5#par1" source="mpkg2#ada2#ipd2#pdp1" target="mpkg2#ada2#seu1#sc1#acond1" name="codice - codice"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg2#ada2#ipd2#pdp1" array="false" name="codice" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg2#ada2#spd2" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg2#ada2#spd2#pdp2" array="false" name="oid tipo token" type="integer"/>
+    <PortDefinitionParameter id="mpkg2#ada2#spd2#pdp3" array="false" name="Codice tipo token" type="string"/>
+    <PortDefinitionParameter id="mpkg2#ada2#spd2#pdp4" array="false" name="Generated Password" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg2#ada2#epd2" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="350" gr:y="125" id="mpkg2#ada2#seu1" dataBinding="cls7">
+      <ConditionalExpression id="mpkg2#ada2#seu1#sc1" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg2#ada2#seu1#sc1#acond1" name="codice" predicate="eq" booleanOperator="or" implied="false" attributes="cls7#att32"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg2#ada2#seu1#sf7" to="mpkg2#ada2#epd2" automaticCoupling="true" code="Not Found"/>
+      <SuccessFlow id="mpkg2#ada2#seu1#sf8" to="mpkg2#ada2#pwu1">
+        <ParameterBinding id="mpkg2#ada2#seu1#sf8#par4" source="cls7#att34Array" target="mpkg2#ada2#pwu1.passSize" name="Lunghezza - Password Size"/>
+        <ParameterBinding id="mpkg2#ada2#seu1#sf8#par5" source="cls7#att34Array" target="mpkg2#ada2#pwu1.minDigits" name="Lunghezza - Minimum Digits"/>
+      </SuccessFlow>
+      <DataFlow id="mpkg2#ada2#seu1#df1" to="mpkg2#ada2#spd2">
+        <ParameterBinding id="mpkg2#ada2#seu1#df1#par2" source="cls7#att29Array" target="mpkg2#ada2#spd2#pdp2" name="oid - oid"/>
+        <ParameterBinding id="mpkg2#ada2#seu1#df1#par3" source="cls7#att32Array" target="mpkg2#ada2#spd2#pdp3" name="Codice - Codice"/>
+      </DataFlow>
+    </Selector>
+    <Password gr:x="600" gr:y="180" id="mpkg2#ada2#pwu1" passwordSize="16" name="Password" minDigits="16">
+      <SuccessFlow id="mpkg2#ada2#pwu1#sf9" to="mpkg2#ada2#spd2">
+        <ParameterBinding id="mpkg2#ada2#pwu1#sf9#par6" source="password" target="mpkg2#ada2#spd2#pdp4" name="Generated Password - Generated Password"/>
+      </SuccessFlow>
+    </Password>
+  </Operations>
+</ActionDefinition>

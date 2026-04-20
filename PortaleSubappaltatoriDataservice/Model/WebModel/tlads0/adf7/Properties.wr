@@ -1,0 +1,25 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#adf7" name="Get Tenants" type="read" defaultSuccessPortDefinition="tlads0#adf7#spd22" defaultErrorPortDefinition="tlads0#adf7#epd22">
+  <InputPortDefinition id="tlads0#adf7#ipd22" gr:x="0" gr:y="30">
+    <SuccessFlow id="tlads0#adf7#ipd22#sf179" to="tlads0#adf7#seu24">
+      <ParameterBinding id="tlads0#adf7#ipd22#sf179#par183" sourceImplicitParameter="userName" target="tlads0#adf7#seu24#sc50#acond23" name="User ID - userId"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#adf7#spd22" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#adf7#spd22#pdp66" array="false" name="Data Size" type="integer"/>
+    <PortDefinitionParameter id="tlads0#adf7#spd22#pdp67" array="true" name="oid" type="integer" key="true"/>
+    <PortDefinitionParameter id="tlads0#adf7#spd22#pdp68" array="true" name="Nome" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#adf7#epd22" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="420" gr:y="150" id="tlads0#adf7#seu24" dataBinding="cls1">
+      <SuccessFlow id="tlads0#adf7#seu24#sf180" to="tlads0#adf7#spd22">
+        <ParameterBinding id="tlads0#adf7#seu24#sf180#par184" source="dataSize" target="tlads0#adf7#spd22#pdp66" name="Data Size - Data Size"/>
+        <ParameterBinding id="tlads0#adf7#seu24#sf180#par185" source="cls1#att1Array" target="tlads0#adf7#spd22#pdp67" name="oid - oid"/>
+        <ParameterBinding id="tlads0#adf7#seu24#sf180#par186" source="cls1#att2Array" target="tlads0#adf7#spd22#pdp68" name="Nome - Nome"/>
+      </SuccessFlow>
+      <ConditionalExpression id="tlads0#adf7#seu24#sc50" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="tlads0#adf7#seu24#sc50#acond23" name="userId" predicate="eq" booleanOperator="or" implied="false" attributes="as1#role2.userName"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

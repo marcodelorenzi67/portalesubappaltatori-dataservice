@@ -1,0 +1,28 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada11" name="Nuovo/modifica tipologia allegati" defaultSuccessPortDefinition="mpkg1#ada11#spd17" defaultErrorPortDefinition="mpkg1#ada11#epd17">
+  <InputPortDefinition id="mpkg1#ada11#ipd17" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ada11#ipd17#sf153" to="mpkg1#ada11#svu7">
+      <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par164" source="mpkg1#ada11#ipd17#pdp52" target="mpkg1#ada11#svu7.as12#role23.cls9#att41" name="Macro-tipologia.oid(Tipologia AllegatiToMacro-tipologia) - Macro-tipologia.oid(Tipologia AllegatiToMacro-tipologia)"/>
+      <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par165" source="mpkg1#ada11#ipd17#pdp53" target="mpkg1#ada11#svu7.cls8#att40" name="Pattern nome - Pattern nome"/>
+      <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par166" source="mpkg1#ada11#ipd17#pdp54" target="mpkg1#ada11#svu7.cls8#att64" name="Descrizione - Descrizione"/>
+      <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par167" source="mpkg1#ada11#ipd17#pdp55" target="mpkg1#ada11#svu7#sc42#kcond26.cls8#att37" name="KeyCondition26 [oid] - KeyCondition26 [oid]"/>
+      <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par168" source="mpkg1#ada11#ipd17#pdp56" target="mpkg1#ada11#svu7.cls8#att38" name="Condiviso - Condiviso"/>
+      <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par169" source="mpkg1#ada11#ipd17#pdp57" target="mpkg1#ada11#svu7.cls8#att39" name="Giorni Durata - Giorni Durata"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp52" array="false" name="Macro-tipologia oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp53" array="false" name="Pattern nome" type="string"/>
+    <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp54" array="false" name="Descrizione" type="string"/>
+    <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp55" array="false" name="oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp56" array="false" name="Condiviso" type="boolean"/>
+    <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp57" array="false" name="Giorni Durata" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ada11#spd17" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg1#ada11#epd17" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Save gr:x="390" gr:y="70" id="mpkg1#ada11#svu7" action="save" dataBinding="cls8">
+      <ConditionalExpression id="mpkg1#ada11#svu7#sc42" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada11#svu7#sc42#kcond26" name="KeyCondition26" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg1#ada11#svu7#sf154" to="mpkg1#ada11#spd17" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+</ActionDefinition>

@@ -1,0 +1,22 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg2#adf4" name="_Concat" type="read" defaultSuccessPortDefinition="mpkg2#adf4#spd11" defaultErrorPortDefinition="mpkg2#adf4#epd11">
+  <InputPortDefinition id="mpkg2#adf4#ipd11" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg2#adf4#ipd11#sf103" to="mpkg2#adf4#scu3">
+      <ParameterBinding id="mpkg2#adf4#ipd11#sf103#par103" source="mpkg2#adf4#ipd11#pdp31" target="mpkg2#adf4#scu3.stringa2IN" name="stringa2IN - stringa2IN"/>
+      <ParameterBinding id="mpkg2#adf4#ipd11#sf103#par104" source="mpkg2#adf4#ipd11#pdp32" target="mpkg2#adf4#scu3.stringa1IN" name="stringa1IN - stringa1IN"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg2#adf4#ipd11#pdp31" array="false" name="stringa2IN" type="string"/>
+    <PortDefinitionParameter id="mpkg2#adf4#ipd11#pdp32" array="false" name="stringa1IN" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg2#adf4#spd11" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg2#adf4#spd11#pdp33" array="false" name="risultato" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg2#adf4#epd11" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Script gr:x="420" gr:y="205" id="mpkg2#adf4#scu3" name="Concat" script="WEB-INF/groovy/concat.groovy">
+      <SuccessFlow id="mpkg2#adf4#scu3#sf104" to="mpkg2#adf4#spd11">
+        <ParameterBinding id="mpkg2#adf4#scu3#sf104#par105" source="result(risultato)" target="mpkg2#adf4#spd11#pdp33" name="risultato - risultato"/>
+      </SuccessFlow>
+      <ErrorFlow id="mpkg2#adf4#scu3#ef2" to="mpkg2#adf4#epd11" automaticCoupling="true"/>
+    </Script>
+  </Operations>
+</ActionDefinition>

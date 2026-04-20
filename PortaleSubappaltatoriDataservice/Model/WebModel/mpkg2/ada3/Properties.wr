@@ -1,0 +1,41 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg2#ada3" name="_Invio Mail" defaultSuccessPortDefinition="mpkg2#ada3#spd4" defaultErrorPortDefinition="mpkg2#ada3#epd4">
+  <InputPortDefinition id="mpkg2#ada3#ipd4" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg2#ada3#ipd4#sf30" to="mpkg2#ada3#seu4">
+      <ParameterBinding id="mpkg2#ada3#ipd4#sf30#par22" source="mpkg2#ada3#ipd4#pdp9" target="mpkg2#ada3#seu4#sc8#acond4" name="codice - codice"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp9" array="false" name="codice messaggio" type="string"/>
+    <DataFlow id="mpkg2#ada3#ipd4#df8" to="mpkg2#ada3#mlu1">
+      <ParameterBinding id="mpkg2#ada3#ipd4#df8#par25" source="mpkg2#ada3#ipd4#pdp10" target="mpkg2#ada3#mlu1.to" name="Mail - To - Mail - To"/>
+      <ParameterBinding id="mpkg2#ada3#ipd4#df8#par26" source="mpkg2#ada3#ipd4#pdp11" target="mpkg2#ada3#mlu1.Nome" name="Nome - Nome"/>
+      <ParameterBinding id="mpkg2#ada3#ipd4#df8#par27" source="mpkg2#ada3#ipd4#pdp12" target="mpkg2#ada3#mlu1.Cognome" name="Cognome - Cognome"/>
+      <ParameterBinding id="mpkg2#ada3#ipd4#df8#par28" source="mpkg2#ada3#ipd4#pdp13" target="mpkg2#ada3#mlu1.url" name="url - url"/>
+      <ParameterBinding id="mpkg2#ada3#ipd4#df8#par149" source="mpkg2#ada3#ipd4#pdp43" target="mpkg2#ada3#mlu1.token" name="token - token"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp10" array="false" name="Email" type="string"/>
+    <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp11" array="false" name="Nome" type="string"/>
+    <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp12" array="false" name="Cognome" type="string"/>
+    <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp13" array="false" name="url" type="string"/>
+    <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp43" array="false" name="token" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg2#ada3#spd4" name="Success Port" gr:x="0" gr:y="315"/>
+  <ErrorPortDefinition id="mpkg2#ada3#epd4" name="Error Port" gr:x="0" gr:y="95"/>
+  <Operations>
+    <Selector id="mpkg2#ada3#seu4" name="Select Messaggi" gr:x="360" gr:y="165" dataBinding="cls11">
+      <ConditionalExpression id="mpkg2#ada3#seu4#sc8" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg2#ada3#seu4#sc8#acond4" name="codice" predicate="eq" booleanOperator="or" implied="false" attributes="cls11#att54"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg2#ada3#seu4#sf33" to="mpkg2#ada3#epd4" automaticCoupling="true" code="Not Found"/>
+      <SuccessFlow id="mpkg2#ada3#seu4#sf34" to="mpkg2#ada3#mlu1">
+        <ParameterBinding id="mpkg2#ada3#seu4#sf34#par23" source="cls11#att53Array" target="mpkg2#ada3#mlu1.body" name="Body - Mail - Body"/>
+        <ParameterBinding id="mpkg2#ada3#seu4#sf34#par24" source="cls11#att55Array" target="mpkg2#ada3#mlu1.subject" name="Oggetto - Mail - Subject"/>
+      </SuccessFlow>
+    </Selector>
+    <Mail gr:x="425" gr:y="340" id="mpkg2#ada3#mlu1" format="html" smtpServer="smtp1" name="Mail">
+      <SuccessFlow id="mpkg2#ada3#mlu1#sf35" to="mpkg2#ada3#spd4" automaticCoupling="true"/>
+      <Placeholder id="mpkg2#ada3#mlu1#ph1" name="Cognome"/>
+      <Placeholder id="mpkg2#ada3#mlu1#ph2" name="Nome"/>
+      <Placeholder id="mpkg2#ada3#mlu1#ph3" name="url"/>
+      <Placeholder id="mpkg2#ada3#mlu1#ph4" name="token"/>
+    </Mail>
+  </Operations>
+</ActionDefinition>

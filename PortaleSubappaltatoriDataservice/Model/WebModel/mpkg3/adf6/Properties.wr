@@ -1,0 +1,25 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#adf6" name="Get token psw" type="read" defaultSuccessPortDefinition="mpkg3#adf6#spd13" defaultErrorPortDefinition="mpkg3#adf6#epd13">
+  <InputPortDefinition id="mpkg3#adf6#ipd13" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#adf6#ipd13#sf118" to="mpkg3#adf6#seu16">
+      <ParameterBinding id="mpkg3#adf6#ipd13#sf118#par121" source="mpkg3#adf6#ipd13#pdp37" target="mpkg3#adf6#seu16#sc31#kcond18.cls6#att27" name="KeyCondition18 [Descrizione] - KeyCondition18 [Descrizione]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg3#adf6#ipd13#pdp37" array="false" name="token" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#adf6#spd13" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg3#adf6#spd13#pdp38" array="false" name="is valido" type="boolean"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg3#adf6#epd13" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="450" gr:y="225" id="mpkg3#adf6#seu16" dataBinding="cls6">
+      <SuccessFlow id="mpkg3#adf6#seu16#sf119" to="mpkg3#adf6#spd13">
+        <ParameterBinding id="mpkg3#adf6#seu16#sf119#par122" source="cls6#att57Array" target="mpkg3#adf6#spd13#pdp38" name="is valido - is valido"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg3#adf6#seu16#sc31" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#adf6#seu16#sc31#kcond18" name="KeyCondition18" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#adf6#seu16#sf120" to="mpkg3#adf6#spd13" code="Not Found">
+        <ParameterBinding id="mpkg3#adf6#seu16#sf120#par123" sourceValue="false" target="mpkg3#adf6#spd13#pdp38" name="&quot;false&quot; - is valido"/>
+      </SuccessFlow>
+    </Selector>
+  </Operations>
+</ActionDefinition>

@@ -1,0 +1,698 @@
+<DomainModel xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:srs="http://www.webratio.com/2017/IFML/ServerResources">
+  <Class id="User" name="User" duration="persistent" gr:x="10" gr:y="240" gr:hideAttributes="false" attributeOrder="userOID userName secretKey User#att3 User#att4 User#att5 User#att49" db:database="dbD1" db:table="sub_user">
+    <Attribute name="oid" id="userOID" type="integer" key="true" db:column="oid"/>
+    <Attribute name="User ID" id="userName" type="string" db:column="user_id" key="false"/>
+    <Attribute id="secretKey" name="Secret Key" type="password" db:cryptAlgorithm="com.webratio.data.crypto.PBKDF2WithHmacSHA1CryptImplementation" db:column="secret_key" key="false"/>
+    <Comment xml:space="preserve">A user represents one application user. In addition to the standard information such as username, a user is also characterized by a token. The token is a string that authorizes the usage of all services published by the backend application. The token is automatically set by the backend application at login. The token may have a limited duration, that's why a token expiration date can be set. The secret key is the encryption key used when transferring files between the client application and the backend.</Comment>
+    <Attribute id="User#att5" name="Email" type="string" db:column="email"/>
+    <Attribute id="User#att4" name="Cognome" type="string" db:column="cognome"/>
+    <Attribute id="User#att3" name="Nome" type="string" db:column="nome"/>
+    <Attribute id="User#att49" name="Backoffice" type="boolean" db:table="sub_view_user_roles" db:column="flg_bo_user">
+      <db:JoinColumn attribute="userOID" name="oid"/>
+    </Attribute>
+  </Class>
+  <ActionServices>
+    <ActionService definition="mpkg1#ada1" method="create" roles="rl5"/>
+    <ActionService definition="mpkg3#adf2" method="read" roles="anonymous_user"/>
+    <ActionService definition="mpkg3#ada4" method="create" roles="anonymous_user"/>
+    <ActionService definition="mpkg3#adf3" method="read" hasAuthUser="true"/>
+    <ActionService definition="mpkg3#ada7" method="create" roles="anonymous_user"/>
+    <ActionService definition="mpkg3#adf6" method="read" roles="anonymous_user"/>
+    <ActionService definition="mpkg3#ada8" method="create" roles="anonymous_user"/>
+    <ActionService definition="mpkg3#ada9" method="create" roles="anonymous_user"/>
+    <ActionService definition="mpkg3#ada10" method="create" roles="anonymous_user"/>
+    <ActionService definition="mpkg1#ada11" method="create" roles="rl5"/>
+    <ActionService definition="mpkg1#ada12" method="create" roles="rl5"/>
+    <ActionService definition="mpkg1#ad1" method="create" roles="rl5"/>
+    <ActionService definition="tlads0#ada13" method="create" hasAuthUser="true"/>
+    <ActionService definition="tlads0#adf7" method="read" hasAuthUser="true"/>
+  </ActionServices>
+  <DataServices db:dataServicesDatabase="dbD1">
+    <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
+      <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls1">
+      <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls4">
+      <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls12">
+      <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls8" associationRoles="as12#role23 as14#role28">
+      <ServiceRole>
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls9">
+      <ServiceRole>
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls10">
+      <ServiceRole>
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls2" associationRoles="as3#role5">
+      <ServiceRole role="rl1">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl3">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl2">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls3">
+      <ServiceRole role="rl1">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl3">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl2">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+    </ServiceClass>
+  </DataServices>
+  <UserServices>
+    <UserServiceOperation type="read"/>
+  </UserServices>
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
+  </db:Database>
+  <srs:Resources>
+    <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="First Name" serverProperty="firstName" ref="_identity__me_$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Last Name" serverProperty="lastName" ref="_identity__me_$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Email" serverProperty="email" ref="_identity__me_$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Password Expiration Date" serverProperty="passwordExpirationDate" ref="_identity__me_$passwordExpirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Is Auth Admin" serverProperty="authAdmin" ref="_identity__me_$authAdmin" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Disabled" serverProperty="disabled" ref="_identity__me_$disabled" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Expired" serverProperty="expired" ref="_identity__me_$expired" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Locked" serverProperty="locked" ref="_identity__me_$locked" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Attempts Number" serverProperty="attemptsNumber" ref="_identity__me_$attemptsNumber" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_identity__me_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create My Profile" serverResourceName="auth/myProfile" method="create" ref="_identity__me_create">
+      <srs:AuthServiceInput name="User ID" serverProperty="userID" ref="_identity__me_create$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="First Name" serverProperty="firstName" ref="_identity__me_create$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Password" serverProperty="password" ref="_identity__me_create$password" location="body" cardinality="1" type="password"/>
+      <srs:AuthServiceInput name="Last Name" serverProperty="lastName" ref="_identity__me_create$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Email" serverProperty="email" ref="_identity__me_create$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_create$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="First Name" serverProperty="firstName" ref="_identity__me_create$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Last Name" serverProperty="lastName" ref="_identity__me_create$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Email" serverProperty="email" ref="_identity__me_create$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Password Expiration Date" serverProperty="passwordExpirationDate" ref="_identity__me_create$passwordExpirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Is Auth Admin" serverProperty="authAdmin" ref="_identity__me_create$authAdmin" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Disabled" serverProperty="disabled" ref="_identity__me_create$disabled" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Expired" serverProperty="expired" ref="_identity__me_create$expired" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Locked" serverProperty="locked" ref="_identity__me_create$locked" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Attempts Number" serverProperty="attemptsNumber" ref="_identity__me_create$attemptsNumber" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_identity__me_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update My Profile" serverResourceName="auth/myProfile" method="update" ref="_identity__me_update">
+      <srs:AuthServiceInput name="User ID" serverProperty="userID" ref="_identity__me_update$userID" key="true" keyTemplate="{userID?}" location="path" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="First Name" serverProperty="firstName" ref="_identity__me_update$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Last Name" serverProperty="lastName" ref="_identity__me_update$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Email" serverProperty="email" ref="_identity__me_update$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_update$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="First Name" serverProperty="firstName" ref="_identity__me_update$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Last Name" serverProperty="lastName" ref="_identity__me_update$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Email" serverProperty="email" ref="_identity__me_update$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Password Expiration Date" serverProperty="passwordExpirationDate" ref="_identity__me_update$passwordExpirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Is Auth Admin" serverProperty="authAdmin" ref="_identity__me_update$authAdmin" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Disabled" serverProperty="disabled" ref="_identity__me_update$disabled" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Expired" serverProperty="expired" ref="_identity__me_update$expired" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Locked" serverProperty="locked" ref="_identity__me_update$locked" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Attempts Number" serverProperty="attemptsNumber" ref="_identity__me_update$attemptsNumber" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_identity__me_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Read Identity(es)" serverResourceName="auth/identity/{userID?}" method="read" ref="_identity_">
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity_$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="First Name" serverProperty="firstName" ref="_identity_$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Last Name" serverProperty="lastName" ref="_identity_$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Email" serverProperty="email" ref="_identity_$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Password Expiration Date" serverProperty="passwordExpirationDate" ref="_identity_$passwordExpirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Is Auth Admin" serverProperty="authAdmin" ref="_identity_$authAdmin" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Disabled" serverProperty="disabled" ref="_identity_$disabled" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Expired" serverProperty="expired" ref="_identity_$expired" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Locked" serverProperty="locked" ref="_identity_$locked" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Attempts Number" serverProperty="attemptsNumber" ref="_identity_$attemptsNumber" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_identity_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create Identity" serverResourceName="auth/identity" method="create" ref="_identity_create">
+      <srs:AuthServiceInput name="User ID" serverProperty="userID" ref="_identity_create$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="First Name" serverProperty="firstName" ref="_identity_create$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Password" serverProperty="password" ref="_identity_create$password" location="body" cardinality="1" type="password"/>
+      <srs:AuthServiceInput name="Last Name" serverProperty="lastName" ref="_identity_create$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Email" serverProperty="email" ref="_identity_create$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Password Expiration Date" serverProperty="passwordExpirationDate" ref="_identity_create$passwordExpirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceInput name="Is Auth Admin" serverProperty="authAdmin" ref="_identity_create$authAdmin" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceInput name="Is Disabled" serverProperty="disabled" ref="_identity_create$disabled" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceInput name="Is Expired" serverProperty="expired" ref="_identity_create$expired" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceInput name="Is Locked" serverProperty="locked" ref="_identity_create$locked" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceInput name="Attempts Number" serverProperty="attemptsNumber" ref="_identity_create$attemptsNumber" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity_create$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="First Name" serverProperty="firstName" ref="_identity_create$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Last Name" serverProperty="lastName" ref="_identity_create$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Email" serverProperty="email" ref="_identity_create$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Password Expiration Date" serverProperty="passwordExpirationDate" ref="_identity_create$passwordExpirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Is Auth Admin" serverProperty="authAdmin" ref="_identity_create$authAdmin" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Disabled" serverProperty="disabled" ref="_identity_create$disabled" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Expired" serverProperty="expired" ref="_identity_create$expired" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Locked" serverProperty="locked" ref="_identity_create$locked" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Attempts Number" serverProperty="attemptsNumber" ref="_identity_create$attemptsNumber" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_identity_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update Identity" serverResourceName="auth/identity/{userID?}" method="update" ref="_identity_update">
+      <srs:AuthServiceInput name="User ID" serverProperty="userID" ref="_identity_update$userID" key="true" keyTemplate="{userID?}" location="path" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="First Name" serverProperty="firstName" ref="_identity_update$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Password" serverProperty="password" ref="_identity_update$password" location="body" cardinality="1" type="password"/>
+      <srs:AuthServiceInput name="Last Name" serverProperty="lastName" ref="_identity_update$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Email" serverProperty="email" ref="_identity_update$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Password Expiration Date" serverProperty="passwordExpirationDate" ref="_identity_update$passwordExpirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceInput name="Is Auth Admin" serverProperty="authAdmin" ref="_identity_update$authAdmin" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceInput name="Is Disabled" serverProperty="disabled" ref="_identity_update$disabled" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceInput name="Is Expired" serverProperty="expired" ref="_identity_update$expired" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceInput name="Is Locked" serverProperty="locked" ref="_identity_update$locked" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceInput name="Attempts Number" serverProperty="attemptsNumber" ref="_identity_update$attemptsNumber" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity_update$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="First Name" serverProperty="firstName" ref="_identity_update$firstName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Last Name" serverProperty="lastName" ref="_identity_update$lastName" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Email" serverProperty="email" ref="_identity_update$email" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Password Expiration Date" serverProperty="passwordExpirationDate" ref="_identity_update$passwordExpirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Is Auth Admin" serverProperty="authAdmin" ref="_identity_update$authAdmin" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Disabled" serverProperty="disabled" ref="_identity_update$disabled" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Expired" serverProperty="expired" ref="_identity_update$expired" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Is Locked" serverProperty="locked" ref="_identity_update$locked" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="Attempts Number" serverProperty="attemptsNumber" ref="_identity_update$attemptsNumber" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_identity_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Delete Identity" serverResourceName="auth/identity/{userID?}" method="delete" ref="_identity_delete">
+      <srs:AuthServiceInput name="User ID" serverProperty="userID" ref="_identity_delete$userID" key="true" keyTemplate="{userID?}" location="path" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_identity_delete$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Read Application(s)" serverResourceName="auth/application/{appID?}" method="read" ref="_application_">
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_application_$appID" key="true" keyTemplate="{appID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_application_$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Type" serverProperty="type" ref="_application_$type" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Description" serverProperty="description" ref="_application_$description" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Access Token Validity" serverProperty="accessTokenValidity" ref="_application_$accessTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="Refresh Token Validity" serverProperty="refreshTokenValidity" ref="_application_$refreshTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_application_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create Application" serverResourceName="auth/application" method="create" ref="_application_create">
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_application_create$appID" key="true" keyTemplate="{appID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Name" serverProperty="name" ref="_application_create$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Type" serverProperty="type" ref="_application_create$type" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Secret" serverProperty="secret" ref="_application_create$secret" location="body" cardinality="1" type="password"/>
+      <srs:AuthServiceInput name="Description" serverProperty="description" ref="_application_create$description" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Access Token Validity" serverProperty="accessTokenValidity" ref="_application_create$accessTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceInput name="Refresh Token Validity" serverProperty="refreshTokenValidity" ref="_application_create$refreshTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_application_create$appID" key="true" keyTemplate="{appID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_application_create$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Type" serverProperty="type" ref="_application_create$type" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Description" serverProperty="description" ref="_application_create$description" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Access Token Validity" serverProperty="accessTokenValidity" ref="_application_create$accessTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="Refresh Token Validity" serverProperty="refreshTokenValidity" ref="_application_create$refreshTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_application_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update Application" serverResourceName="auth/application/{appID?}" method="update" ref="_application_update">
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_application_update$appID" key="true" keyTemplate="{appID?}" location="path" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Name" serverProperty="name" ref="_application_update$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Type" serverProperty="type" ref="_application_update$type" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Secret" serverProperty="secret" ref="_application_update$secret" location="body" cardinality="1" type="password"/>
+      <srs:AuthServiceInput name="Description" serverProperty="description" ref="_application_update$description" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Access Token Validity" serverProperty="accessTokenValidity" ref="_application_update$accessTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceInput name="Refresh Token Validity" serverProperty="refreshTokenValidity" ref="_application_update$refreshTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_application_update$appID" key="true" keyTemplate="{appID?}" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_application_update$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Type" serverProperty="type" ref="_application_update$type" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Description" serverProperty="description" ref="_application_update$description" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Access Token Validity" serverProperty="accessTokenValidity" ref="_application_update$accessTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="Refresh Token Validity" serverProperty="refreshTokenValidity" ref="_application_update$refreshTokenValidity" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_application_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Delete Application" serverResourceName="auth/application/{appID?}" method="delete" ref="_application_delete">
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_application_delete$appID" key="true" keyTemplate="{appID?}" location="path" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_application_delete$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Read Permissions" serverResourceName="auth/permission/{permissionId?}" method="read" ref="_application__permission_">
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_application__permission_$oid" key="true" keyTemplate="{permissionId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_application__permission_$userID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_application__permission_$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Scope" serverProperty="scope" ref="_application__permission_$scope" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Status" serverProperty="status" ref="_application__permission_$status" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Expiration Date" serverProperty="expirationDate" ref="_application__permission_$expirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Updated At" serverProperty="updatedAt" ref="_application__permission_$updatedAt" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_application__permission_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create Permission" serverResourceName="auth/permission" method="create" ref="_permission_create">
+      <srs:AuthServiceInput name="User ID" serverProperty="userID" ref="_permission_create$userID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_permission_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Scope" serverProperty="scope" ref="_permission_create$scope" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Status" serverProperty="status" ref="_permission_create$status" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Expiration Date" serverProperty="expirationDate" ref="_permission_create$expirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_permission_create$oid" key="true" keyTemplate="{permissionId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_permission_create$userID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_permission_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Scope" serverProperty="scope" ref="_permission_create$scope" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Status" serverProperty="status" ref="_permission_create$status" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Expiration Date" serverProperty="expirationDate" ref="_permission_create$expirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Updated At" serverProperty="updatedAt" ref="_permission_create$updatedAt" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_permission_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update Permission" serverResourceName="auth/permission/{permissionId?}" method="update" ref="_permission_update">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_permission_update$oid" key="true" keyTemplate="{permissionId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceInput name="Status" serverProperty="status" ref="_permission_update$status" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Expiration Date" serverProperty="expirationDate" ref="_permission_update$expirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_permission_update$oid" key="true" keyTemplate="{permissionId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_permission_update$userID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_permission_update$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Scope" serverProperty="scope" ref="_permission_update$scope" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Status" serverProperty="status" ref="_permission_update$status" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Expiration Date" serverProperty="expirationDate" ref="_permission_update$expirationDate" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceOutput name="Updated At" serverProperty="updatedAt" ref="_permission_update$updatedAt" location="body" cardinality="1" type="timestamp"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_permission_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Delete Permission" serverResourceName="auth/permission/{permissionId?}" method="delete" ref="_permission_delete">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_permission_delete$oid" key="true" keyTemplate="{permissionId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_permission_delete$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Read Device" serverResourceName="auth/device/{deviceId?}" method="read" ref="_device_">
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_device_$oid" key="true" keyTemplate="{deviceId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_device_$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_device_$userID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Device ID" serverProperty="deviceID" ref="_device_$deviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Notification Device ID" serverProperty="notificationDeviceID" ref="_device_$notificationDeviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Model" serverProperty="model" ref="_device_$model" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Platform" serverProperty="platform" ref="_device_$platform" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Platform Version" serverProperty="platformVersion" ref="_device_$platformVersion" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Browser" serverProperty="browser" ref="_device_$browser" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_device_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create Device" serverResourceName="auth/device" method="create" ref="_device_create">
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_device_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="User ID" serverProperty="userID" ref="_device_create$userID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Device ID" serverProperty="deviceID" ref="_device_create$deviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Notification Device ID" serverProperty="notificationDeviceID" ref="_device_create$notificationDeviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Model" serverProperty="model" ref="_device_create$model" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Platform" serverProperty="platform" ref="_device_create$platform" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Platform Version" serverProperty="platformVersion" ref="_device_create$platformVersion" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Browser" serverProperty="browser" ref="_device_create$browser" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_device_create$oid" key="true" keyTemplate="{deviceId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_device_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_device_create$userID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Device ID" serverProperty="deviceID" ref="_device_create$deviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Notification Device ID" serverProperty="notificationDeviceID" ref="_device_create$notificationDeviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Model" serverProperty="model" ref="_device_create$model" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Platform" serverProperty="platform" ref="_device_create$platform" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Platform Version" serverProperty="platformVersion" ref="_device_create$platformVersion" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Browser" serverProperty="browser" ref="_device_create$browser" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_device_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update Device" serverResourceName="auth/device/{deviceId?}" method="update" ref="_device_update">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_device_update$oid" key="true" keyTemplate="{deviceId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceInput name="Device ID" serverProperty="deviceID" ref="_device_update$deviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Notification Device ID" serverProperty="notificationDeviceID" ref="_device_update$notificationDeviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Model" serverProperty="model" ref="_device_update$model" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Platform" serverProperty="platform" ref="_device_update$platform" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Platform Version" serverProperty="platformVersion" ref="_device_update$platformVersion" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Browser" serverProperty="browser" ref="_device_update$browser" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_device_update$oid" key="true" keyTemplate="{deviceId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_device_update$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_device_update$userID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Device ID" serverProperty="deviceID" ref="_device_update$deviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Notification Device ID" serverProperty="notificationDeviceID" ref="_device_update$notificationDeviceID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Model" serverProperty="model" ref="_device_update$model" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Platform" serverProperty="platform" ref="_device_update$platform" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Platform Version" serverProperty="platformVersion" ref="_device_update$platformVersion" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Browser" serverProperty="browser" ref="_device_update$browser" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_device_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Delete Device" serverResourceName="auth/device/{deviceId?}" method="delete" ref="_device_delete">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_device_delete$oid" key="true" keyTemplate="{deviceId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_device_delete$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Read Scope" serverResourceName="auth/scope/{scopeId?}" method="read" ref="_scope_">
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_scope_$oid" key="true" keyTemplate="{scopeId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_scope_$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_scope_$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Is Auto Approve" serverProperty="autoApprove" ref="_scope_$autoApprove" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_scope_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create Scope" serverResourceName="auth/scope" method="create" ref="_scope_create">
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_scope_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Name" serverProperty="name" ref="_scope_create$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Is Auto Approve" serverProperty="autoApprove" ref="_scope_create$autoApprove" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_scope_create$oid" key="true" keyTemplate="{scopeId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_scope_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_scope_create$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Is Auto Approve" serverProperty="autoApprove" ref="_scope_create$autoApprove" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_scope_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update Scope" serverResourceName="auth/scope/{scopeId?}" method="update" ref="_scope_update">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_scope_update$oid" key="true" keyTemplate="{scopeId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceInput name="Is Auto Approve" serverProperty="autoApprove" ref="_scope_update$autoApprove" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_scope_update$oid" key="true" keyTemplate="{scopeId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_scope_update$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_scope_update$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Is Auto Approve" serverProperty="autoApprove" ref="_scope_update$autoApprove" location="body" cardinality="1" type="boolean"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_scope_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Delete Scope" serverResourceName="auth/scope/{scopeId?}" method="delete" ref="_scope_delete">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_scope_delete$oid" key="true" keyTemplate="{scopeId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_scope_delete$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Read Authorized Grant Type" serverResourceName="auth/authorizedGrantType/{authorizedGrantTypeId?}" method="read" ref="_authorizedGrantType_">
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_authorizedGrantType_$oid" key="true" keyTemplate="{authorizedGrantTypeId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_authorizedGrantType_$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_authorizedGrantType_$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_authorizedGrantType_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create Authorized Grant Type" serverResourceName="auth/authorizedGrantType" method="create" ref="_authorizedGrantType_create">
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_authorizedGrantType_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Name" serverProperty="name" ref="_authorizedGrantType_create$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_authorizedGrantType_create$oid" key="true" keyTemplate="{authorizedGrantTypeId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_authorizedGrantType_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_authorizedGrantType_create$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_authorizedGrantType_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update Authorized Grant Type" serverResourceName="auth/authorizedGrantType/{authorizedGrantTypeId?}" method="update" ref="_authorizedGrantType_update">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_authorizedGrantType_update$oid" key="true" keyTemplate="{authorizedGrantTypeId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceInput name="Name" serverProperty="name" ref="_authorizedGrantType_update$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_authorizedGrantType_update$oid" key="true" keyTemplate="{authorizedGrantTypeId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_authorizedGrantType_update$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_authorizedGrantType_update$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_authorizedGrantType_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Delete Authorized Grant Type" serverResourceName="auth/authorizedGrantType/{authorizedGrantTypeId?}" method="delete" ref="_authorizedGrantType_delete">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_authorizedGrantType_delete$oid" key="true" keyTemplate="{authorizedGrantTypeId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_authorizedGrantType_delete$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Read Authorized Resource" serverResourceName="auth/authorizedResource/{authorizedResourceId?}" method="read" ref="_authorizedResource_">
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_authorizedResource_$oid" key="true" keyTemplate="{authorizedResourceId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_authorizedResource_$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_authorizedResource_$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_authorizedResource_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create Authorized Resource" serverResourceName="auth/authorizedResource" method="create" ref="_authorizedResource_create">
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_authorizedResource_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="Name" serverProperty="name" ref="_authorizedResource_create$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_authorizedResource_create$oid" key="true" keyTemplate="{authorizedResourceId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_authorizedResource_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_authorizedResource_create$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_authorizedResource_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update Authorized Resource" serverResourceName="auth/authorizedResource/{authorizedResourceId?}" method="update" ref="_authorizedResource_update">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_authorizedResource_update$oid" key="true" keyTemplate="{authorizedResourceId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceInput name="Name" serverProperty="name" ref="_authorizedResource_update$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_authorizedResource_update$oid" key="true" keyTemplate="{authorizedResourceId?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_authorizedResource_update$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="Name" serverProperty="name" ref="_authorizedResource_update$name" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_authorizedResource_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Delete Authorized Resource" serverResourceName="auth/authorizedResource/{authorizedResourceId?}" method="delete" ref="_authorizedResource_delete">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_authorizedResource_delete$oid" key="true" keyTemplate="{authorizedResourceId?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_authorizedResource_delete$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Read Redirect URI" serverResourceName="auth/redirectUri/{redirectUri?}" method="read" ref="_redirectUri_">
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_redirectUri_$oid" key="true" keyTemplate="{redirectUri?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_redirectUri_$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="URL" serverProperty="url" ref="_redirectUri_$url" location="body" cardinality="1" type="url"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_redirectUri_$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Create Redirect URI" serverResourceName="auth/redirectUri" method="create" ref="_redirectUri_create">
+      <srs:AuthServiceInput name="App ID" serverProperty="appID" ref="_redirectUri_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceInput name="URL" serverProperty="url" ref="_redirectUri_create$url" location="body" cardinality="1" type="url"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_redirectUri_create$oid" key="true" keyTemplate="{redirectUri?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_redirectUri_create$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="URL" serverProperty="url" ref="_redirectUri_create$url" location="body" cardinality="1" type="url"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_redirectUri_create$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Update Redirect URI" serverResourceName="auth/redirectUri/{redirectUri?}" method="update" ref="_redirectUri_update">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_redirectUri_update$oid" key="true" keyTemplate="{redirectUri?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceInput name="URL" serverProperty="url" ref="_redirectUri_update$url" location="body" cardinality="1" type="url"/>
+      <srs:AuthServiceOutput name="oid" serverProperty="oid" ref="_redirectUri_update$oid" key="true" keyTemplate="{redirectUri?}" location="body" cardinality="1" type="integer"/>
+      <srs:AuthServiceOutput name="App ID" serverProperty="appID" ref="_redirectUri_update$appID" location="body" cardinality="1" type="string"/>
+      <srs:AuthServiceOutput name="URL" serverProperty="url" ref="_redirectUri_update$url" location="body" cardinality="1" type="url"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_redirectUri_update$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+    <srs:AuthService name="Delete Redirect URI" serverResourceName="auth/redirectUri/{redirectUri?}" method="delete" ref="_redirectUri_delete">
+      <srs:AuthServiceInput name="oid" serverProperty="oid" ref="_redirectUri_delete$oid" key="true" keyTemplate="{redirectUri?}" location="path" cardinality="1" type="integer"/>
+      <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_redirectUri_delete$errorMessage" location="body" cardinality="1" type="string"/>
+    </srs:AuthService>
+  </srs:Resources>
+  <Class id="cls1" name="Tenant" duration="persistent" gr:x="265" gr:y="240" attributeOrder="cls1#att1 cls1#att2" db:database="dbD1" db:table="sub_tenant">
+    <Attribute id="cls1#att1" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls1#att2" name="Nome" type="string" db:column="nome"/>
+  </Class>
+  <Association id="as1" name="User_Tenant" sourceClass="User" targetClass="cls1" db:database="dbD1" db:table="sub_user_tenant">
+    <AssociationRole1 id="as1#role1" name="UserToTenant" maxCard="N">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as1#role2" name="TenantToUser" maxCard="N">
+      <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls2" name="Fornitore" duration="persistent" gr:x="460" gr:y="285" attributeOrder="cls2#att6 cls2#att7 cls2#att8 cls2#att9 cls2#att10 cls2#att12 cls2#att66" db:database="dbD1" db:table="sub_fornitore">
+    <Attribute id="cls2#att6" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls2#att12" name="Email" type="string" db:column="email"/>
+    <Attribute id="cls2#att10" name="Cognome Referente" type="string" db:column="cognome_referente"/>
+    <Attribute id="cls2#att9" name="Nome Referente" type="string" db:column="nome_referente"/>
+    <Attribute id="cls2#att8" name="Partita IVA" type="string" db:column="partita_iva"/>
+    <Attribute id="cls2#att7" name="Ragione Sociale" type="string" db:column="ragione_sociale"/>
+    <Attribute id="cls2#att66" name="Stato Registrazione" type="string" derivationQuery="simpleImported::Self.as3#role5.cls3#att14"/>
+  </Class>
+  <Association id="as2" name="User_Fornitore" sourceClass="User" targetClass="cls2" db:database="dbD1" db:table="sub_user">
+    <AssociationRole1 id="as2#role3" name="UserToFornitore" maxCard="1">
+      <db:JoinColumn attribute="userOID" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as2#role4" name="FornitoreToUser" maxCard="N">
+      <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls3" name="Stato Registrazione" duration="persistent" gr:x="620" gr:y="490" attributeOrder="cls3#att13 cls3#att14 cls3#att15 cls3#att16" db:database="dbD1" db:table="sub_stato_registrazione">
+    <Attribute id="cls3#att13" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls3#att16" name="Attivo" type="boolean" db:column="attivo"/>
+    <Attribute id="cls3#att15" name="Codice" type="string" db:column="codice">
+      <VRules>
+        <CollectionValidationRule id="cls3#att15#clc4" name="Chiave unica" predicate="notIn" dataBinding="cls3" attribute="cls3#att15"/>
+        <MandatoryValidationRule id="cls3#att15#mnd4" name="Mandatory"/>
+      </VRules>
+    </Attribute>
+    <Attribute id="cls3#att14" name="Descrizione" type="string" db:column="descrizione"/>
+  </Class>
+  <Association id="as3" name="Fornitore_Stato Registrazione" sourceClass="cls2" targetClass="cls3" db:database="dbD1" db:table="sub_fornitore">
+    <AssociationRole1 id="as3#role5" name="FornitoreToStato Registrazione" maxCard="1">
+      <db:JoinColumn attribute="cls2#att6" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as3#role6" name="Stato RegistrazioneToFornitore" maxCard="N">
+      <db:JoinColumn attribute="cls3#att13" name="stato_registrazione_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls4" name="User invitati" duration="persistent" gr:x="380" gr:y="20" attributeOrder="cls4#att18 cls4#att19 cls4#att20 cls4#att50 cls4#att56 cls4#att58 cls4#att62" db:database="dbD1" db:table="sub_user_invitati">
+    <Attribute id="cls4#att20" name="Email" key="true" type="string" db:column="email"/>
+    <Attribute id="cls4#att19" name="Cognome" type="string" db:column="cognome"/>
+    <Attribute id="cls4#att18" name="Nome" type="string" db:column="nome"/>
+    <Attribute id="cls4#att50" name="Backoffice" type="boolean" db:column="backoffice"/>
+    <Attribute id="cls4#att56" name="token" type="string" derivationQuery="simpleImported::Self.as9#role17.cls6#att27"/>
+    <Attribute id="cls4#att58" name="is token valido" type="boolean" derivationQuery="simpleImported::Self.as9#role17.cls6#att57"/>
+    <Attribute id="cls4#att62" name="Ruoli" type="string" db:table="sub_view_ruoli_user_invitati" db:column="ruoli">
+      <db:JoinColumn attribute="cls4#att20" name="email"/>
+    </Attribute>
+  </Class>
+  <Association id="as4" name="Pre Registrazione_Fornitore" sourceClass="cls4" targetClass="cls2" db:database="dbD1" db:table="sub_user_invitati">
+    <AssociationRole1 id="as4#role7" name="Pre RegistrazioneToFornitore" maxCard="1">
+      <db:JoinColumn attribute="cls4#att20" name="email"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as4#role8" name="FornitoreToPre Registrazione" maxCard="N">
+      <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as5" name="Fornitore_Tenant" sourceClass="cls2" targetClass="cls1" db:database="dbD1" db:table="fornitoretotenant_view">
+    <AssociationRole1 id="as5#role9" name="FornitoreToTenant" maxCard="N" derivationQuery="imported::Self.as2#role4(as Var1).as1#role1(as Var2)">
+      <db:JoinColumn attribute="cls2#att6" name="s_oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as5#role10" name="TenantToFornitore" maxCard="N">
+      <db:JoinColumn attribute="cls1#att1" name="T_tenant_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls5" name="Allegati" duration="persistent" gr:x="600" gr:y="75" attributeOrder="cls5#att22 cls5#att23 cls5#att24 cls5#att25 cls5#att35 cls5#att36" db:database="dbD1" db:table="sub_allegati">
+    <Attribute id="cls5#att22" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls5#att23" name="Documento" type="blob" db:column="documento"/>
+    <Attribute id="cls5#att24" name="Descrizione" type="string" db:column="descrizione"/>
+    <Attribute id="cls5#att25" name="Note" type="text" db:column="note"/>
+    <Attribute id="cls5#att35" name="Corrente" type="boolean" db:column="corrente"/>
+    <Attribute id="cls5#att36" name="Created At" type="timestamp" db:column="created_at"/>
+  </Class>
+  <Association id="as6" name="Documentazione_Fornitore" sourceClass="cls5" targetClass="cls2" db:database="dbD1" db:table="sub_allegati">
+    <AssociationRole1 id="as6#role11" name="DocumentazioneToFornitore" maxCard="1">
+      <db:JoinColumn attribute="cls5#att22" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as6#role12" name="FornitoreToDocumentazione" maxCard="N">
+      <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls6" name="Token" duration="persistent" gr:x="140" gr:y="25" attributeOrder="cls6#att27 cls6#att28 cls6#att57" db:database="dbD1" db:table="sub_token">
+    <Attribute id="cls6#att27" name="Descrizione" type="string" key="true" db:column="descrizione"/>
+    <Attribute id="cls6#att28" name="Created At" type="timestamp" db:column="created_at"/>
+    <Attribute id="cls6#att57" name="is valido" type="boolean" db:table="sub_view_token_validita" db:column="attivo">
+      <db:JoinColumn attribute="cls6#att27" name="descrizione"/>
+    </Attribute>
+  </Class>
+  <Association id="as7" name="Token_User" sourceClass="cls6" targetClass="User" db:database="dbD1" db:table="sub_token">
+    <AssociationRole1 id="as7#role13" name="TokenToUser" maxCard="1">
+      <db:JoinColumn attribute="cls6#att27" name="descrizione"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as7#role14" name="UserToToken" maxCard="N">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as9" name="User invitati_Token" sourceClass="cls4" targetClass="cls6" db:database="dbD1" db:table="sub_user_invitati">
+    <AssociationRole1 id="as9#role17" name="User invitatiToToken" maxCard="1">
+      <db:JoinColumn attribute="cls4#att20" name="email"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as9#role18" name="TokenToUser invitati" maxCard="N">
+      <db:JoinColumn attribute="cls6#att27" name="token_descrizione"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls7" name="Tipo Token" duration="persistent" gr:x="-120" gr:y="25" attributeOrder="cls7#att29 cls7#att30 cls7#att31 cls7#att32 cls7#att33 cls7#att34" db:database="dbD1" db:table="sub_tipo_token">
+    <Attribute id="cls7#att29" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls7#att34" name="Lunghezza" type="integer" db:column="lunghezza"/>
+    <Attribute id="cls7#att33" name="Giorni validita" type="integer" db:column="giorni_validita"/>
+    <Attribute id="cls7#att32" name="Codice" type="string" db:column="codice">
+      <VRules>
+        <CollectionValidationRule id="cls7#att32#clc1" name="Chiave unica" predicate="notIn" dataBinding="cls7" attribute="cls7#att32"/>
+        <MandatoryValidationRule id="cls7#att32#mnd2" name="Mandatory"/>
+      </VRules>
+    </Attribute>
+    <Attribute id="cls7#att31" name="Attivo" type="boolean" db:column="attivo"/>
+    <Attribute id="cls7#att30" name="Descrizione" type="string" db:column="descrizione"/>
+  </Class>
+  <Class id="cls8" name="Tipologia Allegati" duration="persistent" gr:x="950" gr:y="30" attributeOrder="cls8#att37 cls8#att38 cls8#att39 cls8#att40 cls8#att64 cls8#att65" db:database="dbD1" db:table="sub_tipologia_allegati">
+    <Attribute id="cls8#att37" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls8#att40" name="Pattern nome" type="string" db:column="pattern_nome"/>
+    <Attribute id="cls8#att39" name="Giorni Durata" type="integer" db:column="giorni_durata"/>
+    <Attribute id="cls8#att38" name="Condiviso" type="boolean" db:column="condiviso"/>
+    <Attribute id="cls8#att64" name="Descrizione" type="string" db:column="descrizione"/>
+    <Attribute id="cls8#att65" name="Macrotipologia" type="string" derivationQuery="simpleImported::Self.as12#role23.cls9#att42"/>
+  </Class>
+  <Association id="as11" name="Allegati_Tipologia Allegati" sourceClass="cls5" targetClass="cls8" db:database="dbD1" db:table="sub_allegati">
+    <AssociationRole1 id="as11#role21" name="AllegatiToTipologia Allegati" maxCard="1">
+      <db:JoinColumn attribute="cls5#att22" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as11#role22" name="Tipologia AllegatiToAllegati" maxCard="N">
+      <db:JoinColumn attribute="cls8#att37" name="tipologia_allegati_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls9" name="Macro-tipologia" duration="persistent" gr:x="1015" gr:y="295" attributeOrder="cls9#att41 cls9#att42 cls9#att43 cls9#att44" db:database="dbD1" db:table="sub_macro_tipologia">
+    <Attribute id="cls9#att41" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls9#att44" name="Attivo" type="boolean" db:column="attivo"/>
+    <Attribute id="cls9#att43" name="Codice" type="string" db:column="codice">
+      <VRules>
+        <CollectionValidationRule id="cls9#att43#clc2" name="Collection" predicate="notIn" dataBinding="cls9" attribute="cls9#att43"/>
+        <MandatoryValidationRule id="cls9#att43#mnd1" name="Mandatory"/>
+      </VRules>
+    </Attribute>
+    <Attribute id="cls9#att42" name="Descrizione" type="string" db:column="descrizione"/>
+  </Class>
+  <Association id="as12" name="Tipologia Allegati_Macro-tipologia" sourceClass="cls8" targetClass="cls9" db:database="dbD1" db:table="sub_tipologia_allegati">
+    <AssociationRole1 id="as12#role23" name="Tipologia AllegatiToMacro-tipologia" maxCard="1">
+      <db:JoinColumn attribute="cls8#att37" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as12#role24" name="Macro-tipologiaToTipologia Allegati" maxCard="N">
+      <db:JoinColumn attribute="cls9#att41" name="macro_tipologia_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls10" name="Tipologia Azienda" duration="persistent" gr:x="760" gr:y="285" attributeOrder="cls10#att45 cls10#att46 cls10#att47 cls10#att48" db:database="dbD1" db:table="sub_tipologia_azienda">
+    <Attribute id="cls10#att45" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls10#att48" name="Attivo" type="boolean" db:column="attivo"/>
+    <Attribute id="cls10#att47" name="Codice" type="string" db:column="codice">
+      <VRules>
+        <CollectionValidationRule id="cls10#att47#clc3" name="Collection" predicate="notIn" dataBinding="cls10" attribute="cls10#att47"/>
+        <MandatoryValidationRule id="cls10#att47#mnd3" name="Mandatory"/>
+      </VRules>
+    </Attribute>
+    <Attribute id="cls10#att46" name="Descrizione" type="string" db:column="descrizione"/>
+  </Class>
+  <Association id="as13" name="Fornitore_Tipologia Azienda" sourceClass="cls2" targetClass="cls10" db:database="dbD1" db:table="sub_fornitore">
+    <AssociationRole1 id="as13#role25" name="FornitoreToTipologia Azienda" maxCard="1">
+      <db:JoinColumn attribute="cls2#att6" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as13#role26" name="Tipologia AziendaToFornitore" maxCard="N">
+      <db:JoinColumn attribute="cls10#att45" name="tipologia_azienda_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as14" name="Tipologia Azienda_Tipologia Allegati" sourceClass="cls10" targetClass="cls8" db:database="dbD1" db:table="sub_tipologia_azienda_tipologi">
+    <AssociationRole1 id="as14#role27" name="Tipologia AziendaToTipologia Allegati" maxCard="N">
+      <db:JoinColumn attribute="cls10#att45" name="tipologia_azienda_oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as14#role28" name="Tipologia AllegatiToTipologia Azienda" maxCard="N">
+      <db:JoinColumn attribute="cls8#att37" name="tipologia_allegati_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as16" name="User invitati_Tenant" sourceClass="cls4" targetClass="cls1" db:database="dbD1" db:table="sub_user_invitati_tenant">
+    <AssociationRole1 id="as16#role31" name="User invitatiToTenant" maxCard="N">
+      <db:JoinColumn attribute="cls4#att20" name="user_invitati_email"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as16#role32" name="TenantToUser invitati" maxCard="N">
+      <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as17" name="Token_Tipo Token" sourceClass="cls6" targetClass="cls7" db:database="dbD1" db:table="sub_token">
+    <AssociationRole1 id="as17#role33" name="TokenToTipo Token" maxCard="1">
+      <db:JoinColumn attribute="cls6#att27" name="descrizione"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as17#role34" name="Tipo TokenToToken" maxCard="N">
+      <db:JoinColumn attribute="cls7#att29" name="tipo_token_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls11" name="Messaggi" duration="persistent" gr:x="-155" gr:y="250" attributeOrder="cls11#att51 cls11#att52 cls11#att53 cls11#att54 cls11#att55" db:database="dbD1" db:table="sub_messaggi">
+    <Attribute id="cls11#att51" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls11#att55" name="Oggetto" type="string" db:column="oggetto"/>
+    <Attribute id="cls11#att54" name="Codice" type="string" db:column="codice"/>
+    <Attribute id="cls11#att53" name="Body" type="text" db:column="body" contentType="text/html"/>
+    <Attribute id="cls11#att52" name="Attivo" type="boolean" db:column="attivo"/>
+  </Class>
+  <Class id="cls12" name="Ruolo" duration="persistent" gr:x="675" gr:y="-25" attributeOrder="cls12#att59 cls12#att60 cls12#att61" db:database="dbD1" db:table="sub_ruolo">
+    <Attribute id="cls12#att59" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls12#att61" name="Attivo" type="string" db:column="attivo"/>
+    <Attribute id="cls12#att60" name="Descrizione" type="string" db:column="descrizione"/>
+  </Class>
+  <Association id="as18" name="User invitati_Ruolo" sourceClass="cls4" targetClass="cls12" db:database="dbD1" db:table="sub_user_invitati_ruolo">
+    <AssociationRole1 id="as18#role35" name="User invitatiToRuolo" maxCard="N">
+      <db:JoinColumn attribute="cls4#att20" name="user_invitati_email"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as18#role36" name="RuoloToUser invitati" maxCard="N">
+      <db:JoinColumn attribute="cls12#att59" name="ruolo_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as19" name="Allegati_Tenant" sourceClass="cls5" targetClass="cls1" db:database="dbD1" db:table="sub_allegati">
+    <AssociationRole1 id="as19#role37" name="AllegatiToTenant" maxCard="1">
+      <db:JoinColumn attribute="cls5#att22" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as19#role38" name="TenantToAllegati" maxCard="N">
+      <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
+    </AssociationRole2>
+  </Association>
+</DomainModel>

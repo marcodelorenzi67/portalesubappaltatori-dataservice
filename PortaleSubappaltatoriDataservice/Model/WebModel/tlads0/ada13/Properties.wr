@@ -1,0 +1,45 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ada13" name="Verifica Tenant" defaultSuccessPortDefinition="tlads0#ada13#spd20" defaultErrorPortDefinition="tlads0#ada13#epd20">
+  <InputPortDefinition id="tlads0#ada13#ipd20" gr:x="0" gr:y="30">
+    <SuccessFlow id="tlads0#ada13#ipd20#sf164" to="tlads0#ada13#seu21">
+      <ParameterBinding id="tlads0#ada13#ipd20#sf164#par176" sourceImplicitParameter="userName" target="tlads0#ada13#seu21#sc49#acond22" name="User ID - userID"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ada13#spd20" name="Success Port" gr:x="0" gr:y="175">
+    <PortDefinitionParameter id="tlads0#ada13#spd20#pdp64" array="false" name="Numero tenant" type="integer"/>
+    <PortDefinitionParameter id="tlads0#ada13#spd20#pdp65" array="false" name="Oid tenant" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#ada13#epd20" name="Error Port" gr:x="0" gr:y="405"/>
+  <Operations>
+    <Selector gr:x="335" gr:y="75" id="tlads0#ada13#seu21" dataBinding="cls1">
+      <ConditionalExpression id="tlads0#ada13#seu21#sc49" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="tlads0#ada13#seu21#sc49#acond22" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="as1#role2.userName"/>
+      </ConditionalExpression>
+      <SuccessFlow id="tlads0#ada13#seu21#sf166" to="tlads0#ada13#switch4">
+        <ParameterBinding id="tlads0#ada13#seu21#sf166#par177" source="dataSize" target="tlads0#ada13#switch4.switch" name="Data Size - Switch"/>
+      </SuccessFlow>
+      <DataFlow id="tlads0#ada13#seu21#df49" to="tlads0#ada13#pcu1">
+        <ParameterBinding id="tlads0#ada13#seu21#df49#par182" source="cls1#att1Array" target="tlads0#ada13#pcu1#pcp2" name="oid - Oid tenant"/>
+      </DataFlow>
+    </Selector>
+    <Switch gr:x="605" gr:y="170" id="tlads0#ada13#switch4" name="Data size">
+      <SuccessFlow id="tlads0#ada13#switch4#sf167" to="tlads0#ada13#spd20">
+        <ParameterBinding id="tlads0#ada13#switch4#sf167#par178" source="switch" target="tlads0#ada13#spd20#pdp64" name="Switch - Switch"/>
+      </SuccessFlow>
+      <Case value="1"/>
+      <Case value="0"/>
+      <SuccessFlow id="tlads0#ada13#switch4#sf168" to="tlads0#ada13#epd20" automaticCoupling="true" code="&lt;EMPTY&gt;"/>
+      <SuccessFlow id="tlads0#ada13#switch4#sf169" to="tlads0#ada13#epd20" automaticCoupling="true" code="0"/>
+      <SuccessFlow id="tlads0#ada13#switch4#sf171" to="tlads0#ada13#pcu1" code="1">
+        <ParameterBinding id="tlads0#ada13#switch4#sf171#par181" source="switch" target="tlads0#ada13#pcu1#pcp1" name="Switch - Numero tenant"/>
+      </SuccessFlow>
+    </Switch>
+    <ParameterCollector gr:x="900" gr:y="225" id="tlads0#ada13#pcu1" name="tenant">
+      <SuccessFlow id="tlads0#ada13#pcu1#sf172" to="tlads0#ada13#spd20">
+        <ParameterBinding id="tlads0#ada13#pcu1#sf172#par180" source="tlads0#ada13#pcu1#pcp2" target="tlads0#ada13#spd20#pdp65" name="Oid tenant - Oid tenant"/>
+        <ParameterBinding id="tlads0#ada13#pcu1#sf172#par187" source="tlads0#ada13#pcu1#pcp1" target="tlads0#ada13#spd20#pdp64" name="Numero tenant - Numero tenant"/>
+      </SuccessFlow>
+      <CollectorParameter id="tlads0#ada13#pcu1#pcp2" name="Oid tenant"/>
+      <CollectorParameter id="tlads0#ada13#pcu1#pcp1" name="Numero tenant"/>
+    </ParameterCollector>
+  </Operations>
+</ActionDefinition>

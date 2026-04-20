@@ -1,0 +1,76 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#ada7" name="Password dimenticata" defaultSuccessPortDefinition="mpkg3#ada7#spd10" defaultErrorPortDefinition="mpkg3#ada7#epd10">
+  <InputPortDefinition id="mpkg3#ada7#ipd10" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#ada7#ipd10#sf96" to="mpkg3#ada7#scu2">
+      <ParameterBinding id="mpkg3#ada7#ipd10#sf96#par98" source="mpkg3#ada7#ipd10#pdp30" target="mpkg3#ada7#scu2.originalValue" name="originalValue - originalValue"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg3#ada7#ipd10#pdp30" array="false" name="email" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#ada7#spd10" name="Success Port" gr:x="0" gr:y="145"/>
+  <ErrorPortDefinition id="mpkg3#ada7#epd10" name="Error Port" gr:x="0" gr:y="55"/>
+  <Operations>
+    <Script id="mpkg3#ada7#scu2" name="Sanitize mail" gr:x="0" gr:y="0" script="WEB-INF/groovy/trimAndToLowerCaseString.groovy">
+      <SuccessFlow id="mpkg3#ada7#scu2#sf95" to="mpkg3#ada7#seu15">
+        <ParameterBinding id="mpkg3#ada7#scu2#sf95#par97" name="result - userId" source="result(result)" target="mpkg3#ada7#seu15#sc30#acond11"/>
+      </SuccessFlow>
+    </Script>
+    <Selector id="mpkg3#ada7#seu15" gr:x="180" gr:y="35" dataBinding="User">
+      <ConditionalExpression id="mpkg3#ada7#seu15#sc30" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg3#ada7#seu15#sc30#acond11" name="userId" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada7#seu15#sf97" to="mpkg3#ada7#spd10" automaticCoupling="true" code="Not Found"/>
+      <SuccessFlow id="mpkg3#ada7#seu15#sf100" to="mpkg3#ada7#tmu2" automaticCoupling="true"/>
+      <DataFlow id="mpkg3#ada7#seu15#df32" to="mpkg3#ada7#svu4" automaticCoupling="true"/>
+      <DataFlow id="mpkg3#ada7#seu15#df35" to="mpkg3#ada7#act14">
+        <ParameterBinding id="mpkg3#ada7#seu15#df35#par118" source="User#att4Array" target="mpkg3#ada7#act14.mpkg2#ada3#ipd4#pdp12" name="Cognome - Cognome"/>
+        <ParameterBinding id="mpkg3#ada7#seu15#df35#par119" source="User#att5Array" target="mpkg3#ada7#act14.mpkg2#ada3#ipd4#pdp10" name="Email - Email"/>
+        <ParameterBinding id="mpkg3#ada7#seu15#df35#par120" source="User#att3Array" target="mpkg3#ada7#act14.mpkg2#ada3#ipd4#pdp11" name="Nome - Nome"/>
+      </DataFlow>
+    </Selector>
+    <Save id="mpkg3#ada7#svu4" gr:x="500" gr:y="380" action="create" dataBinding="cls6">
+      <SuccessFlow id="mpkg3#ada7#svu4#sf113" to="mpkg3#ada7#act13">
+        <ParameterBinding id="mpkg3#ada7#svu4#sf113#par114" source="cls6#att27Array" target="mpkg3#ada7#act13.mpkg2#adf5#ipd12#pdp35" name="Descrizione - token"/>
+      </SuccessFlow>
+    </Save>
+    <Time id="mpkg3#ada7#tmu2" name="Time" gr:x="295" gr:y="200">
+      <SuccessFlow id="mpkg3#ada7#tmu2#sf98" to="mpkg3#ada7#act10">
+        <ParameterBinding id="mpkg3#ada7#tmu2#sf98#par99" name="&quot;${token.invito}&quot; - codice" sourceValue="${token.psw}" target="mpkg3#ada7#act10.mpkg2#ada2#ipd2#pdp1"/>
+      </SuccessFlow>
+      <DataFlow id="mpkg3#ada7#tmu2#df31" to="mpkg3#ada7#svu4">
+        <ParameterBinding id="mpkg3#ada7#tmu2#df31#par100" name="Current/Input Timestamp - Created At" source="currentTimestamp" target="mpkg3#ada7#svu4.cls6#att28"/>
+      </DataFlow>
+    </Time>
+  </Operations>
+  <Action id="mpkg3#ada7#act10" definition="mpkg2#ada2" gr:x="455" gr:y="245">
+    <Events>
+      <SuccessEvent id="mpkg3#ada7#act10#scce10" definition="mpkg2#ada2#spd2">
+        <SuccessFlow id="mpkg3#ada7#act10#scce10#sf99" to="mpkg3#ada7#svu4">
+          <ParameterBinding id="mpkg3#ada7#act10#scce10#sf99#par101" name="Generated Password - Descrizione" source="mpkg2#ada2#spd2#pdp4" target="mpkg3#ada7#svu4.cls6#att27"/>
+          <ParameterBinding id="mpkg3#ada7#act10#scce10#sf99#par102" name="oid - Tipo Token.oid(TokenToTipo Token)" source="mpkg2#ada2#spd2#pdp2" target="mpkg3#ada7#svu4.as17#role33.cls7#att29"/>
+        </SuccessFlow>
+        <DataFlow id="mpkg3#ada7#act10#scce10#df34" to="mpkg3#ada7#act13">
+          <ParameterBinding id="mpkg3#ada7#act10#scce10#df34#par115" source="mpkg2#ada2#spd2#pdp3" target="mpkg3#ada7#act13.mpkg2#adf5#ipd12#pdp34" name="Codice - tipo token"/>
+        </DataFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada7#act10#erre10" definition="mpkg2#ada2#epd2"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada7#act13" gr:x="675" gr:y="445" definition="mpkg2#adf5">
+    <Events>
+      <SuccessEvent id="mpkg3#ada7#act13#scce13" definition="mpkg2#adf5#spd12">
+        <SuccessFlow id="mpkg3#ada7#act13#scce13#sf114" to="mpkg3#ada7#act14">
+          <ParameterBinding id="mpkg3#ada7#act13#scce13#sf114#par116" source="mpkg2#adf5#spd12#pdp36" target="mpkg3#ada7#act14.mpkg2#ada3#ipd4#pdp13" name="link - url"/>
+          <ParameterBinding id="mpkg3#ada7#act13#scce13#sf114#par117" sourceValue="${msg.resetPassword}" target="mpkg3#ada7#act14.mpkg2#ada3#ipd4#pdp9" name="&quot;${msg.resetPassword}&quot; - codice"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada7#act13#erre13" definition="mpkg2#adf5#epd12"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada7#act14" gr:x="935" gr:y="490" definition="mpkg2#ada3">
+    <Events>
+      <SuccessEvent id="mpkg3#ada7#act14#scce14" definition="mpkg2#ada3#spd4">
+        <SuccessFlow id="mpkg3#ada7#act14#scce14#sf115" to="mpkg3#ada7#spd10" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada7#act14#erre14" definition="mpkg2#ada3#epd4"/>
+    </Events>
+  </Action>
+</ActionDefinition>

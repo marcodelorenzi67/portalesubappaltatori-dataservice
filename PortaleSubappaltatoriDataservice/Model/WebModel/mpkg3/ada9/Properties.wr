@@ -1,0 +1,84 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#ada9" name="Invia OTP" defaultSuccessPortDefinition="mpkg3#ada9#spd15" defaultErrorPortDefinition="mpkg3#ada9#epd15" transaction="true">
+  <InputPortDefinition id="mpkg3#ada9#ipd15" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#ada9#ipd15#sf131" to="mpkg3#ada9#seu18">
+      <ParameterBinding id="mpkg3#ada9#ipd15#sf131#par142" source="mpkg3#ada9#ipd15#pdp41" target="mpkg3#ada9#seu18#sc34#acond15" name="userID - userID"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg3#ada9#ipd15#pdp41" array="false" name="userID" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada9#ipd15#pdp42" name="password" array="false" type="string"/>
+    <DataFlow id="mpkg3#ada9#ipd15#df45" to="mpkg3#ada9#spd15">
+      <ParameterBinding id="mpkg3#ada9#ipd15#df45#par156" source="mpkg3#ada9#ipd15#pdp41" target="mpkg3#ada9#spd15#pdp44" name="userID - userID"/>
+      <ParameterBinding id="mpkg3#ada9#ipd15#df45#par157" source="mpkg3#ada9#ipd15#pdp42" target="mpkg3#ada9#spd15#pdp45" name="password - password"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#ada9#spd15" name="Success Port" gr:x="0" gr:y="605">
+    <PortDefinitionParameter id="mpkg3#ada9#spd15#pdp44" array="false" name="userID" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada9#spd15#pdp45" array="false" name="password" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg3#ada9#epd15" name="Error Port" gr:x="0" gr:y="80"/>
+  <Operations>
+    <Selector gr:x="185" gr:y="80" id="mpkg3#ada9#seu18" dataBinding="User">
+      <SuccessFlow id="mpkg3#ada9#seu18#sf132" to="mpkg3#ada9#epd15" automaticCoupling="true" code="Not Found"/>
+      <ConditionalExpression id="mpkg3#ada9#seu18#sc34" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg3#ada9#seu18#sc34#acond15" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+      </ConditionalExpression>
+      <DataFlow id="mpkg3#ada9#seu18#df40" to="mpkg3#ada9#svu5" automaticCoupling="true"/>
+      <DataFlow id="mpkg3#ada9#seu18#df41" to="mpkg3#ada9#act18">
+        <ParameterBinding id="mpkg3#ada9#seu18#df41#par146" source="User#att4Array" target="mpkg3#ada9#act18.mpkg2#ada3#ipd4#pdp12" name="Cognome - Cognome"/>
+        <ParameterBinding id="mpkg3#ada9#seu18#df41#par147" source="User#att5Array" target="mpkg3#ada9#act18.mpkg2#ada3#ipd4#pdp10" name="Email - Email"/>
+        <ParameterBinding id="mpkg3#ada9#seu18#df41#par148" source="User#att3Array" target="mpkg3#ada9#act18.mpkg2#ada3#ipd4#pdp11" name="Nome - Nome"/>
+      </DataFlow>
+      <DataFlow id="mpkg3#ada9#seu18#df43" to="mpkg3#ada9#act17">
+        <ParameterBinding id="mpkg3#ada9#seu18#df43#par153" name="&quot;${token.mfa}&quot; - codice" sourceValue="${token.mfa}" target="mpkg3#ada9#act17.mpkg2#ada2#ipd2#pdp1"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg3#ada9#seu18#sf149" to="mpkg3#ada9#dlu5" automaticCoupling="true"/>
+    </Selector>
+    <Save gr:x="620" gr:y="505" id="mpkg3#ada9#svu5" action="update" dataBinding="User">
+      <ConditionalExpression id="mpkg3#ada9#svu5#sc35" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada9#svu5#sc35#kcond21" name="KeyCondition21" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada9#svu5#sf135" to="mpkg3#ada9#act18">
+        <ParameterBinding id="mpkg3#ada9#svu5#sf135#par145" sourceValue="${msg.mfa}" target="mpkg3#ada9#act18.mpkg2#ada3#ipd4#pdp9" name="&quot;${msg.mfa}&quot; - codice messaggio"/>
+      </SuccessFlow>
+    </Save>
+    <Save gr:x="365" gr:y="510" id="mpkg3#ada9#svu6" action="create" dataBinding="cls6">
+      <SuccessFlow id="mpkg3#ada9#svu6#sf139" to="mpkg3#ada9#svu5">
+        <ParameterBinding id="mpkg3#ada9#svu6#sf139#par155" source="cls6#att27Array" target="mpkg3#ada9#svu5.as7#role14.cls6#att27" name="Descrizione - Token.Descrizione(UserToToken)"/>
+      </SuccessFlow>
+    </Save>
+    <Time gr:x="320" gr:y="275" id="mpkg3#ada9#tmu3" name="Time">
+      <SuccessFlow id="mpkg3#ada9#tmu3#sf138" to="mpkg3#ada9#act17" automaticCoupling="true"/>
+      <DataFlow id="mpkg3#ada9#tmu3#df44" to="mpkg3#ada9#svu6">
+        <ParameterBinding id="mpkg3#ada9#tmu3#df44#par154" source="currentTimestamp" target="mpkg3#ada9#svu6.cls6#att28" name="Current/Input Timestamp - Created At"/>
+      </DataFlow>
+    </Time>
+    <Delete gr:x="-10" gr:y="270" id="mpkg3#ada9#dlu5" dataBinding="cls6">
+      <SuccessFlow id="mpkg3#ada9#dlu5#sf150" to="mpkg3#ada9#tmu3" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg3#ada9#dlu5#sc41" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg3#ada9#dlu5#sc41#rcond8" name="user" predicate="in" implied="false" role="as7#role14"/>
+        <AttributesCondition id="mpkg3#ada9#dlu5#sc41#acond21" name="codice" predicate="eq" booleanOperator="or" implied="false" attributes="as17#role33.cls7#att32" value="${token.mfa}"/>
+      </ConditionalExpression>
+    </Delete>
+  </Operations>
+  <Action id="mpkg3#ada9#act17" gr:x="470" gr:y="310" definition="mpkg2#ada2">
+    <Events>
+      <SuccessEvent id="mpkg3#ada9#act17#scce17" definition="mpkg2#ada2#spd2">
+        <SuccessFlow id="mpkg3#ada9#act17#scce17#sf134" to="mpkg3#ada9#svu6">
+          <ParameterBinding id="mpkg3#ada9#act17#scce17#sf134#par151" source="mpkg2#ada2#spd2#pdp4" target="mpkg3#ada9#svu6.cls6#att27" name="Generated Password - Descrizione"/>
+          <ParameterBinding id="mpkg3#ada9#act17#scce17#sf134#par152" source="mpkg2#ada2#spd2#pdp2" target="mpkg3#ada9#svu6.as17#role33.cls7#att29" name="oid tipo token - Tipo Token.oid(TokenToTipo Token)"/>
+        </SuccessFlow>
+        <DataFlow id="mpkg3#ada9#act17#scce17#df42" to="mpkg3#ada9#act18">
+          <ParameterBinding id="mpkg3#ada9#act17#scce17#df42#par150" source="mpkg2#ada2#spd2#pdp4" target="mpkg3#ada9#act18.mpkg2#ada3#ipd4#pdp43" name="Generated Password - token"/>
+        </DataFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada9#act17#erre17" definition="mpkg2#ada2#epd2"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada9#act18" gr:x="890" gr:y="615" definition="mpkg2#ada3">
+    <Events>
+      <SuccessEvent id="mpkg3#ada9#act18#scce18" definition="mpkg2#ada3#spd4">
+        <SuccessFlow id="mpkg3#ada9#act18#scce18#sf136" to="mpkg3#ada9#spd15" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada9#act18#erre18" definition="mpkg2#ada3#epd4"/>
+    </Events>
+  </Action>
+</ActionDefinition>
