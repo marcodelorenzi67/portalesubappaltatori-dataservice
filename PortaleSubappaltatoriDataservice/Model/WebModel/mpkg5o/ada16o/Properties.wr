@@ -1,0 +1,60 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada16o" name="Salva Fornitore" defaultSuccessPortDefinition="mpkg5o#ada16o#spd24o" defaultErrorPortDefinition="mpkg5o#ada16o#epd24o">
+  <InputPortDefinition id="mpkg5o#ada16o#ipd24o" gr:x="0" gr:y="40">
+    <SuccessFlow id="mpkg5o#ada16o#ipd24o#sf192o" to="mpkg5o#ada16o#svu9o">
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par190o" source="mpkg5o#ada16o#ipd24o#pdp71o" target="mpkg5o#ada16o#svu9o.cls2#att9" name="Nome Referente - Nome Referente"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par191o" source="mpkg5o#ada16o#ipd24o#pdp72o" target="mpkg5o#ada16o#svu9o.cls2#att8" name="Partita IVA - Partita IVA"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par192o" source="mpkg5o#ada16o#ipd24o#pdp73o" target="mpkg5o#ada16o#svu9o#sc53o#kcond34o.cls2#att6" name="KeyCondition34 [oid] - KeyCondition34 [oid]"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par193o" source="mpkg5o#ada16o#ipd24o#pdp74o" target="mpkg5o#ada16o#svu9o.cls2#att7" name="Ragione Sociale - Ragione Sociale"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par194o" source="mpkg5o#ada16o#ipd24o#pdp75o" target="mpkg5o#ada16o#svu9o.cls2#att10" name="Cognome Referente - Cognome Referente"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par195o" source="mpkg5o#ada16o#ipd24o#pdp76o" target="mpkg5o#ada16o#svu9o.cls2#att12" name="Email - Email"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par218o" source="mpkg5o#ada16o#ipd24o#pdp88o" target="mpkg5o#ada16o#svu9o.as13#role25.cls10#att45" name="Tipologia Azienda.oid(FornitoreToTipologia Azienda) - Tipologia Azienda.oid(FornitoreToTipologia Azienda)"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp71o" array="false" name="Nome Referente" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp72o" array="false" name="Partita IVA" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp73o" array="false" name="oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp74o" array="false" name="Ragione Sociale" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp75o" array="false" name="Cognome Referente" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp76o" array="false" name="Email" type="string"/>
+    <DataFlow id="mpkg5o#ada16o#ipd24o#df52o" to="mpkg5o#ada16o#cnu6o" gr:bendpoints="9.0 137.0">
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#df52o#par198o" source="mpkg5o#ada16o#ipd24o#pdp77o" target="mpkg5o#ada16o#cnu6o#sc55o#kcond36o.cls1#att1" name="tenant - KeyCondition36 [oid] [Tenant] [Target]"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp77o" name="tenant" array="true" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp88o" array="false" name="Tipologia Azienda oid" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada16o#spd24o" name="Success Port" gr:x="0" gr:y="280">
+    <PortDefinitionParameter id="mpkg5o#ada16o#spd24o#pdp86o" array="false" name="oid" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#ada16o#epd24o" name="Error Port" gr:x="0" gr:y="85"/>
+  <Operations>
+    <Save gr:x="335" gr:y="90" id="mpkg5o#ada16o#svu9o" action="save" dataBinding="cls2">
+      <ConditionalExpression id="mpkg5o#ada16o#svu9o#sc53o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada16o#svu9o#sc53o#kcond34o" name="KeyCondition34" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada16o#svu9o#sf193o" to="mpkg5o#ada16o#act19o">
+        <ParameterBinding id="mpkg5o#ada16o#svu9o#sf193o#par196o" sourceValue="${statoFornitore.bozza}" target="mpkg5o#ada16o#act19o.tlads0#ada17o#ipd25o#pdp69o" name="&quot;${}&quot; - codice stato"/>
+        <ParameterBinding id="mpkg5o#ada16o#svu9o#sf193o#par197o" source="cls2#att6Array" target="mpkg5o#ada16o#act19o.tlads0#ada17o#ipd25o#pdp70o" name="oid - oid Fornitore"/>
+      </SuccessFlow>
+      <DataFlow id="mpkg5o#ada16o#svu9o#df51o" to="mpkg5o#ada16o#cnu6o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ada16o#svu9o#df58o" to="mpkg5o#ada16o#spd24o">
+        <ParameterBinding id="mpkg5o#ada16o#svu9o#df58o#par212o" source="cls2#att6Array" target="mpkg5o#ada16o#spd24o#pdp86o" name="oid - oid"/>
+      </DataFlow>
+    </Save>
+    <Connect gr:x="1015" gr:y="245" id="mpkg5o#ada16o#cnu6o" association="as5#role9">
+      <SourceConditionalExpression id="mpkg5o#ada16o#cnu6o#sc54o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada16o#cnu6o#sc54o#kcond35o" name="KeyCondition35" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg5o#ada16o#cnu6o#sc55o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada16o#cnu6o#sc55o#kcond36o" name="KeyCondition36" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada16o#cnu6o#sf195o" to="mpkg5o#ada16o#spd24o" automaticCoupling="true"/>
+    </Connect>
+  </Operations>
+  <Action id="mpkg5o#ada16o#act19o" gr:x="625" gr:y="180" definition="tlads0#ada17o">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada16o#act19o#scce19o" definition="tlads0#ada17o#spd25o">
+        <SuccessFlow id="mpkg5o#ada16o#act19o#scce19o#sf194o" to="mpkg5o#ada16o#cnu6o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada16o#act19o#erre19o" definition="tlads0#ada17o#epd25o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

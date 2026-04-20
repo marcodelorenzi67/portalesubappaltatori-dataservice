@@ -1,0 +1,30 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ada17o" name="_Cambia stato registrazione fornitore" defaultSuccessPortDefinition="tlads0#ada17o#spd25o" defaultErrorPortDefinition="tlads0#ada17o#epd25o">
+  <InputPortDefinition id="tlads0#ada17o#ipd25o" gr:x="0" gr:y="30">
+    <SuccessFlow id="tlads0#ada17o#ipd25o#sf187o" to="tlads0#ada17o#seu25o">
+      <ParameterBinding id="tlads0#ada17o#ipd25o#sf187o#par188o" source="tlads0#ada17o#ipd25o#pdp69o" target="tlads0#ada17o#seu25o#sc51o#acond24o" name="codice - codice"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="tlads0#ada17o#ipd25o#pdp69o" array="false" name="codice stato" type="string"/>
+    <DataFlow id="tlads0#ada17o#ipd25o#df50o" to="tlads0#ada17o#svu8o">
+      <ParameterBinding id="tlads0#ada17o#ipd25o#df50o#par189o" source="tlads0#ada17o#ipd25o#pdp70o" target="tlads0#ada17o#svu8o#sc52o#kcond33o.cls2#att6" name="oid Fornitore - KeyCondition33 [oid]"/>
+    </DataFlow>
+    <PortDefinitionParameter id="tlads0#ada17o#ipd25o#pdp70o" name="oid Fornitore" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ada17o#spd25o" name="Success Port" gr:x="0" gr:y="260"/>
+  <ErrorPortDefinition id="tlads0#ada17o#epd25o" name="Error Port" gr:x="0" gr:y="50"/>
+  <Operations>
+    <Selector gr:x="325" gr:y="165" id="tlads0#ada17o#seu25o" dataBinding="cls3">
+      <ConditionalExpression id="tlads0#ada17o#seu25o#sc51o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="tlads0#ada17o#seu25o#sc51o#acond24o" name="codice" predicate="eq" booleanOperator="or" implied="false" attributes="cls3#att15"/>
+        <AttributesCondition id="tlads0#ada17o#seu25o#sc51o#acond25o" name="attivo" predicate="eq" booleanOperator="or" implied="false" attributes="cls3#att16" value="true"/>
+      </ConditionalExpression>
+      <SuccessFlow id="tlads0#ada17o#seu25o#sf189o" to="tlads0#ada17o#epd25o" automaticCoupling="true" code="Not Found"/>
+      <SuccessFlow id="tlads0#ada17o#seu25o#sf190o" to="tlads0#ada17o#svu8o" automaticCoupling="true"/>
+    </Selector>
+    <Save gr:x="635" gr:y="295" id="tlads0#ada17o#svu8o" action="update" dataBinding="cls2">
+      <ConditionalExpression id="tlads0#ada17o#svu8o#sc52o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="tlads0#ada17o#svu8o#sc52o#kcond33o" name="KeyCondition33" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="tlads0#ada17o#svu8o#sf191o" to="tlads0#ada17o#spd25o" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+</ActionDefinition>

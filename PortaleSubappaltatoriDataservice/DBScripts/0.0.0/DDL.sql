@@ -252,3 +252,15 @@ alter table "public"."sub_tipologia_allegati"  add column  "descrizione"  varcha
 alter table "public"."sub_allegati"  add column  "tenant_oid"  int4;
 alter table "public"."sub_allegati"   add constraint fk_allegati_tenant foreign key ("tenant_oid") references "public"."sub_tenant" ("oid");
 
+-- Tenant [cls1]
+alter table "public"."sub_tenant"  add column  "master"  bool;
+
+
+-- Fornitore_Tenant [as5]
+create table "public"."sub_fornitore_tenant" (
+   "fornitore_oid"  int4 not null,
+   "tenant_oid"  int4 not null,
+  primary key ("fornitore_oid", "tenant_oid")
+);
+alter table "public"."sub_fornitore_tenant"   add constraint fk_fornitore_tenant_fornitore foreign key ("fornitore_oid") references "public"."sub_fornitore" ("oid");
+alter table "public"."sub_fornitore_tenant"   add constraint fk_fornitore_tenant_tenant foreign key ("tenant_oid") references "public"."sub_tenant" ("oid");

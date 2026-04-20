@@ -1,4 +1,4 @@
-<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada1" name="Invita utente interno" defaultSuccessPortDefinition="mpkg1#ada1#spd1" defaultErrorPortDefinition="mpkg1#ada1#epd1" transaction="true">
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada1" name="Invita utente" defaultSuccessPortDefinition="mpkg1#ada1#spd1" defaultErrorPortDefinition="mpkg1#ada1#epd1" transaction="true">
   <InputPortDefinition id="mpkg1#ada1#ipd1" gr:x="0" gr:y="30">
     <SuccessFlow id="mpkg1#ada1#ipd1#sf14" to="mpkg1#ada1#scu1">
       <ParameterBinding id="mpkg1#ada1#ipd1#sf14#par10" source="mpkg1#ada1#ipd1#pdp5" target="mpkg1#ada1#scu1.originalValue" name="Email - originalValue"/>
@@ -6,7 +6,8 @@
     <DataFlow id="mpkg1#ada1#ipd1#df2" to="mpkg1#ada1#svu1" gr:bendpoints="-2.0 136.0">
       <ParameterBinding id="mpkg1#ada1#ipd1#df2#par8" source="mpkg1#ada1#ipd1#pdp6" target="mpkg1#ada1#svu1.cls4#att19" name="Cognome - Cognome"/>
       <ParameterBinding id="mpkg1#ada1#ipd1#df2#par9" source="mpkg1#ada1#ipd1#pdp7" target="mpkg1#ada1#svu1.cls4#att18" name="Nome - Nome"/>
-      <ParameterBinding id="mpkg1#ada1#ipd1#df2#par11" sourceValue="true" target="mpkg1#ada1#svu1.cls4#att50" name="&quot;true&quot; - Backoffice"/>
+      <ParameterBinding id="mpkg1#ada1#ipd1#df2#par11" target="mpkg1#ada1#svu1.cls4#att50" name="&quot;true&quot; - Backoffice" source="mpkg1#ada1#ipd1#pdp85o"/>
+      <ParameterBinding id="mpkg1#ada1#ipd1#df2#par213o" source="mpkg1#ada1#ipd1#pdp87o" target="mpkg1#ada1#svu1.as4#role7.cls2#att6" name="oid Fornitore - Fornitore.oid(Pre RegistrazioneToFornitore)"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp5" array="false" name="Email" type="string"/>
     <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp6" array="false" name="Cognome" type="string"/>
@@ -24,6 +25,11 @@
       <ParameterBinding id="mpkg1#ada1#ipd1#df12#par42" source="mpkg1#ada1#ipd1#pdp20" target="mpkg1#ada1#cnu2#sc12#kcond6.cls12#att59" name="KeyCondition6 [oid] [Ruolo] [Source] - KeyCondition6 [oid] [Ruolo] [Source]"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp20" array="true" name="oid Ruoli" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp85o" name="Backoffice" array="false" type="boolean"/>
+    <DataFlow id="mpkg1#ada1#ipd1#df55o" to="mpkg1#ada1#switch5o">
+      <ParameterBinding id="mpkg1#ada1#ipd1#df55o#par208o" source="mpkg1#ada1#ipd1#pdp85o" target="mpkg1#ada1#switch5o.switch" name="Backoffice - Switch"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp87o" name="oid Fornitore" array="false" type="integer"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg1#ada1#spd1" name="Success Port" gr:x="0" gr:y="1110"/>
   <ErrorPortDefinition id="mpkg1#ada1#epd1" name="Error Port" gr:x="0" gr:y="10"/>
@@ -44,6 +50,7 @@
     </Script>
     <Save gr:x="755" gr:y="870" id="mpkg1#ada1#svu1" action="create" dataBinding="cls4">
       <SuccessFlow id="mpkg1#ada1#svu1#sf28" to="mpkg1#ada1#cnu1" automaticCoupling="true"/>
+      <DataFlow id="mpkg1#ada1#svu1#df54o" to="mpkg1#ada1#cnu2" automaticCoupling="true"/>
     </Save>
     <Selector gr:x="355" gr:y="110" id="mpkg1#ada1#seu2" dataBinding="User">
       <ConditionalExpression id="mpkg1#ada1#seu2#sc3" defaultPolicy="fill" booleanOperator="and">
@@ -72,16 +79,16 @@
         <ParameterBinding id="mpkg1#ada1#svu2#sf27#par20" source="cls6#att27Array" target="mpkg1#ada1#svu1.as9#role17.cls6#att27" name="Descrizione - Token.Descrizione(User invitatiToToken)"/>
       </SuccessFlow>
     </Save>
-    <Connect gr:x="950" gr:y="965" id="mpkg1#ada1#cnu1" association="as16#role32">
+    <Connect gr:x="950" gr:y="940" id="mpkg1#ada1#cnu1" association="as16#role32">
       <SourceConditionalExpression id="mpkg1#ada1#cnu1#sc6" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg1#ada1#cnu1#sc6#kcond3" name="KeyCondition3" predicate="in" implied="false"/>
       </SourceConditionalExpression>
       <TargetConditionalExpression id="mpkg1#ada1#cnu1#sc7" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg1#ada1#cnu1#sc7#kcond4" name="KeyCondition4" predicate="in" implied="false"/>
       </TargetConditionalExpression>
-      <SuccessFlow id="mpkg1#ada1#cnu1#sf50" to="mpkg1#ada1#cnu2" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg1#ada1#cnu1#sf200o" to="mpkg1#ada1#switch5o" automaticCoupling="true"/>
     </Connect>
-    <Connect gr:x="1255" gr:y="1030" id="mpkg1#ada1#cnu2" association="as18#role36">
+    <Connect gr:x="1235" gr:y="1160" id="mpkg1#ada1#cnu2" association="as18#role36">
       <SourceConditionalExpression id="mpkg1#ada1#cnu2#sc12" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg1#ada1#cnu2#sc12#kcond6" name="KeyCondition6" predicate="in" implied="false"/>
       </SourceConditionalExpression>
@@ -90,6 +97,11 @@
       </TargetConditionalExpression>
       <SuccessFlow id="mpkg1#ada1#cnu2#sf51" to="mpkg1#ada1#act16" automaticCoupling="true"/>
     </Connect>
+    <Switch gr:x="1305" gr:y="945" id="mpkg1#ada1#switch5o" name="backoffice">
+      <SuccessFlow id="mpkg1#ada1#switch5o#sf201o" to="mpkg1#ada1#cnu2" automaticCoupling="true" code="true"/>
+      <Case value="true"/>
+      <SuccessFlow id="mpkg1#ada1#switch5o#sf202o" to="mpkg1#ada1#act16" automaticCoupling="true"/>
+    </Switch>
   </Operations>
   <Action id="mpkg1#ada1#act1" gr:x="590" gr:y="550" definition="mpkg2#ada2">
     <Events>

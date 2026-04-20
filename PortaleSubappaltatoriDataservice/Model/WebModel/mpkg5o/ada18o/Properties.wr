@@ -1,0 +1,62 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada18o" name="Invita Fornitore" defaultSuccessPortDefinition="mpkg5o#ada18o#spd26o" defaultErrorPortDefinition="mpkg5o#ada18o#epd26o">
+  <InputPortDefinition id="mpkg5o#ada18o#ipd26o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#ada18o#ipd26o#sf198o" to="mpkg5o#ada18o#act20o">
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par199o" source="mpkg5o#ada18o#ipd26o#pdp78o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp74o" name="Ragione Sociale - Ragione Sociale"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par200o" source="mpkg5o#ada18o#ipd26o#pdp79o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp71o" name="Nome Referente - Nome Referente"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par201o" source="mpkg5o#ada18o#ipd26o#pdp80o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp75o" name="Cognome Referente - Cognome Referente"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par202o" source="mpkg5o#ada18o#ipd26o#pdp81o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp72o" name="Partita IVA - Partita IVA"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par203o" source="mpkg5o#ada18o#ipd26o#pdp82o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp73o" name="oid - oid"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par204o" source="mpkg5o#ada18o#ipd26o#pdp83o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp76o" name="Email - Email"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par205o" source="mpkg5o#ada18o#ipd26o#pdp84o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp77o" name="tenant - tenant"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par219o" source="mpkg5o#ada18o#ipd26o#pdp89o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp88o" name="Tipologia Azienda oid - Tipologia Azienda oid"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp78o" array="false" name="Ragione Sociale" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp79o" array="false" name="Nome Referente" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp80o" array="false" name="Cognome Referente" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp81o" array="false" name="Partita IVA" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp82o" array="false" name="oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp83o" array="false" name="Email" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp84o" array="true" name="tenant" type="integer"/>
+    <DataFlow id="mpkg5o#ada18o#ipd26o#df53o" to="mpkg5o#ada18o#act21o">
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par206o" source="mpkg5o#ada18o#ipd26o#pdp83o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp5" name="Email - Email"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par207o" source="mpkg5o#ada18o#ipd26o#pdp84o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp8" name="tenant - tenant"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par209o" sourceValue="false" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp85o" name="&quot;false&quot; - Backoffice"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par210o" source="mpkg5o#ada18o#ipd26o#pdp80o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp6" name="Cognome Referente - Cognome"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par211o" source="mpkg5o#ada18o#ipd26o#pdp79o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp7" name="Nome Referente - Nome"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp89o" array="false" name="Tipologia Azienda oid" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada18o#spd26o" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg5o#ada18o#epd26o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations/>
+  <Action id="mpkg5o#ada18o#act20o" gr:x="380" gr:y="95" definition="mpkg5o#ada16o">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada18o#act20o#scce20o" definition="mpkg5o#ada16o#spd24o">
+        <SuccessFlow id="mpkg5o#ada18o#act20o#scce20o#sf199o" to="mpkg5o#ada18o#act21o">
+          <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#sf199o#par214o" source="mpkg5o#ada16o#spd24o#pdp86o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp87o" name="oid - oid Fornitore"/>
+        </SuccessFlow>
+        <DataFlow id="mpkg5o#ada18o#act20o#scce20o#df59o" to="mpkg5o#ada18o#act22o">
+          <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#df59o#par216o" sourceValue="${statoFornitore.invitato}" target="mpkg5o#ada18o#act22o.tlads0#ada17o#ipd25o#pdp69o" name="&quot;${statoFornitore.invitato}&quot; - codice stato"/>
+          <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#df59o#par217o" source="mpkg5o#ada16o#spd24o#pdp86o" target="mpkg5o#ada18o#act22o.tlads0#ada17o#ipd25o#pdp70o" name="oid - oid Fornitore"/>
+        </DataFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada18o#act20o#erre20o" definition="mpkg5o#ada16o#epd24o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ada18o#act21o" gr:x="620" gr:y="155" definition="mpkg1#ada1">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada18o#act21o#scce21o" definition="mpkg1#ada1#spd1">
+        <SuccessFlow id="mpkg5o#ada18o#act21o#scce21o#sf203o" to="mpkg5o#ada18o#act22o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada18o#act21o#erre21o" definition="mpkg1#ada1#epd1"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ada18o#act22o" gr:x="850" gr:y="220" definition="tlads0#ada17o">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada18o#act22o#scce22o" definition="tlads0#ada17o#spd25o">
+        <SuccessFlow id="mpkg5o#ada18o#act22o#scce22o#sf204o" to="mpkg5o#ada18o#spd26o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada18o#act22o#erre22o" definition="tlads0#ada17o#epd25o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

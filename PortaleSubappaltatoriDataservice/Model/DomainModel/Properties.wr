@@ -26,6 +26,8 @@
     <ActionService definition="mpkg1#ad1" method="create" roles="rl5"/>
     <ActionService definition="tlads0#ada13" method="create" hasAuthUser="true"/>
     <ActionService definition="tlads0#adf7" method="read" hasAuthUser="true"/>
+    <ActionService definition="mpkg5o#ada16o" method="create" roles="rl1 rl2"/>
+    <ActionService definition="mpkg5o#ada18o" method="create" roles="rl1 rl2 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
@@ -35,6 +37,15 @@
     </ServiceClass>
     <ServiceClass class="cls1">
       <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl1">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl3">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl2">
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
@@ -63,7 +74,7 @@
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
-    <ServiceClass class="cls2" associationRoles="as3#role5">
+    <ServiceClass class="cls2" associationRoles="as3#role5 as5#role9">
       <ServiceRole role="rl1">
         <ServiceMethod method="read"/>
       </ServiceRole>
@@ -462,9 +473,10 @@
       <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_redirectUri_delete$errorMessage" location="body" cardinality="1" type="string"/>
     </srs:AuthService>
   </srs:Resources>
-  <Class id="cls1" name="Tenant" duration="persistent" gr:x="265" gr:y="240" attributeOrder="cls1#att1 cls1#att2" db:database="dbD1" db:table="sub_tenant">
+  <Class id="cls1" name="Tenant" duration="persistent" gr:x="265" gr:y="240" attributeOrder="cls1#att1 cls1#att2 cls1#att67o" db:database="dbD1" db:table="sub_tenant">
     <Attribute id="cls1#att1" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls1#att2" name="Nome" type="string" db:column="nome"/>
+    <Attribute id="cls1#att67o" name="Master" type="boolean" db:column="master"/>
   </Class>
   <Association id="as1" name="User_Tenant" sourceClass="User" targetClass="cls1" db:database="dbD1" db:table="sub_user_tenant">
     <AssociationRole1 id="as1#role1" name="UserToTenant" maxCard="N">
@@ -491,7 +503,7 @@
       <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls3" name="Stato Registrazione" duration="persistent" gr:x="620" gr:y="490" attributeOrder="cls3#att13 cls3#att14 cls3#att15 cls3#att16" db:database="dbD1" db:table="sub_stato_registrazione">
+  <Class id="cls3" name="Stato Registrazione" duration="persistent" gr:x="620" gr:y="505" attributeOrder="cls3#att13 cls3#att14 cls3#att15 cls3#att16" db:database="dbD1" db:table="sub_stato_registrazione">
     <Attribute id="cls3#att13" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls3#att16" name="Attivo" type="boolean" db:column="attivo"/>
     <Attribute id="cls3#att15" name="Codice" type="string" db:column="codice">
@@ -529,12 +541,12 @@
       <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
     </AssociationRole2>
   </Association>
-  <Association id="as5" name="Fornitore_Tenant" sourceClass="cls2" targetClass="cls1" db:database="dbD1" db:table="fornitoretotenant_view">
-    <AssociationRole1 id="as5#role9" name="FornitoreToTenant" maxCard="N" derivationQuery="imported::Self.as2#role4(as Var1).as1#role1(as Var2)">
-      <db:JoinColumn attribute="cls2#att6" name="s_oid"/>
+  <Association id="as5" name="Fornitore_Tenant" sourceClass="cls2" targetClass="cls1" db:database="dbD1" db:table="sub_fornitore_tenant">
+    <AssociationRole1 id="as5#role9" name="FornitoreToTenant" maxCard="N">
+      <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
     </AssociationRole1>
     <AssociationRole2 id="as5#role10" name="TenantToFornitore" maxCard="N">
-      <db:JoinColumn attribute="cls1#att1" name="T_tenant_oid"/>
+      <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
     </AssociationRole2>
   </Association>
   <Class id="cls5" name="Allegati" duration="persistent" gr:x="600" gr:y="75" attributeOrder="cls5#att22 cls5#att23 cls5#att24 cls5#att25 cls5#att35 cls5#att36" db:database="dbD1" db:table="sub_allegati">

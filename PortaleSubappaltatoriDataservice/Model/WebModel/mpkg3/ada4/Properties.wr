@@ -32,6 +32,13 @@
         <ParameterBinding id="mpkg3#ada4#seu6#df39#par140" sourceValue="${token.invito}" target="mpkg3#ada4#act9.mpkg3#ada6#ipd8#pdp27" name="&quot;${token.invito}&quot; - Tipo token"/>
         <ParameterBinding id="mpkg3#ada4#seu6#df39#par141" source="cls4#att20Array" target="mpkg3#ada4#act9.mpkg3#ada6#ipd8#pdp26" name="Email - user invitato [Email]"/>
       </DataFlow>
+      <DataFlow id="mpkg3#ada4#seu6#df67o" to="mpkg3#ada4#act27o">
+        <ParameterBinding id="mpkg3#ada4#seu6#df67o#par242o" source="as4#role7_cls2#att6Array" target="mpkg3#ada4#act27o.tlads0#ada17o#ipd25o#pdp70o" name="Pre RegistrazioneToFornitore.oid - oid Fornitore"/>
+        <ParameterBinding id="mpkg3#ada4#seu6#df67o#par243o" sourceValue="${statoFornitore.Registrato}" target="mpkg3#ada4#act27o.tlads0#ada17o#ipd25o#pdp69o" name="&quot;${statoFornitore.Registrato}&quot; - codice stato"/>
+      </DataFlow>
+      <DataFlow id="mpkg3#ada4#seu6#df68o" to="mpkg3#ada4#switch8o">
+        <ParameterBinding id="mpkg3#ada4#seu6#df68o#par244o" source="cls4#att50Array" target="mpkg3#ada4#switch8o.switch" name="Backoffice - Switch"/>
+      </DataFlow>
     </Selector>
     <Switch gr:x="500" gr:y="260" id="mpkg3#ada4#switch2" name="attivo">
       <Case value="true"/>
@@ -47,21 +54,34 @@
       <SuccessFlow id="mpkg3#ada4#seu7#sf49" to="mpkg3#ada4#epd6" automaticCoupling="true" code="Not Found"/>
       <SuccessFlow id="mpkg3#ada4#seu7#sf67" to="mpkg3#ada4#act8" automaticCoupling="true"/>
     </Selector>
+    <Switch id="mpkg3#ada4#switch8o" name="Backoffice" gr:x="925" gr:y="660">
+      <Case value="true"/>
+      <SuccessFlow id="mpkg3#ada4#switch8o#sf212o" to="mpkg3#ada4#act27o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg3#ada4#switch8o#sf213o" to="mpkg3#ada4#act9" automaticCoupling="true" code="true"/>
+    </Switch>
   </Operations>
   <Action id="mpkg3#ada4#act8" gr:x="765" gr:y="555" definition="mpkg3#ada5">
     <Events>
       <SuccessEvent id="mpkg3#ada4#act8#scce8" definition="mpkg3#ada5#spd7">
-        <SuccessFlow id="mpkg3#ada4#act8#scce8#sf88" to="mpkg3#ada4#act9" automaticCoupling="true"/>
+        <SuccessFlow id="mpkg3#ada4#act8#scce8#sf88" to="mpkg3#ada4#switch8o" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="mpkg3#ada4#act8#erre8" definition="mpkg3#ada5#epd7"/>
     </Events>
   </Action>
-  <Action id="mpkg3#ada4#act9" gr:x="1005" gr:y="600" definition="mpkg3#ada6">
+  <Action id="mpkg3#ada4#act9" gr:x="1355" gr:y="665" definition="mpkg3#ada6">
     <Events>
       <SuccessEvent id="mpkg3#ada4#act9#scce9" definition="mpkg3#ada6#spd8">
         <SuccessFlow id="mpkg3#ada4#act9#scce9#sf89" to="mpkg3#ada4#spd6" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="mpkg3#ada4#act9#erre9" definition="mpkg3#ada6#epd8"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada4#act27o" gr:x="1090" gr:y="530" definition="tlads0#ada17o">
+    <Events>
+      <SuccessEvent id="mpkg3#ada4#act27o#scce28o" definition="tlads0#ada17o#spd25o">
+        <SuccessFlow id="mpkg3#ada4#act27o#scce28o#sf214o" to="mpkg3#ada4#act9" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada4#act27o#erre31o" definition="tlads0#ada17o#epd25o"/>
     </Events>
   </Action>
 </ActionDefinition>
