@@ -14,6 +14,9 @@
     <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp55" array="false" name="oid" type="integer"/>
     <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp56" array="false" name="Condiviso" type="boolean"/>
     <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp57" array="false" name="Giorni Durata" type="integer"/>
+    <DataFlow id="mpkg1#ada11#ipd17#df70o" to="mpkg1#ada11#switch9o" gr:bendpoints="-2.0 128.0">
+      <ParameterBinding id="mpkg1#ada11#ipd17#df70o#par249o" source="mpkg1#ada11#ipd17#pdp55" target="mpkg1#ada11#switch9o.switch" name="oid - Switch"/>
+    </DataFlow>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg1#ada11#spd17" name="Success Port" gr:x="0" gr:y="30"/>
   <ErrorPortDefinition id="mpkg1#ada11#epd17" name="Error Port" gr:x="0" gr:y="300"/>
@@ -22,7 +25,25 @@
       <ConditionalExpression id="mpkg1#ada11#svu7#sc42" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg1#ada11#svu7#sc42#kcond26" name="KeyCondition26" predicate="in" implied="false"/>
       </ConditionalExpression>
-      <SuccessFlow id="mpkg1#ada11#svu7#sf154" to="mpkg1#ada11#spd17" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg1#ada11#svu7#sf221o" to="mpkg1#ada11#switch9o" automaticCoupling="true"/>
     </Save>
+    <Switch gr:x="645" gr:y="255" id="mpkg1#ada11#switch9o" name="edit?">
+      <SuccessFlow id="mpkg1#ada11#switch9o#sf222o" to="mpkg1#ada11#act28o">
+        <ParameterBinding id="mpkg1#ada11#switch9o#sf222o#par250o" sourceValue="${tipoAzioneLog.editTipoAllegato}" target="mpkg1#ada11#act28o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.editTipoAllegato}&quot; - Tipo azione"/>
+        <ParameterBinding id="mpkg1#ada11#switch9o#sf222o#par253o" sourceImplicitParameter="userName" target="mpkg1#ada11#act28o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+      </SuccessFlow>
+      <SuccessFlow id="mpkg1#ada11#switch9o#sf223o" to="mpkg1#ada11#act28o" code="&lt;EMPTY&gt;">
+        <ParameterBinding id="mpkg1#ada11#switch9o#sf223o#par251o" sourceValue="${tipoAzioneLog.creatoTipoAllegato}" target="mpkg1#ada11#act28o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.creatoTipoAllegato}&quot; - Tipo azione"/>
+        <ParameterBinding id="mpkg1#ada11#switch9o#sf223o#par254o" sourceImplicitParameter="userName" target="mpkg1#ada11#act28o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+      </SuccessFlow>
+    </Switch>
   </Operations>
+  <Action id="mpkg1#ada11#act28o" gr:x="825" gr:y="215" definition="mpkg2#ada19o">
+    <Events>
+      <SuccessEvent id="mpkg1#ada11#act28o#scce29o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg1#ada11#act28o#scce29o#sf226o" to="mpkg1#ada11#spd17" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ada11#act28o#erre32o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
 </ActionDefinition>

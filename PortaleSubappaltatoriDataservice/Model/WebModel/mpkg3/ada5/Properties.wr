@@ -35,7 +35,9 @@
       <ParameterBinding id="mpkg3#ada5#ipd7#df61o#par221o" source="mpkg3#ada5#ipd7#pdp91o" target="mpkg3#ada5#switch6o.switch" name="Backoffice - Switch"/>
     </DataFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg3#ada5#spd7" name="Success Port" gr:x="0" gr:y="420"/>
+  <SuccessPortDefinition id="mpkg3#ada5#spd7" name="Success Port" gr:x="0" gr:y="420">
+    <PortDefinitionParameter id="mpkg3#ada5#spd7#pdp95o" array="false" name="User ID" type="string"/>
+  </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg3#ada5#epd7" name="Error Port" gr:x="0" gr:y="65"/>
   <Operations>
     <Save gr:x="-260" gr:y="-5" id="mpkg3#ada5#svu3" action="create" dataBinding="User">
@@ -116,6 +118,9 @@
           <ParameterBinding id="mpkg3#ada5#act3#scce3#df66o#par235o" sourceValue="${app.ds}" target="mpkg3#ada5#act26o._permission_create$appID" name="&quot;${app.ds}&quot; - App ID"/>
           <ParameterBinding id="mpkg3#ada5#act3#scce3#df66o#par236o" sourceValue="${scope.fornitore}" target="mpkg3#ada5#act26o._permission_create$scope" name="&quot;${scope.fornitore}&quot; - Scope"/>
           <ParameterBinding id="mpkg3#ada5#act3#scce3#df66o#par237o" sourceValue="APPROVED" target="mpkg3#ada5#act26o._permission_create$status" name="&quot;APPROVED&quot; - Status"/>
+        </DataFlow>
+        <DataFlow id="mpkg3#ada5#act3#scce3#df73o" to="mpkg3#ada5#spd7">
+          <ParameterBinding id="mpkg3#ada5#act3#scce3#df73o#par266o" source="_identity_create$userID" target="mpkg3#ada5#spd7#pdp95o" name="User ID - User ID"/>
         </DataFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg3#ada5#act3#erre3"/>

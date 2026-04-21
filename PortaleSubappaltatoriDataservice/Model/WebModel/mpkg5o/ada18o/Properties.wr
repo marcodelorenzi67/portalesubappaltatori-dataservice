@@ -26,7 +26,7 @@
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp89o" array="false" name="Tipologia Azienda oid" type="integer"/>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg5o#ada18o#spd26o" name="Success Port" gr:x="0" gr:y="30"/>
+  <SuccessPortDefinition id="mpkg5o#ada18o#spd26o" name="Success Port" gr:x="0" gr:y="145"/>
   <ErrorPortDefinition id="mpkg5o#ada18o#epd26o" name="Error Port" gr:x="0" gr:y="300"/>
   <Operations/>
   <Action id="mpkg5o#ada18o#act20o" gr:x="380" gr:y="95" definition="mpkg5o#ada16o">
@@ -38,6 +38,9 @@
         <DataFlow id="mpkg5o#ada18o#act20o#scce20o#df59o" to="mpkg5o#ada18o#act22o">
           <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#df59o#par216o" sourceValue="${statoFornitore.invitato}" target="mpkg5o#ada18o#act22o.tlads0#ada17o#ipd25o#pdp69o" name="&quot;${statoFornitore.invitato}&quot; - codice stato"/>
           <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#df59o#par217o" source="mpkg5o#ada16o#spd24o#pdp86o" target="mpkg5o#ada18o#act22o.tlads0#ada17o#ipd25o#pdp70o" name="oid - oid Fornitore"/>
+        </DataFlow>
+        <DataFlow id="mpkg5o#ada18o#act20o#scce20o#df72o" to="mpkg5o#ada18o#act33o">
+          <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#df72o#par263o" source="mpkg5o#ada16o#spd24o#pdp86o" target="mpkg5o#ada18o#act33o.mpkg2#ada19o#ipd27o#pdp92o" name="oid - Fornitore oid"/>
         </DataFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg5o#ada18o#act20o#erre20o" definition="mpkg5o#ada16o#epd24o"/>
@@ -51,12 +54,23 @@
       <ErrorEvent id="mpkg5o#ada18o#act21o#erre21o" definition="mpkg1#ada1#epd1"/>
     </Events>
   </Action>
-  <Action id="mpkg5o#ada18o#act22o" gr:x="850" gr:y="220" definition="tlads0#ada17o">
+  <Action id="mpkg5o#ada18o#act22o" gr:x="845" gr:y="210" definition="tlads0#ada17o">
     <Events>
       <SuccessEvent id="mpkg5o#ada18o#act22o#scce22o" definition="tlads0#ada17o#spd25o">
-        <SuccessFlow id="mpkg5o#ada18o#act22o#scce22o#sf204o" to="mpkg5o#ada18o#spd26o" automaticCoupling="true"/>
+        <SuccessFlow id="mpkg5o#ada18o#act22o#scce22o#sf204o" to="mpkg5o#ada18o#act33o">
+          <ParameterBinding id="mpkg5o#ada18o#act22o#scce22o#sf204o#par262o" sourceImplicitParameter="userName" target="mpkg5o#ada18o#act33o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+          <ParameterBinding id="mpkg5o#ada18o#act22o#scce22o#sf204o#par264o" sourceValue="${tipoAzioneLog.invitatoFornitore}" target="mpkg5o#ada18o#act33o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.invitatoFornitore}&quot; - Tipo azione"/>
+        </SuccessFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg5o#ada18o#act22o#erre22o" definition="tlads0#ada17o#epd25o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ada18o#act33o" definition="mpkg2#ada19o" gr:x="1245" gr:y="210">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada18o#act33o#scce33o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg5o#ada18o#act33o#scce33o#sf230o" to="mpkg5o#ada18o#spd26o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada18o#act33o#erre36o" definition="mpkg2#ada19o#epd27o"/>
     </Events>
   </Action>
 </ActionDefinition>

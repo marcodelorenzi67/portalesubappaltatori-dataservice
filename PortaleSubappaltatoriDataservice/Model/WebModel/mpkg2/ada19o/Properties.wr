@@ -1,0 +1,33 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg2#ada19o" name="_Log" defaultSuccessPortDefinition="mpkg2#ada19o#spd27o" defaultErrorPortDefinition="mpkg2#ada19o#epd27o">
+  <InputPortDefinition id="mpkg2#ada19o#ipd27o" gr:x="0" gr:y="30">
+    <DataFlow id="mpkg2#ada19o#ipd27o#df69o" to="mpkg2#ada19o#svu10o" gr:bendpoints="11.0 39.0">
+      <ParameterBinding id="mpkg2#ada19o#ipd27o#df69o#par246o" source="mpkg2#ada19o#ipd27o#pdp92o" target="mpkg2#ada19o#svu10o.as21o#role41o.cls2#att6" name="Fornitore.oid(LogToFornitore) - Fornitore.oid(LogToFornitore)"/>
+      <ParameterBinding id="mpkg2#ada19o#ipd27o#df69o#par247o" source="mpkg2#ada19o#ipd27o#pdp93o" target="mpkg2#ada19o#svu10o.cls13o#att70o" name="Tipo azione - Tipo azione"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg2#ada19o#ipd27o#pdp92o" array="false" name="Fornitore oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg2#ada19o#ipd27o#pdp93o" array="false" name="Tipo azione" type="string"/>
+    <PortDefinitionParameter id="mpkg2#ada19o#ipd27o#pdp94o" array="false" name="User id" type="string"/>
+    <SuccessFlow id="mpkg2#ada19o#ipd27o#sf224o" to="mpkg2#ada19o#seu26o">
+      <ParameterBinding id="mpkg2#ada19o#ipd27o#sf224o#par252o" source="mpkg2#ada19o#ipd27o#pdp94o" target="mpkg2#ada19o#seu26o#sc57o#acond26o" name="User id - userId"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg2#ada19o#spd27o" name="Success Port" gr:x="0" gr:y="205"/>
+  <ErrorPortDefinition id="mpkg2#ada19o#epd27o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Time gr:x="315" gr:y="85" id="mpkg2#ada19o#tmu4o" name="Time">
+      <SuccessFlow id="mpkg2#ada19o#tmu4o#sf219o" to="mpkg2#ada19o#svu10o">
+        <ParameterBinding id="mpkg2#ada19o#tmu4o#sf219o#par245o" source="currentTimestamp" target="mpkg2#ada19o#svu10o.cls13o#att69o" name="Current/Input Timestamp - Timestamp log"/>
+      </SuccessFlow>
+    </Time>
+    <Save gr:x="475" gr:y="120" id="mpkg2#ada19o#svu10o" action="create" dataBinding="cls13o">
+      <SuccessFlow id="mpkg2#ada19o#svu10o#sf220o" to="mpkg2#ada19o#spd27o" automaticCoupling="true"/>
+    </Save>
+    <Selector gr:x="155" gr:y="25" id="mpkg2#ada19o#seu26o" dataBinding="User">
+      <SuccessFlow id="mpkg2#ada19o#seu26o#sf225o" to="mpkg2#ada19o#tmu4o" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg2#ada19o#seu26o#sc57o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg2#ada19o#seu26o#sc57o#acond26o" name="userId" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+      </ConditionalExpression>
+      <DataFlow id="mpkg2#ada19o#seu26o#df71o" to="mpkg2#ada19o#svu10o" automaticCoupling="true"/>
+    </Selector>
+  </Operations>
+</ActionDefinition>

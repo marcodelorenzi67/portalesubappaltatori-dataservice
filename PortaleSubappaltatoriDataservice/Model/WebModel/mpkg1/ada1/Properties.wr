@@ -19,7 +19,6 @@
     <DataFlow id="mpkg1#ada1#ipd1#df10" to="mpkg1#ada1#act2">
       <ParameterBinding id="mpkg1#ada1#ipd1#df10#par30" source="mpkg1#ada1#ipd1#pdp6" target="mpkg1#ada1#act2.mpkg2#ada3#ipd4#pdp12" name="Cognome - Cognome"/>
       <ParameterBinding id="mpkg1#ada1#ipd1#df10#par31" source="mpkg1#ada1#ipd1#pdp7" target="mpkg1#ada1#act2.mpkg2#ada3#ipd4#pdp11" name="Nome - Nome"/>
-      <ParameterBinding id="mpkg1#ada1#ipd1#df10#par32" sourceValue="${msg.invitoUtentiInterni}" target="mpkg1#ada1#act2.mpkg2#ada3#ipd4#pdp9" name="&quot;${mess.invitoUtentiInterni}&quot; - codice"/>
     </DataFlow>
     <DataFlow id="mpkg1#ada1#ipd1#df12" to="mpkg1#ada1#cnu2">
       <ParameterBinding id="mpkg1#ada1#ipd1#df12#par42" source="mpkg1#ada1#ipd1#pdp20" target="mpkg1#ada1#cnu2#sc12#kcond6.cls12#att59" name="KeyCondition6 [oid] [Ruolo] [Source] - KeyCondition6 [oid] [Ruolo] [Source]"/>
@@ -30,8 +29,11 @@
       <ParameterBinding id="mpkg1#ada1#ipd1#df55o#par208o" source="mpkg1#ada1#ipd1#pdp85o" target="mpkg1#ada1#switch5o.switch" name="Backoffice - Switch"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp87o" name="oid Fornitore" array="false" type="integer"/>
+    <DataFlow id="mpkg1#ada1#ipd1#df78o" to="mpkg1#ada1#switch11o">
+      <ParameterBinding id="mpkg1#ada1#ipd1#df78o#par279o" source="mpkg1#ada1#ipd1#pdp85o" target="mpkg1#ada1#switch11o.switch" name="Backoffice - Switch"/>
+    </DataFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg1#ada1#spd1" name="Success Port" gr:x="0" gr:y="1110"/>
+  <SuccessPortDefinition id="mpkg1#ada1#spd1" name="Success Port" gr:x="0" gr:y="1115"/>
   <ErrorPortDefinition id="mpkg1#ada1#epd1" name="Error Port" gr:x="0" gr:y="10"/>
   <Operations>
     <Script gr:x="175" gr:y="75" id="mpkg1#ada1#scu1" name="Sanitize mail" script="WEB-INF/groovy/trimAndToLowerCaseString.groovy">
@@ -51,6 +53,7 @@
     <Save gr:x="755" gr:y="870" id="mpkg1#ada1#svu1" action="create" dataBinding="cls4">
       <SuccessFlow id="mpkg1#ada1#svu1#sf28" to="mpkg1#ada1#cnu1" automaticCoupling="true"/>
       <DataFlow id="mpkg1#ada1#svu1#df54o" to="mpkg1#ada1#cnu2" automaticCoupling="true"/>
+      <DataFlow id="mpkg1#ada1#svu1#df79o" to="mpkg1#ada1#seu31o" automaticCoupling="true"/>
     </Save>
     <Selector gr:x="355" gr:y="110" id="mpkg1#ada1#seu2" dataBinding="User">
       <ConditionalExpression id="mpkg1#ada1#seu2#sc3" defaultPolicy="fill" booleanOperator="and">
@@ -100,8 +103,26 @@
     <Switch gr:x="1305" gr:y="945" id="mpkg1#ada1#switch5o" name="backoffice">
       <SuccessFlow id="mpkg1#ada1#switch5o#sf201o" to="mpkg1#ada1#cnu2" automaticCoupling="true" code="true"/>
       <Case value="true"/>
-      <SuccessFlow id="mpkg1#ada1#switch5o#sf202o" to="mpkg1#ada1#act16" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg1#ada1#switch5o#sf248o" to="mpkg1#ada1#seu31o" automaticCoupling="true"/>
     </Switch>
+    <Switch id="mpkg1#ada1#switch11o" name="backoffice" gr:x="1775" gr:y="1235">
+      <Case value="true"/>
+      <SuccessFlow id="mpkg1#ada1#switch11o#sf246o" to="mpkg1#ada1#act2">
+        <ParameterBinding id="mpkg1#ada1#switch11o#sf246o#par277o" sourceValue="${msg.invitoUtentiFornitori}" target="mpkg1#ada1#act2.mpkg2#ada3#ipd4#pdp9" name="&quot;${msg.invitoUtentiFornitori}&quot; - codice messaggio"/>
+      </SuccessFlow>
+      <SuccessFlow id="mpkg1#ada1#switch11o#sf247o" to="mpkg1#ada1#act2" code="true">
+        <ParameterBinding id="mpkg1#ada1#switch11o#sf247o#par278o" sourceValue="${msg.invitoUtentiInterni}" target="mpkg1#ada1#act2.mpkg2#ada3#ipd4#pdp9" name="&quot;${msg.invitoUtentiInterni}&quot; - codice messaggio"/>
+      </SuccessFlow>
+    </Switch>
+    <Selector gr:x="1475" gr:y="955" id="mpkg1#ada1#seu31o" dataBinding="cls2">
+      <SuccessFlow id="mpkg1#ada1#seu31o#sf249o" to="mpkg1#ada1#act16" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg1#ada1#seu31o#sc62o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg1#ada1#seu31o#sc62o#rcond11o" name="userinvitati" predicate="in" implied="false" role="as4#role7"/>
+      </ConditionalExpression>
+      <DataFlow id="mpkg1#ada1#seu31o#df80o" to="mpkg1#ada1#act2">
+        <ParameterBinding id="mpkg1#ada1#seu31o#df80o#par281o" source="cls2#att7Array" target="mpkg1#ada1#act2.mpkg2#ada3#ipd4#pdp99o" name="Ragione Sociale - ragioneSociale"/>
+      </DataFlow>
+    </Selector>
   </Operations>
   <Action id="mpkg1#ada1#act1" gr:x="590" gr:y="550" definition="mpkg2#ada2">
     <Events>
@@ -118,7 +139,7 @@
       <ErrorEvent id="mpkg1#ada1#act1#erre1" definition="mpkg2#ada2#epd2"/>
     </Events>
   </Action>
-  <Action id="mpkg1#ada1#act2" gr:x="1860" gr:y="1110" definition="mpkg2#ada3">
+  <Action id="mpkg1#ada1#act2" gr:x="1860" gr:y="1115" definition="mpkg2#ada3">
     <Events>
       <SuccessEvent id="mpkg1#ada1#act2#scce2" definition="mpkg2#ada3#spd4">
         <SuccessFlow id="mpkg1#ada1#act2#scce2#sf36" to="mpkg1#ada1#spd1" automaticCoupling="true"/>
@@ -129,9 +150,10 @@
   <Action id="mpkg1#ada1#act16" gr:x="1565" gr:y="1115" definition="mpkg2#adf5">
     <Events>
       <SuccessEvent id="mpkg1#ada1#act16#scce16" definition="mpkg2#adf5#spd12">
-        <SuccessFlow id="mpkg1#ada1#act16#scce16#sf128" to="mpkg1#ada1#act2">
-          <ParameterBinding id="mpkg1#ada1#act16#scce16#sf128#par130" source="mpkg2#adf5#spd12#pdp36" target="mpkg1#ada1#act2.mpkg2#ada3#ipd4#pdp13" name="link - url"/>
-        </SuccessFlow>
+        <SuccessFlow id="mpkg1#ada1#act16#scce16#sf128" to="mpkg1#ada1#switch11o" automaticCoupling="true"/>
+        <DataFlow id="mpkg1#ada1#act16#scce16#df77o" to="mpkg1#ada1#act2">
+          <ParameterBinding id="mpkg1#ada1#act16#scce16#df77o#par276o" source="mpkg2#adf5#spd12#pdp36" target="mpkg1#ada1#act2.mpkg2#ada3#ipd4#pdp13" name="link - url"/>
+        </DataFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg1#ada1#act16#erre16" definition="mpkg2#adf5#epd12"/>
     </Events>

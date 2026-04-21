@@ -1,0 +1,29 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#adf8o" name="Get ragione sociale" type="read" defaultSuccessPortDefinition="mpkg6o#adf8o#spd29o" defaultErrorPortDefinition="mpkg6o#adf8o#epd29o">
+  <InputPortDefinition id="mpkg6o#adf8o#ipd29o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg6o#adf8o#ipd29o#sf240o" to="mpkg6o#adf8o#seu29o">
+      <ParameterBinding id="mpkg6o#adf8o#ipd29o#sf240o#par270o" sourceImplicitParameter="userName" target="mpkg6o#adf8o#seu29o#sc61o#acond28o" name="User ID - userId"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg6o#adf8o#spd29o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg6o#adf8o#spd29o#pdp97o" array="false" name="Ragione Sociale" type="string"/>
+    <PortDefinitionParameter id="mpkg6o#adf8o#spd29o#pdp98o" array="false" name="oid" type="integer" key="true"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg6o#adf8o#epd29o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="365" gr:y="110" id="mpkg6o#adf8o#seu29o" dataBinding="User">
+      <SuccessFlow id="mpkg6o#adf8o#seu29o#sf242o" to="mpkg6o#adf8o#seu30o" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg6o#adf8o#seu29o#sc61o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg6o#adf8o#seu29o#sc61o#acond28o" name="userId" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+      </ConditionalExpression>
+    </Selector>
+    <Selector gr:x="550" gr:y="165" id="mpkg6o#adf8o#seu30o" dataBinding="cls2">
+      <SuccessFlow id="mpkg6o#adf8o#seu30o#sf243o" to="mpkg6o#adf8o#spd29o">
+        <ParameterBinding id="mpkg6o#adf8o#seu30o#sf243o#par271o" source="cls2#att7Array" target="mpkg6o#adf8o#spd29o#pdp97o" name="Ragione Sociale - Ragione Sociale"/>
+        <ParameterBinding id="mpkg6o#adf8o#seu30o#sf243o#par274o" source="cls2#att6Array" target="mpkg6o#adf8o#spd29o#pdp98o" name="oid - oid"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg6o#adf8o#seu30o#sc60o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg6o#adf8o#seu30o#sc60o#rcond10o" name="user" predicate="in" implied="false" role="as2#role3"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

@@ -1,0 +1,53 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#ada21o" name="Invia comunicazione" defaultSuccessPortDefinition="mpkg6o#ada21o#spd30o" defaultErrorPortDefinition="mpkg6o#ada21o#epd30o">
+  <InputPortDefinition id="mpkg6o#ada21o#ipd30o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg6o#ada21o#ipd30o#sf257o" to="mpkg6o#ada21o#act36o">
+      <ParameterBinding id="mpkg6o#ada21o#ipd30o#sf257o#par285o" source="mpkg6o#ada21o#ipd30o#pdp101o" target="mpkg6o#ada21o#act36o.mpkg6o#ada22o#ipd31o#pdp100o" name="fornitore - fornitore"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg6o#ada21o#ipd30o#pdp101o" array="false" name="fornitore" type="integer"/>
+    <DataFlow id="mpkg6o#ada21o#ipd30o#df82o" to="mpkg6o#ada21o#svu11o" gr:bendpoints="-3.0 179.0">
+      <ParameterBinding id="mpkg6o#ada21o#ipd30o#df82o#par287o" source="mpkg6o#ada21o#ipd30o#pdp102o" target="mpkg6o#ada21o#svu11o.cls14o#att75o" name="Note - Note"/>
+      <ParameterBinding id="mpkg6o#ada21o#ipd30o#df82o#par288o" source="mpkg6o#ada21o#ipd30o#pdp101o" target="mpkg6o#ada21o#svu11o.as23o#role45o.cls2#att6" name="Fornitore.oid(ComunicazioneToFornitore) - Fornitore.oid(ComunicazioneToFornitore)"/>
+      <ParameterBinding id="mpkg6o#ada21o#ipd30o#df82o#par289o" source="mpkg6o#ada21o#ipd30o#pdp104o" target="mpkg6o#ada21o#svu11o.cls14o#att74o" name="Oggetto - Oggetto"/>
+      <ParameterBinding id="mpkg6o#ada21o#ipd30o#df82o#par291o" sourceValue="false" target="mpkg6o#ada21o#svu11o.cls14o#att76o" name="&quot;false&quot; - Backoffice"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg6o#ada21o#ipd30o#pdp102o" array="false" name="Note" type="text"/>
+    <PortDefinitionParameter id="mpkg6o#ada21o#ipd30o#pdp104o" array="false" name="Oggetto" type="string"/>
+    <DataFlow id="mpkg6o#ada21o#ipd30o#df83o" to="mpkg6o#ada21o#act37o" gr:bendpoints="17.0 177.0">
+      <ParameterBinding id="mpkg6o#ada21o#ipd30o#df83o#par294o" source="mpkg6o#ada21o#ipd30o#pdp101o" target="mpkg6o#ada21o#act37o.mpkg2#ada19o#ipd27o#pdp92o" name="fornitore - Fornitore oid"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg6o#ada21o#spd30o" name="Success Port" gr:x="0" gr:y="400"/>
+  <ErrorPortDefinition id="mpkg6o#ada21o#epd30o" name="Error Port" gr:x="0" gr:y="45"/>
+  <Operations>
+    <Save gr:x="620" gr:y="360" id="mpkg6o#ada21o#svu11o" action="create" dataBinding="cls14o">
+      <SuccessFlow id="mpkg6o#ada21o#svu11o#sf260o" to="mpkg6o#ada21o#act37o">
+        <ParameterBinding id="mpkg6o#ada21o#svu11o#sf260o#par292o" sourceValue="${tipoAzioneLog.inserimentoComunicazione}" target="mpkg6o#ada21o#act37o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.inserimentoComunicazione}&quot; - Tipo azione"/>
+        <ParameterBinding id="mpkg6o#ada21o#svu11o#sf260o#par293o" sourceImplicitParameter="userName" target="mpkg6o#ada21o#act37o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+      </SuccessFlow>
+    </Save>
+    <Selector gr:x="640" gr:y="180" id="mpkg6o#ada21o#seu33o" dataBinding="User">
+      <ConditionalExpression id="mpkg6o#ada21o#seu33o#sc65o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg6o#ada21o#seu33o#sc65o#acond30o" name="useriD" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg6o#ada21o#seu33o#sf259o" to="mpkg6o#ada21o#svu11o" automaticCoupling="true"/>
+    </Selector>
+  </Operations>
+  <Action id="mpkg6o#ada21o#act36o" gr:x="390" gr:y="95" definition="mpkg6o#ada22o">
+    <Events>
+      <SuccessEvent id="mpkg6o#ada21o#act36o#scce35o" definition="mpkg6o#ada22o#spd31o">
+        <SuccessFlow id="mpkg6o#ada21o#act36o#scce35o#sf258o" to="mpkg6o#ada21o#seu33o">
+          <ParameterBinding id="mpkg6o#ada21o#act36o#scce35o#sf258o#par290o" sourceImplicitParameter="userName" target="mpkg6o#ada21o#seu33o#sc65o#acond30o" name="User ID - useriD"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg6o#ada21o#act36o#erre38o" definition="mpkg6o#ada22o#epd31o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg6o#ada21o#act37o" gr:x="875" gr:y="380" definition="mpkg2#ada19o">
+    <Events>
+      <SuccessEvent id="mpkg6o#ada21o#act37o#scce36o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg6o#ada21o#act37o#scce36o#sf261o" to="mpkg6o#ada21o#spd30o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg6o#ada21o#act37o#erre39o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

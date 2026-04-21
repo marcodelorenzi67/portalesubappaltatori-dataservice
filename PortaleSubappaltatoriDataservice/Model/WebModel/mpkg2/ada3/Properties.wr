@@ -10,12 +10,14 @@
       <ParameterBinding id="mpkg2#ada3#ipd4#df8#par27" source="mpkg2#ada3#ipd4#pdp12" target="mpkg2#ada3#mlu1.Cognome" name="Cognome - Cognome"/>
       <ParameterBinding id="mpkg2#ada3#ipd4#df8#par28" source="mpkg2#ada3#ipd4#pdp13" target="mpkg2#ada3#mlu1.url" name="url - url"/>
       <ParameterBinding id="mpkg2#ada3#ipd4#df8#par149" source="mpkg2#ada3#ipd4#pdp43" target="mpkg2#ada3#mlu1.token" name="token - token"/>
+      <ParameterBinding id="mpkg2#ada3#ipd4#df8#par280o" source="mpkg2#ada3#ipd4#pdp99o" target="mpkg2#ada3#mlu1.ragioneSociale" name="ragioneSociale - ragioneSociale"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp10" array="false" name="Email" type="string"/>
     <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp11" array="false" name="Nome" type="string"/>
     <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp12" array="false" name="Cognome" type="string"/>
     <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp13" array="false" name="url" type="string"/>
     <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp43" array="false" name="token" type="string"/>
+    <PortDefinitionParameter id="mpkg2#ada3#ipd4#pdp99o" array="false" name="ragioneSociale" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg2#ada3#spd4" name="Success Port" gr:x="0" gr:y="315"/>
   <ErrorPortDefinition id="mpkg2#ada3#epd4" name="Error Port" gr:x="0" gr:y="95"/>
@@ -36,6 +38,7 @@
       <Placeholder id="mpkg2#ada3#mlu1#ph2" name="Nome"/>
       <Placeholder id="mpkg2#ada3#mlu1#ph3" name="url"/>
       <Placeholder id="mpkg2#ada3#mlu1#ph4" name="token"/>
+      <Placeholder id="mpkg2#ada3#mlu1#ph5o" name="ragioneSociale"/>
     </Mail>
   </Operations>
 </ActionDefinition>

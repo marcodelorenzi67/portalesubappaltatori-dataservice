@@ -264,3 +264,42 @@ create table "public"."sub_fornitore_tenant" (
 );
 alter table "public"."sub_fornitore_tenant"   add constraint fk_fornitore_tenant_fornitore foreign key ("fornitore_oid") references "public"."sub_fornitore" ("oid");
 alter table "public"."sub_fornitore_tenant"   add constraint fk_fornitore_tenant_tenant foreign key ("tenant_oid") references "public"."sub_tenant" ("oid");
+
+-- Log [cls13o]
+create table "public"."sub_log" (
+   "oid"  int4  not null,
+   "tipo_azione"  varchar(255),
+   "timestamp_log"  timestamp,
+  primary key ("oid")
+);
+
+
+-- Log_User [as20o]
+alter table "public"."sub_log"  add column  "user_oid"  int4;
+alter table "public"."sub_log"   add constraint fk_log_user foreign key ("user_oid") references "public"."sub_user" ("oid");
+
+
+-- Log_Fornitore [as21o]
+alter table "public"."sub_log"  add column  "fornitore_oid"  int4;
+alter table "public"."sub_log"   add constraint fk_log_fornitore foreign key ("fornitore_oid") references "public"."sub_fornitore" ("oid");
+
+-- Comunicazione [cls14o]
+create table "public"."sub_comunicazione" (
+   "oid"  int4  not null,
+   "note"  text,
+   "oggetto"  varchar(255),
+  primary key ("oid")
+);
+
+
+-- Comunicazione_User [as22o]
+alter table "public"."sub_comunicazione"  add column  "user_oid"  int4;
+alter table "public"."sub_comunicazione"   add constraint fk_comunicazione_user foreign key ("user_oid") references "public"."sub_user" ("oid");
+
+
+-- Comunicazione_Fornitore [as23o]
+alter table "public"."sub_comunicazione"  add column  "fornitore_oid"  int4;
+alter table "public"."sub_comunicazione"   add constraint fk_comunicazione_fornitore foreign key ("fornitore_oid") references "public"."sub_fornitore" ("oid");
+
+-- Comunicazione [cls14o]
+alter table "public"."sub_comunicazione"  add column  "backoffice"  bool;

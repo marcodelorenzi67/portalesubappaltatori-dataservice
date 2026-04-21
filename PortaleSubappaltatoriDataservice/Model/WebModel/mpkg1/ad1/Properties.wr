@@ -22,7 +22,18 @@
       <TargetConditionalExpression id="mpkg1#ad1#dcnu3#sc48" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg1#ad1#dcnu3#sc48#kcond32" predicate="in" implied="false" name="KeyCondition28"/>
       </TargetConditionalExpression>
-      <SuccessFlow id="mpkg1#ad1#dcnu3#sf161" to="mpkg1#ad1#spd19" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg1#ad1#dcnu3#sf161" to="mpkg1#ad1#act30o">
+        <ParameterBinding id="mpkg1#ad1#dcnu3#sf161#par257o" sourceImplicitParameter="userName" target="mpkg1#ad1#act30o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+        <ParameterBinding id="mpkg1#ad1#dcnu3#sf161#par258o" sourceValue="${tipoAzioneLog.cancAllegatoTipoAzienda}" target="mpkg1#ad1#act30o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.cancAllegatoTipoAzienda}&quot; - Tipo azione"/>
+      </SuccessFlow>
     </Disconnect>
   </Operations>
+  <Action id="mpkg1#ad1#act30o" definition="mpkg2#ada19o" gr:x="950" gr:y="160">
+    <Events>
+      <SuccessEvent id="mpkg1#ad1#act30o#scce31o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg1#ad1#act30o#scce31o#sf228o" to="mpkg1#ad1#spd19" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ad1#act30o#erre34o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
 </ActionDefinition>

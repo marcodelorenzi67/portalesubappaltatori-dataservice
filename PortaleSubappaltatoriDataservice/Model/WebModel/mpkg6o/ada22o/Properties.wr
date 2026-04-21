@@ -1,0 +1,21 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#ada22o" name="_Verifica utente fornitore" defaultSuccessPortDefinition="mpkg6o#ada22o#spd31o" defaultErrorPortDefinition="mpkg6o#ada22o#epd31o">
+  <InputPortDefinition id="mpkg6o#ada22o#ipd31o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg6o#ada22o#ipd31o#sf254o" to="mpkg6o#ada22o#seu32o">
+      <ParameterBinding id="mpkg6o#ada22o#ipd31o#sf254o#par283o" sourceImplicitParameter="userName" target="mpkg6o#ada22o#seu32o#sc63o#acond29o" name="User ID - userID"/>
+      <ParameterBinding id="mpkg6o#ada22o#ipd31o#sf254o#par284o" source="mpkg6o#ada22o#ipd31o#pdp100o" target="mpkg6o#ada22o#seu32o#sc63o#rcond12o.cls2#att6" name="fornitore - fornitore [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg6o#ada22o#ipd31o#pdp100o" name="fornitore" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg6o#ada22o#spd31o" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg6o#ada22o#epd31o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="400" gr:y="145" id="mpkg6o#ada22o#seu32o" dataBinding="User">
+      <SuccessFlow id="mpkg6o#ada22o#seu32o#sf255o" to="mpkg6o#ada22o#spd31o" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg6o#ada22o#seu32o#sc63o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg6o#ada22o#seu32o#sc63o#acond29o" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+        <AssociationRoleCondition id="mpkg6o#ada22o#seu32o#sc63o#rcond12o" name="fornitore" predicate="in" implied="false" role="as2#role4"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg6o#ada22o#seu32o#sf256o" to="mpkg6o#ada22o#epd31o" automaticCoupling="true" code="Not Found"/>
+    </Selector>
+  </Operations>
+</ActionDefinition>

@@ -4,7 +4,7 @@
       <ParameterBinding id="mpkg3#ada4#ipd6#sf44#par39" source="mpkg3#ada4#ipd6#pdp19" target="mpkg3#ada4#seu6#sc10#acond6" name="token - token"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg3#ada4#ipd6#pdp19" array="false" name="token" type="string"/>
-    <DataFlow id="mpkg3#ada4#ipd6#df30" to="mpkg3#ada4#act8">
+    <DataFlow id="mpkg3#ada4#ipd6#df30" to="mpkg3#ada4#act8" gr:bendpoints="11.0 132.0">
       <ParameterBinding id="mpkg3#ada4#ipd6#df30#par94" source="mpkg3#ada4#ipd6#pdp28" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp24" name="Password - Password"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg3#ada4#ipd6#pdp28" array="false" name="Password" type="string"/>
@@ -27,6 +27,8 @@
         <ParameterBinding id="mpkg3#ada4#seu6#df20#par75" source="cls4#att19Array" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp21" name="Cognome - Cognome"/>
         <ParameterBinding id="mpkg3#ada4#seu6#df20#par76" source="cls4#att20Array" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp22" name="Email - Email"/>
         <ParameterBinding id="mpkg3#ada4#seu6#df20#par77" source="cls4#att18Array" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp23" name="Nome - Nome"/>
+        <ParameterBinding id="mpkg3#ada4#seu6#df20#par272o" source="as4#role7_cls2#att6Array" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp90o" name="Pre RegistrazioneToFornitore.oid - Fornitore"/>
+        <ParameterBinding id="mpkg3#ada4#seu6#df20#par273o" source="cls4#att50Array" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp91o" name="Backoffice - Backoffice"/>
       </DataFlow>
       <DataFlow id="mpkg3#ada4#seu6#df39" to="mpkg3#ada4#act9">
         <ParameterBinding id="mpkg3#ada4#seu6#df39#par140" sourceValue="${token.invito}" target="mpkg3#ada4#act9.mpkg3#ada6#ipd8#pdp27" name="&quot;${token.invito}&quot; - Tipo token"/>
@@ -38,6 +40,9 @@
       </DataFlow>
       <DataFlow id="mpkg3#ada4#seu6#df68o" to="mpkg3#ada4#switch8o">
         <ParameterBinding id="mpkg3#ada4#seu6#df68o#par244o" source="cls4#att50Array" target="mpkg3#ada4#switch8o.switch" name="Backoffice - Switch"/>
+      </DataFlow>
+      <DataFlow id="mpkg3#ada4#seu6#df81o" to="mpkg3#ada4#act35o">
+        <ParameterBinding id="mpkg3#ada4#seu6#df81o#par282o" source="as4#role7_cls2#att6Array" target="mpkg3#ada4#act35o.mpkg2#ada19o#ipd27o#pdp92o" name="Pre RegistrazioneToFornitore.oid - Fornitore oid"/>
       </DataFlow>
     </Selector>
     <Switch gr:x="500" gr:y="260" id="mpkg3#ada4#switch2" name="attivo">
@@ -57,18 +62,21 @@
     <Switch id="mpkg3#ada4#switch8o" name="Backoffice" gr:x="925" gr:y="660">
       <Case value="true"/>
       <SuccessFlow id="mpkg3#ada4#switch8o#sf212o" to="mpkg3#ada4#act27o" automaticCoupling="true"/>
-      <SuccessFlow id="mpkg3#ada4#switch8o#sf213o" to="mpkg3#ada4#act9" automaticCoupling="true" code="true"/>
+      <SuccessFlow id="mpkg3#ada4#switch8o#sf213o" to="mpkg3#ada4#act35o" automaticCoupling="true" code="true"/>
     </Switch>
   </Operations>
   <Action id="mpkg3#ada4#act8" gr:x="765" gr:y="555" definition="mpkg3#ada5">
     <Events>
       <SuccessEvent id="mpkg3#ada4#act8#scce8" definition="mpkg3#ada5#spd7">
         <SuccessFlow id="mpkg3#ada4#act8#scce8#sf88" to="mpkg3#ada4#switch8o" automaticCoupling="true"/>
+        <DataFlow id="mpkg3#ada4#act8#scce8#df74o" to="mpkg3#ada4#act35o">
+          <ParameterBinding id="mpkg3#ada4#act8#scce8#df74o#par267o" source="mpkg3#ada5#spd7#pdp95o" target="mpkg3#ada4#act35o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+        </DataFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg3#ada4#act8#erre8" definition="mpkg3#ada5#epd7"/>
     </Events>
   </Action>
-  <Action id="mpkg3#ada4#act9" gr:x="1355" gr:y="665" definition="mpkg3#ada6">
+  <Action id="mpkg3#ada4#act9" gr:x="1705" gr:y="680" definition="mpkg3#ada6">
     <Events>
       <SuccessEvent id="mpkg3#ada4#act9#scce9" definition="mpkg3#ada6#spd8">
         <SuccessFlow id="mpkg3#ada4#act9#scce9#sf89" to="mpkg3#ada4#spd6" automaticCoupling="true"/>
@@ -79,9 +87,19 @@
   <Action id="mpkg3#ada4#act27o" gr:x="1090" gr:y="530" definition="tlads0#ada17o">
     <Events>
       <SuccessEvent id="mpkg3#ada4#act27o#scce28o" definition="tlads0#ada17o#spd25o">
-        <SuccessFlow id="mpkg3#ada4#act27o#scce28o#sf214o" to="mpkg3#ada4#act9" automaticCoupling="true"/>
+        <SuccessFlow id="mpkg3#ada4#act27o#scce28o#sf214o" to="mpkg3#ada4#act35o">
+          <ParameterBinding id="mpkg3#ada4#act27o#scce28o#sf214o#par265o" sourceValue="${tipoAzioneLog.fornitoreRegistrato}" target="mpkg3#ada4#act35o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.fornitoreRegistrato}&quot; - Tipo azione"/>
+        </SuccessFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg3#ada4#act27o#erre31o" definition="tlads0#ada17o#epd25o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada4#act35o" definition="mpkg2#ada19o" gr:x="1450" gr:y="620">
+    <Events>
+      <SuccessEvent id="mpkg3#ada4#act35o#scce34o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg3#ada4#act35o#scce34o#sf231o" to="mpkg3#ada4#act9" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada4#act35o#erre37o" definition="mpkg2#ada19o#epd27o"/>
     </Events>
   </Action>
 </ActionDefinition>

@@ -46,7 +46,11 @@
       <TargetConditionalExpression id="mpkg5o#ada16o#cnu6o#sc55o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#ada16o#cnu6o#sc55o#kcond36o" name="KeyCondition36" predicate="in" implied="false"/>
       </TargetConditionalExpression>
-      <SuccessFlow id="mpkg5o#ada16o#cnu6o#sf195o" to="mpkg5o#ada16o#spd24o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg5o#ada16o#cnu6o#sf195o" to="mpkg5o#ada16o#act31o">
+        <ParameterBinding id="mpkg5o#ada16o#cnu6o#sf195o#par259o" source="sourcecls2#att6" target="mpkg5o#ada16o#act31o.mpkg2#ada19o#ipd27o#pdp92o" name="Source oid [Fornitore] - Fornitore oid"/>
+        <ParameterBinding id="mpkg5o#ada16o#cnu6o#sf195o#par260o" sourceImplicitParameter="userName" target="mpkg5o#ada16o#act31o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+        <ParameterBinding id="mpkg5o#ada16o#cnu6o#sf195o#par261o" sourceValue="${tipoAzioneLog.salvatoFornitore}" target="mpkg5o#ada16o#act31o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.salvatoFornitore}&quot; - Tipo azione"/>
+      </SuccessFlow>
     </Connect>
   </Operations>
   <Action id="mpkg5o#ada16o#act19o" gr:x="625" gr:y="180" definition="tlads0#ada17o">
@@ -55,6 +59,14 @@
         <SuccessFlow id="mpkg5o#ada16o#act19o#scce19o#sf194o" to="mpkg5o#ada16o#cnu6o" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="mpkg5o#ada16o#act19o#erre19o" definition="tlads0#ada17o#epd25o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ada16o#act31o" gr:x="1350" gr:y="350" definition="mpkg2#ada19o">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada16o#act31o#scce32o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg5o#ada16o#act31o#scce32o#sf229o" to="mpkg5o#ada16o#spd24o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada16o#act31o#erre35o" definition="mpkg2#ada19o#epd27o"/>
     </Events>
   </Action>
 </ActionDefinition>
