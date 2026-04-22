@@ -20,6 +20,9 @@
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp77o" name="tenant" array="true" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp88o" array="false" name="Tipologia Azienda oid" type="integer"/>
+    <DataFlow id="mpkg5o#ada16o#ipd24o#df95o" to="mpkg5o#ada16o#seu39o" gr:bendpoints="-3.0 235.0">
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#df95o#par349o" source="mpkg5o#ada16o#ipd24o#pdp88o" target="mpkg5o#ada16o#seu39o#sc78o#rcond16o.cls10#att45" name="Tipologia Azienda oid - tipo azienda [oid]"/>
+    </DataFlow>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada16o#spd24o" name="Success Port" gr:x="0" gr:y="280">
     <PortDefinitionParameter id="mpkg5o#ada16o#spd24o#pdp86o" array="false" name="oid" type="integer"/>
@@ -46,12 +49,32 @@
       <TargetConditionalExpression id="mpkg5o#ada16o#cnu6o#sc55o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#ada16o#cnu6o#sc55o#kcond36o" name="KeyCondition36" predicate="in" implied="false"/>
       </TargetConditionalExpression>
-      <SuccessFlow id="mpkg5o#ada16o#cnu6o#sf195o" to="mpkg5o#ada16o#act31o">
+      <DataFlow id="mpkg5o#ada16o#cnu6o#sf195o" to="mpkg5o#ada16o#act31o" gr:bendpoints="96,-75,-104,-75">
         <ParameterBinding id="mpkg5o#ada16o#cnu6o#sf195o#par259o" source="sourcecls2#att6" target="mpkg5o#ada16o#act31o.mpkg2#ada19o#ipd27o#pdp92o" name="Source oid [Fornitore] - Fornitore oid"/>
         <ParameterBinding id="mpkg5o#ada16o#cnu6o#sf195o#par260o" sourceImplicitParameter="userName" target="mpkg5o#ada16o#act31o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
         <ParameterBinding id="mpkg5o#ada16o#cnu6o#sf195o#par261o" sourceValue="${tipoAzioneLog.salvatoFornitore}" target="mpkg5o#ada16o#act31o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.salvatoFornitore}&quot; - Tipo azione"/>
-      </SuccessFlow>
+      </DataFlow>
+      <SuccessFlow id="mpkg5o#ada16o#cnu6o#sf298o" to="mpkg5o#ada16o#dlu6o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ada16o#cnu6o#df97o" to="mpkg5o#ada16o#act43o">
+        <ParameterBinding id="mpkg5o#ada16o#cnu6o#df97o#par351o" source="sourcecls2#att6" target="mpkg5o#ada16o#act43o.mpkg5o#ada24o#ipd35o#pdp131o" name="Source oid [Fornitore] - Fornitore.oid"/>
+        <ParameterBinding id="mpkg5o#ada16o#cnu6o#df97o#par352o" source="targetcls1#att1" target="mpkg5o#ada16o#act43o.mpkg5o#ada24o#ipd35o#pdp129o" name="Target oid [Tenant] - Tenant"/>
+      </DataFlow>
     </Connect>
+    <Delete gr:x="1310" gr:y="305" id="mpkg5o#ada16o#dlu6o" dataBinding="cls5">
+      <ConditionalExpression id="mpkg5o#ada16o#dlu6o#sc77o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ada16o#dlu6o#sc77o#rcond15o" name="fornitore" predicate="in" implied="false" role="as6#role12"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada16o#dlu6o#sf300o" to="mpkg5o#ada16o#seu39o" automaticCoupling="true"/>
+    </Delete>
+    <Selector gr:x="1455" gr:y="480" id="mpkg5o#ada16o#seu39o" dataBinding="cls8">
+      <SuccessFlow id="mpkg5o#ada16o#seu39o#sf301o" to="mpkg5o#ada16o#act43o">
+        <ParameterBinding id="mpkg5o#ada16o#seu39o#sf301o#par350o" source="cls8#att37Array" target="mpkg5o#ada16o#act43o.mpkg5o#ada24o#ipd35o#pdp130o" name="oid - Tipologia Allegati.oid(AllegatiToTipologia Allegati)"/>
+        <ParameterBinding id="mpkg5o#ada16o#seu39o#sf301o#par363o" sourceValue="true" target="mpkg5o#ada16o#act43o.mpkg5o#ada24o#ipd35o#pdp136o" name="&quot;true&quot; - Mandatory"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg5o#ada16o#seu39o#sc78o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ada16o#seu39o#sc78o#rcond16o" name="tipo azienda" predicate="in" implied="false" role="as14#role27"/>
+      </ConditionalExpression>
+    </Selector>
   </Operations>
   <Action id="mpkg5o#ada16o#act19o" gr:x="625" gr:y="180" definition="tlads0#ada17o">
     <Events>
@@ -61,12 +84,20 @@
       <ErrorEvent id="mpkg5o#ada16o#act19o#erre19o" definition="tlads0#ada17o#epd25o"/>
     </Events>
   </Action>
-  <Action id="mpkg5o#ada16o#act31o" gr:x="1350" gr:y="350" definition="mpkg2#ada19o">
+  <Action id="mpkg5o#ada16o#act31o" gr:x="2055" gr:y="410" definition="mpkg2#ada19o">
     <Events>
       <SuccessEvent id="mpkg5o#ada16o#act31o#scce32o" definition="mpkg2#ada19o#spd27o">
         <SuccessFlow id="mpkg5o#ada16o#act31o#scce32o#sf229o" to="mpkg5o#ada16o#spd24o" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="mpkg5o#ada16o#act31o#erre35o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ada16o#act43o" gr:x="1805" gr:y="550" definition="mpkg5o#ada24o">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada16o#act43o#scce42o" definition="mpkg5o#ada24o#spd35o">
+        <SuccessFlow id="mpkg5o#ada16o#act43o#scce42o#sf302o" to="mpkg5o#ada16o#act31o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada16o#act43o#erre45o" definition="mpkg5o#ada24o#epd35o"/>
     </Events>
   </Action>
 </ActionDefinition>

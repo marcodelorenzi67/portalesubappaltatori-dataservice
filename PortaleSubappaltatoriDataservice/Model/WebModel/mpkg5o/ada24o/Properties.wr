@@ -1,0 +1,68 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada24o" name="Crea allegati per fornitore" defaultSuccessPortDefinition="mpkg5o#ada24o#spd35o" defaultErrorPortDefinition="mpkg5o#ada24o#epd35o">
+  <InputPortDefinition id="mpkg5o#ada24o#ipd35o" gr:x="0" gr:y="-15">
+    <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp129o" name="Tenant" type="integer" array="true"/>
+    <DataFlow id="mpkg5o#ada24o#ipd35o#df91o" to="mpkg5o#ada24o#svu15o" gr:bendpoints="6.0 145.0">
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par340o" source="mpkg5o#ada24o#ipd35o#pdp130o" target="mpkg5o#ada24o#svu15o.as11#role21.cls8#att37" name="Tipologia Allegati.oid(AllegatiToTipologia Allegati) - Tipologia Allegati.oid(AllegatiToTipologia Allegati)"/>
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par341o" source="mpkg5o#ada24o#ipd35o#pdp131o" target="mpkg5o#ada24o#svu15o.as6#role11.cls2#att6" name="Fornitore.oid(DocumentazioneToFornitore) - Fornitore.oid(DocumentazioneToFornitore)"/>
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par362o" source="mpkg5o#ada24o#ipd35o#pdp136o" target="mpkg5o#ada24o#svu15o.cls5#att90o" name="Mandatory - Mandatory"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp130o" array="true" name="Tipologia Allegati.oid(AllegatiToTipologia Allegati)" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp131o" array="false" name="Fornitore.oid" type="integer"/>
+    <DataFlow id="mpkg5o#ada24o#ipd35o#sf287o" to="mpkg5o#ada24o#lpu2o" gr:bendpoints="25.0 31.0">
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#sf287o#par338o" source="mpkg5o#ada24o#ipd35o#pdp129o" target="mpkg5o#ada24o#lpu2o.array" name="Tenant - Input Array"/>
+    </DataFlow>
+    <SuccessFlow id="mpkg5o#ada24o#ipd35o#sf290o" to="mpkg5o#ada24o#act42o">
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#sf290o#par347o" sourceValue="${statoAllegato.bozza}" target="mpkg5o#ada24o#act42o.mpkg5o#adf10o#ipd36o#pdp132o" name="&quot;${statoAllegato.bozza}&quot; - codice"/>
+    </SuccessFlow>
+    <DataFlow id="mpkg5o#ada24o#ipd35o#df98o" to="mpkg5o#ada24o#act44o" gr:bendpoints="16.0 85.0">
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df98o#par353o" source="mpkg5o#ada24o#ipd35o#pdp131o" target="mpkg5o#ada24o#act44o.mpkg2#ada19o#ipd27o#pdp92o" name="Fornitore.oid - Fornitore oid"/>
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df98o#par354o" sourceImplicitParameter="userName" target="mpkg5o#ada24o#act44o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df98o#par355o" sourceValue="${tipoAzioneLog.inseritoTipoAllegatoPerFornitore}" target="mpkg5o#ada24o#act44o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.inseritoTipoAllegatoPerFornitore}&quot; - Tipo azione"/>
+    </DataFlow>
+    <DataFlow id="mpkg5o#ada24o#ipd35o#df99o" to="mpkg5o#ada24o#spd35o">
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df99o#par356o" source="mpkg5o#ada24o#ipd35o#pdp131o" target="mpkg5o#ada24o#spd35o#pdp134o" name="Fornitore.oid - Fornitore.oid"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp136o" array="false" name="Mandatory" type="boolean"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada24o#spd35o" name="Success Port" gr:x="0" gr:y="140">
+    <PortDefinitionParameter id="mpkg5o#ada24o#spd35o#pdp134o" array="false" name="Fornitore.oid" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#ada24o#epd35o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Loop gr:x="650" gr:y="50" id="mpkg5o#ada24o#lpu2o" name="Tenant">
+      <SuccessFlow id="mpkg5o#ada24o#lpu2o#sf288o" to="mpkg5o#ada24o#act44o" automaticCoupling="true" code="end"/>
+      <SuccessFlow id="mpkg5o#ada24o#lpu2o#sf289o" to="mpkg5o#ada24o#svu15o" code="next">
+        <ParameterBinding id="mpkg5o#ada24o#lpu2o#sf289o#par344o" source="next" target="mpkg5o#ada24o#svu15o.as19#role37.cls1#att1" name="Next Element - Tenant.oid(AllegatiToTenant)"/>
+      </SuccessFlow>
+    </Loop>
+    <Save gr:x="620" gr:y="265" id="mpkg5o#ada24o#svu15o" action="create" dataBinding="cls5" bulk="true">
+      <SuccessFlow id="mpkg5o#ada24o#svu15o#sf292o" to="mpkg5o#ada24o#lpu2o" automaticCoupling="true"/>
+    </Save>
+    <Time gr:x="480" gr:y="10" id="mpkg5o#ada24o#tmu5o" name="Time">
+      <SuccessFlow id="mpkg5o#ada24o#tmu5o#sf291o" to="mpkg5o#ada24o#lpu2o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ada24o#tmu5o#df93o" to="mpkg5o#ada24o#svu15o">
+        <ParameterBinding id="mpkg5o#ada24o#tmu5o#df93o#par342o" sourceValue="true" target="mpkg5o#ada24o#svu15o.cls5#att35" name="&quot;true&quot; - Corrente"/>
+        <ParameterBinding id="mpkg5o#ada24o#tmu5o#df93o#par343o" source="currentTimestamp" target="mpkg5o#ada24o#svu15o.cls5#att36" name="Current/Input Timestamp - Created At"/>
+      </DataFlow>
+    </Time>
+  </Operations>
+  <Action id="mpkg5o#ada24o#act42o" gr:x="80" gr:y="-20" definition="mpkg5o#adf10o">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada24o#act42o#scce41o" definition="mpkg5o#adf10o#spd36o">
+        <SuccessFlow id="mpkg5o#ada24o#act42o#scce41o#sf297o" to="mpkg5o#ada24o#tmu5o" automaticCoupling="true"/>
+        <DataFlow id="mpkg5o#ada24o#act42o#scce41o#df94o" to="mpkg5o#ada24o#svu15o" gr:bendpoints="39.0 139.0">
+          <ParameterBinding id="mpkg5o#ada24o#act42o#scce41o#df94o#par348o" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg5o#ada24o#svu15o.as24o#role47o.cls15o#att83o" name="oid - Stato Allegato.oid(AllegatiToStato Allegato)"/>
+        </DataFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada24o#act42o#erre44o" definition="mpkg5o#adf10o#epd36o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ada24o#act44o" gr:x="800" gr:y="115" definition="mpkg2#ada19o">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada24o#act44o#scce43o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg5o#ada24o#act44o#scce43o#sf303o" to="mpkg5o#ada24o#spd35o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada24o#act44o#erre46o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

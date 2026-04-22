@@ -55,7 +55,7 @@
     </Selector>
     <ParameterCollector gr:x="850" gr:y="410" id="mpkg5o#ada23o#pcu2o" name="user">
       <SuccessFlow id="mpkg5o#ada23o#pcu2o#sf278o" to="mpkg5o#ada23o#act41o">
-        <ParameterBinding id="mpkg5o#ada23o#pcu2o#sf278o#par322o" sourceImplicitParameter="userName" target="mpkg5o#ada23o#act41o._identity_update$userID" name="User ID - User ID"/>
+        <ParameterBinding id="mpkg5o#ada23o#pcu2o#sf278o#par322o" target="mpkg5o#ada23o#act41o._identity_update$userID" name="User ID - User ID" source="mpkg5o#ada23o#pcu2o#pcp2o"/>
       </SuccessFlow>
       <CollectorParameter id="mpkg5o#ada23o#pcu2o#pcp2o" name="userID"/>
     </ParameterCollector>

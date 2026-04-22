@@ -59,3 +59,19 @@ VALUES(2, true, 'I', 'Invitato');
 INSERT INTO public.sub_stato_registrazione
 ("oid", attivo, codice, descrizione)
 VALUES(3, true, 'R', 'Registrato');
+
+INSERT INTO public.sub_stato_allegato
+("oid", attivo, codice, descrizione)
+VALUES(1, true, 'B', 'In Bozza');
+INSERT INTO public.sub_stato_allegato
+("oid", attivo, codice, descrizione)
+VALUES(2, true, 'I', 'Inserito');
+INSERT INTO public.sub_stato_allegato
+("oid", attivo, codice, descrizione)
+VALUES(3, true, 'V', 'In Valutazione');
+INSERT INTO public.sub_stato_allegato
+("oid", attivo, codice, descrizione)
+VALUES(4, true, 'R', 'Rigettato');
+INSERT INTO public.sub_stato_allegato
+("oid", attivo, codice, descrizione)
+VALUES(5, true, 'A', 'Approvato');

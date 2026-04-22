@@ -303,3 +303,30 @@ alter table "public"."sub_comunicazione"   add constraint fk_comunicazione_forni
 
 -- Comunicazione [cls14o]
 alter table "public"."sub_comunicazione"  add column  "backoffice"  bool;
+
+
+-- Fornitore [cls2]
+alter table "public"."sub_fornitore"  add column  "attrezzature"  bool;
+alter table "public"."sub_fornitore"  add column  "mezzi"  bool;
+alter table "public"."sub_fornitore"  add column  "prodotti"  bool;
+alter table "public"."sub_fornitore"  add column  "sostanze_chimiche"  bool;
+
+-- Stato Allegato [cls15o]
+create table "public"."sub_stato_allegato" (
+   "oid"  int4  not null,
+   "attivo"  bool,
+   "codice"  varchar(255),
+   "descrizione"  varchar(255),
+  primary key ("oid")
+);
+
+
+-- Allegati_Stato Allegato [as24o]
+alter table "public"."sub_allegati"  add column  "stato_allegato_oid"  int4;
+alter table "public"."sub_allegati"   add constraint fk_allegati_stato_allegato foreign key ("stato_allegato_oid") references "public"."sub_stato_allegato" ("oid");
+
+-- Allegati [cls5]
+alter table "public"."sub_allegati"  add column  "mandatory"  bool;
+
+-- Allegati [cls5]
+alter table "public"."sub_allegati"  add column  "valutato_il"  timestamp;

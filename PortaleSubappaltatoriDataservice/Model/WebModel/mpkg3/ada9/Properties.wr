@@ -19,7 +19,7 @@
     <Selector gr:x="185" gr:y="80" id="mpkg3#ada9#seu18" dataBinding="User">
       <SuccessFlow id="mpkg3#ada9#seu18#sf132" to="mpkg3#ada9#epd15" automaticCoupling="true" code="Not Found"/>
       <ConditionalExpression id="mpkg3#ada9#seu18#sc34" defaultPolicy="fill" booleanOperator="and">
-        <AttributesCondition id="mpkg3#ada9#seu18#sc34#acond15" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
+        <AttributesCondition id="mpkg3#ada9#seu18#sc34#acond15" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="userName" ignoreCase="true"/>
       </ConditionalExpression>
       <DataFlow id="mpkg3#ada9#seu18#df40" to="mpkg3#ada9#svu5" automaticCoupling="true"/>
       <DataFlow id="mpkg3#ada9#seu18#df41" to="mpkg3#ada9#act18">

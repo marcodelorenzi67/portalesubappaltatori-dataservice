@@ -1,0 +1,22 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#adf10o" name="_Get stato allegato" type="read" defaultSuccessPortDefinition="mpkg5o#adf10o#spd36o" defaultErrorPortDefinition="mpkg5o#adf10o#epd36o">
+  <InputPortDefinition id="mpkg5o#adf10o#ipd36o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#adf10o#ipd36o#sf295o" to="mpkg5o#adf10o#seu38o">
+      <ParameterBinding id="mpkg5o#adf10o#ipd36o#sf295o#par345o" source="mpkg5o#adf10o#ipd36o#pdp132o" target="mpkg5o#adf10o#seu38o#sc74o#acond32o" name="codice - codice"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#adf10o#ipd36o#pdp132o" array="false" name="codice" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#adf10o#spd36o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#adf10o#spd36o#pdp133o" array="false" name="oid" type="integer" key="true"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#adf10o#epd36o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="405" gr:y="80" id="mpkg5o#adf10o#seu38o" dataBinding="cls15o">
+      <SuccessFlow id="mpkg5o#adf10o#seu38o#sf296o" to="mpkg5o#adf10o#spd36o">
+        <ParameterBinding id="mpkg5o#adf10o#seu38o#sf296o#par346o" source="cls15o#att83oArray" target="mpkg5o#adf10o#spd36o#pdp133o" name="oid - oid"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg5o#adf10o#seu38o#sc74o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg5o#adf10o#seu38o#sc74o#acond32o" name="codice" predicate="eq" booleanOperator="or" implied="false" attributes="cls15o#att85o"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

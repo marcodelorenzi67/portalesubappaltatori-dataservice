@@ -1,0 +1,30 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada25o" name="Elimina allegato" defaultSuccessPortDefinition="mpkg5o#ada25o#spd37o" defaultErrorPortDefinition="mpkg5o#ada25o#epd37o">
+  <InputPortDefinition id="mpkg5o#ada25o#ipd37o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#ada25o#ipd37o#sf306o" to="mpkg5o#ada25o#seu40o">
+      <ParameterBinding id="mpkg5o#ada25o#ipd37o#sf306o#par357o" source="mpkg5o#ada25o#ipd37o#pdp135o" target="mpkg5o#ada25o#seu40o#sc79o#kcond45o.cls5#att22" name="KeyCondition [oid] - KeyCondition [oid]"/>
+      <ParameterBinding id="mpkg5o#ada25o#ipd37o#sf306o#par358o" sourceValue="${statoAllegato.bozza}" target="mpkg5o#ada25o#seu40o#sc79o#acond34o" name="&quot;${statoAllegato.bozza}&quot; - codice stato"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#ada25o#ipd37o#pdp135o" array="false" name="oid" type="integer"/>
+    <DataFlow id="mpkg5o#ada25o#ipd37o#df100o" to="mpkg5o#ada25o#dlu7o" gr:bendpoints="5.0 169.0">
+      <ParameterBinding id="mpkg5o#ada25o#ipd37o#df100o#par361o" source="mpkg5o#ada25o#ipd37o#pdp135o" target="mpkg5o#ada25o#dlu7o#sc80o#kcond46o.cls5#att22" name="oid - KeyCondition46 [oid]"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada25o#spd37o" name="Success Port" gr:x="0" gr:y="365"/>
+  <ErrorPortDefinition id="mpkg5o#ada25o#epd37o" name="Error Port" gr:x="0" gr:y="40"/>
+  <Operations>
+    <Selector gr:x="365" gr:y="80" id="mpkg5o#ada25o#seu40o" dataBinding="cls5">
+      <ConditionalExpression id="mpkg5o#ada25o#seu40o#sc79o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada25o#seu40o#sc79o#kcond45o" name="KeyCondition" predicate="in" implied="false"/>
+        <AttributesCondition id="mpkg5o#ada25o#seu40o#sc79o#acond34o" name="codice stato" predicate="eq" booleanOperator="or" implied="false" attributes="as24o#role47o.cls15o#att85o"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada25o#seu40o#sf308o" to="mpkg5o#ada25o#dlu7o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg5o#ada25o#seu40o#sf310o" to="mpkg5o#ada25o#spd37o" code="Not Found" automaticCoupling="true"/>
+    </Selector>
+    <Delete gr:x="475" gr:y="345" id="mpkg5o#ada25o#dlu7o" dataBinding="cls5">
+      <ConditionalExpression id="mpkg5o#ada25o#dlu7o#sc80o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada25o#dlu7o#sc80o#kcond46o" name="KeyCondition46" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada25o#dlu7o#sf309o" to="mpkg5o#ada25o#spd37o" automaticCoupling="true"/>
+    </Delete>
+  </Operations>
+</ActionDefinition>
