@@ -8,6 +8,9 @@
       <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par310o" source="mpkg5o#ada23o#ipd33o#pdp113o" target="mpkg5o#ada23o#svu13o.cls2#att7" name="Ragione Sociale - Ragione Sociale"/>
       <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par311o" source="mpkg5o#ada23o#ipd33o#pdp114o" target="mpkg5o#ada23o#svu13o.cls2#att9" name="Nome Referente - Nome Referente"/>
       <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par312o" source="mpkg5o#ada23o#ipd33o#pdp115o" target="mpkg5o#ada23o#svu13o#sc67o#kcond39o.cls2#att6" name="KeyCondition39 [oid] - KeyCondition39 [oid]"/>
+      <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par429o" source="mpkg5o#ada23o#ipd33o#pdp162o" target="mpkg5o#ada23o#svu13o.cls2#att79o" name="Attrezzature - Attrezzature"/>
+      <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par430o" source="mpkg5o#ada23o#ipd33o#pdp163o" target="mpkg5o#ada23o#svu13o.cls2#att82o" name="Prodotti e Sostanze chimiche - Prodotti e Sostanze chimiche"/>
+      <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par431o" source="mpkg5o#ada23o#ipd33o#pdp164o" target="mpkg5o#ada23o#svu13o.cls2#att80o" name="Mezzi - Mezzi"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp109o" array="false" name="Tipologia Azienda.oid" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp110o" array="false" name="Email" type="string"/>
@@ -24,6 +27,9 @@
       <ParameterBinding id="mpkg5o#ada23o#ipd33o#df90o#par323o" source="mpkg5o#ada23o#ipd33o#pdp114o" target="mpkg5o#ada23o#act41o._identity_update$firstName" name="Nome Referente - First Name"/>
       <ParameterBinding id="mpkg5o#ada23o#ipd33o#df90o#par324o" source="mpkg5o#ada23o#ipd33o#pdp111o" target="mpkg5o#ada23o#act41o._identity_update$lastName" name="Cognome Referente - Last Name"/>
     </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp162o" array="false" name="Attrezzature" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp163o" array="false" name="Prodotti e Sostanze chimiche" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp164o" array="false" name="Mezzi" type="boolean"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada23o#spd33o" name="Success Port" gr:x="0" gr:y="65"/>
   <ErrorPortDefinition id="mpkg5o#ada23o#epd33o" name="Error Port" gr:x="0" gr:y="300"/>

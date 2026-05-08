@@ -9,7 +9,6 @@
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp117o" array="false" name="Sostanze chimiche" type="boolean"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp118o" array="false" name="Nome Referente" type="string"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp119o" array="false" name="Attrezzature" type="boolean"/>
-    <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp120o" array="false" name="Prodotti" type="boolean"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp121o" array="false" name="Ragione Sociale" type="string"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp122o" array="false" name="Partita IVA" type="string"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp123o" array="false" name="Mezzi" type="boolean"/>
@@ -18,6 +17,7 @@
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp126o" array="false" name="Email" type="string"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp127o" array="true" name="oid tenant" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp128o" array="false" name="oid fornitore" type="integer" key="true"/>
+    <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp168o" array="false" name="Username" type="string"/>
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#adf9o#epd34o" name="Error Port" gr:x="0" gr:y="365"/>
   <Operations>
@@ -29,7 +29,6 @@
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par325o" source="cls2#att82oArray" target="mpkg5o#adf9o#spd34o#pdp117o" name="Sostanze chimiche - Sostanze chimiche"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par326o" source="cls2#att9Array" target="mpkg5o#adf9o#spd34o#pdp118o" name="Nome Referente - Nome Referente"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par327o" source="cls2#att79oArray" target="mpkg5o#adf9o#spd34o#pdp119o" name="Attrezzature - Attrezzature"/>
-        <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par328o" source="cls2#att81oArray" target="mpkg5o#adf9o#spd34o#pdp120o" name="Prodotti - Prodotti"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par329o" source="cls2#att7Array" target="mpkg5o#adf9o#spd34o#pdp121o" name="Ragione Sociale - Ragione Sociale"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par330o" source="cls2#att8Array" target="mpkg5o#adf9o#spd34o#pdp122o" name="Partita IVA - Partita IVA"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par331o" source="cls2#att80oArray" target="mpkg5o#adf9o#spd34o#pdp123o" name="Mezzi - Mezzi"/>
@@ -37,6 +36,7 @@
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par333o" source="as13#role25_cls10#att45Array" target="mpkg5o#adf9o#spd34o#pdp125o" name="FornitoreToTipologia Azienda.oid - FornitoreToTipologia Azienda.oid"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par334o" source="cls2#att12Array" target="mpkg5o#adf9o#spd34o#pdp126o" name="Email - Email"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par336o" source="cls2#att6Array" target="mpkg5o#adf9o#spd34o#pdp128o" name="oid - oid"/>
+        <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par442o" source="cls2#att93oArray" target="mpkg5o#adf9o#spd34o#pdp168o" name="Username - Username"/>
       </DataFlow>
       <SuccessFlow id="mpkg5o#adf9o#seu36o#sf283o" to="mpkg5o#adf9o#seu37o" automaticCoupling="true"/>
     </Selector>

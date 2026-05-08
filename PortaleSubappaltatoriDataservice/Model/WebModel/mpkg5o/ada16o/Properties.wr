@@ -8,6 +8,10 @@
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par194o" source="mpkg5o#ada16o#ipd24o#pdp75o" target="mpkg5o#ada16o#svu9o.cls2#att10" name="Cognome Referente - Cognome Referente"/>
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par195o" source="mpkg5o#ada16o#ipd24o#pdp76o" target="mpkg5o#ada16o#svu9o.cls2#att12" name="Email - Email"/>
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par218o" source="mpkg5o#ada16o#ipd24o#pdp88o" target="mpkg5o#ada16o#svu9o.as13#role25.cls10#att45" name="Tipologia Azienda.oid(FornitoreToTipologia Azienda) - Tipologia Azienda.oid(FornitoreToTipologia Azienda)"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par423o" source="mpkg5o#ada16o#ipd24o#pdp156o" target="mpkg5o#ada16o#svu9o.cls2#att79o" name="Attrezzature - Attrezzature"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par424o" source="mpkg5o#ada16o#ipd24o#pdp157o" target="mpkg5o#ada16o#svu9o.cls2#att80o" name="Mezzi - Mezzi"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par425o" source="mpkg5o#ada16o#ipd24o#pdp158o" target="mpkg5o#ada16o#svu9o.cls2#att82o" name="Prodotti e Sostanze chimiche - Prodotti e Sostanze chimiche"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par439o" source="mpkg5o#ada16o#ipd24o#pdp166o" target="mpkg5o#ada16o#svu9o.cls2#att93o" name="Username - Username"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp71o" array="false" name="Nome Referente" type="string"/>
     <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp72o" array="false" name="Partita IVA" type="string"/>
@@ -23,13 +27,17 @@
     <DataFlow id="mpkg5o#ada16o#ipd24o#df95o" to="mpkg5o#ada16o#seu39o" gr:bendpoints="-3.0 235.0">
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#df95o#par349o" source="mpkg5o#ada16o#ipd24o#pdp88o" target="mpkg5o#ada16o#seu39o#sc78o#rcond16o.cls10#att45" name="Tipologia Azienda oid - tipo azienda [oid]"/>
     </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp156o" array="false" name="Attrezzature" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp157o" array="false" name="Mezzi" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp158o" array="false" name="Prodotti e Sostanze chimiche" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp166o" array="false" name="Username" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada16o#spd24o" name="Success Port" gr:x="0" gr:y="280">
     <PortDefinitionParameter id="mpkg5o#ada16o#spd24o#pdp86o" array="false" name="oid" type="integer"/>
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#ada16o#epd24o" name="Error Port" gr:x="0" gr:y="85"/>
   <Operations>
-    <Save gr:x="335" gr:y="90" id="mpkg5o#ada16o#svu9o" action="save" dataBinding="cls2">
+    <Save gr:x="340" gr:y="85" id="mpkg5o#ada16o#svu9o" action="save" dataBinding="cls2">
       <ConditionalExpression id="mpkg5o#ada16o#svu9o#sc53o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#ada16o#svu9o#sc53o#kcond34o" name="KeyCondition34" predicate="in" implied="false"/>
       </ConditionalExpression>

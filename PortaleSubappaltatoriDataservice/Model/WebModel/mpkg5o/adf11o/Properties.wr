@@ -1,0 +1,41 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#adf11o" name="Get Tipologia documenti per fornitore" type="read" defaultSuccessPortDefinition="mpkg5o#adf11o#spd41o" defaultErrorPortDefinition="mpkg5o#adf11o#epd41o">
+  <InputPortDefinition id="mpkg5o#adf11o#ipd41o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#adf11o#ipd41o#sf359o" to="mpkg5o#adf11o#seu47o">
+      <ParameterBinding id="mpkg5o#adf11o#ipd41o#sf359o#par415o" source="mpkg5o#adf11o#ipd41o#pdp148o" target="mpkg5o#adf11o#seu47o#sc93o#rcond18o.cls2#att6" name="fornitore [oid] - fornitore [oid]"/>
+      <ParameterBinding id="mpkg5o#adf11o#ipd41o#sf359o#par416o" source="mpkg5o#adf11o#ipd41o#pdp149o" target="mpkg5o#adf11o#seu47o#sc93o#rcond19o.cls1#att1" name="tenant [oid] - tenant [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#adf11o#ipd41o#pdp148o" array="false" name="fornitore [oid]" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#adf11o#ipd41o#pdp149o" array="false" name="tenant [oid]" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#adf11o#spd41o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#adf11o#spd41o#pdp150o" array="true" name="Macrotipologia" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#adf11o#spd41o#pdp151o" array="true" name="Descrizione" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#adf11o#spd41o#pdp152o" array="true" name="Giorni Durata" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#adf11o#spd41o#pdp153o" array="true" name="Condiviso" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#adf11o#spd41o#pdp154o" array="true" name="Pattern nome" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#adf11o#spd41o#pdp155o" array="true" name="oid" type="integer" key="true"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#adf11o#epd41o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="320" gr:y="120" id="mpkg5o#adf11o#seu47o" dataBinding="cls8" distinct="true" distinctAttributes="cls8#att37">
+      <ConditionalExpression id="mpkg5o#adf11o#seu47o#sc93o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#adf11o#seu47o#sc93o#rcond18o" name="fornitore" predicate="in" implied="false" role="as6#role12.as11#role21"/>
+        <AssociationRoleCondition id="mpkg5o#adf11o#seu47o#sc93o#rcond19o" name="tenant" predicate="in" implied="false" role="as19#role38.as11#role21"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#adf11o#seu47o#sf361o" to="mpkg5o#adf11o#seu48o" automaticCoupling="true"/>
+    </Selector>
+    <Selector gr:x="635" gr:y="135" id="mpkg5o#adf11o#seu48o" dataBinding="cls8">
+      <SuccessFlow id="mpkg5o#adf11o#seu48o#sf362o" to="mpkg5o#adf11o#spd41o">
+        <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par417o" source="cls8#att65Array" target="mpkg5o#adf11o#spd41o#pdp150o" name="Macrotipologia - Macrotipologia"/>
+        <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par418o" source="cls8#att64Array" target="mpkg5o#adf11o#spd41o#pdp151o" name="Descrizione - Descrizione"/>
+        <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par419o" source="cls8#att39Array" target="mpkg5o#adf11o#spd41o#pdp152o" name="Giorni Durata - Giorni Durata"/>
+        <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par420o" source="cls8#att38Array" target="mpkg5o#adf11o#spd41o#pdp153o" name="Condiviso - Condiviso"/>
+        <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par421o" source="cls8#att40Array" target="mpkg5o#adf11o#spd41o#pdp154o" name="Pattern nome - Pattern nome"/>
+        <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par422o" source="cls8#att37Array" target="mpkg5o#adf11o#spd41o#pdp155o" name="oid - oid"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg5o#adf11o#seu48o#sc94o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#adf11o#seu48o#sc94o#kcond56o" name="KeyCondition56" predicate="notIn" implied="false"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

@@ -1,4 +1,4 @@
-<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada26o" name="Invia allegato a fornitore" defaultSuccessPortDefinition="mpkg5o#ada26o#spd38o" defaultErrorPortDefinition="mpkg5o#ada26o#epd38o">
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada26o" name="Invia documento a fornitore" defaultSuccessPortDefinition="mpkg5o#ada26o#spd38o" defaultErrorPortDefinition="mpkg5o#ada26o#epd38o">
   <InputPortDefinition id="mpkg5o#ada26o#ipd38o" gr:x="0" gr:y="30">
     <DataFlow id="mpkg5o#ada26o#ipd38o#df101o" to="mpkg5o#ada26o#svu16o" gr:bendpoints="-2.0 78.0">
       <ParameterBinding id="mpkg5o#ada26o#ipd38o#df101o#par366o" source="mpkg5o#ada26o#ipd38o#pdp137o" target="mpkg5o#ada26o#svu16o#sc82o#kcond47o.cls5#att22" name="KeyCondition47 [oid] - KeyCondition47 [oid]"/>

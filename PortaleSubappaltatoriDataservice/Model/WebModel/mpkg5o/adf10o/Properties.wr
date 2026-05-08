@@ -1,4 +1,4 @@
-<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#adf10o" name="_Get stato allegato" type="read" defaultSuccessPortDefinition="mpkg5o#adf10o#spd36o" defaultErrorPortDefinition="mpkg5o#adf10o#epd36o">
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#adf10o" name="_Get stato documento" type="read" defaultSuccessPortDefinition="mpkg5o#adf10o#spd36o" defaultErrorPortDefinition="mpkg5o#adf10o#epd36o">
   <InputPortDefinition id="mpkg5o#adf10o#ipd36o" gr:x="0" gr:y="30">
     <SuccessFlow id="mpkg5o#adf10o#ipd36o#sf295o" to="mpkg5o#adf10o#seu38o">
       <ParameterBinding id="mpkg5o#adf10o#ipd36o#sf295o#par345o" source="mpkg5o#adf10o#ipd36o#pdp132o" target="mpkg5o#adf10o#seu38o#sc74o#acond32o" name="codice - codice"/>

@@ -1,4 +1,4 @@
-<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#ada27o" name="Carica allegato" defaultSuccessPortDefinition="mpkg6o#ada27o#spd40o" defaultErrorPortDefinition="mpkg6o#ada27o#epd40o">
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#ada27o" name="Carica documento" defaultSuccessPortDefinition="mpkg6o#ada27o#spd40o" defaultErrorPortDefinition="mpkg6o#ada27o#epd40o">
   <InputPortDefinition id="mpkg6o#ada27o#ipd40o" gr:x="0" gr:y="30">
     <SuccessFlow id="mpkg6o#ada27o#ipd40o#sf352o" to="mpkg6o#ada27o#act50o">
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#sf352o#par406o" source="mpkg6o#ada27o#ipd40o#pdp144o" target="mpkg6o#ada27o#act50o.mpkg6o#ada22o#ipd31o#pdp100o" name="fornitore - fornitore"/>

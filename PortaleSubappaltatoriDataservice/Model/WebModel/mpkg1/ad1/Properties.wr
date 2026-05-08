@@ -1,4 +1,4 @@
-<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ad1" name="Rimuovi tipo allegato a tipo azienda" defaultSuccessPortDefinition="mpkg1#ad1#spd19" defaultErrorPortDefinition="mpkg1#ad1#epd19">
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ad1" name="Rimuovi tipo documento a tipo azienda" defaultSuccessPortDefinition="mpkg1#ad1#spd19" defaultErrorPortDefinition="mpkg1#ad1#epd19">
   <InputPortDefinition id="mpkg1#ad1#ipd19" gr:x="0" gr:y="30">
     <SuccessFlow id="mpkg1#ad1#ipd19#sf159" to="mpkg1#ad1#dcnu3">
       <ParameterBinding id="mpkg1#ad1#ipd19#sf159#par172" name="KeyCondition28 [oid] [Tipologia Azienda] [Target] - KeyCondition28 [oid] [Tipologia Azienda] [Target]" source="mpkg1#ad1#ipd19#pdp60" target="mpkg1#ad1#dcnu3#sc48#kcond32.cls10#att45"/>

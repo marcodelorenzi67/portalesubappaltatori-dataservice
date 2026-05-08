@@ -49,7 +49,7 @@ create table "public"."sub_stato_registrazione" (
 
 -- User invitati [cls4]
 create table "public"."sub_user_invitati" (
-   "email"  varchar(255)  not null,
+   "username"  varchar(255)  not null,
    "cognome"  varchar(255),
    "nome"  varchar(255),
   primary key ("email")
@@ -308,7 +308,6 @@ alter table "public"."sub_comunicazione"  add column  "backoffice"  bool;
 -- Fornitore [cls2]
 alter table "public"."sub_fornitore"  add column  "attrezzature"  bool;
 alter table "public"."sub_fornitore"  add column  "mezzi"  bool;
-alter table "public"."sub_fornitore"  add column  "prodotti"  bool;
 alter table "public"."sub_fornitore"  add column  "sostanze_chimiche"  bool;
 
 -- Stato Allegato [cls15o]
@@ -330,3 +329,9 @@ alter table "public"."sub_allegati"  add column  "mandatory"  bool;
 
 -- Allegati [cls5]
 alter table "public"."sub_allegati"  add column  "valutato_il"  timestamp;
+
+-- User invitati [cls4]
+alter table "public"."sub_user_invitati"  add column  "email_utente"  varchar(255);
+
+-- Fornitore [cls2]
+alter table "public"."sub_fornitore"  add column  "username"  varchar(255);

@@ -2,17 +2,17 @@
   <InputPortDefinition id="mpkg3#ada5#ipd7" gr:x="0" gr:y="30">
     <SuccessFlow id="mpkg3#ada5#ipd7#sf56" to="mpkg3#ada5#svu3">
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par43" source="mpkg3#ada5#ipd7#pdp21" target="mpkg3#ada5#svu3.User#att4" name="Cognome - Cognome"/>
-      <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par44" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#svu3.User#att5" name="Email - Email"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par44" source="mpkg3#ada5#ipd7#pdp169o" target="mpkg3#ada5#svu3.User#att5" name="Email - Email"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par45" source="mpkg3#ada5#ipd7#pdp23" target="mpkg3#ada5#svu3.User#att3" name="Nome - Nome"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par139" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#svu3.userName" name="Email - User ID"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par220o" source="mpkg3#ada5#ipd7#pdp90o" target="mpkg3#ada5#svu3.as2#role3.cls2#att6" name="Fornitore - Fornitore.oid(UserToFornitore)"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp21" array="false" name="Cognome" type="string"/>
-    <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp22" array="false" name="Email" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp22" array="false" name="username" type="string"/>
     <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp23" array="false" name="Nome" type="string"/>
     <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp24" name="Password" array="true" type="string"/>
     <DataFlow id="mpkg3#ada5#ipd7#df13" to="mpkg3#ada5#act3" gr:bendpoints="7.0 83.0">
-      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par52" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#act3._identity_create$email" name="Email - Email"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#df13#par52" source="mpkg3#ada5#ipd7#pdp169o" target="mpkg3#ada5#act3._identity_create$email" name="Email - Email"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#df13#par53" source="mpkg3#ada5#ipd7#pdp23" target="mpkg3#ada5#act3._identity_create$firstName" name="Nome - First Name"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#df13#par54" source="mpkg3#ada5#ipd7#pdp21" target="mpkg3#ada5#act3._identity_create$lastName" name="Cognome - Last Name"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#df13#par55" source="mpkg3#ada5#ipd7#pdp24" target="mpkg3#ada5#act3._identity_create$password" name="Password - Password"/>
@@ -34,6 +34,7 @@
     <DataFlow id="mpkg3#ada5#ipd7#df61o" to="mpkg3#ada5#switch6o">
       <ParameterBinding id="mpkg3#ada5#ipd7#df61o#par221o" source="mpkg3#ada5#ipd7#pdp91o" target="mpkg3#ada5#switch6o.switch" name="Backoffice - Switch"/>
     </DataFlow>
+    <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp169o" name="email" array="true" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg3#ada5#spd7" name="Success Port" gr:x="0" gr:y="420">
     <PortDefinitionParameter id="mpkg3#ada5#spd7#pdp95o" array="false" name="User ID" type="string"/>

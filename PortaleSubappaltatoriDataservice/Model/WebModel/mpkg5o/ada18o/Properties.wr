@@ -9,6 +9,10 @@
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par204o" source="mpkg5o#ada18o#ipd26o#pdp83o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp76o" name="Email - Email"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par205o" source="mpkg5o#ada18o#ipd26o#pdp84o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp77o" name="tenant - tenant"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par219o" source="mpkg5o#ada18o#ipd26o#pdp89o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp88o" name="Tipologia Azienda oid - Tipologia Azienda oid"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par426o" source="mpkg5o#ada18o#ipd26o#pdp159o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp157o" name="Mezzi - Mezzi"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par427o" source="mpkg5o#ada18o#ipd26o#pdp160o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp156o" name="Attrezzature - Attrezzature"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par428o" source="mpkg5o#ada18o#ipd26o#pdp161o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp158o" name="Prodotti e Sostanze chimiche - Prodotti e Sostanze chimiche"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par441o" source="mpkg5o#ada18o#ipd26o#pdp167o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp166o" name="username - Username"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp78o" array="false" name="Ragione Sociale" type="string"/>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp79o" array="false" name="Nome Referente" type="string"/>
@@ -23,8 +27,13 @@
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par209o" sourceValue="false" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp85o" name="&quot;false&quot; - Backoffice"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par210o" source="mpkg5o#ada18o#ipd26o#pdp80o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp6" name="Cognome Referente - Cognome"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par211o" source="mpkg5o#ada18o#ipd26o#pdp79o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp7" name="Nome Referente - Nome"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par440o" source="mpkg5o#ada18o#ipd26o#pdp167o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp165o" name="username - username"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp89o" array="false" name="Tipologia Azienda oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp159o" array="false" name="Mezzi" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp160o" array="false" name="Attrezzature" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp161o" array="false" name="Prodotti e Sostanze chimiche" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp167o" array="false" name="username" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada18o#spd26o" name="Success Port" gr:x="0" gr:y="145"/>
   <ErrorPortDefinition id="mpkg5o#ada18o#epd26o" name="Error Port" gr:x="0" gr:y="300"/>

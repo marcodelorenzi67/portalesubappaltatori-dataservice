@@ -1,18 +1,13 @@
 <ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#ada7" name="Password dimenticata" defaultSuccessPortDefinition="mpkg3#ada7#spd10" defaultErrorPortDefinition="mpkg3#ada7#epd10">
   <InputPortDefinition id="mpkg3#ada7#ipd10" gr:x="0" gr:y="30">
-    <SuccessFlow id="mpkg3#ada7#ipd10#sf96" to="mpkg3#ada7#scu2">
-      <ParameterBinding id="mpkg3#ada7#ipd10#sf96#par98" source="mpkg3#ada7#ipd10#pdp30" target="mpkg3#ada7#scu2.originalValue" name="originalValue - originalValue"/>
+    <SuccessFlow id="mpkg3#ada7#ipd10#sf96" to="mpkg3#ada7#seu15">
+      <ParameterBinding id="mpkg3#ada7#ipd10#sf96#par443o" source="mpkg3#ada7#ipd10#pdp30" target="mpkg3#ada7#seu15#sc30#acond11" name="email - userId"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg3#ada7#ipd10#pdp30" array="false" name="email" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg3#ada7#spd10" name="Success Port" gr:x="0" gr:y="145"/>
   <ErrorPortDefinition id="mpkg3#ada7#epd10" name="Error Port" gr:x="0" gr:y="55"/>
   <Operations>
-    <Script id="mpkg3#ada7#scu2" name="Sanitize mail" gr:x="0" gr:y="0" script="WEB-INF/groovy/trimAndToLowerCaseString.groovy">
-      <SuccessFlow id="mpkg3#ada7#scu2#sf95" to="mpkg3#ada7#seu15">
-        <ParameterBinding id="mpkg3#ada7#scu2#sf95#par97" name="result - userId" source="result(result)" target="mpkg3#ada7#seu15#sc30#acond11"/>
-      </SuccessFlow>
-    </Script>
     <Selector id="mpkg3#ada7#seu15" gr:x="180" gr:y="35" dataBinding="User">
       <ConditionalExpression id="mpkg3#ada7#seu15#sc30" defaultPolicy="fill" booleanOperator="and">
         <AttributesCondition id="mpkg3#ada7#seu15#sc30#acond11" name="userId" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>

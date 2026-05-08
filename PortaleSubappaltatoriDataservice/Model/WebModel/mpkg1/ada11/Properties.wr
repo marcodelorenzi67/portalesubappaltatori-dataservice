@@ -1,4 +1,4 @@
-<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada11" name="Nuovo/modifica tipologia allegati" defaultSuccessPortDefinition="mpkg1#ada11#spd17" defaultErrorPortDefinition="mpkg1#ada11#epd17">
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada11" name="Nuovo/modifica tipologia documenti" defaultSuccessPortDefinition="mpkg1#ada11#spd17" defaultErrorPortDefinition="mpkg1#ada11#epd17">
   <InputPortDefinition id="mpkg1#ada11#ipd17" gr:x="0" gr:y="30">
     <SuccessFlow id="mpkg1#ada11#ipd17#sf153" to="mpkg1#ada11#svu7">
       <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par164" source="mpkg1#ada11#ipd17#pdp52" target="mpkg1#ada11#svu7.as12#role23.cls9#att41" name="Macro-tipologia.oid(Tipologia AllegatiToMacro-tipologia) - Macro-tipologia.oid(Tipologia AllegatiToMacro-tipologia)"/>
