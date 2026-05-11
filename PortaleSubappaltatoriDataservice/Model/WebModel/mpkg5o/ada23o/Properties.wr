@@ -38,12 +38,11 @@
       <ConditionalExpression id="mpkg5o#ada23o#svu13o#sc67o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#ada23o#svu13o#sc67o#kcond39o" name="KeyCondition39" predicate="in" implied="false"/>
       </ConditionalExpression>
-      <DataFlow id="mpkg5o#ada23o#svu13o#sf270o" to="mpkg5o#ada23o#act40o" gr:bendpoints="96,-75,-104,-75">
-        <ParameterBinding id="mpkg5o#ada23o#svu13o#sf270o#par313o" sourceValue="${tipoAzioneLog.modificaFornitore}" target="mpkg5o#ada23o#act40o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.modificaFornitore}&quot; - Tipo azione"/>
-        <ParameterBinding id="mpkg5o#ada23o#svu13o#sf270o#par314o" source="cls2#att6Array" target="mpkg5o#ada23o#act40o.mpkg2#ada19o#ipd27o#pdp92o" name="oid - Fornitore oid"/>
-        <ParameterBinding id="mpkg5o#ada23o#svu13o#sf270o#par315o" sourceImplicitParameter="userName" target="mpkg5o#ada23o#act40o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
-      </DataFlow>
-      <SuccessFlow id="mpkg5o#ada23o#svu13o#sf271o" to="mpkg5o#ada23o#svu14o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg5o#ada23o#svu13o#sf370o" to="mpkg5o#ada23o#act40o" gr:bendpoints="96,-75,-104,-75">
+        <ParameterBinding id="mpkg5o#ada23o#svu13o#sf370o#par454o" name="oid - Fornitore oid" source="cls2#att6Array" target="mpkg5o#ada23o#act40o.mpkg2#ada19o#ipd27o#pdp92o"/>
+        <ParameterBinding id="mpkg5o#ada23o#svu13o#sf370o#par455o" name="User ID - User id" target="mpkg5o#ada23o#act40o.mpkg2#ada19o#ipd27o#pdp94o" sourceImplicitParameter="userName"/>
+        <ParameterBinding id="mpkg5o#ada23o#svu13o#sf370o#par456o" name="&quot;${tipoAzioneLog.modificaFornitore}&quot; - Tipo azione" sourceValue="${tipoAzioneLog.modificaFornitore}" target="mpkg5o#ada23o#act40o.mpkg2#ada19o#ipd27o#pdp93o"/>
+      </SuccessFlow>
     </Save>
     <Save gr:x="535" gr:y="240" id="mpkg5o#ada23o#svu14o" action="update" dataBinding="User">
       <ConditionalExpression id="mpkg5o#ada23o#svu14o#sc69o" defaultPolicy="fill" booleanOperator="and">

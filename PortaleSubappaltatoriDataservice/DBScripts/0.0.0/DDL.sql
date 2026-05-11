@@ -335,3 +335,6 @@ alter table "public"."sub_user_invitati"  add column  "email_utente"  varchar(25
 
 -- Fornitore [cls2]
 alter table "public"."sub_fornitore"  add column  "username"  varchar(255);
+
+-- User [User]
+alter table "public"."sub_user"  add column  "attivo"  bool;

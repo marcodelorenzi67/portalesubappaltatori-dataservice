@@ -1,0 +1,70 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#ada29o" name="Attiva/Disattiva utente" defaultSuccessPortDefinition="mpkg3#ada29o#spd43o" defaultErrorPortDefinition="mpkg3#ada29o#epd43o">
+  <InputPortDefinition id="mpkg3#ada29o#ipd43o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#ada29o#ipd43o#sf373o" to="mpkg3#ada29o#svu22o">
+      <ParameterBinding id="mpkg3#ada29o#ipd43o#sf373o#par458o" source="mpkg3#ada29o#ipd43o#pdp176o" target="mpkg3#ada29o#svu22o#sc96o#kcond57o.userOID" name="KeyCondition57 [oid] - KeyCondition57 [oid]"/>
+      <ParameterBinding id="mpkg3#ada29o#ipd43o#sf373o#par459o" source="mpkg3#ada29o#ipd43o#pdp177o" target="mpkg3#ada29o#svu22o.User#att94o" name="Attivo - Attivo"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg3#ada29o#ipd43o#pdp176o" array="false" name="oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg3#ada29o#ipd43o#pdp177o" array="false" name="Attivo" type="boolean"/>
+    <DataFlow id="mpkg3#ada29o#ipd43o#df117o" to="mpkg3#ada29o#switch15o" gr:bendpoints="3.0 60.0">
+      <ParameterBinding id="mpkg3#ada29o#ipd43o#df117o#par460o" source="mpkg3#ada29o#ipd43o#pdp177o" target="mpkg3#ada29o#switch15o.switch" name="Attivo - Switch"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg3#ada29o#ipd43o#pdp178o" name="userID" array="true" type="string"/>
+    <DataFlow id="mpkg3#ada29o#ipd43o#df119o" to="mpkg3#ada29o#act54o" gr:bendpoints="10.0 109.0">
+      <ParameterBinding id="mpkg3#ada29o#ipd43o#df119o#par461o" source="mpkg3#ada29o#ipd43o#pdp178o" target="mpkg3#ada29o#act54o._identity_update$userID" name="userID - User ID"/>
+    </DataFlow>
+    <DataFlow id="mpkg3#ada29o#ipd43o#df120o" to="mpkg3#ada29o#switch16o" gr:bendpoints="-4.0 157.0">
+      <ParameterBinding id="mpkg3#ada29o#ipd43o#df120o#par474o" name="Attivo - Switch" source="mpkg3#ada29o#ipd43o#pdp177o" target="mpkg3#ada29o#switch16o.switch"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#ada29o#spd43o" name="Success Port" gr:x="0" gr:y="275"/>
+  <ErrorPortDefinition id="mpkg3#ada29o#epd43o" name="Error Port" gr:x="0" gr:y="470"/>
+  <Operations>
+    <Save gr:x="375" gr:y="75" id="mpkg3#ada29o#svu22o" action="update" dataBinding="User">
+      <ConditionalExpression id="mpkg3#ada29o#svu22o#sc96o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada29o#svu22o#sc96o#kcond57o" name="KeyCondition57" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg3#ada29o#svu22o#sf375o" to="mpkg3#ada29o#switch15o" automaticCoupling="true"/>
+    </Save>
+    <Switch gr:x="595" gr:y="130" id="mpkg3#ada29o#switch15o" name="attivo">
+      <SuccessFlow id="mpkg3#ada29o#switch15o#sf376o" to="mpkg3#ada29o#act54o" code="true">
+        <ParameterBinding id="mpkg3#ada29o#switch15o#sf376o#par462o" sourceValue="false" target="mpkg3#ada29o#act54o._identity_update$disabled" name="&quot;false&quot; - Is Disabled"/>
+        <ParameterBinding id="mpkg3#ada29o#switch15o#sf376o#par463o" sourceValue="false" target="mpkg3#ada29o#act54o._identity_update$expired" name="&quot;false&quot; - Is Expired"/>
+        <ParameterBinding id="mpkg3#ada29o#switch15o#sf376o#par464o" sourceValue="false" target="mpkg3#ada29o#act54o._identity_update$locked" name="&quot;false&quot; - Is Locked"/>
+      </SuccessFlow>
+      <Case value="true"/>
+      <SuccessFlow id="mpkg3#ada29o#switch15o#sf377o" to="mpkg3#ada29o#act54o">
+        <ParameterBinding id="mpkg3#ada29o#switch15o#sf377o#par465o" sourceValue="true" target="mpkg3#ada29o#act54o._identity_update$disabled" name="&quot;true&quot; - Is Disabled"/>
+        <ParameterBinding id="mpkg3#ada29o#switch15o#sf377o#par466o" sourceValue="true" target="mpkg3#ada29o#act54o._identity_update$expired" name="&quot;true&quot; - Is Expired"/>
+        <ParameterBinding id="mpkg3#ada29o#switch15o#sf377o#par467o" sourceValue="true" target="mpkg3#ada29o#act54o._identity_update$locked" name="&quot;true&quot; - Is Locked"/>
+      </SuccessFlow>
+    </Switch>
+    <Switch id="mpkg3#ada29o#switch16o" name="attivo" gr:x="855" gr:y="365">
+      <SuccessFlow id="mpkg3#ada29o#switch16o#sf380o" to="mpkg3#ada29o#act55o" code="true">
+        <ParameterBinding id="mpkg3#ada29o#switch16o#sf380o#par475o" sourceValue="${tipoAzioneLog.utenteAttivato}" target="mpkg3#ada29o#act55o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.utenteAttivato}&quot; - Tipo azione"/>
+        <ParameterBinding id="mpkg3#ada29o#switch16o#sf380o#par476o" sourceImplicitParameter="userName" target="mpkg3#ada29o#act55o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+      </SuccessFlow>
+      <Case value="true"/>
+      <SuccessFlow id="mpkg3#ada29o#switch16o#sf381o" to="mpkg3#ada29o#act55o">
+        <ParameterBinding id="mpkg3#ada29o#switch16o#sf381o#par477o" sourceValue="${tipoAzioneLog.utenteDisattivato}" target="mpkg3#ada29o#act55o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.utenteDisattivato}&quot; - Tipo azione"/>
+        <ParameterBinding id="mpkg3#ada29o#switch16o#sf381o#par478o" sourceImplicitParameter="userName" target="mpkg3#ada29o#act55o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+      </SuccessFlow>
+    </Switch>
+  </Operations>
+  <Action id="mpkg3#ada29o#act54o" gr:x="725" gr:y="250" authServiceRes="_identity_update">
+    <Events>
+      <SuccessEvent id="mpkg3#ada29o#act54o#scce53o">
+        <SuccessFlow id="mpkg3#ada29o#act54o#scce53o#sf378o" to="mpkg3#ada29o#switch16o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada29o#act54o#erre56o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg3#ada29o#act55o" gr:x="1025" gr:y="295" definition="mpkg2#ada19o">
+    <Events>
+      <SuccessEvent id="mpkg3#ada29o#act55o#scce54o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg3#ada29o#act55o#scce54o#sf379o" to="mpkg3#ada29o#spd43o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg3#ada29o#act55o#erre57o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

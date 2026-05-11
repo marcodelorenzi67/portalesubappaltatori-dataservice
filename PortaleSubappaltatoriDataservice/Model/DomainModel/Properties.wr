@@ -1,5 +1,5 @@
 <DomainModel xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:srs="http://www.webratio.com/2017/IFML/ServerResources">
-  <Class id="User" name="User" duration="persistent" gr:x="10" gr:y="240" gr:hideAttributes="false" attributeOrder="userOID userName secretKey User#att3 User#att4 User#att5 User#att49 User#att71o" db:database="dbD1" db:table="sub_user">
+  <Class id="User" name="User" duration="persistent" gr:x="10" gr:y="240" gr:hideAttributes="false" attributeOrder="userOID userName secretKey User#att3 User#att4 User#att5 User#att49 User#att71o User#att94o" db:database="dbD1" db:table="sub_user">
     <Attribute name="oid" id="userOID" type="integer" key="true" db:column="oid"/>
     <Attribute name="User ID" id="userName" type="string" db:column="user_id" key="false"/>
     <Attribute id="secretKey" name="Secret Key" type="password" db:cryptAlgorithm="com.webratio.data.crypto.PBKDF2WithHmacSHA1CryptImplementation" db:column="secret_key" key="false"/>
@@ -11,6 +11,7 @@
       <db:JoinColumn attribute="userOID" name="oid"/>
     </Attribute>
     <Attribute id="User#att71o" name="Ragione Sociale" type="string" derivationQuery="simpleImported::Self.as2#role3.cls2#att7"/>
+    <Attribute id="User#att94o" name="Attivo" type="boolean" db:column="attivo"/>
   </Class>
   <ActionServices>
     <ActionService definition="mpkg1#ada1" method="create" roles="rl5"/>
@@ -40,6 +41,8 @@
     <ActionService definition="mpkg5o#ad3o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg6o#ada27o" method="create" roles="rl4"/>
     <ActionService definition="mpkg5o#adf11o" method="read" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg5o#ada28o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg3#ada29o" method="create" roles="rl1 rl2 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
@@ -204,7 +207,8 @@
   <UserServices>
     <UserServiceOperation type="read"/>
   </UserServices>
-  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_"/>
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
+  </db:Database>
   <srs:Resources>
     <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
       <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>

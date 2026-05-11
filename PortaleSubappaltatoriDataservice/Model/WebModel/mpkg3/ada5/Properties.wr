@@ -6,6 +6,7 @@
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par45" source="mpkg3#ada5#ipd7#pdp23" target="mpkg3#ada5#svu3.User#att3" name="Nome - Nome"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par139" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#svu3.userName" name="Email - User ID"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par220o" source="mpkg3#ada5#ipd7#pdp90o" target="mpkg3#ada5#svu3.as2#role3.cls2#att6" name="Fornitore - Fornitore.oid(UserToFornitore)"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par457o" sourceValue="true" target="mpkg3#ada5#svu3.User#att94o" name="&quot;true&quot; - Attivo"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp21" array="false" name="Cognome" type="string"/>
     <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp22" array="false" name="username" type="string"/>
