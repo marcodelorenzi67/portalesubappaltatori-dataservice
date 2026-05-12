@@ -70,8 +70,17 @@
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
-    <ServiceClass class="cls4">
+    <ServiceClass class="cls4" associationRoles="as4#role7">
       <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl1">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl3">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl2">
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
@@ -850,11 +859,13 @@
       <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls14o" name="Comunicazione" duration="persistent" gr:x="235" gr:y="575" attributeOrder="cls14o#att73o cls14o#att74o cls14o#att75o cls14o#att76o" db:database="dbD1" db:table="sub_comunicazione">
+  <Class id="cls14o" name="Comunicazione" duration="persistent" gr:x="235" gr:y="575" attributeOrder="cls14o#att73o cls14o#att74o cls14o#att75o cls14o#att76o cls14o#att95o cls14o#att96o" db:database="dbD1" db:table="sub_comunicazione">
     <Attribute id="cls14o#att73o" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls14o#att75o" name="Note" type="text" db:column="note"/>
     <Attribute id="cls14o#att74o" name="Oggetto" type="string" db:column="oggetto"/>
     <Attribute id="cls14o#att76o" name="Backoffice" type="boolean" db:column="backoffice"/>
+    <Attribute id="cls14o#att95o" name="Autore" type="string" derivationQuery="simpleImported::Self.as22o#role43o.userName"/>
+    <Attribute id="cls14o#att96o" name="Creata il" type="timestamp" db:column="creata_il"/>
   </Class>
   <Association id="as22o" name="Comunicazione_User" sourceClass="cls14o" targetClass="User" db:database="dbD1" db:table="sub_comunicazione">
     <AssociationRole1 id="as22o#role43o" name="ComunicazioneToUser" maxCard="1">

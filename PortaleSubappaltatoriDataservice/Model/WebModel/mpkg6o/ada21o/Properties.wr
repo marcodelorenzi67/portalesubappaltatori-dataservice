@@ -19,7 +19,7 @@
   <SuccessPortDefinition id="mpkg6o#ada21o#spd30o" name="Success Port" gr:x="0" gr:y="400"/>
   <ErrorPortDefinition id="mpkg6o#ada21o#epd30o" name="Error Port" gr:x="0" gr:y="45"/>
   <Operations>
-    <Save gr:x="620" gr:y="360" id="mpkg6o#ada21o#svu11o" action="create" dataBinding="cls14o">
+    <Save gr:x="600" gr:y="460" id="mpkg6o#ada21o#svu11o" action="create" dataBinding="cls14o">
       <SuccessFlow id="mpkg6o#ada21o#svu11o#sf260o" to="mpkg6o#ada21o#act37o">
         <ParameterBinding id="mpkg6o#ada21o#svu11o#sf260o#par292o" sourceValue="${tipoAzioneLog.inserimentoComunicazione}" target="mpkg6o#ada21o#act37o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.inserimentoComunicazione}&quot; - Tipo azione"/>
         <ParameterBinding id="mpkg6o#ada21o#svu11o#sf260o#par293o" sourceImplicitParameter="userName" target="mpkg6o#ada21o#act37o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
@@ -29,8 +29,14 @@
       <ConditionalExpression id="mpkg6o#ada21o#seu33o#sc65o" defaultPolicy="fill" booleanOperator="and">
         <AttributesCondition id="mpkg6o#ada21o#seu33o#sc65o#acond30o" name="useriD" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
       </ConditionalExpression>
-      <SuccessFlow id="mpkg6o#ada21o#seu33o#sf259o" to="mpkg6o#ada21o#svu11o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg6o#ada21o#seu33o#sf394o" to="mpkg6o#ada21o#tmu7o" automaticCoupling="true"/>
+      <DataFlow id="mpkg6o#ada21o#seu33o#df126o" to="mpkg6o#ada21o#svu11o" automaticCoupling="true"/>
     </Selector>
+    <Time gr:x="545" gr:y="340" id="mpkg6o#ada21o#tmu7o" name="Time">
+      <SuccessFlow id="mpkg6o#ada21o#tmu7o#sf395o" to="mpkg6o#ada21o#svu11o">
+        <ParameterBinding id="mpkg6o#ada21o#tmu7o#sf395o#par499o" source="currentTimestamp" target="mpkg6o#ada21o#svu11o.cls14o#att96o" name="Current/Input Timestamp - Creata il"/>
+      </SuccessFlow>
+    </Time>
   </Operations>
   <Action id="mpkg6o#ada21o#act36o" gr:x="390" gr:y="95" definition="mpkg6o#ada22o">
     <Events>

@@ -338,3 +338,6 @@ alter table "public"."sub_fornitore"  add column  "username"  varchar(255);
 
 -- User [User]
 alter table "public"."sub_user"  add column  "attivo"  bool;
+
+-- Comunicazione [cls14o]
+alter table "public"."sub_comunicazione"  add column  "creata_il"  timestamp;

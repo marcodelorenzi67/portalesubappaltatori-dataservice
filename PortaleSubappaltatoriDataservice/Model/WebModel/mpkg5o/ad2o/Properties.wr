@@ -34,8 +34,14 @@
       <ConditionalExpression id="mpkg5o#ad2o#seu34o#sc66o" defaultPolicy="fill" booleanOperator="and">
         <AttributesCondition id="mpkg5o#ad2o#seu34o#sc66o#acond31o" name="useriD" predicate="eq" booleanOperator="or" implied="false" attributes="userName"/>
       </ConditionalExpression>
-      <SuccessFlow id="mpkg5o#ad2o#seu34o#sf264o" to="mpkg5o#ad2o#svu12o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg5o#ad2o#seu34o#sf396o" to="mpkg5o#ad2o#tmu8o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ad2o#seu34o#df127o" to="mpkg5o#ad2o#svu12o" automaticCoupling="true"/>
     </Selector>
+    <Time gr:x="415" gr:y="320" id="mpkg5o#ad2o#tmu8o" name="Time">
+      <SuccessFlow id="mpkg5o#ad2o#tmu8o#sf397o" to="mpkg5o#ad2o#svu12o">
+        <ParameterBinding id="mpkg5o#ad2o#tmu8o#sf397o#par500o" source="currentTimestamp" target="mpkg5o#ad2o#svu12o.cls14o#att96o" name="Current/Input Timestamp - Creata il"/>
+      </SuccessFlow>
+    </Time>
   </Operations>
   <Action id="mpkg5o#ad2o#act39o" definition="mpkg2#ada19o" gr:x="875" gr:y="380">
     <Events>
