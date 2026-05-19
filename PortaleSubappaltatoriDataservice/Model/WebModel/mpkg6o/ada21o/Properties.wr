@@ -9,6 +9,7 @@
       <ParameterBinding id="mpkg6o#ada21o#ipd30o#df82o#par288o" source="mpkg6o#ada21o#ipd30o#pdp101o" target="mpkg6o#ada21o#svu11o.as23o#role45o.cls2#att6" name="Fornitore.oid(ComunicazioneToFornitore) - Fornitore.oid(ComunicazioneToFornitore)"/>
       <ParameterBinding id="mpkg6o#ada21o#ipd30o#df82o#par289o" source="mpkg6o#ada21o#ipd30o#pdp104o" target="mpkg6o#ada21o#svu11o.cls14o#att74o" name="Oggetto - Oggetto"/>
       <ParameterBinding id="mpkg6o#ada21o#ipd30o#df82o#par291o" sourceValue="false" target="mpkg6o#ada21o#svu11o.cls14o#att76o" name="&quot;false&quot; - Backoffice"/>
+      <ParameterBinding id="mpkg6o#ada21o#ipd30o#df82o#par502o" sourceValue="false" target="mpkg6o#ada21o#svu11o.cls14o#att98o" name="&quot;false&quot; - Letta"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg6o#ada21o#ipd30o#pdp102o" array="false" name="Note" type="text"/>
     <PortDefinitionParameter id="mpkg6o#ada21o#ipd30o#pdp104o" array="false" name="Oggetto" type="string"/>

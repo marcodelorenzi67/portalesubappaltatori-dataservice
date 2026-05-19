@@ -341,3 +341,9 @@ alter table "public"."sub_user"  add column  "attivo"  bool;
 
 -- Comunicazione [cls14o]
 alter table "public"."sub_comunicazione"  add column  "creata_il"  timestamp;
+
+-- Comunicazione [cls14o]
+alter table "public"."sub_comunicazione"  add column  "letta"  bool;
+
+-- Documenti [cls5]
+alter table "public"."sub_allegati"  add column  "data_scadenza"  date;

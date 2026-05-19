@@ -3,6 +3,8 @@
     <DataFlow id="mpkg5o#ad3o#ipd39o#df102o" to="mpkg5o#ad3o#svu17o" gr:bendpoints="-2.0 78.0">
       <ParameterBinding id="mpkg5o#ad3o#ipd39o#df102o#par372o" name="KeyCondition47 [oid] - KeyCondition47 [oid]" source="mpkg5o#ad3o#ipd39o#pdp140o" target="mpkg5o#ad3o#svu17o#sc83o#kcond48o.cls5#att22"/>
       <ParameterBinding id="mpkg5o#ad3o#ipd39o#df102o#par389o" source="mpkg5o#ad3o#ipd39o#pdp142o" target="mpkg5o#ad3o#svu17o.cls5#att25" name="note - Note"/>
+      <ParameterBinding id="mpkg5o#ad3o#ipd39o#df102o#par512o" source="mpkg5o#ad3o#ipd39o#pdp187o" target="mpkg5o#ad3o#svu17o.cls5#att99o" name="Data scadenza - Data scadenza"/>
+      <ParameterBinding id="mpkg5o#ad3o#ipd39o#df102o#par513o" source="mpkg5o#ad3o#ipd39o#pdp188o" target="mpkg5o#ad3o#svu17o.cls5#att24" name="Descrizione - Descrizione"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ad3o#ipd39o#pdp140o" name="oid" type="integer" array="false"/>
     <SuccessFlow id="mpkg5o#ad3o#ipd39o#sf325o" to="mpkg5o#ad3o#seu43o">
@@ -21,6 +23,8 @@
       <ParameterBinding id="mpkg5o#ad3o#ipd39o#df106o#par386o" name="KeyCondition47 [oid] - KeyCondition47 [oid]" source="mpkg5o#ad3o#ipd39o#pdp140o" target="mpkg5o#ad3o#svu19o#sc87o#kcond52o.cls5#att22"/>
       <ParameterBinding id="mpkg5o#ad3o#ipd39o#df106o#par388o" sourceValue="false" target="mpkg5o#ad3o#svu19o.cls5#att35" name="&quot;false&quot; - Corrente"/>
     </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ad3o#ipd39o#pdp187o" array="false" name="Data scadenza" type="date"/>
+    <PortDefinitionParameter id="mpkg5o#ad3o#ipd39o#pdp188o" array="false" name="Descrizione" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ad3o#spd39o" name="Success Port" gr:x="0" gr:y="970"/>
   <ErrorPortDefinition id="mpkg5o#ad3o#epd39o" name="Error Port" gr:x="0" gr:y="80"/>

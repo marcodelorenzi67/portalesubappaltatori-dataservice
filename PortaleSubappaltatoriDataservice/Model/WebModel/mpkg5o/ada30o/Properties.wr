@@ -1,0 +1,20 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada30o" name="Comunicazione letta BO" defaultSuccessPortDefinition="mpkg5o#ada30o#spd44o" defaultErrorPortDefinition="mpkg5o#ada30o#epd44o">
+  <InputPortDefinition id="mpkg5o#ada30o#ipd44o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#ada30o#ipd44o#sf400o" to="mpkg5o#ada30o#svu26o">
+      <ParameterBinding id="mpkg5o#ada30o#ipd44o#sf400o#par503o" source="mpkg5o#ada30o#ipd44o#pdp181o" target="mpkg5o#ada30o#svu26o#sc101o#kcond62o.cls14o#att73o" name="KeyCondition62 [oid] - KeyCondition62 [oid]"/>
+      <ParameterBinding id="mpkg5o#ada30o#ipd44o#sf400o#par505o" source="mpkg5o#ada30o#ipd44o#pdp182o" target="mpkg5o#ada30o#svu26o.cls14o#att98o" name="Letta - Letta"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#ada30o#ipd44o#pdp181o" array="false" name="oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada30o#ipd44o#pdp182o" array="false" name="Letta" type="boolean"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada30o#spd44o" name="Success Port" gr:x="0" gr:y="25"/>
+  <ErrorPortDefinition id="mpkg5o#ada30o#epd44o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Save gr:x="430" gr:y="115" id="mpkg5o#ada30o#svu26o" action="update" dataBinding="cls14o">
+      <ConditionalExpression id="mpkg5o#ada30o#svu26o#sc101o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada30o#svu26o#sc101o#kcond62o" name="KeyCondition62" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada30o#svu26o#sf401o" to="mpkg5o#ada30o#spd44o" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+</ActionDefinition>
