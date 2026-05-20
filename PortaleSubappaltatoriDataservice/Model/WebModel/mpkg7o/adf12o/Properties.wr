@@ -1,0 +1,24 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg7o#adf12o" name="Get documenti VOL" type="read" defaultSuccessPortDefinition="mpkg7o#adf12o#spd48o" defaultErrorPortDefinition="mpkg7o#adf12o#epd48o">
+  <InputPortDefinition id="mpkg7o#adf12o#ipd48o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg7o#adf12o#ipd48o#sf416o" to="mpkg7o#adf12o#seu52o">
+      <ParameterBinding id="mpkg7o#adf12o#ipd48o#sf416o#par516o" sourceImplicitParameter="userName" target="mpkg7o#adf12o#seu52o#sc107o#acond43o" name="User ID - userID"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg7o#adf12o#ipd48o#pdp192o" name="trigger" array="false" type="boolean"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg7o#adf12o#spd48o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg7o#adf12o#spd48o#pdp189o" array="false" name="oid" type="integer" key="true"/>
+    <PortDefinitionParameter id="mpkg7o#adf12o#spd48o#pdp190o" array="false" name="Documento" type="blob"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg7o#adf12o#epd48o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="415" gr:y="90" id="mpkg7o#adf12o#seu52o" dataBinding="cls17o">
+      <SuccessFlow id="mpkg7o#adf12o#seu52o#sf417o" to="mpkg7o#adf12o#spd48o">
+        <ParameterBinding id="mpkg7o#adf12o#seu52o#sf417o#par517o" source="cls17o#att102oArray" target="mpkg7o#adf12o#spd48o#pdp189o" name="oid - oid"/>
+        <ParameterBinding id="mpkg7o#adf12o#seu52o#sf417o#par518o" source="cls17o#att103oArray" target="mpkg7o#adf12o#spd48o#pdp190o" name="Documento - Documento"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg7o#adf12o#seu52o#sc107o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg7o#adf12o#seu52o#sc107o#acond43o" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="cls17o#att104o"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

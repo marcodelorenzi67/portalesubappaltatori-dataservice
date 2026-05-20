@@ -13,6 +13,7 @@
     <Save gr:x="430" gr:y="115" id="mpkg5o#ada30o#svu26o" action="update" dataBinding="cls14o">
       <ConditionalExpression id="mpkg5o#ada30o#svu26o#sc101o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#ada30o#svu26o#sc101o#kcond62o" name="KeyCondition62" predicate="in" implied="false"/>
+        <AttributesCondition id="mpkg5o#ada30o#svu26o#sc101o#acond49o" name="Backoffice" predicate="eq" booleanOperator="or" implied="false" attributes="cls14o#att76o" value="false"/>
       </ConditionalExpression>
       <SuccessFlow id="mpkg5o#ada30o#svu26o#sf401o" to="mpkg5o#ada30o#spd44o" automaticCoupling="true"/>
     </Save>

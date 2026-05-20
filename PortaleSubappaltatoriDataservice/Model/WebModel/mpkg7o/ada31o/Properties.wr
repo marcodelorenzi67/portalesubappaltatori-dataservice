@@ -1,0 +1,23 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg7o#ada31o" name="Pulisci VOL documenti" defaultSuccessPortDefinition="mpkg7o#ada31o#spd46o" defaultErrorPortDefinition="mpkg7o#ada31o#epd46o">
+  <InputPortDefinition id="mpkg7o#ada31o#ipd46o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg7o#ada31o#ipd46o#sf408o" to="mpkg7o#ada31o#dlu8o">
+      <ParameterBinding id="mpkg7o#ada31o#ipd46o#sf408o#par514o" sourceImplicitParameter="userName" target="mpkg7o#ada31o#dlu8o#sc105o#acond41o" name="User ID - UserID"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg7o#ada31o#ipd46o#pdp194o" name="fornitore oid" array="true" type="integer"/>
+    <DataFlow id="mpkg7o#ada31o#ipd46o#df130o" to="mpkg7o#ada31o#spd46o">
+      <ParameterBinding id="mpkg7o#ada31o#ipd46o#df130o#par525o" source="mpkg7o#ada31o#ipd46o#pdp194o" target="mpkg7o#ada31o#spd46o#pdp195o" name="fornitore oid - fornitore oid"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg7o#ada31o#spd46o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg7o#ada31o#spd46o#pdp195o" array="false" name="fornitore oid" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg7o#ada31o#epd46o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Delete gr:x="410" gr:y="115" id="mpkg7o#ada31o#dlu8o" dataBinding="cls17o">
+      <SuccessFlow id="mpkg7o#ada31o#dlu8o#sf409o" to="mpkg7o#ada31o#spd46o" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg7o#ada31o#dlu8o#sc105o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg7o#ada31o#dlu8o#sc105o#acond41o" name="UserID" predicate="eq" booleanOperator="or" implied="false" attributes="cls17o#att104o"/>
+      </ConditionalExpression>
+    </Delete>
+  </Operations>
+</ActionDefinition>

@@ -27,7 +27,9 @@
       <ConditionalExpression id="mpkg6o#ada27o#svu21o#sc92o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg6o#ada27o#svu21o#sc92o#kcond55o" name="KeyCondition55" predicate="in" implied="false"/>
       </ConditionalExpression>
-      <SuccessFlow id="mpkg6o#ada27o#svu21o#sf355o" to="mpkg6o#ada27o#act52o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg6o#ada27o#svu21o#sf355o" to="mpkg6o#ada27o#act52o">
+        <ParameterBinding id="mpkg6o#ada27o#svu21o#sf355o#par545o" source="cls5#att22Array" target="mpkg6o#ada27o#act52o.mpkg2#ada19o#ipd27o#pdp196o" name="oid - Documenti.oid(LogToDocumenti)"/>
+      </SuccessFlow>
     </Save>
   </Operations>
   <Action id="mpkg6o#ada27o#act50o" gr:x="420" gr:y="110" definition="mpkg6o#ada22o">

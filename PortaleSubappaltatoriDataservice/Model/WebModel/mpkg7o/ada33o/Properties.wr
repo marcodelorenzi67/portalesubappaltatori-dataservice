@@ -1,0 +1,20 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg7o#ada33o" name="Elimina doc VOL" defaultSuccessPortDefinition="mpkg7o#ada33o#spd49o" defaultErrorPortDefinition="mpkg7o#ada33o#epd49o">
+  <InputPortDefinition id="mpkg7o#ada33o#ipd49o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg7o#ada33o#ipd49o#sf421o" to="mpkg7o#ada33o#dlu9o">
+      <ParameterBinding id="mpkg7o#ada33o#ipd49o#sf421o#par519o" source="mpkg7o#ada33o#ipd49o#pdp191o" target="mpkg7o#ada33o#dlu9o#sc110o#kcond66o.cls17o#att102o" name="KeyCondition66 [oid] - KeyCondition66 [oid]"/>
+      <ParameterBinding id="mpkg7o#ada33o#ipd49o#sf421o#par520o" sourceImplicitParameter="userName" target="mpkg7o#ada33o#dlu9o#sc110o#acond46o" name="User ID - userID"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg7o#ada33o#ipd49o#pdp191o" array="false" name="oid" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg7o#ada33o#spd49o" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg7o#ada33o#epd49o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Delete gr:x="405" gr:y="130" id="mpkg7o#ada33o#dlu9o" dataBinding="cls17o">
+      <ConditionalExpression id="mpkg7o#ada33o#dlu9o#sc110o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg7o#ada33o#dlu9o#sc110o#kcond66o" name="KeyCondition66" predicate="in" implied="false"/>
+        <AttributesCondition id="mpkg7o#ada33o#dlu9o#sc110o#acond46o" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="cls17o#att104o"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg7o#ada33o#dlu9o#sf422o" to="mpkg7o#ada33o#spd49o" automaticCoupling="true"/>
+    </Delete>
+  </Operations>
+</ActionDefinition>

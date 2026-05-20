@@ -16,7 +16,7 @@
     <DataFlow id="mpkg5o#ad2o#ipd32o#df85o" to="mpkg5o#ad2o#act39o" gr:bendpoints="17.0 177.0">
       <ParameterBinding id="mpkg5o#ad2o#ipd32o#df85o#par300o" name="fornitore - Fornitore oid" source="mpkg5o#ad2o#ipd32o#pdp105o" target="mpkg5o#ad2o#act39o.mpkg2#ada19o#ipd27o#pdp92o"/>
     </DataFlow>
-    <DataFlow id="mpkg5o#ad2o#ipd32o#df86o" to="mpkg5o#ad2o#spd32o">
+    <DataFlow id="mpkg5o#ad2o#ipd32o#df86o" to="mpkg5o#ad2o#spd32o" gr:bendpoints="42.0 208.0">
       <ParameterBinding id="mpkg5o#ad2o#ipd32o#df86o#par305o" source="mpkg5o#ad2o#ipd32o#pdp105o" target="mpkg5o#ad2o#spd32o#pdp108o" name="fornitore - fornitore"/>
     </DataFlow>
   </InputPortDefinition>
@@ -26,10 +26,16 @@
   <ErrorPortDefinition id="mpkg5o#ad2o#epd32o" name="Error Port" gr:x="0" gr:y="45"/>
   <Operations>
     <Save id="mpkg5o#ad2o#svu12o" gr:x="620" gr:y="360" action="create" dataBinding="cls14o">
-      <SuccessFlow id="mpkg5o#ad2o#svu12o#sf263o" to="mpkg5o#ad2o#act39o">
-        <ParameterBinding id="mpkg5o#ad2o#svu12o#sf263o#par301o" name="&quot;${tipoAzioneLog.inserimentoComunicazione}&quot; - Tipo azione" sourceValue="${tipoAzioneLog.inserimentoComunicazione}" target="mpkg5o#ad2o#act39o.mpkg2#ada19o#ipd27o#pdp93o"/>
-        <ParameterBinding id="mpkg5o#ad2o#svu12o#sf263o#par302o" name="User ID - User id" target="mpkg5o#ad2o#act39o.mpkg2#ada19o#ipd27o#pdp94o" sourceImplicitParameter="userName"/>
+      <DataFlow id="mpkg5o#ad2o#svu12o#df131o" to="mpkg5o#ad2o#act39o" gr:bendpoints="25.0 52.0">
+        <ParameterBinding id="mpkg5o#ad2o#svu12o#df131o#par528o" name="User ID - User id" target="mpkg5o#ad2o#act39o.mpkg2#ada19o#ipd27o#pdp94o" sourceImplicitParameter="userName"/>
+        <ParameterBinding id="mpkg5o#ad2o#svu12o#df131o#par529o" name="&quot;${tipoAzioneLog.inserimentoComunicazione}&quot; - Tipo azione" sourceValue="${tipoAzioneLog.inserimentoComunicazione}" target="mpkg5o#ad2o#act39o.mpkg2#ada19o#ipd27o#pdp93o"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg5o#ad2o#svu12o#sf432o" to="mpkg5o#ad2o#seu55o">
+        <ParameterBinding id="mpkg5o#ad2o#svu12o#sf432o#par530o" sourceImplicitParameter="userName" target="mpkg5o#ad2o#seu55o#sc114o#acond48o" name="User ID - userID"/>
       </SuccessFlow>
+      <DataFlow id="mpkg5o#ad2o#svu12o#df132o" to="mpkg5o#ad2o#svu32o">
+        <ParameterBinding id="mpkg5o#ad2o#svu12o#df132o#par531o" source="cls14o#att73oArray" target="mpkg5o#ad2o#svu32o.as25o#role49o.cls14o#att73o" name="oid - Comunicazione.oid(Documenti ComunicazioneToComunicazione)"/>
+      </DataFlow>
     </Save>
     <Selector id="mpkg5o#ad2o#seu34o" gr:x="470" gr:y="140" dataBinding="User">
       <ConditionalExpression id="mpkg5o#ad2o#seu34o#sc66o" defaultPolicy="fill" booleanOperator="and">
@@ -43,8 +49,19 @@
         <ParameterBinding id="mpkg5o#ad2o#tmu8o#sf397o#par500o" source="currentTimestamp" target="mpkg5o#ad2o#svu12o.cls14o#att96o" name="Current/Input Timestamp - Creata il"/>
       </SuccessFlow>
     </Time>
+    <Save id="mpkg5o#ad2o#svu32o" gr:x="1104" gr:y="289" action="create" dataBinding="cls16o" bulk="true">
+      <SuccessFlow id="mpkg5o#ad2o#svu32o#sf433o" to="mpkg5o#ad2o#act39o" automaticCoupling="true"/>
+    </Save>
+    <Selector id="mpkg5o#ad2o#seu55o" gr:x="855" gr:y="200" dataBinding="cls17o">
+      <ConditionalExpression id="mpkg5o#ad2o#seu55o#sc114o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg5o#ad2o#seu55o#sc114o#acond48o" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="cls17o#att104o"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ad2o#seu55o#sf431o" to="mpkg5o#ad2o#svu32o">
+        <ParameterBinding id="mpkg5o#ad2o#seu55o#sf431o#par527o" name="Documento - Documento" source="cls17o#att103oArray" target="mpkg5o#ad2o#svu32o.cls16o#att101o"/>
+      </SuccessFlow>
+    </Selector>
   </Operations>
-  <Action id="mpkg5o#ad2o#act39o" definition="mpkg2#ada19o" gr:x="875" gr:y="380">
+  <Action id="mpkg5o#ad2o#act39o" definition="mpkg2#ada19o" gr:x="1140" gr:y="445">
     <Events>
       <SuccessEvent id="mpkg5o#ad2o#act39o#scce38o" definition="mpkg2#ada19o#spd27o">
         <SuccessFlow id="mpkg5o#ad2o#act39o#scce38o#sf266o" to="mpkg5o#ad2o#spd32o" automaticCoupling="true"/>

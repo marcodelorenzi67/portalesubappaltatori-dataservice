@@ -1,0 +1,30 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#adf13o" name="Get log documento" type="read" defaultSuccessPortDefinition="mpkg5o#adf13o#spd51o" defaultErrorPortDefinition="mpkg5o#adf13o#epd51o">
+  <InputPortDefinition id="mpkg5o#adf13o#ipd51o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#adf13o#ipd51o#sf441o" to="mpkg5o#adf13o#seu57o">
+      <ParameterBinding id="mpkg5o#adf13o#ipd51o#sf441o#par546o" source="mpkg5o#adf13o#ipd51o#pdp197o" target="mpkg5o#adf13o#seu57o#sc116o#rcond22o.cls5#att22" name="documento [oid] - documento [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#adf13o#ipd51o#pdp197o" array="false" name="documento oid" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#adf13o#spd51o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp198o" array="false" name="Tipo azione" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp199o" array="false" name="oid" type="integer" key="true"/>
+    <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp200o" array="false" name="Fornitore" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp201o" array="false" name="Timestamp log" type="timestamp"/>
+    <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp202o" array="false" name="Utente" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#adf13o#epd51o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="355" gr:y="165" id="mpkg5o#adf13o#seu57o" dataBinding="cls13o">
+      <SuccessFlow id="mpkg5o#adf13o#seu57o#sf442o" to="mpkg5o#adf13o#spd51o">
+        <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par547o" source="cls13o#att70oArray" target="mpkg5o#adf13o#spd51o#pdp198o" name="Tipo azione - Tipo azione"/>
+        <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par548o" source="cls13o#att68oArray" target="mpkg5o#adf13o#spd51o#pdp199o" name="oid - oid"/>
+        <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par549o" source="cls13o#att78oArray" target="mpkg5o#adf13o#spd51o#pdp200o" name="Fornitore - Fornitore"/>
+        <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par550o" source="cls13o#att69oArray" target="mpkg5o#adf13o#spd51o#pdp201o" name="Timestamp log - Timestamp log"/>
+        <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par551o" source="cls13o#att77oArray" target="mpkg5o#adf13o#spd51o#pdp202o" name="Utente - Utente"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg5o#adf13o#seu57o#sc116o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#adf13o#seu57o#sc116o#rcond22o" name="documento" predicate="in" implied="false" role="as26o#role52o"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

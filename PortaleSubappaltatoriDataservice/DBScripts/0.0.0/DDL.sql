@@ -347,3 +347,45 @@ alter table "public"."sub_comunicazione"  add column  "letta"  bool;
 
 -- Documenti [cls5]
 alter table "public"."sub_allegati"  add column  "data_scadenza"  date;
+
+-- Documenti Comunicazione [cls16o]
+create table "public"."sub_documenti_comunicazione" (
+   "oid"  int4  not null,
+   "documento"  varchar(255),
+  primary key ("oid")
+);
+
+-- Documenti Comunicazione_Comunicazione [as25o]
+alter table "public"."sub_documenti_comunicazione"  add column  "comunicazione_oid"  int4;
+alter table "public"."sub_documenti_comunicazione"   add constraint fk_documenti_comunicazione_com foreign key ("comunicazione_oid") references "public"."sub_comunicazione" ("oid");
+
+-- Log_Documenti [as26o]
+alter table "public"."sub_log"  add column  "allegati_oid"  int4;
+alter table "public"."sub_log"   add constraint fk_log_allegati foreign key ("allegati_oid") references "public"."sub_allegati" ("oid");
+
+-- Categoria [cls18o]
+create table "public"."sub_categoria" (
+   "oid"  int4  not null,
+   "descrizione"  varchar(255),
+  primary key ("oid")
+);
+
+
+-- Categoria_Macro-tipologia [as27o]
+alter table "public"."sub_categoria"  add column  "macro_tipologia_oid"  int4;
+alter table "public"."sub_categoria"   add constraint fk_categoria_macro_tipologia foreign key ("macro_tipologia_oid") references "public"."sub_macro_tipologia" ("oid");
+
+
+-- Tipologia Documenti_Categoria [as28o]
+create table "public"."sub_tipologia_documenti_catego" (
+   "tipologia_allegati_oid"  int4 not null,
+   "categoria_oid"  int4 not null,
+  primary key ("tipologia_allegati_oid", "categoria_oid")
+);
+alter table "public"."sub_tipologia_documenti_catego"   add constraint fk_tipologia_documenti_catego foreign key ("tipologia_allegati_oid") references "public"."sub_tipologia_allegati" ("oid");
+alter table "public"."sub_tipologia_documenti_catego"   add constraint fk_tipologia_documenti_categ_2 foreign key ("categoria_oid") references "public"."sub_categoria" ("oid");
+
+-- Documenti [cls5]
+alter table "public"."sub_allegati"  add column  "seriale"  varchar(255);
+alter table "public"."sub_allegati"  add column  "identificativo"  varchar(255);
+alter table "public"."sub_allegati"  add column  "modello"  varchar(255);

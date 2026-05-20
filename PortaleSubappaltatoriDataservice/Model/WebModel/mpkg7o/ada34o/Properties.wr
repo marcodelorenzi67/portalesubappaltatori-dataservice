@@ -1,0 +1,16 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg7o#ada34o" name="Aggiungi doc VOL" defaultSuccessPortDefinition="mpkg7o#ada34o#spd50o" defaultErrorPortDefinition="mpkg7o#ada34o#epd50o">
+  <InputPortDefinition id="mpkg7o#ada34o#ipd50o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg7o#ada34o#ipd50o#sf425o" to="mpkg7o#ada34o#svu30o">
+      <ParameterBinding id="mpkg7o#ada34o#ipd50o#sf425o#par521o" source="mpkg7o#ada34o#ipd50o#pdp193o" target="mpkg7o#ada34o#svu30o.cls17o#att103o" name="Documento - Documento"/>
+      <ParameterBinding id="mpkg7o#ada34o#ipd50o#sf425o#par526o" sourceImplicitParameter="userName" target="mpkg7o#ada34o#svu30o.cls17o#att104o" name="User ID - userID"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg7o#ada34o#ipd50o#pdp193o" array="false" name="Documento" type="blob"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg7o#ada34o#spd50o" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg7o#ada34o#epd50o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Save gr:x="395" gr:y="70" id="mpkg7o#ada34o#svu30o" action="create" dataBinding="cls17o">
+      <SuccessFlow id="mpkg7o#ada34o#svu30o#sf426o" to="mpkg7o#ada34o#spd50o" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+</ActionDefinition>

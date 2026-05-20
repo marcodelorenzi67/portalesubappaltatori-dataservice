@@ -17,14 +17,14 @@
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#adf11o#epd41o" name="Error Port" gr:x="0" gr:y="300"/>
   <Operations>
-    <Selector gr:x="320" gr:y="120" id="mpkg5o#adf11o#seu47o" dataBinding="cls8" distinct="true" distinctAttributes="cls8#att37">
+    <Selector gr:x="285" gr:y="90" id="mpkg5o#adf11o#seu47o" dataBinding="cls8" distinct="true" distinctAttributes="cls8#att37">
       <ConditionalExpression id="mpkg5o#adf11o#seu47o#sc93o" defaultPolicy="fill" booleanOperator="and">
         <AssociationRoleCondition id="mpkg5o#adf11o#seu47o#sc93o#rcond18o" name="fornitore" predicate="in" implied="false" role="as6#role12.as11#role21"/>
         <AssociationRoleCondition id="mpkg5o#adf11o#seu47o#sc93o#rcond19o" name="tenant" predicate="in" implied="false" role="as19#role38.as11#role21"/>
       </ConditionalExpression>
       <SuccessFlow id="mpkg5o#adf11o#seu47o#sf361o" to="mpkg5o#adf11o#seu48o" automaticCoupling="true"/>
     </Selector>
-    <Selector gr:x="635" gr:y="135" id="mpkg5o#adf11o#seu48o" dataBinding="cls8">
+    <Selector gr:x="595" gr:y="180" id="mpkg5o#adf11o#seu48o" dataBinding="cls8">
       <SuccessFlow id="mpkg5o#adf11o#seu48o#sf362o" to="mpkg5o#adf11o#spd41o">
         <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par417o" source="cls8#att65Array" target="mpkg5o#adf11o#spd41o#pdp150o" name="Macrotipologia - Macrotipologia"/>
         <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par418o" source="cls8#att64Array" target="mpkg5o#adf11o#spd41o#pdp151o" name="Descrizione - Descrizione"/>
@@ -35,6 +35,7 @@
       </SuccessFlow>
       <ConditionalExpression id="mpkg5o#adf11o#seu48o#sc94o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#adf11o#seu48o#sc94o#kcond56o" name="KeyCondition56" predicate="notIn" implied="false"/>
+        <AttributesCondition id="mpkg5o#adf11o#seu48o#sc94o#acond52o" name="macroCategoriaCodice" predicate="eq" booleanOperator="or" implied="false" attributes="as12#role23.cls9#att43" value="${macroTipologia.aziendali}"/>
       </ConditionalExpression>
     </Selector>
   </Operations>
