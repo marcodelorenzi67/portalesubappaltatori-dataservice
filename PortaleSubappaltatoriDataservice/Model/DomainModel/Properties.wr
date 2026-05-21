@@ -50,6 +50,9 @@
     <ActionService definition="mpkg7o#ada33o" method="create" roles="rl1 rl2 rl3 rl4 rl5"/>
     <ActionService definition="mpkg7o#ada34o" method="create" roles="rl1 rl2 rl3 rl4 rl5"/>
     <ActionService definition="mpkg5o#adf13o" method="read" roles="rl1 rl2 rl3 rl5"/>
+    <ActionService definition="mpkg6o#ad5o" method="create" roles="rl4"/>
+    <ActionService definition="mpkg6o#ad6o" method="create" roles="rl4"/>
+    <ActionService definition="mpkg6o#adf15o" method="read" roles="rl4"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
@@ -96,7 +99,7 @@
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
-    <ServiceClass class="cls8" associationRoles="as11#role22 as12#role23 as14#role28">
+    <ServiceClass class="cls8" associationRoles="as11#role22 as12#role23 as14#role28 as28o#role55o">
       <ServiceRole role="rl1">
         <ServiceMethod method="read"/>
       </ServiceRole>
@@ -107,6 +110,9 @@
         <ServiceMethod method="read"/>
       </ServiceRole>
       <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl4">
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
@@ -1001,6 +1007,14 @@
       <db:JoinColumn attribute="cls8#att37" name="tipologia_allegati_oid"/>
     </AssociationRole1>
     <AssociationRole2 id="as28o#role56o" name="CategoriaToTipologia Documenti" maxCard="N">
+      <db:JoinColumn attribute="cls18o#att105o" name="categoria_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as29o" name="Documenti_Categoria" sourceClass="cls5" targetClass="cls18o" db:database="dbD1" db:table="sub_allegati">
+    <AssociationRole1 id="as29o#role57o" name="DocumentiToCategoria" maxCard="1">
+      <db:JoinColumn attribute="cls5#att22" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as29o#role58o" name="CategoriaToDocumenti" maxCard="N">
       <db:JoinColumn attribute="cls18o#att105o" name="categoria_oid"/>
     </AssociationRole2>
   </Association>

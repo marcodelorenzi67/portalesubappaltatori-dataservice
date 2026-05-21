@@ -1,4 +1,4 @@
-<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada25o" name="Elimina documento" defaultSuccessPortDefinition="mpkg5o#ada25o#spd37o" defaultErrorPortDefinition="mpkg5o#ada25o#epd37o">
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada25o" name="Elimina documento BO" defaultSuccessPortDefinition="mpkg5o#ada25o#spd37o" defaultErrorPortDefinition="mpkg5o#ada25o#epd37o">
   <InputPortDefinition id="mpkg5o#ada25o#ipd37o" gr:x="0" gr:y="30">
     <SuccessFlow id="mpkg5o#ada25o#ipd37o#sf306o" to="mpkg5o#ada25o#seu40o">
       <ParameterBinding id="mpkg5o#ada25o#ipd37o#sf306o#par357o" source="mpkg5o#ada25o#ipd37o#pdp135o" target="mpkg5o#ada25o#seu40o#sc79o#kcond45o.cls5#att22" name="KeyCondition [oid] - KeyCondition [oid]"/>

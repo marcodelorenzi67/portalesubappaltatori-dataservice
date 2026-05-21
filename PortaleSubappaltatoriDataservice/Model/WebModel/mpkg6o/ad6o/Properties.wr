@@ -1,0 +1,49 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#ad6o" name="Elimina documento Aggiuntivo" defaultSuccessPortDefinition="mpkg6o#ad6o#spd54o" defaultErrorPortDefinition="mpkg6o#ad6o#epd54o">
+  <InputPortDefinition id="mpkg6o#ad6o#ipd54o" gr:x="0" gr:y="20">
+    <PortDefinitionParameter id="mpkg6o#ad6o#ipd54o#pdp213o" name="oid" type="integer" array="false"/>
+    <DataFlow id="mpkg6o#ad6o#ipd54o#df142o" to="mpkg6o#ad6o#dlu10o" gr:bendpoints="5.0 169.0">
+      <ParameterBinding id="mpkg6o#ad6o#ipd54o#df142o#par575o" name="oid - KeyCondition46 [oid]" source="mpkg6o#ad6o#ipd54o#pdp213o" target="mpkg6o#ad6o#dlu10o#sc119o#kcond71o.cls5#att22"/>
+    </DataFlow>
+    <DataFlow id="mpkg6o#ad6o#ipd54o#df143o" to="mpkg6o#ad6o#seu59o" gr:bendpoints="23.0 57.0">
+      <ParameterBinding id="mpkg6o#ad6o#ipd54o#df143o#par576o" name="&quot;${statoAllegato.bozza}&quot; - codice stato" sourceValue="${statoAllegato.bozza}" target="mpkg6o#ad6o#seu59o#sc118o#acond53o"/>
+      <ParameterBinding id="mpkg6o#ad6o#ipd54o#df143o#par577o" name="KeyCondition [oid] - KeyCondition [oid]" source="mpkg6o#ad6o#ipd54o#pdp213o" target="mpkg6o#ad6o#seu59o#sc118o#kcond70o.cls5#att22"/>
+    </DataFlow>
+    <SuccessFlow id="mpkg6o#ad6o#ipd54o#sf460o" to="mpkg6o#ad6o#act64o">
+      <ParameterBinding id="mpkg6o#ad6o#ipd54o#sf460o#par578o" source="mpkg6o#ad6o#ipd54o#pdp214o" target="mpkg6o#ad6o#act64o.mpkg6o#ada22o#ipd31o#pdp100o" name="fornitore - fornitore"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg6o#ad6o#ipd54o#pdp214o" array="false" name="fornitore" type="integer"/>
+    <DataFlow id="mpkg6o#ad6o#ipd54o#df144o" to="mpkg6o#ad6o#spd54o">
+      <ParameterBinding id="mpkg6o#ad6o#ipd54o#df144o#par579o" source="mpkg6o#ad6o#ipd54o#pdp214o" target="mpkg6o#ad6o#spd54o#pdp215o" name="fornitore - fornitore"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg6o#ad6o#spd54o" name="Success Port" gr:x="0" gr:y="365">
+    <PortDefinitionParameter id="mpkg6o#ad6o#spd54o#pdp215o" array="false" name="fornitore" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg6o#ad6o#epd54o" name="Error Port" gr:x="0" gr:y="40"/>
+  <Operations>
+    <Selector id="mpkg6o#ad6o#seu59o" gr:x="365" gr:y="80" dataBinding="cls5">
+      <ConditionalExpression id="mpkg6o#ad6o#seu59o#sc118o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg6o#ad6o#seu59o#sc118o#kcond70o" name="KeyCondition" predicate="in" implied="false"/>
+        <AttributesCondition id="mpkg6o#ad6o#seu59o#sc118o#acond53o" name="codice stato" predicate="eq" booleanOperator="or" implied="false" attributes="as24o#role47o.cls15o#att85o"/>
+        <AttributesCondition id="mpkg6o#ad6o#seu59o#sc118o#acond54o" name="codice macro tipologia AZ" predicate="neq" booleanOperator="and" implied="false" attributes="as11#role21.as12#role23.cls9#att43" value="${macroTipologia.aziendali}"/>
+        <AttributesCondition id="mpkg6o#ad6o#seu59o#sc118o#acond55o" name="codice macro tipologia PE" predicate="neq" booleanOperator="and" implied="false" attributes="as11#role21.as12#role23.cls9#att43" value="${macroTipologia.personali}"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg6o#ad6o#seu59o#sf457o" to="mpkg6o#ad6o#dlu10o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg6o#ad6o#seu59o#sf458o" to="mpkg6o#ad6o#spd54o" automaticCoupling="true" code="Not Found"/>
+    </Selector>
+    <Delete id="mpkg6o#ad6o#dlu10o" gr:x="475" gr:y="345" dataBinding="cls5">
+      <ConditionalExpression id="mpkg6o#ad6o#dlu10o#sc119o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg6o#ad6o#dlu10o#sc119o#kcond71o" name="KeyCondition46" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg6o#ad6o#dlu10o#sf459o" to="mpkg6o#ad6o#spd54o" automaticCoupling="true"/>
+    </Delete>
+  </Operations>
+  <Action id="mpkg6o#ad6o#act64o" gr:x="60" gr:y="5" definition="mpkg6o#ada22o">
+    <Events>
+      <SuccessEvent id="mpkg6o#ad6o#act64o#scce64o" definition="mpkg6o#ada22o#spd31o">
+        <SuccessFlow id="mpkg6o#ad6o#act64o#scce64o#sf461o" to="mpkg6o#ad6o#seu59o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg6o#ad6o#act64o#erre67o" definition="mpkg6o#ada22o#epd31o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

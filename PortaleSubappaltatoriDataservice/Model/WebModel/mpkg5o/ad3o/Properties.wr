@@ -13,7 +13,7 @@
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg5o#ad3o#ipd39o#pdp143o" name="approva" type="boolean"/>
     <PortDefinitionParameter id="mpkg5o#ad3o#ipd39o#pdp142o" name="note" type="text"/>
-    <DataFlow id="mpkg5o#ad3o#ipd39o#df103o" to="mpkg5o#ad3o#switch13o">
+    <DataFlow id="mpkg5o#ad3o#ipd39o#df103o" to="mpkg5o#ad3o#switch13o" gr:bendpoints="10.0 55.0">
       <ParameterBinding id="mpkg5o#ad3o#ipd39o#df103o#par379o" source="mpkg5o#ad3o#ipd39o#pdp143o" target="mpkg5o#ad3o#switch13o.switch" name="approva - Switch"/>
     </DataFlow>
     <DataFlow id="mpkg5o#ad3o#ipd39o#df105o" to="mpkg5o#ad3o#switch14o">

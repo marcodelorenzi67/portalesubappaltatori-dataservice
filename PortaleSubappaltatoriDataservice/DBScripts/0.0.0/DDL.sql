@@ -389,3 +389,7 @@ alter table "public"."sub_tipologia_documenti_catego"   add constraint fk_tipolo
 alter table "public"."sub_allegati"  add column  "seriale"  varchar(255);
 alter table "public"."sub_allegati"  add column  "identificativo"  varchar(255);
 alter table "public"."sub_allegati"  add column  "modello"  varchar(255);
+
+-- Documenti_Categoria [as29o]
+alter table "public"."sub_allegati"  add column  "categoria_oid"  int4;
+alter table "public"."sub_allegati"   add constraint fk_allegati_categoria foreign key ("categoria_oid") references "public"."sub_categoria" ("oid");

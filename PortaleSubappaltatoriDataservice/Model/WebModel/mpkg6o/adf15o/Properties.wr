@@ -1,0 +1,27 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#adf15o" name="GET tipologie documenti aggiuntivi" type="read" defaultSuccessPortDefinition="mpkg6o#adf15o#spd56o" defaultErrorPortDefinition="mpkg6o#adf15o#epd56o">
+  <InputPortDefinition id="mpkg6o#adf15o#ipd56o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg6o#adf15o#ipd56o#sf466o" to="mpkg6o#adf15o#seu60o">
+      <ParameterBinding id="mpkg6o#adf15o#ipd56o#sf466o#par580o" source="mpkg6o#adf15o#ipd56o#pdp216o" target="mpkg6o#adf15o#seu60o#sc120o#rcond24o.cls9#att41" name="macrotipologia [oid] - macrotipologia [oid]"/>
+      <ParameterBinding id="mpkg6o#adf15o#ipd56o#sf466o#par581o" source="mpkg6o#adf15o#ipd56o#pdp217o" target="mpkg6o#adf15o#seu60o#sc120o#rcond25o.cls18o#att105o" name="categoria [oid] - categoria [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg6o#adf15o#ipd56o#pdp216o" array="false" name="macrotipologia [oid]" type="integer"/>
+    <PortDefinitionParameter id="mpkg6o#adf15o#ipd56o#pdp217o" array="false" name="categoria [oid]" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg6o#adf15o#spd56o" name="Success Port" gr:x="0" gr:y="195">
+    <PortDefinitionParameter id="mpkg6o#adf15o#spd56o#pdp218o" array="true" name="Descrizione" type="string" key="false"/>
+    <PortDefinitionParameter id="mpkg6o#adf15o#spd56o#pdp219o" array="true" name="oid" type="integer" key="true"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg6o#adf15o#epd56o" name="Error Port" gr:x="0" gr:y="335"/>
+  <Operations>
+    <Selector gr:x="340" gr:y="80" id="mpkg6o#adf15o#seu60o" dataBinding="cls8">
+      <SuccessFlow id="mpkg6o#adf15o#seu60o#sf467o" to="mpkg6o#adf15o#spd56o">
+        <ParameterBinding id="mpkg6o#adf15o#seu60o#sf467o#par582o" source="cls8#att64Array" target="mpkg6o#adf15o#spd56o#pdp218o" name="Descrizione - Descrizione"/>
+        <ParameterBinding id="mpkg6o#adf15o#seu60o#sf467o#par583o" source="cls8#att37Array" target="mpkg6o#adf15o#spd56o#pdp219o" name="oid - oid"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg6o#adf15o#seu60o#sc120o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg6o#adf15o#seu60o#sc120o#rcond24o" name="macrotipologia" predicate="in" implied="false" role="as12#role24"/>
+        <AssociationRoleCondition id="mpkg6o#adf15o#seu60o#sc120o#rcond25o" name="categoria" predicate="in" implied="false" role="as28o#role56o"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>
