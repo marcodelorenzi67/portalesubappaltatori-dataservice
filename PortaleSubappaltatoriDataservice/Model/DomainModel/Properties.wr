@@ -255,8 +255,7 @@
   <UserServices>
     <UserServiceOperation type="read"/>
   </UserServices>
-  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
-  </db:Database>
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_"/>
   <srs:Resources>
     <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
       <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
@@ -704,7 +703,7 @@
       <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls5" name="Documenti" duration="persistent" gr:x="620" gr:y="75" attributeOrder="cls5#att22 cls5#att23 cls5#att24 cls5#att25 cls5#att35 cls5#att36 cls5#att87o cls5#att88o cls5#att89o cls5#att90o cls5#att91o cls5#att97o cls5#att99o cls5#att107o cls5#att108o cls5#att109o" db:database="dbD1" db:table="sub_allegati">
+  <Class id="cls5" name="Documenti" duration="persistent" gr:x="620" gr:y="75" attributeOrder="cls5#att22 cls5#att23 cls5#att24 cls5#att25 cls5#att35 cls5#att36 cls5#att87o cls5#att88o cls5#att89o cls5#att90o cls5#att91o cls5#att97o cls5#att99o cls5#att107o cls5#att108o cls5#att109o cls5#att112o" db:database="dbD1" db:table="sub_allegati">
     <Attribute id="cls5#att22" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls5#att23" name="Documento" type="blob" db:column="documento" deletePolicy="delete" key="false">
       <VRules>
@@ -729,6 +728,7 @@
     <Attribute id="cls5#att109o" name="Modello" type="string" db:column="modello"/>
     <Attribute id="cls5#att108o" name="Identificativo" type="string" db:column="identificativo"/>
     <Attribute id="cls5#att107o" name="Seriale" type="string" db:column="seriale"/>
+    <Attribute id="cls5#att112o" name="Categoria" type="string" derivationQuery="simpleImported::Self.as29o#role57o.cls18o#att106o"/>
   </Class>
   <Association id="as6" name="Documenti_Fornitore" sourceClass="cls5" targetClass="cls2" db:database="dbD1" db:table="sub_allegati">
     <AssociationRole1 id="as6#role11" name="DocumentiToFornitore" maxCard="1">

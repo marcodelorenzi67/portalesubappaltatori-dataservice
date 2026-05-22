@@ -104,6 +104,10 @@
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par392o" source="as19#role37_cls1#att1Array" target="mpkg5o#ad3o#svu20o.as19#role37.cls1#att1" name="AllegatiToTenant.oid - Tenant.oid(AllegatiToTenant)"/>
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par393o" source="as11#role21_cls8#att37Array" target="mpkg5o#ad3o#svu20o.as11#role21.cls8#att37" name="AllegatiToTipologia Allegati.oid - Tipologia Allegati.oid(AllegatiToTipologia Allegati)"/>
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par395o" source="as6#role11_cls2#att6Array" target="mpkg5o#ad3o#svu20o.as6#role11.cls2#att6" name="AllegatiToFornitore.oid - Fornitore.oid(AllegatiToFornitore)"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par586o" source="cls5#att108oArray" target="mpkg5o#ad3o#svu20o.cls5#att108o" name="Identificativo - Identificativo"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par587o" source="cls5#att109oArray" target="mpkg5o#ad3o#svu20o.cls5#att109o" name="Modello - Modello"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par588o" source="cls5#att107oArray" target="mpkg5o#ad3o#svu20o.cls5#att107o" name="Seriale - Seriale"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par589o" source="as29o#role57o_cls18o#att105oArray" target="mpkg5o#ad3o#svu20o.as29o#role57o.cls18o#att105o" name="DocumentiToCategoria.oid - Categoria.oid(DocumentiToCategoria)"/>
       </DataFlow>
       <SuccessFlow id="mpkg5o#ad3o#seu44o#sf345o" to="mpkg5o#ad3o#act49o">
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf345o#par404o" sourceValue="${statoAllegato.inserito}" target="mpkg5o#ad3o#act49o.mpkg5o#adf10o#ipd36o#pdp132o" name="&quot;${statoAllegato.inserito}&quot; - codice"/>

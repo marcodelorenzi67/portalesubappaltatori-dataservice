@@ -10,7 +10,6 @@
       <ParameterBinding id="mpkg6o#ad5o#ipd53o#df135o#par570o" source="mpkg6o#ad5o#ipd53o#pdp210o" target="mpkg6o#ad5o#svu33o.cls5#att24" name="Descrizione - Descrizione"/>
       <ParameterBinding id="mpkg6o#ad5o#ipd53o#df135o#par571o" source="mpkg6o#ad5o#ipd53o#pdp211o" target="mpkg6o#ad5o#svu33o.cls5#att107o" name="Seriale - Seriale"/>
       <ParameterBinding id="mpkg6o#ad5o#ipd53o#df135o#par572o" source="mpkg6o#ad5o#ipd53o#pdp212o" target="mpkg6o#ad5o#svu33o.as29o#role57o.cls18o#att105o" name="Categoria.oid(DocumentiToCategoria) - Categoria.oid(DocumentiToCategoria)"/>
-      <ParameterBinding id="mpkg6o#ad5o#ipd53o#df135o#par584o" source="mpkg6o#ad5o#ipd53o#pdp220o" target="mpkg6o#ad5o#svu33o.cls5#att23" name="Documento - Documento"/>
       <ParameterBinding id="mpkg6o#ad5o#ipd53o#df135o#par585o" source="mpkg6o#ad5o#ipd53o#pdp221o" target="mpkg6o#ad5o#svu33o.cls5#att99o" name="Data scadenza - Data scadenza"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg6o#ad5o#ipd53o#pdp204o" name="Tipologia Allegati.oid(AllegatiToTipologia Allegati)" type="integer" array="true"/>
@@ -38,7 +37,6 @@
     <PortDefinitionParameter id="mpkg6o#ad5o#ipd53o#pdp210o" array="true" name="Descrizione" type="string"/>
     <PortDefinitionParameter id="mpkg6o#ad5o#ipd53o#pdp211o" array="false" name="Seriale" type="string"/>
     <PortDefinitionParameter id="mpkg6o#ad5o#ipd53o#pdp212o" array="false" name="Categoria.oid(DocumentiToCategoria)" type="integer"/>
-    <PortDefinitionParameter id="mpkg6o#ad5o#ipd53o#pdp220o" array="true" name="Documento" type="blob"/>
     <PortDefinitionParameter id="mpkg6o#ad5o#ipd53o#pdp221o" array="true" name="Data scadenza" type="date"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg6o#ad5o#spd53o" name="Success Port" gr:x="0" gr:y="140">
