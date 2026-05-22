@@ -8,8 +8,14 @@
     <DataFlow id="mpkg5o#ada25o#ipd37o#df100o" to="mpkg5o#ada25o#dlu7o" gr:bendpoints="5.0 169.0">
       <ParameterBinding id="mpkg5o#ada25o#ipd37o#df100o#par361o" source="mpkg5o#ada25o#ipd37o#pdp135o" target="mpkg5o#ada25o#dlu7o#sc80o#kcond46o.cls5#att22" name="oid - KeyCondition46 [oid]"/>
     </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada25o#ipd37o#pdp231o" name="oid personale" array="false" type="integer"/>
+    <DataFlow id="mpkg5o#ada25o#ipd37o#df155o" to="mpkg5o#ada25o#spd37o">
+      <ParameterBinding id="mpkg5o#ada25o#ipd37o#df155o#par623o" source="mpkg5o#ada25o#ipd37o#pdp231o" target="mpkg5o#ada25o#spd37o#pdp232o" name="oid personale - oid personale"/>
+    </DataFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg5o#ada25o#spd37o" name="Success Port" gr:x="0" gr:y="365"/>
+  <SuccessPortDefinition id="mpkg5o#ada25o#spd37o" name="Success Port" gr:x="0" gr:y="365">
+    <PortDefinitionParameter id="mpkg5o#ada25o#spd37o#pdp232o" array="false" name="oid personale" type="integer"/>
+  </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#ada25o#epd37o" name="Error Port" gr:x="0" gr:y="40"/>
   <Operations>
     <Selector gr:x="365" gr:y="80" id="mpkg5o#ada25o#seu40o" dataBinding="cls5">

@@ -393,3 +393,22 @@ alter table "public"."sub_allegati"  add column  "modello"  varchar(255);
 -- Documenti_Categoria [as29o]
 alter table "public"."sub_allegati"  add column  "categoria_oid"  int4;
 alter table "public"."sub_allegati"   add constraint fk_allegati_categoria foreign key ("categoria_oid") references "public"."sub_categoria" ("oid");
+
+-- Personale [cls20o]
+create table "public"."sub_personale" (
+   "oid"  int4  not null,
+   "ruolo"  varchar(255),
+   "cognome"  varchar(255),
+   "nome"  varchar(255),
+  primary key ("oid")
+);
+
+
+-- Personale_Fornitore [as30o]
+alter table "public"."sub_personale"  add column  "fornitore_oid"  int4;
+alter table "public"."sub_personale"   add constraint fk_personale_fornitore foreign key ("fornitore_oid") references "public"."sub_fornitore" ("oid");
+
+
+-- Documenti_Personale [as31o]
+alter table "public"."sub_allegati"  add column  "personale_oid"  int4;
+alter table "public"."sub_allegati"   add constraint fk_allegati_personale foreign key ("personale_oid") references "public"."sub_personale" ("oid");

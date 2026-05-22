@@ -74,13 +74,14 @@
       </ConditionalExpression>
       <SuccessFlow id="mpkg5o#ada16o#dlu6o#sf300o" to="mpkg5o#ada16o#seu39o" automaticCoupling="true"/>
     </Delete>
-    <Selector gr:x="1455" gr:y="480" id="mpkg5o#ada16o#seu39o" dataBinding="cls8">
+    <Selector gr:x="1240" gr:y="470" id="mpkg5o#ada16o#seu39o" dataBinding="cls8">
       <SuccessFlow id="mpkg5o#ada16o#seu39o#sf301o" to="mpkg5o#ada16o#act43o">
         <ParameterBinding id="mpkg5o#ada16o#seu39o#sf301o#par350o" source="cls8#att37Array" target="mpkg5o#ada16o#act43o.mpkg5o#ada24o#ipd35o#pdp130o" name="oid - Tipologia Allegati.oid(AllegatiToTipologia Allegati)"/>
         <ParameterBinding id="mpkg5o#ada16o#seu39o#sf301o#par363o" sourceValue="true" target="mpkg5o#ada16o#act43o.mpkg5o#ada24o#ipd35o#pdp136o" name="&quot;true&quot; - Mandatory"/>
       </SuccessFlow>
       <ConditionalExpression id="mpkg5o#ada16o#seu39o#sc78o" defaultPolicy="fill" booleanOperator="and">
         <AssociationRoleCondition id="mpkg5o#ada16o#seu39o#sc78o#rcond16o" name="tipo azienda" predicate="in" implied="false" role="as14#role27"/>
+        <AttributesCondition id="mpkg5o#ada16o#seu39o#sc78o#acond56o" name="cod macrotipologia AZ" predicate="eq" booleanOperator="or" implied="false" value="${macroTipologia.aziendali}" attributes="as12#role23.cls9#att43"/>
       </ConditionalExpression>
     </Selector>
   </Operations>

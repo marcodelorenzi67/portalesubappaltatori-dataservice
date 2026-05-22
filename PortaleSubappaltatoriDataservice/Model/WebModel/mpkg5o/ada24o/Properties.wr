@@ -5,6 +5,7 @@
       <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par340o" source="mpkg5o#ada24o#ipd35o#pdp130o" target="mpkg5o#ada24o#svu15o.as11#role21.cls8#att37" name="Tipologia Allegati.oid(AllegatiToTipologia Allegati) - Tipologia Allegati.oid(AllegatiToTipologia Allegati)"/>
       <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par341o" source="mpkg5o#ada24o#ipd35o#pdp131o" target="mpkg5o#ada24o#svu15o.as6#role11.cls2#att6" name="Fornitore.oid(DocumentazioneToFornitore) - Fornitore.oid(DocumentazioneToFornitore)"/>
       <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par362o" source="mpkg5o#ada24o#ipd35o#pdp136o" target="mpkg5o#ada24o#svu15o.cls5#att90o" name="Mandatory - Mandatory"/>
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par614o" source="mpkg5o#ada24o#ipd35o#pdp227o" target="mpkg5o#ada24o#svu15o.as31o#role61o.cls20o#att113o" name="Personale.oid(DocumentiToPersonale) - Personale.oid(DocumentiToPersonale)"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp130o" array="true" name="Tipologia Allegati.oid(AllegatiToTipologia Allegati)" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp131o" array="false" name="Fornitore.oid" type="integer"/>
@@ -21,11 +22,14 @@
     </DataFlow>
     <DataFlow id="mpkg5o#ada24o#ipd35o#df99o" to="mpkg5o#ada24o#spd35o" gr:bendpoints="21.0 75.0">
       <ParameterBinding id="mpkg5o#ada24o#ipd35o#df99o#par356o" source="mpkg5o#ada24o#ipd35o#pdp131o" target="mpkg5o#ada24o#spd35o#pdp134o" name="Fornitore.oid - Fornitore.oid"/>
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df99o#par622o" source="mpkg5o#ada24o#ipd35o#pdp227o" target="mpkg5o#ada24o#spd35o#pdp230o" name="Personale.oid(DocumentiToPersonale) - Personale.oid(DocumentiToPersonale)"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp136o" array="false" name="Mandatory" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp227o" array="false" name="Personale.oid(DocumentiToPersonale)" type="integer"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada24o#spd35o" name="Success Port" gr:x="0" gr:y="140">
     <PortDefinitionParameter id="mpkg5o#ada24o#spd35o#pdp134o" array="false" name="Fornitore.oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada24o#spd35o#pdp230o" array="false" name="Personale.oid(DocumentiToPersonale)" type="integer"/>
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#ada24o#epd35o" name="Error Port" gr:x="0" gr:y="300"/>
   <Operations>

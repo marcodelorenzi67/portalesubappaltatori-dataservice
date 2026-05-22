@@ -53,6 +53,7 @@
     <ActionService definition="mpkg6o#ad5o" method="create" roles="rl4"/>
     <ActionService definition="mpkg6o#ad6o" method="create" roles="rl4"/>
     <ActionService definition="mpkg6o#adf15o" method="read" roles="rl4"/>
+    <ActionService definition="mpkg5o#ada36o" method="create" roles="rl1 rl2 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
@@ -190,7 +191,7 @@
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
-    <ServiceClass class="cls5" associationRoles="as11#role21 as19#role37 as24o#role47o as6#role11">
+    <ServiceClass class="cls5" associationRoles="as24o#role47o as19#role37 as6#role11 as31o#role61o as11#role21">
       <ServiceRole role="rl1">
         <ServiceMethod method="read"/>
       </ServiceRole>
@@ -251,11 +252,33 @@
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
+    <ServiceClass class="cls20o" associationRoles="as30o#role59o as31o#role62o">
+      <ServiceRole role="rl1">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl3">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl2">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl4">
+        <ServiceMethod method="read">
+          <DataServiceRestriction defaultPolicy="fill" booleanOperator="and">
+            <UserAssociationRoleRestrictionCondition id="rrcond6o" name="User Association Condition" predicate="in" implied="false" role="as2#role3.as30o#role60o"/>
+          </DataServiceRestriction>
+        </ServiceMethod>
+      </ServiceRole>
+    </ServiceClass>
   </DataServices>
   <UserServices>
     <UserServiceOperation type="read"/>
   </UserServices>
-  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_"/>
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
+  </db:Database>
   <srs:Resources>
     <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
       <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
@@ -852,7 +875,7 @@
       <db:JoinColumn attribute="cls7#att29" name="tipo_token_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls11" name="Messaggi" duration="persistent" gr:x="-155" gr:y="250" attributeOrder="cls11#att51 cls11#att52 cls11#att53 cls11#att54 cls11#att55" db:database="dbD1" db:table="sub_messaggi">
+  <Class id="cls11" name="Messaggi" duration="persistent" gr:x="-155" gr:y="240" attributeOrder="cls11#att51 cls11#att52 cls11#att53 cls11#att54 cls11#att55" db:database="dbD1" db:table="sub_messaggi">
     <Attribute id="cls11#att51" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls11#att55" name="Oggetto" type="string" db:column="oggetto"/>
     <Attribute id="cls11#att54" name="Codice" type="string" db:column="codice"/>
@@ -1016,6 +1039,28 @@
     </AssociationRole1>
     <AssociationRole2 id="as29o#role58o" name="CategoriaToDocumenti" maxCard="N">
       <db:JoinColumn attribute="cls18o#att105o" name="categoria_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls20o" name="Personale" duration="persistent" gr:x="545" gr:y="900" attributeOrder="cls20o#att113o cls20o#att114o cls20o#att115o cls20o#att116o" db:database="dbD1" db:table="sub_personale">
+    <Attribute id="cls20o#att113o" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls20o#att116o" name="Ruolo" type="string" db:column="ruolo"/>
+    <Attribute id="cls20o#att115o" name="Cognome" type="string" db:column="cognome"/>
+    <Attribute id="cls20o#att114o" name="Nome" type="string" db:column="nome"/>
+  </Class>
+  <Association id="as30o" name="Personale_Fornitore" sourceClass="cls20o" targetClass="cls2" db:database="dbD1" db:table="sub_personale">
+    <AssociationRole1 id="as30o#role59o" name="PersonaleToFornitore" maxCard="1">
+      <db:JoinColumn attribute="cls20o#att113o" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as30o#role60o" name="FornitoreToPersonale" maxCard="N">
+      <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as31o" name="Documenti_Personale" sourceClass="cls5" targetClass="cls20o" db:database="dbD1" db:table="sub_allegati">
+    <AssociationRole1 id="as31o#role61o" name="DocumentiToPersonale" maxCard="1">
+      <db:JoinColumn attribute="cls5#att22" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as31o#role62o" name="PersonaleToDocumenti" maxCard="N">
+      <db:JoinColumn attribute="cls20o#att113o" name="personale_oid"/>
     </AssociationRole2>
   </Association>
 </DomainModel>
