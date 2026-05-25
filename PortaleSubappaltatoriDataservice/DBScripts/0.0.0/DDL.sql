@@ -403,12 +403,19 @@ create table "public"."sub_personale" (
   primary key ("oid")
 );
 
-
 -- Personale_Fornitore [as30o]
 alter table "public"."sub_personale"  add column  "fornitore_oid"  int4;
 alter table "public"."sub_personale"   add constraint fk_personale_fornitore foreign key ("fornitore_oid") references "public"."sub_fornitore" ("oid");
 
-
 -- Documenti_Personale [as31o]
 alter table "public"."sub_allegati"  add column  "personale_oid"  int4;
 alter table "public"."sub_allegati"   add constraint fk_allegati_personale foreign key ("personale_oid") references "public"."sub_personale" ("oid");
+
+-- Documenti [cls5]
+alter table "public"."sub_allegati"  add column  "documento_compilato"  varchar(255);
+
+-- Documenti [cls5]
+alter table "public"."sub_allegati"  add column  "documento_da_compilare"  bool;
+
+-- Tipologia Documenti [cls8]
+alter table "public"."sub_tipologia_allegati"  add column  "codice"  varchar(255);

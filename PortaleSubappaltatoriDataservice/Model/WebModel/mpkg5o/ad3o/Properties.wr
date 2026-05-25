@@ -108,6 +108,7 @@
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par587o" source="cls5#att109oArray" target="mpkg5o#ad3o#svu20o.cls5#att109o" name="Modello - Modello"/>
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par588o" source="cls5#att107oArray" target="mpkg5o#ad3o#svu20o.cls5#att107o" name="Seriale - Seriale"/>
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par589o" source="as29o#role57o_cls18o#att105oArray" target="mpkg5o#ad3o#svu20o.as29o#role57o.cls18o#att105o" name="DocumentiToCategoria.oid - Categoria.oid(DocumentiToCategoria)"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par624o" source="as31o#role61o_cls20o#att113oArray" target="mpkg5o#ad3o#svu20o.as31o#role61o.cls20o#att113o" name="DocumentiToPersonale.oid - Personale.oid(DocumentiToPersonale)"/>
       </DataFlow>
       <SuccessFlow id="mpkg5o#ad3o#seu44o#sf345o" to="mpkg5o#ad3o#act49o">
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf345o#par404o" sourceValue="${statoAllegato.inserito}" target="mpkg5o#ad3o#act49o.mpkg5o#adf10o#ipd36o#pdp132o" name="&quot;${statoAllegato.inserito}&quot; - codice"/>
