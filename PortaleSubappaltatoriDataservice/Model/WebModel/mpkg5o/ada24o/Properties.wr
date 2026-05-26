@@ -8,6 +8,7 @@
       <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par614o" source="mpkg5o#ada24o#ipd35o#pdp227o" target="mpkg5o#ada24o#svu15o.as31o#role61o.cls20o#att113o" name="Personale.oid(DocumentiToPersonale) - Personale.oid(DocumentiToPersonale)"/>
       <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par625o" source="mpkg5o#ada24o#ipd35o#pdp233o" target="mpkg5o#ada24o#svu15o.cls5#att119o" name="Documento da compilare - Documento da compilare"/>
       <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par626o" source="mpkg5o#ada24o#ipd35o#pdp234o" target="mpkg5o#ada24o#svu15o.cls5#att23" name="Documento - Documento"/>
+      <ParameterBinding id="mpkg5o#ada24o#ipd35o#df91o#par639o" source="mpkg5o#ada24o#ipd35o#pdp240o" target="mpkg5o#ada24o#svu15o.cls5#att24" name="Descrizione - Descrizione"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp130o" array="true" name="Tipologia Allegati.oid(AllegatiToTipologia Allegati)" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp131o" array="false" name="Fornitore.oid" type="integer"/>
@@ -34,6 +35,7 @@
     <DataFlow id="mpkg5o#ada24o#ipd35o#df156o" to="mpkg5o#ada24o#switch21o" gr:bendpoints="50.0 19.0">
       <ParameterBinding id="mpkg5o#ada24o#ipd35o#df156o#par627o" source="mpkg5o#ada24o#ipd35o#pdp235o" target="mpkg5o#ada24o#switch21o.switch" name="modulo - Switch"/>
     </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada24o#ipd35o#pdp240o" array="false" name="Descrizione" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada24o#spd35o" name="Success Port" gr:x="0" gr:y="140">
     <PortDefinitionParameter id="mpkg5o#ada24o#spd35o#pdp134o" array="false" name="Fornitore.oid" type="integer"/>

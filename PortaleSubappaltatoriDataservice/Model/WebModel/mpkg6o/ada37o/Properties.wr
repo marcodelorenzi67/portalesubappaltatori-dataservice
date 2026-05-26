@@ -1,0 +1,43 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#ada37o" name="Documento visionato" defaultSuccessPortDefinition="mpkg6o#ada37o#spd58o" defaultErrorPortDefinition="mpkg6o#ada37o#epd58o">
+  <InputPortDefinition id="mpkg6o#ada37o#ipd58o" gr:x="0" gr:y="30">
+    <DataFlow id="mpkg6o#ada37o#ipd58o#df158o" to="mpkg6o#ada37o#act67o" gr:bendpoints="27.0 73.0">
+      <ParameterBinding id="mpkg6o#ada37o#ipd58o#df158o#par629o" name="&quot;${statoAllegato.visionato}&quot; - codice" sourceValue="${statoAllegato.visionato}" target="mpkg6o#ada37o#act67o.mpkg5o#adf10o#ipd36o#pdp132o"/>
+    </DataFlow>
+    <SuccessFlow id="mpkg6o#ada37o#ipd58o#sf493o" to="mpkg6o#ada37o#act68o">
+      <ParameterBinding id="mpkg6o#ada37o#ipd58o#sf493o#par630o" source="mpkg6o#ada37o#ipd58o#pdp236o" target="mpkg6o#ada37o#act68o.mpkg6o#ada22o#ipd31o#pdp100o" name="fornitore - fornitore"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg6o#ada37o#ipd58o#pdp236o" array="false" name="fornitore" type="integer"/>
+    <DataFlow id="mpkg6o#ada37o#ipd58o#df159o" to="mpkg6o#ada37o#svu37o" gr:bendpoints="-7.0 160.0">
+      <ParameterBinding id="mpkg6o#ada37o#ipd58o#df159o#par631o" source="mpkg6o#ada37o#ipd58o#pdp237o" target="mpkg6o#ada37o#svu37o#sc127o#kcond75o.cls5#att22" name="KeyCondition75 [oid] - KeyCondition75 [oid]"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg6o#ada37o#ipd58o#pdp237o" array="false" name="documento oid" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg6o#ada37o#spd58o" name="Success Port" gr:x="0" gr:y="400"/>
+  <ErrorPortDefinition id="mpkg6o#ada37o#epd58o" name="Error Port" gr:x="0" gr:y="70"/>
+  <Operations>
+    <Save gr:x="640" gr:y="270" id="mpkg6o#ada37o#svu37o" action="update" dataBinding="cls5">
+      <ConditionalExpression id="mpkg6o#ada37o#svu37o#sc127o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg6o#ada37o#svu37o#sc127o#kcond75o" name="KeyCondition75" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg6o#ada37o#svu37o#sf496o" to="mpkg6o#ada37o#spd58o" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+  <Action id="mpkg6o#ada37o#act67o" gr:x="290" gr:y="170" definition="mpkg5o#adf10o">
+    <Events>
+      <SuccessEvent id="mpkg6o#ada37o#act67o#scce67o" definition="mpkg5o#adf10o#spd36o">
+        <SuccessFlow id="mpkg6o#ada37o#act67o#scce67o#sf495o" to="mpkg6o#ada37o#svu37o">
+          <ParameterBinding id="mpkg6o#ada37o#act67o#scce67o#sf495o#par632o" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg6o#ada37o#svu37o.as24o#role47o.cls15o#att83o" name="oid - Stato Documento.oid(AllegatiToStato Allegato)"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg6o#ada37o#act67o#erre70o" definition="mpkg5o#adf10o#epd36o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg6o#ada37o#act68o" gr:x="20" gr:y="25" definition="mpkg6o#ada22o">
+    <Events>
+      <SuccessEvent id="mpkg6o#ada37o#act68o#scce68o" definition="mpkg6o#ada22o#spd31o">
+        <SuccessFlow id="mpkg6o#ada37o#act68o#scce68o#sf494o" to="mpkg6o#ada37o#act67o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg6o#ada37o#act68o#erre71o" definition="mpkg6o#ada22o#epd31o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

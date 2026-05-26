@@ -9,6 +9,8 @@
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df111o#par408o" source="mpkg6o#ada27o#ipd40o#pdp146o" target="mpkg6o#ada27o#svu21o.cls5#att23" name="Documento - Documento"/>
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df111o#par411o" source="mpkg6o#ada27o#ipd40o#pdp147o" target="mpkg6o#ada27o#svu21o#sc92o#kcond55o.cls5#att22" name="KeyCondition55 [oid] - KeyCondition55 [oid]"/>
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df111o#par511o" source="mpkg6o#ada27o#ipd40o#pdp186o" target="mpkg6o#ada27o#svu21o.cls5#att99o" name="Data scadenza - Data scadenza"/>
+      <ParameterBinding id="mpkg6o#ada27o#ipd40o#df111o#par633o" source="mpkg6o#ada27o#ipd40o#pdp238o" target="mpkg6o#ada27o#svu21o.cls5#att118o" name="Documento compilato - Documento compilato"/>
+      <ParameterBinding id="mpkg6o#ada27o#ipd40o#df111o#par641o" source="mpkg6o#ada27o#ipd40o#pdp242o" target="mpkg6o#ada27o#svu21o.cls5#att121o" name="Note fornitore - Note fornitore"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp145o" array="false" name="Descrizione" type="string"/>
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp146o" array="false" name="Documento" type="blob"/>
@@ -19,6 +21,8 @@
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df112o#par414o" sourceValue="${tipoAzioneLog.caricatoAllegatoDaFornitore}" target="mpkg6o#ada27o#act52o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.caricatoAllegatoDaFornitore}&quot; - Tipo azione"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp186o" array="false" name="Data scadenza" type="date"/>
+    <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp238o" array="false" name="Documento compilato" type="blob"/>
+    <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp242o" array="false" name="Note fornitore" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg6o#ada27o#spd40o" name="Success Port" gr:x="0" gr:y="315"/>
   <ErrorPortDefinition id="mpkg6o#ada27o#epd40o" name="Error Port" gr:x="0" gr:y="10"/>

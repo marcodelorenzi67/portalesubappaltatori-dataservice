@@ -419,3 +419,6 @@ alter table "public"."sub_allegati"  add column  "documento_da_compilare"  bool;
 
 -- Tipologia Documenti [cls8]
 alter table "public"."sub_tipologia_allegati"  add column  "codice"  varchar(255);
+
+-- Documenti [cls5]
+alter table "public"."sub_allegati"  add column  "note_fornitore"  varchar(255);

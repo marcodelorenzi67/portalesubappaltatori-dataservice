@@ -79,3 +79,7 @@ VALUES(5, true, 'A', 'Approvato');
 INSERT INTO public.sub_tipologia_allegati
 ("oid", pattern_nome, giorni_durata, condiviso, macro_tipologia_oid, descrizione)
 VALUES(12, NULL, NULL, false, 1, 'Moduli');
+
+INSERT INTO public.sub_stato_allegato
+("oid", attivo, codice, descrizione)
+VALUES(6, true, 'MV', 'Visionato');

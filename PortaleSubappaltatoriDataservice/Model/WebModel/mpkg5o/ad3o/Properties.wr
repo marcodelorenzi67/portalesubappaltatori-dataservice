@@ -25,6 +25,10 @@
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ad3o#ipd39o#pdp187o" array="false" name="Data scadenza" type="date"/>
     <PortDefinitionParameter id="mpkg5o#ad3o#ipd39o#pdp188o" array="false" name="Descrizione" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ad3o#ipd39o#pdp239o" name="modulo" type="boolean"/>
+    <DataFlow id="mpkg5o#ad3o#ipd39o#df161o" to="mpkg5o#ad3o#switch22o">
+      <ParameterBinding id="mpkg5o#ad3o#ipd39o#df161o#par635o" source="mpkg5o#ad3o#ipd39o#pdp239o" target="mpkg5o#ad3o#switch22o.switch" name="modulo - Switch"/>
+    </DataFlow>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ad3o#spd39o" name="Success Port" gr:x="0" gr:y="970"/>
   <ErrorPortDefinition id="mpkg5o#ad3o#epd39o" name="Error Port" gr:x="0" gr:y="80"/>
@@ -91,10 +95,10 @@
       </ConditionalExpression>
       <SuccessFlow id="mpkg5o#ad3o#svu19o#sf340o" to="mpkg5o#ad3o#seu44o" automaticCoupling="true"/>
     </Save>
-    <Save gr:x="1460" gr:y="705" id="mpkg5o#ad3o#svu20o" action="create" dataBinding="cls5">
+    <Save gr:x="1335" gr:y="725" id="mpkg5o#ad3o#svu20o" action="create" dataBinding="cls5">
       <SuccessFlow id="mpkg5o#ad3o#svu20o#sf339o" to="mpkg5o#ad3o#act60o" automaticCoupling="true"/>
     </Save>
-    <Selector gr:x="1300" gr:y="345" id="mpkg5o#ad3o#seu44o" dataBinding="cls5">
+    <Selector gr:x="1290" gr:y="310" id="mpkg5o#ad3o#seu44o" dataBinding="cls5">
       <ConditionalExpression id="mpkg5o#ad3o#seu44o#sc89o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#ad3o#seu44o#sc89o#kcond54o" name="KeyCondition54" predicate="in" implied="false"/>
       </ConditionalExpression>
@@ -109,11 +113,29 @@
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par588o" source="cls5#att107oArray" target="mpkg5o#ad3o#svu20o.cls5#att107o" name="Seriale - Seriale"/>
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par589o" source="as29o#role57o_cls18o#att105oArray" target="mpkg5o#ad3o#svu20o.as29o#role57o.cls18o#att105o" name="DocumentiToCategoria.oid - Categoria.oid(DocumentiToCategoria)"/>
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par624o" source="as31o#role61o_cls20o#att113oArray" target="mpkg5o#ad3o#svu20o.as31o#role61o.cls20o#att113o" name="DocumentiToPersonale.oid - Personale.oid(DocumentiToPersonale)"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#sf341o#par638o" source="cls5#att119oArray" target="mpkg5o#ad3o#svu20o.cls5#att119o" name="Documento da compilare - Documento da compilare"/>
       </DataFlow>
       <SuccessFlow id="mpkg5o#ad3o#seu44o#sf345o" to="mpkg5o#ad3o#act49o">
         <ParameterBinding id="mpkg5o#ad3o#seu44o#sf345o#par404o" sourceValue="${statoAllegato.inserito}" target="mpkg5o#ad3o#act49o.mpkg5o#adf10o#ipd36o#pdp132o" name="&quot;${statoAllegato.inserito}&quot; - codice"/>
       </SuccessFlow>
+      <DataFlow id="mpkg5o#ad3o#seu44o#df162o" to="mpkg5o#ad3o#pcu4o">
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#df162o#par637o" source="cls5#att23Array" target="mpkg5o#ad3o#pcu4o#pcp4o" name="Documento - documento"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#df162o#par643o" source="cls5#att24Array" target="mpkg5o#ad3o#pcu4o#pcp5o" name="Descrizione - descrizione"/>
+      </DataFlow>
     </Selector>
+    <Switch gr:x="1450" gr:y="490" id="mpkg5o#ad3o#switch22o" name="modulo">
+      <Case value="true"/>
+      <SuccessFlow id="mpkg5o#ad3o#switch22o#sf497o" to="mpkg5o#ad3o#pcu4o" automaticCoupling="true" code="true"/>
+      <SuccessFlow id="mpkg5o#ad3o#switch22o#sf499o" to="mpkg5o#ad3o#svu20o" automaticCoupling="true"/>
+    </Switch>
+    <ParameterCollector gr:x="1185" gr:y="535" id="mpkg5o#ad3o#pcu4o" name="doc">
+      <SuccessFlow id="mpkg5o#ad3o#pcu4o#sf498o" to="mpkg5o#ad3o#svu20o">
+        <ParameterBinding id="mpkg5o#ad3o#pcu4o#sf498o#par636o" source="mpkg5o#ad3o#pcu4o#pcp4o" target="mpkg5o#ad3o#svu20o.cls5#att23" name="documento - Documento"/>
+        <ParameterBinding id="mpkg5o#ad3o#pcu4o#sf498o#par644o" source="mpkg5o#ad3o#pcu4o#pcp5o" target="mpkg5o#ad3o#svu20o.cls5#att24" name="descrizione - Descrizione"/>
+      </SuccessFlow>
+      <CollectorParameter id="mpkg5o#ad3o#pcu4o#pcp4o" name="documento"/>
+      <CollectorParameter id="mpkg5o#ad3o#pcu4o#pcp5o" name="descrizione"/>
+    </ParameterCollector>
   </Operations>
   <Action id="mpkg5o#ad3o#act46o" definition="mpkg5o#adf10o" gr:x="320" gr:y="105">
     <Events>
@@ -141,12 +163,13 @@
       <ErrorEvent id="mpkg5o#ad3o#act48o#erre50o" definition="mpkg2#ada19o#epd27o"/>
     </Events>
   </Action>
-  <Action id="mpkg5o#ad3o#act49o" gr:x="1305" gr:y="525" definition="mpkg5o#adf10o">
+  <Action id="mpkg5o#ad3o#act49o" gr:x="1580" gr:y="375" definition="mpkg5o#adf10o">
     <Events>
       <SuccessEvent id="mpkg5o#ad3o#act49o#scce48o" definition="mpkg5o#adf10o#spd36o">
-        <SuccessFlow id="mpkg5o#ad3o#act49o#scce48o#sf347o" to="mpkg5o#ad3o#svu20o">
-          <ParameterBinding id="mpkg5o#ad3o#act49o#scce48o#sf347o#par405o" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg5o#ad3o#svu20o.as24o#role47o.cls15o#att83o" name="oid - Stato Allegato.oid(AllegatiToStato Allegato)"/>
-        </SuccessFlow>
+        <SuccessFlow id="mpkg5o#ad3o#act49o#scce48o#sf347o" to="mpkg5o#ad3o#switch22o" automaticCoupling="true"/>
+        <DataFlow id="mpkg5o#ad3o#act49o#scce48o#df160o" to="mpkg5o#ad3o#svu20o">
+          <ParameterBinding id="mpkg5o#ad3o#act49o#scce48o#df160o#par634o" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg5o#ad3o#svu20o.as24o#role47o.cls15o#att83o" name="oid - Stato Documento.oid(AllegatiToStato Allegato)"/>
+        </DataFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg5o#ad3o#act49o#erre51o" definition="mpkg5o#adf10o#epd36o"/>
     </Events>
