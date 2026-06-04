@@ -1,5 +1,5 @@
 <DomainModel xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:srs="http://www.webratio.com/2017/IFML/ServerResources">
-  <Class id="User" name="User" duration="persistent" gr:x="10" gr:y="240" gr:hideAttributes="false" attributeOrder="userOID userName secretKey User#att3 User#att4 User#att5 User#att49 User#att71o User#att94o" db:database="dbD1" db:table="sub_user">
+  <Class id="User" name="User" duration="persistent" gr:x="10" gr:y="240" gr:hideAttributes="false" attributeOrder="userOID userName secretKey User#att3 User#att4 User#att5 User#att49 User#att71o User#att94o User#att122o" db:database="dbD1" db:table="sub_user">
     <Attribute name="oid" id="userOID" type="integer" key="true" db:column="oid"/>
     <Attribute name="User ID" id="userName" type="string" db:column="user_id" key="false"/>
     <Attribute id="secretKey" name="Secret Key" type="password" db:cryptAlgorithm="com.webratio.data.crypto.PBKDF2WithHmacSHA1CryptImplementation" db:column="secret_key" key="false"/>
@@ -12,6 +12,7 @@
     </Attribute>
     <Attribute id="User#att71o" name="Ragione Sociale" type="string" derivationQuery="simpleImported::Self.as2#role3.cls2#att7"/>
     <Attribute id="User#att94o" name="Attivo" type="boolean" db:column="attivo"/>
+    <Attribute id="User#att122o" name="Principale" type="boolean" db:column="principale"/>
   </Class>
   <ActionServices>
     <ActionService definition="mpkg1#ada1" method="create" roles="rl5"/>
@@ -55,6 +56,8 @@
     <ActionService definition="mpkg6o#adf15o" method="read" roles="rl4"/>
     <ActionService definition="mpkg5o#ada36o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg6o#ada37o" method="create" roles="rl4"/>
+    <ActionService definition="mpkg5o#ada38o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg5o#ada39o" method="create" roles="rl1 rl2 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
@@ -699,7 +702,7 @@
       <db:JoinColumn attribute="cls3#att13" name="stato_registrazione_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls4" name="User invitati" duration="persistent" gr:x="375" gr:y="-45" attributeOrder="cls4#att18 cls4#att19 cls4#att20 cls4#att50 cls4#att56 cls4#att58 cls4#att62 cls4#att92o" db:database="dbD1" db:table="sub_user_invitati">
+  <Class id="cls4" name="User invitati" duration="persistent" gr:x="375" gr:y="-45" attributeOrder="cls4#att18 cls4#att19 cls4#att20 cls4#att50 cls4#att56 cls4#att58 cls4#att62 cls4#att92o cls4#att123o" db:database="dbD1" db:table="sub_user_invitati">
     <Attribute id="cls4#att20" name="Username" key="true" type="string" db:column="username"/>
     <Attribute id="cls4#att19" name="Cognome" type="string" db:column="cognome"/>
     <Attribute id="cls4#att18" name="Nome" type="string" db:column="nome"/>
@@ -710,6 +713,7 @@
       <db:JoinColumn attribute="cls4#att20" name="email"/>
     </Attribute>
     <Attribute id="cls4#att92o" name="Email utente" type="string" db:column="email_utente"/>
+    <Attribute id="cls4#att123o" name="Principale" type="boolean" db:column="principale"/>
   </Class>
   <Association id="as4" name="Pre Registrazione_Fornitore" sourceClass="cls4" targetClass="cls2" db:database="dbD1" db:table="sub_user_invitati">
     <AssociationRole1 id="as4#role7" name="Pre RegistrazioneToFornitore" maxCard="1">
@@ -727,7 +731,7 @@
       <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls5" name="Documenti" duration="persistent" gr:x="620" gr:y="75" attributeOrder="cls5#att22 cls5#att23 cls5#att24 cls5#att25 cls5#att35 cls5#att36 cls5#att87o cls5#att88o cls5#att89o cls5#att90o cls5#att91o cls5#att97o cls5#att99o cls5#att107o cls5#att108o cls5#att109o cls5#att112o cls5#att118o cls5#att119o cls5#att121o" db:database="dbD1" db:table="sub_allegati">
+  <Class id="cls5" name="Documenti" duration="persistent" gr:x="620" gr:y="75" attributeOrder="cls5#att22 cls5#att23 cls5#att24 cls5#att25 cls5#att35 cls5#att36 cls5#att87o cls5#att88o cls5#att89o cls5#att90o cls5#att91o cls5#att97o cls5#att99o cls5#att107o cls5#att108o cls5#att109o cls5#att112o cls5#att118o cls5#att119o cls5#att121o cls5#att127o" db:database="dbD1" db:table="sub_allegati">
     <Attribute id="cls5#att22" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls5#att23" name="Documento" type="blob" db:column="documento" deletePolicy="delete" key="false">
       <VRules>
@@ -751,7 +755,7 @@
     <Attribute id="cls5#att99o" name="Data scadenza" type="date" db:column="data_scadenza" key="false"/>
     <Attribute id="cls5#att109o" name="Modello" type="string" db:column="modello"/>
     <Attribute id="cls5#att108o" name="Identificativo" type="string" db:column="identificativo"/>
-    <Attribute id="cls5#att107o" name="Seriale" type="string" db:column="seriale"/>
+    <Attribute id="cls5#att107o" name="Marca" type="string" db:column="marca"/>
     <Attribute id="cls5#att112o" name="Categoria" type="string" derivationQuery="simpleImported::Self.as29o#role57o.cls18o#att106o"/>
     <Attribute id="cls5#att118o" name="Documento compilato" type="blob" db:column="documento_compilato">
       <VRules>
@@ -764,6 +768,7 @@
     </Attribute>
     <Attribute id="cls5#att119o" name="Documento da compilare" type="boolean" db:column="documento_da_compilare"/>
     <Attribute id="cls5#att121o" name="Note fornitore" type="string" db:column="note_fornitore"/>
+    <Attribute id="cls5#att127o" name="Data Alert" type="date" db:column="data_alert"/>
   </Class>
   <Association id="as6" name="Documenti_Fornitore" sourceClass="cls5" targetClass="cls2" db:database="dbD1" db:table="sub_allegati">
     <AssociationRole1 id="as6#role11" name="DocumentiToFornitore" maxCard="1">
@@ -812,7 +817,7 @@
   <Class id="cls8" name="Tipologia Documenti" duration="persistent" gr:x="950" gr:y="30" attributeOrder="cls8#att37 cls8#att38 cls8#att39 cls8#att40 cls8#att64 cls8#att65 cls8#att120o" db:database="dbD1" db:table="sub_tipologia_allegati">
     <Attribute id="cls8#att37" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls8#att40" name="Pattern nome" type="string" db:column="pattern_nome"/>
-    <Attribute id="cls8#att39" name="Giorni Durata" type="integer" db:column="giorni_durata"/>
+    <Attribute id="cls8#att39" name="Giorni Alert" type="integer" db:column="giorni_alert"/>
     <Attribute id="cls8#att38" name="Condiviso" type="boolean" db:column="condiviso"/>
     <Attribute id="cls8#att64" name="Descrizione" type="string" db:column="descrizione"/>
     <Attribute id="cls8#att65" name="Macrotipologia" type="string" derivationQuery="simpleImported::Self.as12#role23.cls9#att42"/>
@@ -916,12 +921,14 @@
       <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls13o" name="Log" duration="persistent" gr:x="-55" gr:y="500" attributeOrder="cls13o#att68o cls13o#att69o cls13o#att70o cls13o#att77o cls13o#att78o" db:database="dbD1" db:table="sub_log">
+  <Class id="cls13o" name="Log" duration="persistent" gr:x="-55" gr:y="520" attributeOrder="cls13o#att68o cls13o#att69o cls13o#att70o cls13o#att77o cls13o#att78o cls13o#att124o cls13o#att125o" db:database="dbD1" db:table="sub_log">
     <Attribute id="cls13o#att68o" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls13o#att70o" name="Tipo azione" type="string" db:column="tipo_azione"/>
     <Attribute id="cls13o#att69o" name="Timestamp log" type="timestamp" db:column="timestamp_log"/>
     <Attribute id="cls13o#att77o" name="Utente" type="string" derivationQuery="simpleImported::Self.as20o#role39o.userName"/>
     <Attribute id="cls13o#att78o" name="Fornitore" type="string" derivationQuery="simpleImported::Self.as21o#role41o.cls2#att7"/>
+    <Attribute id="cls13o#att124o" name="Nome" type="string" derivationQuery="simpleImported::Self.as20o#role39o.User#att3"/>
+    <Attribute id="cls13o#att125o" name="Cognome" type="string" derivationQuery="simpleImported::Self.as20o#role39o.User#att4"/>
   </Class>
   <Association id="as20o" name="Log_User" sourceClass="cls13o" targetClass="User" db:database="dbD1" db:table="sub_log">
     <AssociationRole1 id="as20o#role39o" name="LogToUser" maxCard="1">
@@ -939,7 +946,7 @@
       <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls14o" name="Comunicazione" duration="persistent" gr:x="235" gr:y="575" attributeOrder="cls14o#att73o cls14o#att74o cls14o#att75o cls14o#att76o cls14o#att95o cls14o#att96o cls14o#att98o" db:database="dbD1" db:table="sub_comunicazione">
+  <Class id="cls14o" name="Comunicazione" duration="persistent" gr:x="250" gr:y="430" attributeOrder="cls14o#att73o cls14o#att74o cls14o#att75o cls14o#att76o cls14o#att95o cls14o#att96o cls14o#att98o" db:database="dbD1" db:table="sub_comunicazione">
     <Attribute id="cls14o#att73o" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls14o#att75o" name="Note" type="text" db:column="note"/>
     <Attribute id="cls14o#att74o" name="Oggetto" type="string" db:column="oggetto"/>
@@ -985,7 +992,7 @@
       <db:JoinColumn attribute="cls15o#att83o" name="stato_allegato_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls16o" name="Documenti Comunicazione" duration="persistent" gr:x="195" gr:y="795" attributeOrder="cls16o#att100o cls16o#att101o" db:database="dbD1" db:table="sub_documenti_comunicazione">
+  <Class id="cls16o" name="Documenti Comunicazione" duration="persistent" gr:x="190" gr:y="725" attributeOrder="cls16o#att100o cls16o#att101o" db:database="dbD1" db:table="sub_documenti_comunicazione">
     <Attribute id="cls16o#att100o" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls16o#att101o" name="Documento" type="blob" db:column="documento">
       <VRules>
@@ -1005,7 +1012,7 @@
       <db:JoinColumn attribute="cls14o#att73o" name="comunicazione_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls17o" name="Doc VOL" duration="volatile" gr:x="5" gr:y="650" volatileScope="application" volatileStorage="database" attributeOrder="cls17o#att102o cls17o#att103o cls17o#att104o">
+  <Class id="cls17o" name="Doc VOL" duration="volatile" gr:x="5" gr:y="695" volatileScope="application" volatileStorage="database" attributeOrder="cls17o#att102o cls17o#att103o cls17o#att104o">
     <Attribute id="cls17o#att102o" key="true" name="oid" type="integer"/>
     <Attribute id="cls17o#att104o" name="userID" type="string"/>
     <Attribute id="cls17o#att103o" name="Documento" type="blob">
@@ -1054,11 +1061,14 @@
       <db:JoinColumn attribute="cls18o#att105o" name="categoria_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls20o" name="Personale" duration="persistent" gr:x="545" gr:y="900" attributeOrder="cls20o#att113o cls20o#att114o cls20o#att115o cls20o#att116o" db:database="dbD1" db:table="sub_personale">
+  <Class id="cls20o" name="Personale" duration="persistent" gr:x="545" gr:y="900" attributeOrder="cls20o#att113o cls20o#att114o cls20o#att115o cls20o#att116o cls20o#att126o" db:database="dbD1" db:table="sub_personale">
     <Attribute id="cls20o#att113o" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls20o#att116o" name="Ruolo" type="string" db:column="ruolo"/>
     <Attribute id="cls20o#att115o" name="Cognome" type="string" db:column="cognome"/>
     <Attribute id="cls20o#att114o" name="Nome" type="string" db:column="nome"/>
+    <Attribute id="cls20o#att126o" name="Documenti da caricare" type="boolean" db:table="sub_view_documenti_da_caricare_personale" db:column="documenti_da_caricare">
+      <db:JoinColumn attribute="cls20o#att113o" name="oid"/>
+    </Attribute>
   </Class>
   <Association id="as30o" name="Personale_Fornitore" sourceClass="cls20o" targetClass="cls2" db:database="dbD1" db:table="sub_personale">
     <AssociationRole1 id="as30o#role59o" name="PersonaleToFornitore" maxCard="1">
@@ -1074,6 +1084,14 @@
     </AssociationRole1>
     <AssociationRole2 id="as31o#role62o" name="PersonaleToDocumenti" maxCard="N">
       <db:JoinColumn attribute="cls20o#att113o" name="personale_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as32o" name="Documento_DocumentoInScadenza" sourceClass="cls5" targetClass="cls5" gr:bendpoints="192,47,192,47;192,-47,192,-47" db:database="dbD1" db:table="sub_allegati">
+    <AssociationRole1 id="as32o#role63o" name="DocumentoToDocumentoInScadenza" maxCard="N">
+      <db:JoinColumn attribute="cls5#att22" name="allegati_oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as32o#role64o" name="DocumentoInScadenzaToDocumento" maxCard="1">
+      <db:JoinColumn attribute="cls5#att22" name="oid"/>
     </AssociationRole2>
   </Association>
 </DomainModel>

@@ -9,9 +9,6 @@
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par204o" source="mpkg5o#ada18o#ipd26o#pdp83o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp76o" name="Email - Email"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par205o" source="mpkg5o#ada18o#ipd26o#pdp84o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp77o" name="tenant - tenant"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par219o" source="mpkg5o#ada18o#ipd26o#pdp89o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp88o" name="Tipologia Azienda oid - Tipologia Azienda oid"/>
-      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par426o" source="mpkg5o#ada18o#ipd26o#pdp159o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp157o" name="Mezzi - Mezzi"/>
-      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par427o" source="mpkg5o#ada18o#ipd26o#pdp160o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp156o" name="Attrezzature - Attrezzature"/>
-      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par428o" source="mpkg5o#ada18o#ipd26o#pdp161o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp158o" name="Prodotti e Sostanze chimiche - Prodotti e Sostanze chimiche"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par441o" source="mpkg5o#ada18o#ipd26o#pdp167o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp166o" name="username - Username"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp78o" array="false" name="Ragione Sociale" type="string"/>
@@ -21,7 +18,7 @@
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp82o" array="false" name="oid" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp83o" array="false" name="Email" type="string"/>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp84o" array="true" name="tenant" type="integer"/>
-    <DataFlow id="mpkg5o#ada18o#ipd26o#df53o" to="mpkg5o#ada18o#act21o">
+    <DataFlow id="mpkg5o#ada18o#ipd26o#df53o" to="mpkg5o#ada18o#act21o" gr:bendpoints="-3.0 43.0">
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par206o" source="mpkg5o#ada18o#ipd26o#pdp83o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp5" name="Email - Email"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par207o" source="mpkg5o#ada18o#ipd26o#pdp84o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp8" name="tenant - tenant"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par209o" sourceValue="false" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp85o" name="&quot;false&quot; - Backoffice"/>
@@ -30,9 +27,6 @@
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#df53o#par440o" source="mpkg5o#ada18o#ipd26o#pdp167o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp165o" name="username - username"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp89o" array="false" name="Tipologia Azienda oid" type="integer"/>
-    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp159o" array="false" name="Mezzi" type="boolean"/>
-    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp160o" array="false" name="Attrezzature" type="boolean"/>
-    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp161o" array="false" name="Prodotti e Sostanze chimiche" type="boolean"/>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp167o" array="false" name="username" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada18o#spd26o" name="Success Port" gr:x="0" gr:y="145"/>
@@ -43,6 +37,7 @@
       <SuccessEvent id="mpkg5o#ada18o#act20o#scce20o" definition="mpkg5o#ada16o#spd24o">
         <SuccessFlow id="mpkg5o#ada18o#act20o#scce20o#sf199o" to="mpkg5o#ada18o#act21o">
           <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#sf199o#par214o" source="mpkg5o#ada16o#spd24o#pdp86o" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp87o" name="oid - oid Fornitore"/>
+          <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#sf199o#par647o" sourceValue="true" target="mpkg5o#ada18o#act21o.mpkg1#ada1#ipd1#pdp243o" name="&quot;true&quot; - Principale"/>
         </SuccessFlow>
         <DataFlow id="mpkg5o#ada18o#act20o#scce20o#df59o" to="mpkg5o#ada18o#act22o">
           <ParameterBinding id="mpkg5o#ada18o#act20o#scce20o#df59o#par216o" sourceValue="${statoFornitore.invitato}" target="mpkg5o#ada18o#act22o.tlads0#ada17o#ipd25o#pdp69o" name="&quot;${statoFornitore.invitato}&quot; - codice stato"/>

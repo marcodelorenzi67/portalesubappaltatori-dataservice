@@ -7,6 +7,7 @@
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par139" source="mpkg3#ada5#ipd7#pdp22" target="mpkg3#ada5#svu3.userName" name="Email - User ID"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par220o" source="mpkg3#ada5#ipd7#pdp90o" target="mpkg3#ada5#svu3.as2#role3.cls2#att6" name="Fornitore - Fornitore.oid(UserToFornitore)"/>
       <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par457o" sourceValue="true" target="mpkg3#ada5#svu3.User#att94o" name="&quot;true&quot; - Attivo"/>
+      <ParameterBinding id="mpkg3#ada5#ipd7#sf56#par649o" source="mpkg3#ada5#ipd7#pdp244o" target="mpkg3#ada5#svu3.User#att122o" name="Principale - Principale"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp21" array="false" name="Cognome" type="string"/>
     <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp22" array="false" name="username" type="string"/>
@@ -36,6 +37,7 @@
       <ParameterBinding id="mpkg3#ada5#ipd7#df61o#par221o" source="mpkg3#ada5#ipd7#pdp91o" target="mpkg3#ada5#switch6o.switch" name="Backoffice - Switch"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp169o" name="email" array="true" type="string"/>
+    <PortDefinitionParameter id="mpkg3#ada5#ipd7#pdp244o" array="false" name="Principale" type="boolean"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg3#ada5#spd7" name="Success Port" gr:x="0" gr:y="420">
     <PortDefinitionParameter id="mpkg3#ada5#spd7#pdp95o" array="false" name="User ID" type="string"/>

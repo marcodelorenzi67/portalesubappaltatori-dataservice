@@ -1,0 +1,34 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada39o" name="Annulla documento" defaultSuccessPortDefinition="mpkg5o#ada39o#spd60o" defaultErrorPortDefinition="mpkg5o#ada39o#epd60o">
+  <InputPortDefinition id="mpkg5o#ada39o#ipd60o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#ada39o#ipd60o#sf517o" to="mpkg5o#ada39o#act69o">
+      <ParameterBinding id="mpkg5o#ada39o#ipd60o#sf517o#par667o" target="mpkg5o#ada39o#act69o.mpkg5o#adf10o#ipd36o#pdp132o" name="codice - codice" sourceValue="${statoAllegato.annullato}"/>
+    </SuccessFlow>
+    <DataFlow id="mpkg5o#ada39o#ipd60o#df165o" to="mpkg5o#ada39o#svu41o" gr:bendpoints="-5.0 110.0">
+      <ParameterBinding id="mpkg5o#ada39o#ipd60o#df165o#par668o" source="mpkg5o#ada39o#ipd60o#pdp250o" target="mpkg5o#ada39o#svu41o#sc133o#kcond80o.cls5#att22" name="KeyCondition47 [oid] - KeyCondition47 [oid]"/>
+      <ParameterBinding id="mpkg5o#ada39o#ipd60o#df165o#par670o" sourceValue="false" target="mpkg5o#ada39o#svu41o.cls5#att35" name="&quot;false&quot; - Corrente"/>
+      <ParameterBinding id="mpkg5o#ada39o#ipd60o#df165o#par671o" source="mpkg5o#ada39o#ipd60o#pdp251o" target="mpkg5o#ada39o#svu41o.cls5#att25" name="Note - Note"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada39o#ipd60o#pdp250o" array="false" name="oid documento" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada39o#ipd60o#pdp251o" array="false" name="Note" type="text"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada39o#spd60o" name="Success Port" gr:x="0" gr:y="260"/>
+  <ErrorPortDefinition id="mpkg5o#ada39o#epd60o" name="Error Port" gr:x="0" gr:y="370"/>
+  <Operations>
+    <Save id="mpkg5o#ada39o#svu41o" gr:x="701" gr:y="196" action="update" dataBinding="cls5" bulk="true">
+      <ConditionalExpression id="mpkg5o#ada39o#svu41o#sc133o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada39o#svu41o#sc133o#kcond80o" name="KeyCondition47" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada39o#svu41o#sf518o" to="mpkg5o#ada39o#spd60o" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+  <Action id="mpkg5o#ada39o#act69o" definition="mpkg5o#adf10o" gr:x="336" gr:y="106">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada39o#act69o#scce69o" definition="mpkg5o#adf10o#spd36o">
+        <SuccessFlow id="mpkg5o#ada39o#act69o#scce69o#sf516o" to="mpkg5o#ada39o#svu41o">
+          <ParameterBinding id="mpkg5o#ada39o#act69o#scce69o#sf516o#par666o" name="oid - Stato Allegato.oid(AllegatiToStato Allegato)" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg5o#ada39o#svu41o.as24o#role47o.cls15o#att83o"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada39o#act69o#erre72o" definition="mpkg5o#adf10o#epd36o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

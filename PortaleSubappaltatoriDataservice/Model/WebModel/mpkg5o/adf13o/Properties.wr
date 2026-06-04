@@ -11,6 +11,8 @@
     <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp200o" array="false" name="Fornitore" type="string"/>
     <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp201o" array="false" name="Timestamp log" type="timestamp"/>
     <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp202o" array="false" name="Utente" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp247o" array="false" name="Nome" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#adf13o#spd51o#pdp248o" array="false" name="Cognome" type="string"/>
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#adf13o#epd51o" name="Error Port" gr:x="0" gr:y="300"/>
   <Operations>
@@ -21,6 +23,8 @@
         <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par549o" source="cls13o#att78oArray" target="mpkg5o#adf13o#spd51o#pdp200o" name="Fornitore - Fornitore"/>
         <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par550o" source="cls13o#att69oArray" target="mpkg5o#adf13o#spd51o#pdp201o" name="Timestamp log - Timestamp log"/>
         <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par551o" source="cls13o#att77oArray" target="mpkg5o#adf13o#spd51o#pdp202o" name="Utente - Utente"/>
+        <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par663o" source="cls13o#att124oArray" target="mpkg5o#adf13o#spd51o#pdp247o" name="Nome - Nome"/>
+        <ParameterBinding id="mpkg5o#adf13o#seu57o#sf442o#par664o" source="cls13o#att125oArray" target="mpkg5o#adf13o#spd51o#pdp248o" name="Cognome - Cognome"/>
       </SuccessFlow>
       <ConditionalExpression id="mpkg5o#adf13o#seu57o#sc116o" defaultPolicy="fill" booleanOperator="and">
         <AssociationRoleCondition id="mpkg5o#adf13o#seu57o#sc116o#rcond22o" name="documento" predicate="in" implied="false" role="as26o#role52o"/>

@@ -1,0 +1,61 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada38o" name="Rendi referente principale" defaultSuccessPortDefinition="mpkg5o#ada38o#spd59o" defaultErrorPortDefinition="mpkg5o#ada38o#epd59o" transaction="true">
+  <InputPortDefinition id="mpkg5o#ada38o#ipd59o" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#ada38o#ipd59o#pdp245o" array="false" name="user oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada38o#ipd59o#pdp246o" array="false" name="fornitore [oid]" type="integer"/>
+    <DataFlow id="mpkg5o#ada38o#ipd59o#sf502o" to="mpkg5o#ada38o#svu38o" gr:bendpoints="1.0 94.0">
+      <ParameterBinding id="mpkg5o#ada38o#ipd59o#sf502o#par651o" source="mpkg5o#ada38o#ipd59o#pdp245o" target="mpkg5o#ada38o#svu38o#sc128o#kcond76o.userOID" name="KeyCondition76 [oid] - KeyCondition76 [oid]"/>
+      <ParameterBinding id="mpkg5o#ada38o#ipd59o#sf502o#par652o" source="mpkg5o#ada38o#ipd59o#pdp246o" target="mpkg5o#ada38o#svu38o#sc128o#rcond29o.cls2#att6" name="fornitore [oid] - fornitore [oid]"/>
+      <ParameterBinding id="mpkg5o#ada38o#ipd59o#sf502o#par653o" sourceValue="true" target="mpkg5o#ada38o#svu38o.User#att122o" name="&quot;true&quot; - Principale"/>
+    </DataFlow>
+    <DataFlow id="mpkg5o#ada38o#ipd59o#sf507o" to="mpkg5o#ada38o#svu39o" gr:bendpoints="-11.0 118.0">
+      <ParameterBinding id="mpkg5o#ada38o#ipd59o#sf507o#par654o" source="mpkg5o#ada38o#ipd59o#pdp246o" target="mpkg5o#ada38o#svu39o#sc130o#rcond30o.cls2#att6" name="fornitore [oid] - fornitore [oid]"/>
+      <ParameterBinding id="mpkg5o#ada38o#ipd59o#sf507o#par655o" sourceValue="false" target="mpkg5o#ada38o#svu39o.User#att122o" name="&quot;false&quot; - Principale"/>
+    </DataFlow>
+    <SuccessFlow id="mpkg5o#ada38o#ipd59o#sf509o" to="mpkg5o#ada38o#seu66o">
+      <ParameterBinding id="mpkg5o#ada38o#ipd59o#sf509o#par656o" source="mpkg5o#ada38o#ipd59o#pdp246o" target="mpkg5o#ada38o#seu66o#sc131o#rcond31o.cls2#att6" name="fornitore [oid] - fornitore [oid]"/>
+      <ParameterBinding id="mpkg5o#ada38o#ipd59o#sf509o#par657o" source="mpkg5o#ada38o#ipd59o#pdp245o" target="mpkg5o#ada38o#seu66o#sc131o#kcond78o.userOID" name="user oid - KeyCondition76 [oid]"/>
+    </SuccessFlow>
+    <DataFlow id="mpkg5o#ada38o#ipd59o#df163o" to="mpkg5o#ada38o#svu40o">
+      <ParameterBinding id="mpkg5o#ada38o#ipd59o#df163o#par658o" source="mpkg5o#ada38o#ipd59o#pdp246o" target="mpkg5o#ada38o#svu40o#sc132o#kcond79o.cls2#att6" name="fornitore [oid] - KeyCondition79 [oid]"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada38o#spd59o" name="Success Port" gr:x="0" gr:y="95"/>
+  <ErrorPortDefinition id="mpkg5o#ada38o#epd59o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Save gr:x="455" gr:y="170" id="mpkg5o#ada38o#svu38o" action="update" dataBinding="User">
+      <ConditionalExpression id="mpkg5o#ada38o#svu38o#sc128o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada38o#svu38o#sc128o#kcond76o" name="KeyCondition76" predicate="in" implied="false"/>
+        <AssociationRoleCondition id="mpkg5o#ada38o#svu38o#sc128o#rcond29o" name="fornitore" predicate="in" implied="false" role="as2#role4"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada38o#svu38o#sf504o" to="mpkg5o#ada38o#spd59o" automaticCoupling="true" code="Not Found"/>
+      <SuccessFlow id="mpkg5o#ada38o#svu38o#sf512o" to="mpkg5o#ada38o#svu40o" automaticCoupling="true"/>
+    </Save>
+    <Save gr:x="130" gr:y="175" id="mpkg5o#ada38o#svu39o" action="update" dataBinding="User">
+      <SuccessFlow id="mpkg5o#ada38o#svu39o#sf508o" to="mpkg5o#ada38o#svu38o"/>
+      <ConditionalExpression id="mpkg5o#ada38o#svu39o#sc130o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ada38o#svu39o#sc130o#rcond30o" name="fornitore" predicate="in" implied="false" role="as2#role4"/>
+        <AttributesCondition id="mpkg5o#ada38o#svu39o#sc130o#acond61o" name="principale" predicate="eq" booleanOperator="or" implied="false" attributes="User#att122o" value="true"/>
+      </ConditionalExpression>
+    </Save>
+    <Selector gr:x="-185" gr:y="55" id="mpkg5o#ada38o#seu66o" dataBinding="User">
+      <SuccessFlow id="mpkg5o#ada38o#seu66o#sf510o" to="mpkg5o#ada38o#svu39o" automaticCoupling="true"/>
+      <ConditionalExpression id="mpkg5o#ada38o#seu66o#sc131o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada38o#seu66o#sc131o#kcond78o" name="KeyCondition76" predicate="in" implied="false"/>
+        <AssociationRoleCondition id="mpkg5o#ada38o#seu66o#sc131o#rcond31o" name="fornitore" predicate="in" implied="false" role="as2#role4"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada38o#seu66o#sf511o" to="mpkg5o#ada38o#spd59o" automaticCoupling="true" code="Not Found"/>
+      <DataFlow id="mpkg5o#ada38o#seu66o#df164o" to="mpkg5o#ada38o#svu40o">
+        <ParameterBinding id="mpkg5o#ada38o#seu66o#df164o#par659o" source="User#att4Array" target="mpkg5o#ada38o#svu40o.cls2#att10" name="Cognome - Cognome Referente"/>
+        <ParameterBinding id="mpkg5o#ada38o#seu66o#df164o#par660o" source="User#att5Array" target="mpkg5o#ada38o#svu40o.cls2#att12" name="Email - Email"/>
+        <ParameterBinding id="mpkg5o#ada38o#seu66o#df164o#par661o" source="User#att3Array" target="mpkg5o#ada38o#svu40o.cls2#att9" name="Nome - Nome Referente"/>
+        <ParameterBinding id="mpkg5o#ada38o#seu66o#df164o#par662o" source="userNameArray" target="mpkg5o#ada38o#svu40o.cls2#att93o" name="User ID - Username"/>
+      </DataFlow>
+    </Selector>
+    <Save gr:x="805" gr:y="260" id="mpkg5o#ada38o#svu40o" action="update" dataBinding="cls2">
+      <ConditionalExpression id="mpkg5o#ada38o#svu40o#sc132o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada38o#svu40o#sc132o#kcond79o" name="KeyCondition79" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada38o#svu40o#sf513o" to="mpkg5o#ada38o#spd59o" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+</ActionDefinition>

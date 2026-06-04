@@ -1,0 +1,37 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ada40o" name="Alert documenti in scadenza" defaultSuccessPortDefinition="tlads0#ada40o#spd61o" defaultErrorPortDefinition="tlads0#ada40o#epd61o">
+  <InputPortDefinition id="tlads0#ada40o#ipd61o" gr:x="0" gr:y="30">
+    <SuccessFlow id="tlads0#ada40o#ipd61o#sf527o" to="tlads0#ada40o#tmu10o" automaticCoupling="true"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ada40o#spd61o" name="Success Port" gr:x="0" gr:y="385"/>
+  <ErrorPortDefinition id="tlads0#ada40o#epd61o" name="Error Port" gr:x="0" gr:y="60"/>
+  <Operations>
+    <Time gr:x="355" gr:y="25" id="tlads0#ada40o#tmu10o" name="Time">
+      <SuccessFlow id="tlads0#ada40o#tmu10o#sf529o" to="tlads0#ada40o#seu68o">
+        <ParameterBinding id="tlads0#ada40o#tmu10o#sf529o#par675o" source="currentDate" target="tlads0#ada40o#seu68o#sc136o#acond63o" name="Current/Input Date - data alert"/>
+      </SuccessFlow>
+    </Time>
+    <Selector gr:x="420" gr:y="175" id="tlads0#ada40o#seu68o" dataBinding="cls5">
+      <ConditionalExpression id="tlads0#ada40o#seu68o#sc136o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="tlads0#ada40o#seu68o#sc136o#acond62o" name="codice stato" predicate="eq" booleanOperator="or" implied="false" attributes="as24o#role47o.cls15o#att85o" value="${statoAllegato.approvato}"/>
+        <AttributesCondition id="tlads0#ada40o#seu68o#sc136o#acond63o" name="data alert" predicate="lteq" booleanOperator="or" implied="false" attributes="cls5#att127o"/>
+      </ConditionalExpression>
+      <SuccessFlow id="tlads0#ada40o#seu68o#sf531o" to="tlads0#ada40o#lpu4o">
+        <ParameterBinding id="tlads0#ada40o#seu68o#sf531o#par676o" source="cls5#att22Array" target="tlads0#ada40o#lpu4o.array" name="oid - Input Array"/>
+      </SuccessFlow>
+    </Selector>
+    <Loop gr:x="640" gr:y="370" id="tlads0#ada40o#lpu4o" name="Loop">
+      <SuccessFlow id="tlads0#ada40o#lpu4o#sf532o" to="tlads0#ada40o#spd61o" automaticCoupling="true" code="end"/>
+      <SuccessFlow id="tlads0#ada40o#lpu4o#sf542o" to="tlads0#ada40o#act73o" code="next">
+        <ParameterBinding id="tlads0#ada40o#lpu4o#sf542o#par697o" source="next" target="tlads0#ada40o#act73o.tlads0#ada41o#ipd62o#pdp252o" name="Next Element - oid documento"/>
+      </SuccessFlow>
+    </Loop>
+  </Operations>
+  <Action id="tlads0#ada40o#act73o" gr:x="545" gr:y="510" definition="tlads0#ada41o">
+    <Events>
+      <SuccessEvent id="tlads0#ada40o#act73o#scce73o" definition="tlads0#ada41o#spd62o">
+        <SuccessFlow id="tlads0#ada40o#act73o#scce73o#sf543o" to="tlads0#ada40o#lpu4o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="tlads0#ada40o#act73o#erre76o" definition="tlads0#ada41o#epd62o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

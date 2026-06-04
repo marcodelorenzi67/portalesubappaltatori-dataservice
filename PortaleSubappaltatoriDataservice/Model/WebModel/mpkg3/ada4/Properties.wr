@@ -30,6 +30,7 @@
         <ParameterBinding id="mpkg3#ada4#seu6#df20#par272o" source="as4#role7_cls2#att6Array" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp90o" name="Pre RegistrazioneToFornitore.oid - Fornitore"/>
         <ParameterBinding id="mpkg3#ada4#seu6#df20#par273o" source="cls4#att50Array" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp91o" name="Backoffice - Backoffice"/>
         <ParameterBinding id="mpkg3#ada4#seu6#df20#par444o" source="cls4#att92oArray" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp169o" name="Email utente - email"/>
+        <ParameterBinding id="mpkg3#ada4#seu6#df20#par650o" source="cls4#att123oArray" target="mpkg3#ada4#act8.mpkg3#ada5#ipd7#pdp244o" name="Principale - Principale"/>
       </DataFlow>
       <DataFlow id="mpkg3#ada4#seu6#df39" to="mpkg3#ada4#act9">
         <ParameterBinding id="mpkg3#ada4#seu6#df39#par140" sourceValue="${token.invito}" target="mpkg3#ada4#act9.mpkg3#ada6#ipd8#pdp27" name="&quot;${token.invito}&quot; - Tipo token"/>

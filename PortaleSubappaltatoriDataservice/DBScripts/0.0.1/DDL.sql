@@ -1,0 +1,16 @@
+ALTER TABLE public.sub_allegati RENAME COLUMN seriale TO marca;
+
+-- User [User]
+alter table "public"."sub_user"  add column  "principale"  bool;
+
+-- User invitati [cls4]
+alter table "public"."sub_user_invitati"  add column  "principale"  bool;
+
+ALTER TABLE public.sub_tipologia_allegati RENAME COLUMN giorni_durata TO giorni_alert;
+
+-- Documenti [cls5]
+alter table "public"."sub_allegati"  add column  "data_alert"  date;
+
+-- Documento_DocumentoInScadenza [as32o]
+alter table "public"."sub_allegati"  add column  "allegati_oid"  int4;
+alter table "public"."sub_allegati"   add constraint fk_allegati_allegati foreign key ("allegati_oid") references "public"."sub_allegati" ("oid");

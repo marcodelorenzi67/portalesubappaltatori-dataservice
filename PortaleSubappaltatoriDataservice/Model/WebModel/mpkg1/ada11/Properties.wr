@@ -13,7 +13,7 @@
     <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp54" array="false" name="Descrizione" type="string"/>
     <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp55" array="false" name="oid" type="integer"/>
     <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp56" array="false" name="Condiviso" type="boolean"/>
-    <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp57" array="false" name="Giorni Durata" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp57" array="false" name="Giorni Alert" type="integer"/>
     <DataFlow id="mpkg1#ada11#ipd17#df70o" to="mpkg1#ada11#switch9o" gr:bendpoints="-2.0 128.0">
       <ParameterBinding id="mpkg1#ada11#ipd17#df70o#par249o" source="mpkg1#ada11#ipd17#pdp55" target="mpkg1#ada11#switch9o.switch" name="oid - Switch"/>
     </DataFlow>

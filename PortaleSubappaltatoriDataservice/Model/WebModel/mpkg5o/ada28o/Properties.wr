@@ -12,6 +12,7 @@
       <ParameterBinding id="mpkg5o#ada28o#ipd42o#sf366o#par448o" source="mpkg5o#ada28o#ipd42o#pdp173o" target="mpkg5o#ada28o#act53o.mpkg1#ada1#ipd1#pdp165o" name="username - username"/>
       <ParameterBinding id="mpkg5o#ada28o#ipd42o#sf366o#par449o" source="mpkg5o#ada28o#ipd42o#pdp174o" target="mpkg5o#ada28o#act53o.mpkg1#ada1#ipd1#pdp7" name="Nome - Nome"/>
       <ParameterBinding id="mpkg5o#ada28o#ipd42o#sf366o#par451o" sourceValue="false" target="mpkg5o#ada28o#act53o.mpkg1#ada1#ipd1#pdp85o" name="&quot;false&quot; - Backoffice"/>
+      <ParameterBinding id="mpkg5o#ada28o#ipd42o#sf366o#par648o" sourceValue="false" target="mpkg5o#ada28o#act53o.mpkg1#ada1#ipd1#pdp243o" name="&quot;false&quot; - Principale"/>
     </DataFlow>
     <DataFlow id="mpkg5o#ada28o#ipd42o#df116o" to="mpkg5o#ada28o#spd42o" gr:bendpoints="54.0 31.0">
       <ParameterBinding id="mpkg5o#ada28o#ipd42o#df116o#par453o" source="mpkg5o#ada28o#ipd42o#pdp172o" target="mpkg5o#ada28o#spd42o#pdp175o" name="oid Fornitore - oid Fornitore"/>

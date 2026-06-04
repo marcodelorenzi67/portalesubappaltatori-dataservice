@@ -7,6 +7,7 @@
       <ParameterBinding id="mpkg1#ada1#ipd1#df2#par213o" source="mpkg1#ada1#ipd1#pdp87o" target="mpkg1#ada1#svu1.as4#role7.cls2#att6" name="oid Fornitore - Fornitore.oid(Pre RegistrazioneToFornitore)"/>
       <ParameterBinding id="mpkg1#ada1#ipd1#df2#par434o" source="mpkg1#ada1#ipd1#pdp5" target="mpkg1#ada1#svu1.cls4#att92o" name="Email - Email utente"/>
       <ParameterBinding id="mpkg1#ada1#ipd1#df2#par435o" source="mpkg1#ada1#ipd1#pdp165o" target="mpkg1#ada1#svu1.cls4#att20" name="username - Username"/>
+      <ParameterBinding id="mpkg1#ada1#ipd1#df2#par646o" source="mpkg1#ada1#ipd1#pdp243o" target="mpkg1#ada1#svu1.cls4#att123o" name="Principale - Principale"/>
     </DataFlow>
     <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp5" array="false" name="Email" type="string"/>
     <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp6" array="false" name="Cognome" type="string"/>
@@ -39,6 +40,7 @@
     <SuccessFlow id="mpkg1#ada1#ipd1#sf363o" to="mpkg1#ada1#seu2">
       <ParameterBinding id="mpkg1#ada1#ipd1#sf363o#par438o" name="username - userId" source="mpkg1#ada1#ipd1#pdp165o" target="mpkg1#ada1#seu2#sc3#acond2"/>
     </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ada1#ipd1#pdp243o" array="false" name="Principale" type="boolean"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg1#ada1#spd1" name="Success Port" gr:x="0" gr:y="1115"/>
   <ErrorPortDefinition id="mpkg1#ada1#epd1" name="Error Port" gr:x="0" gr:y="10"/>
