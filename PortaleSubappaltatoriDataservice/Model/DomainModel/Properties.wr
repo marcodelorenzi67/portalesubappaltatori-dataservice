@@ -58,8 +58,10 @@
     <ActionService definition="mpkg6o#ada37o" method="create" roles="rl4"/>
     <ActionService definition="mpkg5o#ada38o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg5o#ada39o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg5o#ada43o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg5o#adf16o" method="read" roles="rl1 rl2 rl3 rl5"/>
   </ActionServices>
-  <DataServices db:dataServicesDatabase="dbD1">
+  <DataServices db:dataServicesDatabase="dbD1" dataServiceCaching="noCache">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
       <ServiceRole role="rl5">
         <ServiceMethod method="read"/>
@@ -281,8 +283,7 @@
   <UserServices>
     <UserServiceOperation type="read"/>
   </UserServices>
-  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
-  </db:Database>
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_"/>
   <srs:Resources>
     <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
       <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>

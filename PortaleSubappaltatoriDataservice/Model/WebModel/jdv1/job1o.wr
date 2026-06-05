@@ -1,0 +1,13 @@
+<Job xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="115" gr:y="40" id="jdv1#job1o" name="Alert scadenza documenti">
+  <Operations>
+    <InitJob id="jdv1#job1o#iju1o" name="Init Job">
+      <SuccessFlow id="jdv1#job1o#iju1o#sf550o" to="jdv1#job1o#act76o" automaticCoupling="true"/>
+    </InitJob>
+  </Operations>
+  <Action id="jdv1#job1o#act76o" gr:x="135" gr:y="5" definition="tlads0#ada40o">
+    <Events>
+      <SuccessEvent id="jdv1#job1o#act76o#scce76o" definition="tlads0#ada40o#spd61o"/>
+      <ErrorEvent id="jdv1#job1o#act76o#erre79o" definition="tlads0#ada40o#epd61o"/>
+    </Events>
+  </Action>
+</Job>

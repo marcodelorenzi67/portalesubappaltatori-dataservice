@@ -1,0 +1,24 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#adf16o" name="Calcola date mese" type="read" defaultSuccessPortDefinition="mpkg5o#adf16o#spd65o" defaultErrorPortDefinition="mpkg5o#adf16o#epd65o">
+  <InputPortDefinition id="mpkg5o#adf16o#ipd65o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#adf16o#ipd65o#sf572o" to="mpkg5o#adf16o#qu1o" automaticCoupling="true"/>
+    <PortDefinitionParameter id="mpkg5o#adf16o#ipd65o#pdp257o" name="trigger" array="false" type="boolean"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#adf16o#spd65o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#adf16o#spd65o#pdp255o" array="false" name="ultimoGiorno" type="date"/>
+    <PortDefinitionParameter id="mpkg5o#adf16o#spd65o#pdp256o" array="false" name="primoGiorno" type="date"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#adf16o#epd65o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Query gr:x="390" gr:y="125" id="mpkg5o#adf16o#qu1o" mode="select" language="SQL" db="dbD1" name="Calcola date" outputsOrder="mpkg5o#adf16o#qu1o#qo1o mpkg5o#adf16o#qu1o#qo2o">
+      <QueryText xml:space="preserve">SELECT
+    date_trunc('month', current_date)::date AS primoGiorno,
+    (date_trunc('month', current_date) + interval '1 month - 1 day')::date AS ultimoGiorno;</QueryText>
+      <QueryOutput id="mpkg5o#adf16o#qu1o#qo1o" name="primoGiorno" type="date"/>
+      <QueryOutput id="mpkg5o#adf16o#qu1o#qo2o" name="ultimoGiorno" type="date"/>
+      <SuccessFlow id="mpkg5o#adf16o#qu1o#sf573o" to="mpkg5o#adf16o#spd65o">
+        <ParameterBinding id="mpkg5o#adf16o#qu1o#sf573o#par723o" source="data[].ultimoGiorno" target="mpkg5o#adf16o#spd65o#pdp255o" name="ultimoGiorno - ultimoGiorno"/>
+        <ParameterBinding id="mpkg5o#adf16o#qu1o#sf573o#par724o" source="data[].primoGiorno" target="mpkg5o#adf16o#spd65o#pdp256o" name="primoGiorno - primoGiorno"/>
+      </SuccessFlow>
+    </Query>
+  </Operations>
+</ActionDefinition>

@@ -15,7 +15,7 @@
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp145o" array="false" name="Descrizione" type="string"/>
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp146o" array="false" name="Documento" type="blob"/>
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp147o" array="false" name="oid" type="integer"/>
-    <DataFlow id="mpkg6o#ada27o#ipd40o#df112o" to="mpkg6o#ada27o#act52o">
+    <DataFlow id="mpkg6o#ada27o#ipd40o#df112o" to="mpkg6o#ada27o#act52o" gr:bendpoints="25.0 154.0">
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df112o#par412o" source="mpkg6o#ada27o#ipd40o#pdp144o" target="mpkg6o#ada27o#act52o.mpkg2#ada19o#ipd27o#pdp92o" name="fornitore - Fornitore oid"/>
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df112o#par413o" sourceImplicitParameter="userName" target="mpkg6o#ada27o#act52o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df112o#par414o" sourceValue="${tipoAzioneLog.caricatoAllegatoDaFornitore}" target="mpkg6o#ada27o#act52o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.caricatoAllegatoDaFornitore}&quot; - Tipo azione"/>
@@ -23,8 +23,12 @@
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp186o" array="false" name="Data scadenza" type="date"/>
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp238o" array="false" name="Documento compilato" type="blob"/>
     <PortDefinitionParameter id="mpkg6o#ada27o#ipd40o#pdp242o" array="false" name="Note fornitore" type="string"/>
+    <DataFlow id="mpkg6o#ada27o#ipd40o#df177o" to="mpkg6o#ada27o#act77o" gr:bendpoints="17.0 241.0">
+      <ParameterBinding id="mpkg6o#ada27o#ipd40o#df177o#par714o" source="mpkg6o#ada27o#ipd40o#pdp144o" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp92o" name="fornitore - Fornitore oid"/>
+      <ParameterBinding id="mpkg6o#ada27o#ipd40o#df177o#par715o" sourceImplicitParameter="userName" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+    </DataFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg6o#ada27o#spd40o" name="Success Port" gr:x="0" gr:y="315"/>
+  <SuccessPortDefinition id="mpkg6o#ada27o#spd40o" name="Success Port" gr:x="0" gr:y="525"/>
   <ErrorPortDefinition id="mpkg6o#ada27o#epd40o" name="Error Port" gr:x="0" gr:y="10"/>
   <Operations>
     <Save gr:x="790" gr:y="330" id="mpkg6o#ada27o#svu21o" action="update" dataBinding="cls5">
@@ -33,6 +37,16 @@
       </ConditionalExpression>
       <SuccessFlow id="mpkg6o#ada27o#svu21o#sf355o" to="mpkg6o#ada27o#act52o">
         <ParameterBinding id="mpkg6o#ada27o#svu21o#sf355o#par545o" source="cls5#att22Array" target="mpkg6o#ada27o#act52o.mpkg2#ada19o#ipd27o#pdp196o" name="oid - Documenti.oid(LogToDocumenti)"/>
+      </SuccessFlow>
+      <DataFlow id="mpkg6o#ada27o#svu21o#df176o" to="mpkg6o#ada27o#svu45o" automaticCoupling="true" gr:bendpoints="246.0 57.0"/>
+    </Save>
+    <Save id="mpkg6o#ada27o#svu45o" dataBinding="cls5" action="update" gr:x="1315" gr:y="415">
+      <ConditionalExpression id="mpkg6o#ada27o#svu45o#sc141o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg6o#ada27o#svu45o#sc141o#rcond35o" role="as32o#role64o" predicate="in" implied="false" name="doc"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg6o#ada27o#svu45o#sf554o" to="mpkg6o#ada27o#act77o">
+        <ParameterBinding id="mpkg6o#ada27o#svu45o#sf554o#par713o" source="cls5#att22Array" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp196o" name="oid - Documenti.oid(LogToDocumenti)"/>
+        <ParameterBinding id="mpkg6o#ada27o#svu45o#sf554o#par716o" sourceValue="${tipoAzioneLog.documentoStoricizzato}" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.documentoStoricizzato}&quot; - Tipo azione"/>
       </SuccessFlow>
     </Save>
   </Operations>
@@ -56,12 +70,22 @@
       <ErrorEvent id="mpkg6o#ada27o#act51o#erre53o" definition="mpkg5o#adf10o#epd36o"/>
     </Events>
   </Action>
-  <Action id="mpkg6o#ada27o#act52o" gr:x="1075" gr:y="325" definition="mpkg2#ada19o">
+  <Action id="mpkg6o#ada27o#act52o" gr:x="1060" gr:y="445" definition="mpkg2#ada19o">
     <Events>
       <SuccessEvent id="mpkg6o#ada27o#act52o#scce51o" definition="mpkg2#ada19o#spd27o">
-        <SuccessFlow id="mpkg6o#ada27o#act52o#scce51o#sf356o" to="mpkg6o#ada27o#spd40o" automaticCoupling="true"/>
+        <SuccessFlow id="mpkg6o#ada27o#act52o#scce51o#sf356o" to="mpkg6o#ada27o#svu45o">
+          <ParameterBinding id="mpkg6o#ada27o#act52o#scce51o#sf356o#par712o" sourceValue="false" target="mpkg6o#ada27o#svu45o.cls5#att35" name="&quot;false&quot; - Corrente"/>
+        </SuccessFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg6o#ada27o#act52o#erre54o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg6o#ada27o#act77o" gr:x="1645" gr:y="505" definition="mpkg2#ada19o">
+    <Events>
+      <SuccessEvent id="mpkg6o#ada27o#act77o#scce77o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg6o#ada27o#act77o#scce77o#sf555o" to="mpkg6o#ada27o#spd40o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg6o#ada27o#act77o#erre80o" definition="mpkg2#ada19o#epd27o"/>
     </Events>
   </Action>
 </ActionDefinition>

@@ -1,0 +1,20 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada43o" name="Storicizza scaduto" defaultSuccessPortDefinition="mpkg5o#ada43o#spd64o" defaultErrorPortDefinition="mpkg5o#ada43o#epd64o">
+  <InputPortDefinition id="mpkg5o#ada43o#ipd64o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#ada43o#ipd64o#sf568o" to="mpkg5o#ada43o#svu48o">
+      <ParameterBinding id="mpkg5o#ada43o#ipd64o#sf568o#par721o" sourceValue="false" target="mpkg5o#ada43o#svu48o.cls5#att35" name="&quot;false&quot; - Corrente"/>
+      <ParameterBinding id="mpkg5o#ada43o#ipd64o#sf568o#par722o" source="mpkg5o#ada43o#ipd64o#pdp254o" target="mpkg5o#ada43o#svu48o#sc145o#kcond86o.cls5#att22" name="KeyCondition86 [oid] - KeyCondition86 [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#ada43o#ipd64o#pdp254o" array="false" name="oid" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada43o#spd64o" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg5o#ada43o#epd64o" name="Error Port" gr:x="0" gr:y="190"/>
+  <Operations>
+    <Save gr:x="355" gr:y="80" id="mpkg5o#ada43o#svu48o" action="update" dataBinding="cls5">
+      <ConditionalExpression id="mpkg5o#ada43o#svu48o#sc145o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada43o#svu48o#sc145o#kcond86o" name="KeyCondition86" predicate="in" implied="false"/>
+        <AttributesCondition id="mpkg5o#ada43o#svu48o#sc145o#acond66o" name="stato codice" predicate="eq" booleanOperator="or" implied="false" attributes="as24o#role47o.cls15o#att85o" value="${statoAllegato.scaduto}"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada43o#svu48o#sf569o" to="mpkg5o#ada43o#spd64o" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+</ActionDefinition>

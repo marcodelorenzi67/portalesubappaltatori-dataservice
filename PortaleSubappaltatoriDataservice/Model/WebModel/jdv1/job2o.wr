@@ -1,0 +1,13 @@
+<Job xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="115" gr:y="195" id="jdv1#job2o" name="Documenti scaduti">
+  <Operations>
+    <InitJob id="jdv1#job2o#iju2o" name="Init Job" gr:x="0" gr:y="0">
+      <SuccessFlow id="jdv1#job2o#iju2o#sf565o" to="jdv1#job2o#act79o" automaticCoupling="true"/>
+    </InitJob>
+  </Operations>
+  <Action id="jdv1#job2o#act79o" gr:x="140" gr:y="5" definition="tlads0#ada42o">
+    <Events>
+      <SuccessEvent id="jdv1#job2o#act79o#scce79o" definition="tlads0#ada42o#spd63o"/>
+      <ErrorEvent id="jdv1#job2o#act79o#erre82o" definition="tlads0#ada42o#epd63o"/>
+    </Events>
+  </Action>
+</Job>

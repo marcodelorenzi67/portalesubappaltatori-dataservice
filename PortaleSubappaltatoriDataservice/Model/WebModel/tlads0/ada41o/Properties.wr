@@ -8,8 +8,8 @@
     </DataFlow>
     <PortDefinitionParameter id="tlads0#ada41o#ipd62o#pdp252o" array="false" name="oid documento" type="integer"/>
   </InputPortDefinition>
-  <SuccessPortDefinition id="tlads0#ada41o#spd62o" name="Success Port" gr:x="0" gr:y="275"/>
-  <ErrorPortDefinition id="tlads0#ada41o#epd62o" name="Error Port" gr:x="0" gr:y="440"/>
+  <SuccessPortDefinition id="tlads0#ada41o#spd62o" name="Success Port" gr:x="0" gr:y="620"/>
+  <ErrorPortDefinition id="tlads0#ada41o#epd62o" name="Error Port" gr:x="0" gr:y="265"/>
   <Operations>
     <Save id="tlads0#ada41o#svu43o" gr:x="1335" gr:y="305" action="create" dataBinding="cls5">
       <SuccessFlow id="tlads0#ada41o#svu43o#sf540o" to="tlads0#ada41o#act72o">
@@ -39,14 +39,35 @@
       </SuccessFlow>
       <DataFlow id="tlads0#ada41o#seu69o#df172o" to="tlads0#ada41o#act72o">
         <ParameterBinding id="tlads0#ada41o#seu69o#df172o#par696o" source="as6#role11_cls2#att6Array" target="tlads0#ada41o#act72o.mpkg2#ada19o#ipd27o#pdp92o" name="DocumentiToFornitore.oid - Fornitore oid"/>
+        <ParameterBinding id="tlads0#ada41o#seu69o#df172o#par698o" sourceValue="${tipoAzioneLog.inseritoTipoAllegatoPerFornitore}" target="tlads0#ada41o#act72o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${${tipoAzioneLog.inseritoTipoAllegatoPerFornitore}}&quot; - Tipo azione"/>
+      </DataFlow>
+      <DataFlow id="tlads0#ada41o#seu69o#df173o" to="tlads0#ada41o#act74o">
+        <ParameterBinding id="tlads0#ada41o#seu69o#df173o#par699o" source="cls5#att22Array" target="tlads0#ada41o#act74o.mpkg2#ada19o#ipd27o#pdp196o" name="oid - Documenti.oid(LogToDocumenti)"/>
+        <ParameterBinding id="tlads0#ada41o#seu69o#df173o#par700o" source="as6#role11_cls2#att6Array" target="tlads0#ada41o#act74o.mpkg2#ada19o#ipd27o#pdp92o" name="DocumentiToFornitore.oid - Fornitore oid"/>
+        <ParameterBinding id="tlads0#ada41o#seu69o#df173o#par701o" sourceValue="${tipoAzioneLog.documentoInScadenza}" target="tlads0#ada41o#act74o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.documentoInScadenza}&quot; - Tipo azione"/>
+      </DataFlow>
+      <DataFlow id="tlads0#ada41o#seu69o#df174o" to="tlads0#ada41o#seu70o" automaticCoupling="true"/>
+      <DataFlow id="tlads0#ada41o#seu69o#df175o" to="tlads0#ada41o#act75o">
+        <ParameterBinding id="tlads0#ada41o#seu69o#df175o#par709o" source="cls5#att88oArray" target="tlads0#ada41o#act75o.mpkg2#ada3#ipd4#pdp253o" name="Tipologia - tipologiaDocumento"/>
       </DataFlow>
     </Selector>
-    <Save id="tlads0#ada41o#svu44o" gr:x="765" gr:y="125" action="update" dataBinding="cls5" bulk="true">
+    <Save id="tlads0#ada41o#svu44o" gr:x="765" gr:y="120" action="update" dataBinding="cls5" bulk="true">
       <ConditionalExpression id="tlads0#ada41o#svu44o#sc138o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="tlads0#ada41o#svu44o#sc138o#kcond83o" name="KeyCondition47" predicate="in" implied="false"/>
       </ConditionalExpression>
       <SuccessFlow id="tlads0#ada41o#svu44o#sf538o" to="tlads0#ada41o#seu69o" automaticCoupling="true"/>
     </Save>
+    <Selector gr:x="2000" gr:y="490" id="tlads0#ada41o#seu70o" dataBinding="cls2">
+      <ConditionalExpression id="tlads0#ada41o#seu70o#sc139o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="tlads0#ada41o#seu70o#sc139o#rcond33o" name="documenti" predicate="in" implied="false" role="as6#role11"/>
+      </ConditionalExpression>
+      <SuccessFlow id="tlads0#ada41o#seu70o#sf549o" to="tlads0#ada41o#act75o">
+        <ParameterBinding id="tlads0#ada41o#seu70o#sf549o#par705o" sourceValue="${msg.docInScadenza}" target="tlads0#ada41o#act75o.mpkg2#ada3#ipd4#pdp9" name="&quot;${msg.docInScadenza}&quot; - codice messaggio"/>
+        <ParameterBinding id="tlads0#ada41o#seu70o#sf549o#par706o" source="cls2#att10Array" target="tlads0#ada41o#act75o.mpkg2#ada3#ipd4#pdp12" name="Cognome Referente - Cognome"/>
+        <ParameterBinding id="tlads0#ada41o#seu70o#sf549o#par707o" source="cls2#att12Array" target="tlads0#ada41o#act75o.mpkg2#ada3#ipd4#pdp10" name="Email - Email"/>
+        <ParameterBinding id="tlads0#ada41o#seu70o#sf549o#par708o" source="cls2#att9Array" target="tlads0#ada41o#act75o.mpkg2#ada3#ipd4#pdp11" name="Nome Referente - Nome"/>
+      </SuccessFlow>
+    </Selector>
   </Operations>
   <Action id="tlads0#ada41o#act70o" definition="mpkg5o#adf10o" gr:x="1270" gr:y="105">
     <Events>
@@ -71,9 +92,25 @@
   <Action id="tlads0#ada41o#act72o" gr:x="1570" gr:y="375" definition="mpkg2#ada19o">
     <Events>
       <SuccessEvent id="tlads0#ada41o#act72o#scce72o" definition="mpkg2#ada19o#spd27o">
-        <SuccessFlow id="tlads0#ada41o#act72o#scce72o#sf541o" to="tlads0#ada41o#spd62o" automaticCoupling="true"/>
+        <SuccessFlow id="tlads0#ada41o#act72o#scce72o#sf541o" to="tlads0#ada41o#act74o" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="tlads0#ada41o#act72o#erre75o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+  <Action id="tlads0#ada41o#act74o" gr:x="1775" gr:y="425" definition="mpkg2#ada19o">
+    <Events>
+      <SuccessEvent id="tlads0#ada41o#act74o#scce74o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="tlads0#ada41o#act74o#scce74o#sf544o" to="tlads0#ada41o#seu70o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="tlads0#ada41o#act74o#erre77o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+  <Action id="tlads0#ada41o#act75o" gr:x="2280" gr:y="560" definition="mpkg2#ada3">
+    <Events>
+      <SuccessEvent id="tlads0#ada41o#act75o#scce75o" definition="mpkg2#ada3#spd4">
+        <SuccessFlow id="tlads0#ada41o#act75o#scce75o#sf548o" to="tlads0#ada41o#spd62o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="tlads0#ada41o#act75o#erre78o" definition="mpkg2#ada3#epd4"/>
     </Events>
   </Action>
 </ActionDefinition>
