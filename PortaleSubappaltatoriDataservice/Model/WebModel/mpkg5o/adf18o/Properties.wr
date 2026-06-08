@@ -1,0 +1,31 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#adf18o" name="Get numero tenant fornitore" type="read" defaultSuccessPortDefinition="mpkg5o#adf18o#spd68o" defaultErrorPortDefinition="mpkg5o#adf18o#epd68o">
+  <InputPortDefinition id="mpkg5o#adf18o#ipd68o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#adf18o#ipd68o#sf589o" to="mpkg5o#adf18o#seu75o">
+      <ParameterBinding id="mpkg5o#adf18o#ipd68o#sf589o#par754o" source="mpkg5o#adf18o#ipd68o#pdp262o" target="mpkg5o#adf18o#seu75o#sc150o#rcond42o.cls2#att6" name="fornitore [oid] - fornitore [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#adf18o#ipd68o#pdp262o" array="false" name="fornitore [oid]" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#adf18o#spd68o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#adf18o#spd68o#pdp263o" array="false" name="multipli" type="boolean"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#adf18o#epd68o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="370" gr:y="80" id="mpkg5o#adf18o#seu75o" dataBinding="cls1">
+      <ConditionalExpression id="mpkg5o#adf18o#seu75o#sc150o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#adf18o#seu75o#sc150o#rcond42o" name="fornitore" predicate="in" implied="false" role="as5#role9"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#adf18o#seu75o#sf591o" to="mpkg5o#adf18o#switch24o">
+        <ParameterBinding id="mpkg5o#adf18o#seu75o#sf591o#par756o" source="dataSize" target="mpkg5o#adf18o#switch24o.switch" name="Data Size - Switch"/>
+      </SuccessFlow>
+    </Selector>
+    <Switch gr:x="595" gr:y="105" id="mpkg5o#adf18o#switch24o" name="1?">
+      <SuccessFlow id="mpkg5o#adf18o#switch24o#sf592o" to="mpkg5o#adf18o#spd68o" code="1">
+        <ParameterBinding id="mpkg5o#adf18o#switch24o#sf592o#par757o" sourceValue="false" target="mpkg5o#adf18o#spd68o#pdp263o" name="&quot;false&quot; - multipli"/>
+      </SuccessFlow>
+      <Case value="1"/>
+      <SuccessFlow id="mpkg5o#adf18o#switch24o#sf593o" to="mpkg5o#adf18o#spd68o">
+        <ParameterBinding id="mpkg5o#adf18o#switch24o#sf593o#par758o" sourceValue="true" target="mpkg5o#adf18o#spd68o#pdp263o" name="&quot;true&quot; - multipli"/>
+      </SuccessFlow>
+    </Switch>
+  </Operations>
+</ActionDefinition>

@@ -9,10 +9,7 @@
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#adf16o#epd65o" name="Error Port" gr:x="0" gr:y="300"/>
   <Operations>
-    <Query gr:x="390" gr:y="125" id="mpkg5o#adf16o#qu1o" mode="select" language="SQL" db="dbD1" name="Calcola date" outputsOrder="mpkg5o#adf16o#qu1o#qo1o mpkg5o#adf16o#qu1o#qo2o">
-      <QueryText xml:space="preserve">SELECT
-    date_trunc('month', current_date)::date AS primoGiorno,
-    (date_trunc('month', current_date) + interval '1 month - 1 day')::date AS ultimoGiorno;</QueryText>
+    <Query gr:x="390" gr:y="125" id="mpkg5o#adf16o#qu1o" mode="select" language="SQL" db="dbD1" name="Calcola date" outputsOrder="mpkg5o#adf16o#qu1o#qo1o mpkg5o#adf16o#qu1o#qo2o" queryFile="WEB-INF/query/calcolaDateMese.sql">
       <QueryOutput id="mpkg5o#adf16o#qu1o#qo1o" name="primoGiorno" type="date"/>
       <QueryOutput id="mpkg5o#adf16o#qu1o#qo2o" name="ultimoGiorno" type="date"/>
       <SuccessFlow id="mpkg5o#adf16o#qu1o#sf573o" to="mpkg5o#adf16o#spd65o">

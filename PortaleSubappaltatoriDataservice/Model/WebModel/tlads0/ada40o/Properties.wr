@@ -14,6 +14,7 @@
       <ConditionalExpression id="tlads0#ada40o#seu68o#sc136o" defaultPolicy="fill" booleanOperator="and">
         <AttributesCondition id="tlads0#ada40o#seu68o#sc136o#acond62o" name="codice stato" predicate="eq" booleanOperator="or" implied="false" attributes="as24o#role47o.cls15o#att85o" value="${statoAllegato.approvato}"/>
         <AttributesCondition id="tlads0#ada40o#seu68o#sc136o#acond63o" name="data alert" predicate="lteq" booleanOperator="or" implied="false" attributes="cls5#att127o"/>
+        <AttributesCondition id="tlads0#ada40o#seu68o#sc136o#acond67o" name="corrente" predicate="eq" booleanOperator="or" implied="false" attributes="cls5#att35" value="true"/>
       </ConditionalExpression>
       <SuccessFlow id="tlads0#ada40o#seu68o#sf531o" to="tlads0#ada40o#lpu4o">
         <ParameterBinding id="tlads0#ada40o#seu68o#sf531o#par676o" source="cls5#att22Array" target="tlads0#ada40o#lpu4o.array" name="oid - Input Array"/>

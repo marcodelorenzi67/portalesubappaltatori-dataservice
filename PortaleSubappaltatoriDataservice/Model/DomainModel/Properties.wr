@@ -60,6 +60,8 @@
     <ActionService definition="mpkg5o#ada39o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg5o#ada43o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg5o#adf16o" method="read" roles="rl1 rl2 rl3 rl5"/>
+    <ActionService definition="mpkg5o#ada44o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg5o#adf18o" method="read" roles="rl1 rl2 rl3 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1" dataServiceCaching="noCache">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
@@ -732,7 +734,7 @@
       <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls5" name="Documenti" duration="persistent" gr:x="620" gr:y="75" attributeOrder="cls5#att22 cls5#att23 cls5#att24 cls5#att25 cls5#att35 cls5#att36 cls5#att87o cls5#att88o cls5#att89o cls5#att90o cls5#att91o cls5#att97o cls5#att99o cls5#att107o cls5#att108o cls5#att109o cls5#att112o cls5#att118o cls5#att119o cls5#att121o cls5#att127o" db:database="dbD1" db:table="sub_allegati">
+  <Class id="cls5" name="Documenti" duration="persistent" gr:x="620" gr:y="75" attributeOrder="cls5#att22 cls5#att23 cls5#att24 cls5#att25 cls5#att35 cls5#att36 cls5#att87o cls5#att88o cls5#att89o cls5#att90o cls5#att91o cls5#att97o cls5#att99o cls5#att107o cls5#att108o cls5#att109o cls5#att112o cls5#att118o cls5#att119o cls5#att121o cls5#att127o cls5#att128o" db:database="dbD1" db:table="sub_allegati">
     <Attribute id="cls5#att22" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls5#att23" name="Documento" type="blob" db:column="documento" deletePolicy="delete" key="false">
       <VRules>
@@ -770,6 +772,7 @@
     <Attribute id="cls5#att119o" name="Documento da compilare" type="boolean" db:column="documento_da_compilare"/>
     <Attribute id="cls5#att121o" name="Note fornitore" type="string" db:column="note_fornitore"/>
     <Attribute id="cls5#att127o" name="Data Alert" type="date" db:column="data_alert"/>
+    <Attribute id="cls5#att128o" name="Condiviso" type="boolean" derivationQuery="simpleImported::Self.as11#role21.cls8#att38"/>
   </Class>
   <Association id="as6" name="Documenti_Fornitore" sourceClass="cls5" targetClass="cls2" db:database="dbD1" db:table="sub_allegati">
     <AssociationRole1 id="as6#role11" name="DocumentiToFornitore" maxCard="1">
