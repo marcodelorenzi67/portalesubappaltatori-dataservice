@@ -62,9 +62,10 @@
         <ParameterBinding id="mpkg5o#ada16o#cnu6o#df97o#par352o" source="targetcls1#att1" target="mpkg5o#ada16o#act43o.mpkg5o#ada24o#ipd35o#pdp129o" name="Target oid [Tenant] - Tenant"/>
       </DataFlow>
     </Connect>
-    <Delete gr:x="1310" gr:y="305" id="mpkg5o#ada16o#dlu6o" dataBinding="cls5">
+    <Delete gr:x="1300" gr:y="295" id="mpkg5o#ada16o#dlu6o" dataBinding="cls5">
       <ConditionalExpression id="mpkg5o#ada16o#dlu6o#sc77o" defaultPolicy="fill" booleanOperator="and">
         <AssociationRoleCondition id="mpkg5o#ada16o#dlu6o#sc77o#rcond15o" name="fornitore" predicate="in" implied="false" role="as6#role12"/>
+        <AssociationRoleCondition id="mpkg5o#ada16o#dlu6o#sc77o#rcond44o" name="tenant" predicate="in" implied="false" role="as19#role38"/>
       </ConditionalExpression>
       <SuccessFlow id="mpkg5o#ada16o#dlu6o#sf300o" to="mpkg5o#ada16o#seu39o" automaticCoupling="true"/>
     </Delete>
