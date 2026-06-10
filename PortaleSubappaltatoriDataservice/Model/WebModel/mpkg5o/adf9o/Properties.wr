@@ -15,6 +15,8 @@
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp127o" array="true" name="oid tenant" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp128o" array="false" name="oid fornitore" type="integer" key="true"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp168o" array="false" name="Username" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp270o" array="false" name="Importato" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp271o" array="false" name="Azienda omnia oid" type="integer"/>
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#adf9o#epd34o" name="Error Port" gr:x="0" gr:y="365"/>
   <Operations>
@@ -31,6 +33,8 @@
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par334o" source="cls2#att12Array" target="mpkg5o#adf9o#spd34o#pdp126o" name="Email - Email"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par336o" source="cls2#att6Array" target="mpkg5o#adf9o#spd34o#pdp128o" name="oid - oid"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par442o" source="cls2#att93oArray" target="mpkg5o#adf9o#spd34o#pdp168o" name="Username - Username"/>
+        <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par806o" source="cls2#att129oArray" target="mpkg5o#adf9o#spd34o#pdp270o" name="Importato - Importato"/>
+        <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par807o" source="as33o#role67o_cls21o#att130oArray" target="mpkg5o#adf9o#spd34o#pdp271o" name="FornitoreToAzienda.oid - FornitoreToAzienda.oid"/>
       </DataFlow>
       <SuccessFlow id="mpkg5o#adf9o#seu36o#sf283o" to="mpkg5o#adf9o#seu37o" automaticCoupling="true"/>
     </Selector>

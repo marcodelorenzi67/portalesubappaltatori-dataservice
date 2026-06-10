@@ -10,6 +10,7 @@
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par205o" source="mpkg5o#ada18o#ipd26o#pdp84o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp77o" name="tenant - tenant"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par219o" source="mpkg5o#ada18o#ipd26o#pdp89o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp88o" name="Tipologia Azienda oid - Tipologia Azienda oid"/>
       <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par441o" source="mpkg5o#ada18o#ipd26o#pdp167o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp166o" name="username - Username"/>
+      <ParameterBinding id="mpkg5o#ada18o#ipd26o#sf198o#par808o" source="mpkg5o#ada18o#ipd26o#pdp272o" target="mpkg5o#ada18o#act20o.mpkg5o#ada16o#ipd24o#pdp269o" name="Azienda oid - Azienda oid"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp78o" array="false" name="Ragione Sociale" type="string"/>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp79o" array="false" name="Nome Referente" type="string"/>
@@ -28,6 +29,7 @@
     </DataFlow>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp89o" array="false" name="Tipologia Azienda oid" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp167o" array="false" name="username" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada18o#ipd26o#pdp272o" array="false" name="Azienda oid" type="integer"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada18o#spd26o" name="Success Port" gr:x="0" gr:y="145"/>
   <ErrorPortDefinition id="mpkg5o#ada18o#epd26o" name="Error Port" gr:x="0" gr:y="300"/>

@@ -63,6 +63,11 @@
     <ActionService definition="mpkg5o#ada44o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg5o#adf18o" method="read" roles="rl1 rl2 rl3 rl5"/>
     <ActionService definition="mpkg5o#ada45o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg5o#ada46o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg5o#ada47o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg1#ada48o" method="create" roles="rl5"/>
+    <ActionService definition="mpkg1#ada49o" method="create" roles="rl5"/>
+    <ActionService definition="mpkg1#ad7o" method="create" roles="rl1 rl2 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1" dataServiceCaching="noCache">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
@@ -280,6 +285,17 @@
             <UserAssociationRoleRestrictionCondition id="rrcond6o" name="User Association Condition" predicate="in" implied="false" role="as2#role3.as30o#role60o"/>
           </DataServiceRestriction>
         </ServiceMethod>
+      </ServiceRole>
+    </ServiceClass>
+    <ServiceClass class="cls21o" associationRoles="as33o#role68o">
+      <ServiceRole role="rl1">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl2">
+        <ServiceMethod method="read"/>
+      </ServiceRole>
+      <ServiceRole role="rl5">
+        <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
   </DataServices>
@@ -665,7 +681,7 @@
       <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls2" name="Fornitore" duration="persistent" gr:x="480" gr:y="585" attributeOrder="cls2#att6 cls2#att7 cls2#att8 cls2#att9 cls2#att10 cls2#att12 cls2#att66 cls2#att72o cls2#att79o cls2#att80o cls2#att82o cls2#att93o" db:database="dbD1" db:table="sub_fornitore">
+  <Class id="cls2" name="Fornitore" duration="persistent" gr:x="480" gr:y="585" attributeOrder="cls2#att6 cls2#att7 cls2#att8 cls2#att9 cls2#att10 cls2#att12 cls2#att66 cls2#att72o cls2#att79o cls2#att80o cls2#att82o cls2#att93o cls2#att129o" db:database="dbD1" db:table="sub_fornitore">
     <Attribute id="cls2#att6" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls2#att12" name="Email" type="string" db:column="email" key="false"/>
     <Attribute id="cls2#att10" name="Cognome Referente" type="string" db:column="cognome_referente" key="false"/>
@@ -678,6 +694,7 @@
     <Attribute id="cls2#att80o" name="Mezzi" type="boolean" db:column="mezzi"/>
     <Attribute id="cls2#att79o" name="Attrezzature" type="boolean" db:column="attrezzature"/>
     <Attribute id="cls2#att93o" name="Username" type="string" db:column="username"/>
+    <Attribute id="cls2#att129o" name="Importato" type="boolean" db:column="importato"/>
   </Class>
   <Association id="as2" name="User_Fornitore" sourceClass="User" targetClass="cls2" db:database="dbD1" db:table="sub_user">
     <AssociationRole1 id="as2#role3" name="UserToFornitore" maxCard="1">
@@ -1038,9 +1055,10 @@
       <db:JoinColumn attribute="cls5#att22" name="allegati_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls18o" name="Categoria" duration="persistent" gr:x="1220" gr:y="235" attributeOrder="cls18o#att105o cls18o#att106o" db:database="dbD1" db:table="sub_categoria">
+  <Class id="cls18o" name="Categoria" duration="persistent" gr:x="1220" gr:y="235" attributeOrder="cls18o#att105o cls18o#att106o cls18o#att174o" db:database="dbD1" db:table="sub_categoria">
     <Attribute id="cls18o#att105o" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls18o#att106o" name="Descrizione" type="string" db:column="descrizione"/>
+    <Attribute id="cls18o#att174o" name="Macro categoria" type="string" derivationQuery="simpleImported::Self.as27o#role53o.cls9#att42"/>
   </Class>
   <Association id="as27o" name="Categoria_Macro-tipologia" sourceClass="cls18o" targetClass="cls9" db:database="dbD1" db:table="sub_categoria">
     <AssociationRole1 id="as27o#role53o" name="CategoriaToMacro-tipologia" maxCard="1">
@@ -1066,7 +1084,7 @@
       <db:JoinColumn attribute="cls18o#att105o" name="categoria_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls20o" name="Personale" duration="persistent" gr:x="545" gr:y="900" attributeOrder="cls20o#att113o cls20o#att114o cls20o#att115o cls20o#att116o cls20o#att126o" db:database="dbD1" db:table="sub_personale">
+  <Class id="cls20o" name="Personale" duration="persistent" gr:x="600" gr:y="1005" attributeOrder="cls20o#att113o cls20o#att114o cls20o#att115o cls20o#att116o cls20o#att126o" db:database="dbD1" db:table="sub_personale">
     <Attribute id="cls20o#att113o" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls20o#att116o" name="Ruolo" type="string" db:column="ruolo"/>
     <Attribute id="cls20o#att115o" name="Cognome" type="string" db:column="cognome"/>
@@ -1097,6 +1115,70 @@
     </AssociationRole1>
     <AssociationRole2 id="as32o#role64o" name="DocumentoInScadenzaToDocumento" maxCard="1">
       <db:JoinColumn attribute="cls5#att22" name="oid"/>
+    </AssociationRole2>
+  </Association>
+  <Class id="cls21o" name="Azienda" db:database="dbD1" duration="persistent" db:table="azienda" gr:x="125" gr:y="885">
+    <Attribute id="cls21o#att130o" name="oid" db:column="oid" type="integer" key="true"/>
+    <Attribute id="cls21o#att131o" name="Ragione Sociale" db:column="ragione_sociale" type="string" key="false"/>
+    <Attribute id="cls21o#att132o" name="note" db:column="note" type="string" key="false"/>
+    <Attribute id="cls21o#att133o" name="riferimento" db:column="riferimento" type="string" key="false"/>
+    <Attribute id="cls21o#att134o" name="Email" db:column="email" type="string" key="false"/>
+    <Attribute id="cls21o#att135o" name="fax" db:column="fax" type="string" key="false"/>
+    <Attribute id="cls21o#att136o" name="telefono" db:column="telefono" type="string" key="false"/>
+    <Attribute id="cls21o#att137o" name="provincia" db:column="provincia" type="string" key="false"/>
+    <Attribute id="cls21o#att138o" name="citta" db:column="citta" type="string" key="false"/>
+    <Attribute id="cls21o#att139o" name="cap" db:column="cap" type="string" key="false"/>
+    <Attribute id="cls21o#att140o" name="indirizzo" db:column="indirizzo" type="string" key="false"/>
+    <Attribute id="cls21o#att141o" name="cliente" db:column="cliente" type="boolean" key="false"/>
+    <Attribute id="cls21o#att142o" name="subappaltatore" db:column="subappaltatore" type="boolean" key="false"/>
+    <Attribute id="cls21o#att143o" name="timestamp" db:column="timestamp" type="timestamp" key="false"/>
+    <Attribute id="cls21o#att144o" name="Categoria" db:column="categoria" type="string" key="false"/>
+    <Attribute id="cls21o#att145o" name="nonOperativa" db:column="non_operativa" type="boolean" key="false"/>
+    <Attribute id="cls21o#att146o" name="qualificato" db:column="qualificato" type="boolean" key="false"/>
+    <Attribute id="cls21o#att147o" name="processoDiQualifica" db:column="processo_di_qualifica" type="integer" key="false"/>
+    <Attribute id="cls21o#att148o" name="dittaIndividuale" db:column="ditta_individuale" type="boolean" key="false"/>
+    <Attribute id="cls21o#att149o" name="createdat" db:column="createdat" type="timestamp" key="false"/>
+    <Attribute id="cls21o#att150o" name="updatedat" db:column="updatedat" type="timestamp" key="false"/>
+    <Attribute id="cls21o#att151o" name="emailDatoreLavoro" db:column="email_datore_lavoro" type="string" key="false"/>
+  </Class>
+  <Class id="cls22o" name="Contatto" db:database="dbD1" duration="persistent" db:table="contatto" gr:x="-235" gr:y="880">
+    <Attribute id="cls22o#att152o" name="oid" db:column="oid" type="integer" key="true"/>
+    <Attribute id="cls22o#att153o" name="cognome" db:column="cognome" type="string" key="false"/>
+    <Attribute id="cls22o#att154o" name="nome" db:column="nome" type="string" key="false"/>
+    <Attribute id="cls22o#att155o" name="email" db:column="email" type="string" key="false"/>
+    <Attribute id="cls22o#att156o" name="timestamp" db:column="timestamp" type="timestamp" key="false"/>
+    <Attribute id="cls22o#att157o" name="telefono" db:column="telefono" type="string" key="false"/>
+    <Attribute id="cls22o#att158o" name="cellulare" db:column="cellulare" type="string" key="false"/>
+    <Attribute id="cls22o#att159o" name="matricola" db:column="matricola" type="string" key="false"/>
+    <Attribute id="cls22o#att160o" name="cob" db:column="cob" type="string" key="false"/>
+    <Attribute id="cls22o#att161o" name="dataCob" db:column="data_cob" type="date" key="false"/>
+    <Attribute id="cls22o#att162o" name="inForza" db:column="in_forza" type="boolean" key="false"/>
+    <Attribute id="cls22o#att163o" name="inizioRapporto" db:column="inizio_rapporto" type="date" key="false"/>
+    <Attribute id="cls22o#att164o" name="fineRapporto" db:column="fine_rapporto" type="date" key="false"/>
+    <Attribute id="cls22o#att165o" name="note" db:column="note" type="string" key="false"/>
+    <Attribute id="cls22o#att166o" name="ATempoIndeterminato" db:column="a_tempo_indeterminato" type="boolean" key="false"/>
+    <Attribute id="cls22o#att167o" name="foto" db:column="foto" type="string" key="false"/>
+    <Attribute id="cls22o#att168o" name="dataDiNascita" db:column="data_di_nascita" type="date" key="false"/>
+    <Attribute id="cls22o#att169o" name="apprendista" db:column="apprendista" type="boolean" key="false"/>
+    <Attribute id="cls22o#att170o" name="dataFineApprendistato" db:column="data_fine_apprendistato" type="date" key="false"/>
+    <Attribute id="cls22o#att171o" name="respProgetto" db:column="resp_progetto" type="boolean" key="false"/>
+    <Attribute id="cls22o#att172o" name="createdat" db:column="createdat" type="timestamp" key="false"/>
+    <Attribute id="cls22o#att173o" name="updatedat" db:column="updatedat" type="timestamp" key="false"/>
+  </Class>
+  <Association id="rel1o" name="ContattoAzienda" db:database="dbD1" db:table="contatto" sourceClass="cls22o" targetClass="cls21o">
+    <AssociationRole1 id="rel1o#role65o" name="ContattoToAzienda" maxCard="1">
+      <db:JoinColumn attribute="cls22o#att152o" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="rel1o#role66o" name="AziendaToContatto" maxCard="N">
+      <db:JoinColumn attribute="cls21o#att130o" name="azienda_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as33o" name="Fornitore_Azienda" sourceClass="cls2" targetClass="cls21o" db:database="dbD1" db:table="sub_fornitore">
+    <AssociationRole1 id="as33o#role67o" name="FornitoreToAzienda" maxCard="1">
+      <db:JoinColumn attribute="cls2#att6" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as33o#role68o" name="AziendaToFornitore" maxCard="N">
+      <db:JoinColumn attribute="cls21o#att130o" name="azienda_oid"/>
     </AssociationRole2>
   </Association>
 </DomainModel>

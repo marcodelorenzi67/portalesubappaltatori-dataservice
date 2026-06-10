@@ -1,0 +1,43 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ad7o" name="Nuovo/modifica categoria" defaultSuccessPortDefinition="mpkg1#ad7o#spd74o" defaultErrorPortDefinition="mpkg1#ad7o#epd74o">
+  <InputPortDefinition id="mpkg1#ad7o#ipd74o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ad7o#ipd74o#sf661o" to="mpkg1#ad7o#svu52o">
+      <ParameterBinding id="mpkg1#ad7o#ipd74o#sf661o#par859o" source="mpkg1#ad7o#ipd74o#pdp288o" target="mpkg1#ad7o#svu52o.cls18o#att106o" name="Descrizione - Descrizione"/>
+      <ParameterBinding id="mpkg1#ad7o#ipd74o#sf661o#par860o" source="mpkg1#ad7o#ipd74o#pdp289o" target="mpkg1#ad7o#svu52o#sc177o#kcond101o.cls18o#att105o" name="oid - KeyCondition26 [oid]"/>
+      <ParameterBinding id="mpkg1#ad7o#ipd74o#sf661o#par861o" source="mpkg1#ad7o#ipd74o#pdp286o" target="mpkg1#ad7o#svu52o.as27o#role53o.cls9#att41" name="Macro-tipologia oid - Macro Categoria.oid(CategoriaToMacro-tipologia)"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ad7o#ipd74o#pdp286o" name="Macro-tipologia oid" type="integer" array="false"/>
+    <PortDefinitionParameter id="mpkg1#ad7o#ipd74o#pdp288o" name="Descrizione" type="string" array="false"/>
+    <PortDefinitionParameter id="mpkg1#ad7o#ipd74o#pdp289o" name="oid" type="integer" array="false"/>
+    <DataFlow id="mpkg1#ad7o#ipd74o#df216o" to="mpkg1#ad7o#switch28o" gr:bendpoints="-2.0 128.0">
+      <ParameterBinding id="mpkg1#ad7o#ipd74o#df216o#par854o" name="oid - Switch" source="mpkg1#ad7o#ipd74o#pdp289o" target="mpkg1#ad7o#switch28o.switch"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ad7o#spd74o" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg1#ad7o#epd74o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Save id="mpkg1#ad7o#svu52o" gr:x="390" gr:y="70" action="save" dataBinding="cls18o">
+      <ConditionalExpression id="mpkg1#ad7o#svu52o#sc177o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ad7o#svu52o#sc177o#kcond101o" name="KeyCondition26" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg1#ad7o#svu52o#sf662o" to="mpkg1#ad7o#switch28o" automaticCoupling="true"/>
+    </Save>
+    <Switch id="mpkg1#ad7o#switch28o" name="edit?" gr:x="645" gr:y="255">
+      <SuccessFlow id="mpkg1#ad7o#switch28o#sf663o" to="mpkg1#ad7o#act89o">
+        <ParameterBinding id="mpkg1#ad7o#switch28o#sf663o#par855o" name="&quot;${tipoAzioneLog.editTipoAllegato}&quot; - Tipo azione" sourceValue="${tipoAzioneLog.modificataCategoria}" target="mpkg1#ad7o#act89o.mpkg2#ada19o#ipd27o#pdp93o"/>
+        <ParameterBinding id="mpkg1#ad7o#switch28o#sf663o#par856o" name="User ID - User id" target="mpkg1#ad7o#act89o.mpkg2#ada19o#ipd27o#pdp94o" sourceImplicitParameter="userName"/>
+      </SuccessFlow>
+      <SuccessFlow id="mpkg1#ad7o#switch28o#sf664o" to="mpkg1#ad7o#act89o" code="&lt;EMPTY&gt;">
+        <ParameterBinding id="mpkg1#ad7o#switch28o#sf664o#par857o" name="&quot;${tipoAzioneLog.creatoTipoAllegato}&quot; - Tipo azione" sourceValue="${tipoAzioneLog.aggiuntaCategoria}" target="mpkg1#ad7o#act89o.mpkg2#ada19o#ipd27o#pdp93o"/>
+        <ParameterBinding id="mpkg1#ad7o#switch28o#sf664o#par858o" name="User ID - User id" target="mpkg1#ad7o#act89o.mpkg2#ada19o#ipd27o#pdp94o" sourceImplicitParameter="userName"/>
+      </SuccessFlow>
+    </Switch>
+  </Operations>
+  <Action id="mpkg1#ad7o#act89o" definition="mpkg2#ada19o" gr:x="825" gr:y="215">
+    <Events>
+      <SuccessEvent id="mpkg1#ad7o#act89o#scce89o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg1#ad7o#act89o#scce89o#sf665o" to="mpkg1#ad7o#spd74o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ad7o#act89o#erre92o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

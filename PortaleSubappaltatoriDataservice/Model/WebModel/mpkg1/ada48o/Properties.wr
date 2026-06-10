@@ -1,0 +1,28 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada48o" name="Rimuovi categoria da tipologia" defaultSuccessPortDefinition="mpkg1#ada48o#spd72o" defaultErrorPortDefinition="mpkg1#ada48o#epd72o">
+  <InputPortDefinition id="mpkg1#ada48o#ipd72o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ada48o#ipd72o#sf655o" to="mpkg1#ada48o#dcnu4o">
+      <ParameterBinding id="mpkg1#ada48o#ipd72o#sf655o#par840o" source="mpkg1#ada48o#ipd72o#pdp280o" target="mpkg1#ada48o#dcnu4o#sc174o#kcond98o.cls8#att37" name="KeyCondition98 [oid] [Tipologia Documenti] [Target] - KeyCondition98 [oid] [Tipologia Documenti] [Target]"/>
+      <ParameterBinding id="mpkg1#ada48o#ipd72o#sf655o#par841o" source="mpkg1#ada48o#ipd72o#pdp281o" target="mpkg1#ada48o#dcnu4o#sc173o#kcond97o.cls18o#att105o" name="KeyCondition97 [oid] [Categoria] [Source] - KeyCondition97 [oid] [Categoria] [Source]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ada48o#ipd72o#pdp280o" array="false" name="oid Tipologia Documenti" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada48o#ipd72o#pdp281o" array="false" name="oid Categoria" type="integer"/>
+    <DataFlow id="mpkg1#ada48o#ipd72o#df214o" to="mpkg1#ada48o#spd72o">
+      <ParameterBinding id="mpkg1#ada48o#ipd72o#df214o#par842o" source="mpkg1#ada48o#ipd72o#pdp280o" target="mpkg1#ada48o#spd72o#pdp282o" name="oid Tipologia Documenti - oid Tipologia Documenti"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ada48o#spd72o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg1#ada48o#spd72o#pdp282o" array="false" name="oid Tipologia Documenti" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg1#ada48o#epd72o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Disconnect gr:x="470" gr:y="115" id="mpkg1#ada48o#dcnu4o" association="as28o#role56o">
+      <SourceConditionalExpression id="mpkg1#ada48o#dcnu4o#sc173o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada48o#dcnu4o#sc173o#kcond97o" name="KeyCondition97" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg1#ada48o#dcnu4o#sc174o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada48o#dcnu4o#sc174o#kcond98o" name="KeyCondition98" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg1#ada48o#dcnu4o#sf656o" to="mpkg1#ada48o#spd72o" automaticCoupling="true"/>
+    </Disconnect>
+  </Operations>
+</ActionDefinition>

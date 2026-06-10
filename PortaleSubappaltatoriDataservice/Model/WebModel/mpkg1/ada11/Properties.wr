@@ -7,6 +7,7 @@
       <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par167" source="mpkg1#ada11#ipd17#pdp55" target="mpkg1#ada11#svu7#sc42#kcond26.cls8#att37" name="KeyCondition26 [oid] - KeyCondition26 [oid]"/>
       <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par168" source="mpkg1#ada11#ipd17#pdp56" target="mpkg1#ada11#svu7.cls8#att38" name="Condiviso - Condiviso"/>
       <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par169" source="mpkg1#ada11#ipd17#pdp57" target="mpkg1#ada11#svu7.cls8#att39" name="Giorni Durata - Giorni Durata"/>
+      <ParameterBinding id="mpkg1#ada11#ipd17#sf153#par846o" sourceValue="a" target="mpkg1#ada11#svu7.cls8#att120o" name="&quot;a&quot; - Codice"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp52" array="false" name="Macro-tipologia oid" type="integer"/>
     <PortDefinitionParameter id="mpkg1#ada11#ipd17#pdp53" array="false" name="Pattern nome" type="string"/>
