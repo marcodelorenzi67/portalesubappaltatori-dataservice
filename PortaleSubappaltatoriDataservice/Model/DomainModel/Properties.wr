@@ -68,6 +68,10 @@
     <ActionService definition="mpkg1#ada48o" method="create" roles="rl5"/>
     <ActionService definition="mpkg1#ada49o" method="create" roles="rl5"/>
     <ActionService definition="mpkg1#ad7o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg1#ada51o" method="create" roles="rl5"/>
+    <ActionService definition="mpkg1#ad8o" method="create" roles="rl5"/>
+    <ActionService definition="mpkg5o#ada52o" method="create" roles="rl1 rl2 rl5"/>
+    <ActionService definition="mpkg5o#adf19o" method="read" roles="rl1 rl2 rl3 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1" dataServiceCaching="noCache">
     <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
@@ -668,10 +672,11 @@
       <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_redirectUri_delete$errorMessage" location="body" cardinality="1" type="string"/>
     </srs:AuthService>
   </srs:Resources>
-  <Class id="cls1" name="Tenant" duration="persistent" gr:x="245" gr:y="225" attributeOrder="cls1#att1 cls1#att2 cls1#att67o" db:database="dbD1" db:table="sub_tenant">
+  <Class id="cls1" name="Tenant" duration="persistent" gr:x="245" gr:y="225" attributeOrder="cls1#att1 cls1#att2 cls1#att67o cls1#att175o" db:database="dbD1" db:table="sub_tenant">
     <Attribute id="cls1#att1" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls1#att2" name="Nome" type="string" db:column="nome"/>
     <Attribute id="cls1#att67o" name="Master" type="boolean" db:column="master"/>
+    <Attribute id="cls1#att175o" name="Omnia" type="boolean" db:column="omnia"/>
   </Class>
   <Association id="as1" name="User_Tenant" sourceClass="User" targetClass="cls1" db:database="dbD1" db:table="sub_user_tenant">
     <AssociationRole1 id="as1#role1" name="UserToTenant" maxCard="N">
@@ -1179,6 +1184,14 @@
     </AssociationRole1>
     <AssociationRole2 id="as33o#role68o" name="AziendaToFornitore" maxCard="N">
       <db:JoinColumn attribute="cls21o#att130o" name="azienda_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as34o" name="Personale_Contatto" sourceClass="cls20o" targetClass="cls22o" db:database="dbD1" db:table="sub_personale">
+    <AssociationRole1 id="as34o#role69o" name="PersonaleToContatto" maxCard="1">
+      <db:JoinColumn attribute="cls20o#att113o" name="oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as34o#role70o" name="ContattoToPersonale" maxCard="N">
+      <db:JoinColumn attribute="cls22o#att152o" name="contatto_oid"/>
     </AssociationRole2>
   </Association>
 </DomainModel>

@@ -1,9 +1,9 @@
 <ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada36o" name="Aggiungi/Modifica personale" defaultSuccessPortDefinition="mpkg5o#ada36o#spd57o" defaultErrorPortDefinition="mpkg5o#ada36o#epd57o">
   <InputPortDefinition id="mpkg5o#ada36o#ipd57o" gr:x="0" gr:y="30">
-    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp222o" array="false" name="Nome" type="string"/>
-    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp223o" array="false" name="oid" type="integer"/>
-    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp224o" array="false" name="Ruolo" type="string"/>
-    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp225o" array="false" name="Cognome" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp222o" array="true" name="Nome" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp223o" array="true" name="oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp224o" array="true" name="Ruolo" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp225o" array="true" name="Cognome" type="string"/>
     <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp226o" array="false" name="Fornitore.oid(PersonaleToFornitore)" type="integer"/>
     <DataFlow id="mpkg5o#ada36o#ipd57o#df147o" to="mpkg5o#ada36o#switch19o" gr:bendpoints="15.0 119.0">
       <ParameterBinding id="mpkg5o#ada36o#ipd57o#df147o#par603o" name="oid - Switch" source="mpkg5o#ada36o#ipd57o#pdp223o" target="mpkg5o#ada36o#switch19o.switch"/>
@@ -14,6 +14,7 @@
       <ParameterBinding id="mpkg5o#ada36o#ipd57o#sf479o#par606o" name="Cognome - Cognome" source="mpkg5o#ada36o#ipd57o#pdp225o" target="mpkg5o#ada36o#svu34o.cls20o#att115o"/>
       <ParameterBinding id="mpkg5o#ada36o#ipd57o#sf479o#par607o" name="Ruolo - Ruolo" source="mpkg5o#ada36o#ipd57o#pdp224o" target="mpkg5o#ada36o#svu34o.cls20o#att116o"/>
       <ParameterBinding id="mpkg5o#ada36o#ipd57o#sf479o#par608o" name="Nome - Nome" source="mpkg5o#ada36o#ipd57o#pdp222o" target="mpkg5o#ada36o#svu34o.cls20o#att114o"/>
+      <ParameterBinding id="mpkg5o#ada36o#ipd57o#sf479o#par876o" source="mpkg5o#ada36o#ipd57o#pdp297o" target="mpkg5o#ada36o#svu34o.as34o#role69o.cls22o#att152o" name="Contatto.oid(PersonaleToContatto) - Contatto.oid(PersonaleToContatto)"/>
     </SuccessFlow>
     <DataFlow id="mpkg5o#ada36o#ipd57o#df148o" to="mpkg5o#ada36o#seu63o">
       <ParameterBinding id="mpkg5o#ada36o#ipd57o#df148o#par609o" source="mpkg5o#ada36o#ipd57o#pdp226o" target="mpkg5o#ada36o#seu63o#sc125o#rcond27o.cls2#att6" name="Fornitore.oid(PersonaleToFornitore) - fornitore [oid]"/>
@@ -26,7 +27,8 @@
       <ParameterBinding id="mpkg5o#ada36o#ipd57o#df151o#par616o" source="mpkg5o#ada36o#ipd57o#pdp226o" target="mpkg5o#ada36o#act65o.mpkg5o#ada24o#ipd35o#pdp131o" name="Fornitore.oid(PersonaleToFornitore) - Fornitore.oid"/>
       <ParameterBinding id="mpkg5o#ada36o#ipd57o#df151o#par617o" source="mpkg5o#ada36o#ipd57o#pdp228o" target="mpkg5o#ada36o#act65o.mpkg5o#ada24o#ipd35o#pdp129o" name="Tenant - Tenant"/>
     </DataFlow>
-    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp228o" array="false" name="Tenant" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp228o" array="true" name="Tenant" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#ada36o#ipd57o#pdp297o" array="true" name="Contatto.oid(PersonaleToContatto)" type="integer"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada36o#spd57o" name="Success Port" gr:x="0" gr:y="210"/>
   <ErrorPortDefinition id="mpkg5o#ada36o#epd57o" name="Error Port" gr:x="0" gr:y="85"/>
@@ -47,7 +49,7 @@
       </SuccessFlow>
       <SuccessFlow id="mpkg5o#ada36o#switch19o#sf481o" to="mpkg5o#ada36o#seu63o" automaticCoupling="true" code="&lt;EMPTY&gt;"/>
     </Switch>
-    <Save gr:x="175" gr:y="135" id="mpkg5o#ada36o#svu34o" action="save" dataBinding="cls20o">
+    <Save gr:x="175" gr:y="135" id="mpkg5o#ada36o#svu34o" action="save" dataBinding="cls20o" bulk="true" skipBlankRecords="true">
       <ConditionalExpression id="mpkg5o#ada36o#svu34o#sc122o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#ada36o#svu34o#sc122o#kcond72o" name="KeyCondition72" predicate="in" implied="false"/>
       </ConditionalExpression>

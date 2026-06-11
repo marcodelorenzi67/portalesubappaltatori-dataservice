@@ -1,0 +1,12 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ad8o" name="Avvia job scaduti" defaultSuccessPortDefinition="mpkg1#ad8o#spd77o" defaultErrorPortDefinition="mpkg1#ad8o#epd77o">
+  <InputPortDefinition id="mpkg1#ad8o#ipd77o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ad8o#ipd77o#sf672o" to="mpkg1#ad8o#scju2o" automaticCoupling="true"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ad8o#spd77o" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg1#ad8o#epd77o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <ScheduleJob id="mpkg1#ad8o#scju2o" name="Schedule Job 1" gr:x="390" gr:y="120" schedulePolicy="now" job="jdv1#job2o">
+      <SuccessFlow id="mpkg1#ad8o#scju2o#sf673o" to="mpkg1#ad8o#spd77o" automaticCoupling="true"/>
+    </ScheduleJob>
+  </Operations>
+</ActionDefinition>

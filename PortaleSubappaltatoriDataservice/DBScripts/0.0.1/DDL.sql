@@ -21,3 +21,10 @@ alter table "public"."sub_fornitore"  add column  "importato"  bool;
 -- Fornitore_Azienda [as33o]
 alter table "public"."sub_fornitore"  add column  "azienda_oid"  int4;
 alter table "public"."sub_fornitore"   add constraint fk_fornitore_azienda foreign key ("azienda_oid") references "public"."azienda" ("oid");
+
+-- Tenant [cls1]
+alter table "public"."sub_tenant"  add column  "omnia"  bool;
+
+-- Personale_Contatto [as34o]
+alter table "public"."sub_personale"  add column  "contatto_oid"  int4;
+alter table "public"."sub_personale"   add constraint fk_personale_contatto foreign key ("contatto_oid") references "public"."contatto" ("oid");

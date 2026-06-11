@@ -1,0 +1,24 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#adf19o" name="Get tenant" type="read" defaultSuccessPortDefinition="mpkg5o#adf19o#spd79o" defaultErrorPortDefinition="mpkg5o#adf19o#epd79o">
+  <InputPortDefinition id="mpkg5o#adf19o#ipd79o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg5o#adf19o#ipd79o#sf683o" to="mpkg5o#adf19o#seu92o">
+      <ParameterBinding id="mpkg5o#adf19o#ipd79o#sf683o#par870o" source="mpkg5o#adf19o#ipd79o#pdp294o" target="mpkg5o#adf19o#seu92o#sc181o#kcond103o.cls1#att1" name="KeyCondition103 [oid] - KeyCondition103 [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg5o#adf19o#ipd79o#pdp294o" array="false" name="oid" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#adf19o#spd79o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#adf19o#spd79o#pdp295o" array="false" name="Omnia" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#adf19o#spd79o#pdp296o" array="false" name="oid" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#adf19o#epd79o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="425" gr:y="95" id="mpkg5o#adf19o#seu92o" dataBinding="cls1">
+      <SuccessFlow id="mpkg5o#adf19o#seu92o#sf684o" to="mpkg5o#adf19o#spd79o">
+        <ParameterBinding id="mpkg5o#adf19o#seu92o#sf684o#par871o" source="cls1#att175oArray" target="mpkg5o#adf19o#spd79o#pdp295o" name="Omnia - Omnia"/>
+        <ParameterBinding id="mpkg5o#adf19o#seu92o#sf684o#par872o" source="cls1#att1Array" target="mpkg5o#adf19o#spd79o#pdp296o" name="oid - oid"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg5o#adf19o#seu92o#sc181o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#adf19o#seu92o#sc181o#kcond103o" name="KeyCondition103" predicate="in" implied="false"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>
