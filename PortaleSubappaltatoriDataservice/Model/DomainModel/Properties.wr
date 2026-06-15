@@ -306,7 +306,8 @@
   <UserServices>
     <UserServiceOperation type="read"/>
   </UserServices>
-  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_"/>
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola2" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
+  </db:Database>
   <srs:Resources>
     <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
       <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
@@ -1192,6 +1193,14 @@
     </AssociationRole1>
     <AssociationRole2 id="as34o#role70o" name="ContattoToPersonale" maxCard="N">
       <db:JoinColumn attribute="cls22o#att152o" name="contatto_oid"/>
+    </AssociationRole2>
+  </Association>
+  <Association id="as1p" name="User_Ruolo" sourceClass="User" targetClass="cls12" db:database="dbD1" db:table="sub_user_ruolo">
+    <AssociationRole1 id="as1p#role1p" name="UserToRuolo" maxCard="N">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </AssociationRole1>
+    <AssociationRole2 id="as1p#role2p" name="RuoloToUser" maxCard="N">
+      <db:JoinColumn attribute="cls12#att59" name="ruolo_oid"/>
     </AssociationRole2>
   </Association>
 </DomainModel>

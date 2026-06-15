@@ -1,29 +1,33 @@
 <ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ada13" name="Verifica Tenant" defaultSuccessPortDefinition="tlads0#ada13#spd20" defaultErrorPortDefinition="tlads0#ada13#epd20">
-  <InputPortDefinition id="tlads0#ada13#ipd20" gr:x="0" gr:y="30">
+  <InputPortDefinition id="tlads0#ada13#ipd20" gr:x="0" gr:y="15">
     <SuccessFlow id="tlads0#ada13#ipd20#sf164" to="tlads0#ada13#seu21">
       <ParameterBinding id="tlads0#ada13#ipd20#sf164#par176" sourceImplicitParameter="userName" target="tlads0#ada13#seu21#sc49#acond22" name="User ID - userID"/>
     </SuccessFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="tlads0#ada13#spd20" name="Success Port" gr:x="0" gr:y="175">
+  <SuccessPortDefinition id="tlads0#ada13#spd20" name="Success Port" gr:x="0" gr:y="185">
     <PortDefinitionParameter id="tlads0#ada13#spd20#pdp64" array="false" name="Numero tenant" type="integer"/>
     <PortDefinitionParameter id="tlads0#ada13#spd20#pdp65" array="false" name="Oid tenant" type="integer"/>
     <PortDefinitionParameter id="tlads0#ada13#spd20#pdp293o" array="false" name="omnia" type="boolean"/>
+    <PortDefinitionParameter id="tlads0#ada13#spd20#pdp2p" name="lettura" array="false" type="boolean"/>
   </SuccessPortDefinition>
   <ErrorPortDefinition id="tlads0#ada13#epd20" name="Error Port" gr:x="0" gr:y="405"/>
   <Operations>
-    <Selector gr:x="335" gr:y="75" id="tlads0#ada13#seu21" dataBinding="cls1">
+    <Selector gr:x="175" gr:y="220" id="tlads0#ada13#seu21" dataBinding="cls1">
       <ConditionalExpression id="tlads0#ada13#seu21#sc49" defaultPolicy="fill" booleanOperator="and">
         <AttributesCondition id="tlads0#ada13#seu21#sc49#acond22" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="as1#role2.userName"/>
       </ConditionalExpression>
-      <SuccessFlow id="tlads0#ada13#seu21#sf166" to="tlads0#ada13#switch4">
-        <ParameterBinding id="tlads0#ada13#seu21#sf166#par177" source="dataSize" target="tlads0#ada13#switch4.switch" name="Data Size - Switch"/>
-      </SuccessFlow>
       <DataFlow id="tlads0#ada13#seu21#df49" to="tlads0#ada13#pcu1">
         <ParameterBinding id="tlads0#ada13#seu21#df49#par182" source="cls1#att1Array" target="tlads0#ada13#pcu1#pcp2" name="oid - Oid tenant"/>
         <ParameterBinding id="tlads0#ada13#seu21#df49#par868o" source="cls1#att175oArray" target="tlads0#ada13#pcu1#pcp6o" name="Omnia - omnia"/>
       </DataFlow>
+      <DataFlow id="tlads0#ada13#seu21#df1p" to="tlads0#ada13#switch4">
+        <ParameterBinding id="tlads0#ada13#seu21#df1p#par2p" name="Data Size - Switch" source="dataSize" target="tlads0#ada13#switch4.switch"/>
+      </DataFlow>
+      <SuccessFlow id="tlads0#ada13#seu21#sf4p" to="tlads0#ada13#seu1p">
+        <ParameterBinding id="tlads0#ada13#seu21#sf4p#par3p" sourceImplicitParameter="userName" target="tlads0#ada13#seu1p#sc2p#acond1p" name="User ID - userID"/>
+      </SuccessFlow>
     </Selector>
-    <Switch gr:x="605" gr:y="170" id="tlads0#ada13#switch4" name="Data size">
+    <Switch gr:x="590" gr:y="250" id="tlads0#ada13#switch4" name="Data size">
       <SuccessFlow id="tlads0#ada13#switch4#sf167" to="tlads0#ada13#spd20">
         <ParameterBinding id="tlads0#ada13#switch4#sf167#par178" source="switch" target="tlads0#ada13#spd20#pdp64" name="Switch - Switch"/>
       </SuccessFlow>
@@ -44,6 +48,25 @@
       <CollectorParameter id="tlads0#ada13#pcu1#pcp2" name="Oid tenant"/>
       <CollectorParameter id="tlads0#ada13#pcu1#pcp1" name="Numero tenant"/>
       <CollectorParameter id="tlads0#ada13#pcu1#pcp6o" name="omnia"/>
+    </ParameterCollector>
+    <Selector gr:x="300" gr:y="-15" id="tlads0#ada13#seu1p" dataBinding="cls12">
+      <ConditionalExpression id="tlads0#ada13#seu1p#sc2p" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="tlads0#ada13#seu1p#sc2p#acond1p" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="countDistinct(as1p#role2p.userName)"/>
+        <AttributesCondition id="tlads0#ada13#seu1p#sc2p#acond2p" name="ruolo" predicate="eq" booleanOperator="or" implied="false" attributes="cls12#att60" value="${scope.admin}|${scope.responsabile}|${scope.gestione}|${scope.fornitore}"/>
+      </ConditionalExpression>
+      <SuccessFlow id="tlads0#ada13#seu1p#sf5p" to="tlads0#ada13#pcu1p">
+        <ParameterBinding id="tlads0#ada13#seu1p#sf5p#par5p" sourceValue="false" target="tlads0#ada13#pcu1p#pcp1p" name="&quot;false&quot; - lettura"/>
+      </SuccessFlow>
+      <SuccessFlow id="tlads0#ada13#seu1p#sf6p" to="tlads0#ada13#pcu1p" code="Not Found">
+        <ParameterBinding id="tlads0#ada13#seu1p#sf6p#par4p" sourceValue="true" target="tlads0#ada13#pcu1p#pcp1p" name="&quot;true&quot; - lettura"/>
+      </SuccessFlow>
+    </Selector>
+    <ParameterCollector gr:x="600" gr:y="45" id="tlads0#ada13#pcu1p" name="Parameter Collector 1">
+      <SuccessFlow id="tlads0#ada13#pcu1p#sf7p" to="tlads0#ada13#switch4" automaticCoupling="true"/>
+      <DataFlow id="tlads0#ada13#pcu1p#df2p" to="tlads0#ada13#spd20">
+        <ParameterBinding id="tlads0#ada13#pcu1p#df2p#par6p" source="tlads0#ada13#pcu1p#pcp1p" target="tlads0#ada13#spd20#pdp2p" name="lettura - lettura"/>
+      </DataFlow>
+      <CollectorParameter id="tlads0#ada13#pcu1p#pcp1p" name="lettura"/>
     </ParameterCollector>
   </Operations>
 </ActionDefinition>

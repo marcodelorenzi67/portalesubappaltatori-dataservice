@@ -1,3 +1,127 @@
+CREATE TABLE public.auth_application (
+	app_id varchar(255) NOT NULL,
+	refresh_token_validity int4 NULL,
+	access_token_validity int4 NULL,
+	secret varchar(255) NULL,
+	description varchar(255) NULL,
+	"name" varchar(255) NULL,
+	"type" varchar(255) NULL,
+	CONSTRAINT auth_application_pkey PRIMARY KEY (app_id)
+);
+
+CREATE TABLE public.auth_authorized_grant_type (
+	"oid" int4 NOT NULL,
+	application_app_id varchar(255) NULL,
+	"name" varchar(255) NULL,
+	CONSTRAINT auth_authorized_grant_type_pkey PRIMARY KEY (oid),
+	CONSTRAINT fkk0a2nvoq8b2eycexd90oai9jr FOREIGN KEY (application_app_id) REFERENCES public.auth_application(app_id)
+);
+
+CREATE TABLE public.auth_authorized_resource (
+	"oid" int4 NOT NULL,
+	application_app_id varchar(255) NULL,
+	"name" varchar(255) NULL,
+	CONSTRAINT auth_authorized_resource_pkey PRIMARY KEY (oid),
+	CONSTRAINT fk533nh988d7mq6pjckwhanlleg FOREIGN KEY (application_app_id) REFERENCES public.auth_application(app_id)
+);
+
+CREATE TABLE public.auth_claim (
+	"oid" int4 NOT NULL,
+	"key" varchar(255) NULL,
+	value varchar(1000) NULL,
+	CONSTRAINT auth_claim_pkey PRIMARY KEY (oid)
+);
+
+CREATE TABLE public.auth_code (
+	code varchar(255) NOT NULL,
+	authentication varchar(255) NULL,
+	authenticationblob oid NULL,
+	creation_date timestamp NULL,
+	CONSTRAINT auth_code_pkey PRIMARY KEY (code)
+);
+
+CREATE TABLE public.auth_identity (
+	user_id varchar(255) NOT NULL,
+	expired bool NULL,
+	"locked" bool NULL,
+	"password" varchar(255) NULL,
+	disabled bool NULL,
+	attempts_number int4 NULL,
+	password_expiration_date timestamp NULL,
+	email varchar(255) NULL,
+	auth_admin bool NULL,
+	first_name varchar(255) NULL,
+	last_name varchar(255) NULL,
+	CONSTRAINT auth_identity_pkey PRIMARY KEY (user_id)
+);
+
+CREATE TABLE public.auth_device (
+	"oid" int4 NOT NULL,
+	application_app_id varchar(255) NULL,
+	identity_user_id varchar(255) NULL,
+	device_id varchar(255) NULL,
+	notification_device_id varchar(255) NULL,
+	model varchar(255) NULL,
+	platform varchar(255) NULL,
+	platform_version varchar(255) NULL,
+	browser varchar(255) NULL,
+	CONSTRAINT auth_device_pkey PRIMARY KEY (oid),
+	CONSTRAINT fkc9aob03r9nqhwd9go0teudc1n FOREIGN KEY (identity_user_id) REFERENCES public.auth_identity(user_id),
+	CONSTRAINT fkp3pe7gns1a6uua8ofxy4apere FOREIGN KEY (application_app_id) REFERENCES public.auth_application(app_id)
+);
+
+CREATE TABLE public.auth_claim_identity (
+	identity_user_id varchar(255) NOT NULL,
+	claim_oid int4 NOT NULL,
+	CONSTRAINT auth_claim_identity_pkey PRIMARY KEY (claim_oid, identity_user_id),
+	CONSTRAINT fk1wx0aj7f1dbeu3334g5ny5i1a FOREIGN KEY (identity_user_id) REFERENCES public.auth_identity(user_id),
+	CONSTRAINT fk8m5nr9f4rv0vvkvhjh1royrqa FOREIGN KEY (claim_oid) REFERENCES public.auth_claim("oid")
+);
+
+CREATE TABLE public.auth_approval (
+	"oid" int4 NOT NULL,
+	application_app_id varchar(255) NULL,
+	updated_at timestamp NULL,
+	expiration_date timestamp NULL,
+	status varchar(255) NULL,
+	"scope" varchar(255) NULL,
+	identity_user_id varchar(255) NULL,
+	CONSTRAINT auth_approval_pkey PRIMARY KEY (oid),
+	CONSTRAINT fkeyj3s9ivw72ja6xivopicv8tr FOREIGN KEY (identity_user_id) REFERENCES public.auth_identity(user_id),
+	CONSTRAINT fklp20u45rmynrunu0ibttjyl88 FOREIGN KEY (application_app_id) REFERENCES public.auth_application(app_id)
+);
+
+CREATE TABLE public.auth_redirect_uri (
+	"oid" int4 NOT NULL,
+	application_app_id varchar(255) NULL,
+	url varchar(255) NULL,
+	CONSTRAINT auth_redirect_uri_pkey PRIMARY KEY (oid),
+	CONSTRAINT fkquipio00cid27r8whn9dj9dxa FOREIGN KEY (application_app_id) REFERENCES public.auth_application(app_id)
+);
+
+CREATE TABLE public.auth_refresh_token (
+	"oid" int4 NOT NULL,
+	application_app_id varchar(255) NULL,
+	"token" varchar(2500) NULL,
+	expiration_date timestamp NULL,
+	identity_user_id varchar(255) NULL,
+	CONSTRAINT auth_refresh_token_pkey PRIMARY KEY (oid),
+	CONSTRAINT fk3exwaoevcccym18gfyimsey06 FOREIGN KEY (identity_user_id) REFERENCES public.auth_identity(user_id),
+	CONSTRAINT fkacr366w9jtb0uivu4ebumfkux FOREIGN KEY (application_app_id) REFERENCES public.auth_application(app_id)
+);
+
+CREATE TABLE public.auth_scope (
+	"oid" int4 NOT NULL,
+	application_app_id varchar(255) NULL,
+	auto_approve bool NULL,
+	"name" varchar(255) NULL,
+	CONSTRAINT auth_scope_pkey PRIMARY KEY (oid),
+	CONSTRAINT fk424qpm96uu7jibv8pdp1xguj8 FOREIGN KEY (application_app_id) REFERENCES public.auth_application(app_id)
+);
+
+--
+
+
 -- User [User]
 create table "public"."sub_user" (
    "oid"  int4  not null,
