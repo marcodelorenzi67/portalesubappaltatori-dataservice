@@ -1,0 +1,68 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada53o" name="Rimuovi ruolo utente interno" defaultSuccessPortDefinition="mpkg1#ada53o#spd80o" defaultErrorPortDefinition="mpkg1#ada53o#epd80o" transaction="true">
+  <InputPortDefinition id="mpkg1#ada53o#ipd80o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ada53o#ipd80o#sf692o" to="mpkg1#ada53o#dcnu5o">
+      <ParameterBinding id="mpkg1#ada53o#ipd80o#sf692o#par883o" source="mpkg1#ada53o#ipd80o#pdp298o" target="mpkg1#ada53o#dcnu5o#sc186o#kcond106o.cls12#att59" name="KeyCondition106 [oid] [Ruolo] [Source] - KeyCondition106 [oid] [Ruolo] [Source]"/>
+      <ParameterBinding id="mpkg1#ada53o#ipd80o#sf692o#par884o" source="mpkg1#ada53o#ipd80o#pdp299o" target="mpkg1#ada53o#dcnu5o#sc187o#kcond107o.userOID" name="KeyCondition107 [oid] [User] [Target] - KeyCondition107 [oid] [User] [Target]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ada53o#ipd80o#pdp298o" array="true" name="oid Ruolo" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada53o#ipd80o#pdp299o" array="false" name="oid User" type="integer"/>
+    <DataFlow id="mpkg1#ada53o#ipd80o#df221o" to="mpkg1#ada53o#seu94o" gr:bendpoints="2.0 172.0">
+      <ParameterBinding id="mpkg1#ada53o#ipd80o#df221o#par885o" source="mpkg1#ada53o#ipd80o#pdp300o" target="mpkg1#ada53o#seu94o#sc188o#acond77o" name="user - user"/>
+      <ParameterBinding id="mpkg1#ada53o#ipd80o#df221o#par886o" source="mpkg1#ada53o#ipd80o#pdp301o" target="mpkg1#ada53o#seu94o#sc188o#acond78o" name="scope - scope"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg1#ada53o#ipd80o#pdp300o" array="true" name="user" type="string"/>
+    <PortDefinitionParameter id="mpkg1#ada53o#ipd80o#pdp301o" array="true" name="scope" type="string"/>
+    <DataFlow id="mpkg1#ada53o#ipd80o#df223o" to="mpkg1#ada53o#spd80o" gr:bendpoints="4.0 194.0">
+      <ParameterBinding id="mpkg1#ada53o#ipd80o#df223o#par895o" source="mpkg1#ada53o#ipd80o#pdp299o" target="mpkg1#ada53o#spd80o#pdp306o" name="oid User - oid User"/>
+    </DataFlow>
+    <DataFlow id="mpkg1#ada53o#ipd80o#df224o" to="mpkg1#ada53o#epd80o">
+      <ParameterBinding id="mpkg1#ada53o#ipd80o#df224o#par896o" source="mpkg1#ada53o#ipd80o#pdp299o" target="mpkg1#ada53o#epd80o#pdp307o" name="oid User - oid User"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ada53o#spd80o" name="Success Port" gr:x="0" gr:y="345">
+    <PortDefinitionParameter id="mpkg1#ada53o#spd80o#pdp306o" array="false" name="oid User" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg1#ada53o#epd80o" name="Error Port" gr:x="0" gr:y="100">
+    <PortDefinitionParameter id="mpkg1#ada53o#epd80o#pdp307o" array="false" name="oid User" type="integer"/>
+  </ErrorPortDefinition>
+  <Operations>
+    <Disconnect gr:x="380" gr:y="165" id="mpkg1#ada53o#dcnu5o" association="as1p#role2p">
+      <SourceConditionalExpression id="mpkg1#ada53o#dcnu5o#sc186o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada53o#dcnu5o#sc186o#kcond106o" name="KeyCondition106" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg1#ada53o#dcnu5o#sc187o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada53o#dcnu5o#sc187o#kcond107o" name="KeyCondition107" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg1#ada53o#dcnu5o#sf697o" to="mpkg1#ada53o#seu94o" automaticCoupling="true"/>
+    </Disconnect>
+    <Selector gr:x="485" gr:y="335" id="mpkg1#ada53o#seu94o">
+      <AuthServiceDataBinding authServiceRes="_application__permission_"/>
+      <ConditionalExpression id="mpkg1#ada53o#seu94o#sc188o" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="mpkg1#ada53o#seu94o#sc188o#acond77o" name="user" predicate="eq" booleanOperator="or" implied="false">
+          <AttributesConditionAttr authServiceOutput="_application__permission_$userID"/>
+          <AttributesConditionAttr authServiceOutput="_application__permission_$scope"/>
+        </AttributesCondition>
+        <AttributesCondition id="mpkg1#ada53o#seu94o#sc188o#acond78o" name="scope" predicate="eq" booleanOperator="or" implied="false">
+          <AttributesConditionAttr authServiceOutput="_application__permission_$scope"/>
+        </AttributesCondition>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg1#ada53o#seu94o#sf699o" to="mpkg1#ada53o#lpu8o">
+        <ParameterBinding id="mpkg1#ada53o#seu94o#sf699o#par887o" source="_application__permission_$oidArray" target="mpkg1#ada53o#lpu8o.array" name="oid - Input Array"/>
+      </SuccessFlow>
+    </Selector>
+    <Loop gr:x="765" gr:y="300" id="mpkg1#ada53o#lpu8o" name="Permission">
+      <SuccessFlow id="mpkg1#ada53o#lpu8o#sf700o" to="mpkg1#ada53o#act91o" code="next">
+        <ParameterBinding id="mpkg1#ada53o#lpu8o#sf700o#par890o" source="next" target="mpkg1#ada53o#act91o._permission_delete$oid" name="Next Element - oid"/>
+      </SuccessFlow>
+      <SuccessFlow id="mpkg1#ada53o#lpu8o#sf701o" to="mpkg1#ada53o#spd80o" code="end"/>
+    </Loop>
+  </Operations>
+  <Action id="mpkg1#ada53o#act91o" gr:x="725" gr:y="450" authServiceRes="_permission_delete">
+    <Events>
+      <SuccessEvent id="mpkg1#ada53o#act91o#scce91o">
+        <SuccessFlow id="mpkg1#ada53o#act91o#scce91o#sf694o" to="mpkg1#ada53o#lpu8o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ada53o#act91o#erre94o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

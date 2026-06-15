@@ -47,16 +47,18 @@
     <Save gr:x="-260" gr:y="-5" id="mpkg3#ada5#svu3" action="create" dataBinding="User">
       <SuccessFlow id="mpkg3#ada5#svu3#sf69" to="mpkg3#ada5#seu11" automaticCoupling="true"/>
       <DataFlow id="mpkg3#ada5#svu3#df24" to="mpkg3#ada5#cnu3" automaticCoupling="true"/>
+      <DataFlow id="mpkg3#ada5#svu3#df220o" to="mpkg3#ada5#cnu10o" automaticCoupling="true"/>
     </Save>
-    <Selector gr:x="550" gr:y="275" id="mpkg3#ada5#seu9" dataBinding="cls12">
+    <Selector gr:x="320" gr:y="380" id="mpkg3#ada5#seu9" dataBinding="cls12">
       <ConditionalExpression id="mpkg3#ada5#seu9#sc15" defaultPolicy="fill" booleanOperator="and">
         <AssociationRoleCondition id="mpkg3#ada5#seu9#sc15#rcond2" name="user" predicate="in" implied="false" role="as18#role35"/>
       </ConditionalExpression>
-      <SuccessFlow id="mpkg3#ada5#seu9#sf59" to="mpkg3#ada5#lpu1">
+      <DataFlow id="mpkg3#ada5#seu9#sf59" to="mpkg3#ada5#lpu1" gr:bendpoints="96,-75,-104,-75">
         <ParameterBinding id="mpkg3#ada5#seu9#sf59#par57" source="cls12#att60Array" target="mpkg3#ada5#lpu1.array" name="Descrizione - Input Array"/>
-      </SuccessFlow>
+      </DataFlow>
+      <SuccessFlow id="mpkg3#ada5#seu9#sf688o" to="mpkg3#ada5#cnu10o" automaticCoupling="true"/>
     </Selector>
-    <Loop gr:x="795" gr:y="345" id="mpkg3#ada5#lpu1" name="ruoli">
+    <Loop gr:x="850" gr:y="445" id="mpkg3#ada5#lpu1" name="ruoli">
       <SuccessFlow id="mpkg3#ada5#lpu1#sf60" to="mpkg3#ada5#act4" code="next">
         <ParameterBinding id="mpkg3#ada5#lpu1#sf60#par58" source="next" target="mpkg3#ada5#act4._permission_create$scope" name="Next Element - Scope"/>
       </SuccessFlow>
@@ -93,8 +95,17 @@
         <ParameterBinding id="mpkg3#ada5#switch6o#sf210o#par232o" sourceValue="${scope.fornitore}" target="mpkg3#ada5#act25o._permission_create$scope" name="&quot;${scope.fornitore}&quot; - Scope"/>
       </SuccessFlow>
     </Switch>
+    <Connect gr:x="555" gr:y="385" id="mpkg3#ada5#cnu10o" association="as1p#role2p">
+      <SourceConditionalExpression id="mpkg3#ada5#cnu10o#sc184o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada5#cnu10o#sc184o#kcond104o" name="KeyCondition104" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg3#ada5#cnu10o#sc185o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#ada5#cnu10o#sc185o#kcond105o" name="KeyCondition105" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg3#ada5#cnu10o#sf689o" to="mpkg3#ada5#lpu1" automaticCoupling="true"/>
+    </Connect>
   </Operations>
-  <Action id="mpkg3#ada5#act3" gr:x="350" gr:y="190" authServiceRes="_identity_create">
+  <Action id="mpkg3#ada5#act3" gr:x="350" gr:y="175" authServiceRes="_identity_create">
     <Events>
       <SuccessEvent id="mpkg3#ada5#act3#scce3">
         <SuccessFlow id="mpkg3#ada5#act3#scce3#sf58" to="mpkg3#ada5#switch6o" automaticCoupling="true"/>
@@ -130,7 +141,7 @@
       <ErrorEvent id="mpkg3#ada5#act3#erre3"/>
     </Events>
   </Action>
-  <Action id="mpkg3#ada5#act4" gr:x="580" gr:y="530" authServiceRes="_permission_create">
+  <Action id="mpkg3#ada5#act4" gr:x="720" gr:y="610" authServiceRes="_permission_create">
     <Events>
       <SuccessEvent id="mpkg3#ada5#act4#scce4">
         <SuccessFlow id="mpkg3#ada5#act4#scce4#sf61" to="mpkg3#ada5#act5" automaticCoupling="true"/>
@@ -138,7 +149,7 @@
       <ErrorEvent id="mpkg3#ada5#act4#erre4"/>
     </Events>
   </Action>
-  <Action id="mpkg3#ada5#act5" gr:x="870" gr:y="500" authServiceRes="_permission_create">
+  <Action id="mpkg3#ada5#act5" gr:x="980" gr:y="570" authServiceRes="_permission_create">
     <Events>
       <SuccessEvent id="mpkg3#ada5#act5#scce5">
         <SuccessFlow id="mpkg3#ada5#act5#scce5#sf62" to="mpkg3#ada5#lpu1" automaticCoupling="true"/>

@@ -72,9 +72,12 @@
     <ActionService definition="mpkg1#ad8o" method="create" roles="rl5"/>
     <ActionService definition="mpkg5o#ada52o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg5o#adf19o" method="read" roles="rl1 rl2 rl3 rl5"/>
+    <ActionService definition="mpkg1#ada53o" method="create" roles="rl5"/>
+    <ActionService definition="mpkg1#ada54o" method="create" roles="rl5"/>
+    <ActionService definition="mpkg3#adf20o" method="read" roles="rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1" dataServiceCaching="noCache">
-    <ServiceClass class="User" associationRoles="as1#role1 as2#role3">
+    <ServiceClass class="User" associationRoles="as1#role1 as1p#role1p as2#role3">
       <ServiceRole role="rl5">
         <ServiceMethod method="read"/>
       </ServiceRole>
@@ -113,7 +116,7 @@
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
-    <ServiceClass class="cls12">
+    <ServiceClass class="cls12" associationRoles="as1p#role2p">
       <ServiceRole role="rl5">
         <ServiceMethod method="read"/>
       </ServiceRole>
@@ -145,7 +148,7 @@
         <ServiceMethod method="read"/>
       </ServiceRole>
     </ServiceClass>
-    <ServiceClass class="cls2" associationRoles="as13#role25 as3#role5 as5#role9">
+    <ServiceClass class="cls2" associationRoles="as33o#role67o as3#role5 as5#role9 as13#role25">
       <ServiceRole role="rl1">
         <ServiceMethod method="read"/>
       </ServiceRole>
@@ -306,7 +309,7 @@
   <UserServices>
     <UserServiceOperation type="read"/>
   </UserServices>
-  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola2" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
   </db:Database>
   <srs:Resources>
     <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
@@ -687,7 +690,7 @@
       <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls2" name="Fornitore" duration="persistent" gr:x="480" gr:y="585" attributeOrder="cls2#att6 cls2#att7 cls2#att8 cls2#att9 cls2#att10 cls2#att12 cls2#att66 cls2#att72o cls2#att79o cls2#att80o cls2#att82o cls2#att93o cls2#att129o" db:database="dbD1" db:table="sub_fornitore">
+  <Class id="cls2" name="Fornitore" duration="persistent" gr:x="480" gr:y="585" attributeOrder="cls2#att6 cls2#att7 cls2#att8 cls2#att9 cls2#att10 cls2#att12 cls2#att66 cls2#att72o cls2#att79o cls2#att80o cls2#att82o cls2#att93o cls2#att129o cls2#att177o cls2#att178o cls2#att179o cls2#att180o" db:database="dbD1" db:table="sub_fornitore">
     <Attribute id="cls2#att6" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls2#att12" name="Email" type="string" db:column="email" key="false"/>
     <Attribute id="cls2#att10" name="Cognome Referente" type="string" db:column="cognome_referente" key="false"/>
@@ -701,6 +704,18 @@
     <Attribute id="cls2#att79o" name="Attrezzature" type="boolean" db:column="attrezzature"/>
     <Attribute id="cls2#att93o" name="Username" type="string" db:column="username"/>
     <Attribute id="cls2#att129o" name="Importato" type="boolean" db:column="importato"/>
+    <Attribute id="cls2#att177o" name="Documenti da caricare" type="boolean" db:table="sub_view_fornitore_documenti_da_caricare" db:column="documenti_da_caricare_tenant_1">
+      <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
+    </Attribute>
+    <Attribute id="cls2#att178o" name="Documenti da caricare T2" type="boolean" db:table="sub_view_fornitore_documenti_da_caricare" db:column="documenti_da_caricare_tenant_2">
+      <db:JoinColumn name="fornitore_oid" attribute="cls2#att6"/>
+    </Attribute>
+    <Attribute id="cls2#att179o" name="Documenti da caricare personale" type="boolean" db:table="sub_view_fornitore_documenti_da_caricare_personale" db:column="documenti_da_caricare_tenant_1">
+      <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
+    </Attribute>
+    <Attribute id="cls2#att180o" name="Documenti da caricare personale T2" type="boolean" db:table="sub_view_fornitore_documenti_da_caricare_personale" db:column="documenti_da_caricare_tenant_2">
+      <db:JoinColumn name="fornitore_oid" attribute="cls2#att6"/>
+    </Attribute>
   </Class>
   <Association id="as2" name="User_Fornitore" sourceClass="User" targetClass="cls2" db:database="dbD1" db:table="sub_user">
     <AssociationRole1 id="as2#role3" name="UserToFornitore" maxCard="1">
@@ -1090,13 +1105,16 @@
       <db:JoinColumn attribute="cls18o#att105o" name="categoria_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls20o" name="Personale" duration="persistent" gr:x="600" gr:y="1005" attributeOrder="cls20o#att113o cls20o#att114o cls20o#att115o cls20o#att116o cls20o#att126o" db:database="dbD1" db:table="sub_personale">
+  <Class id="cls20o" name="Personale" duration="persistent" gr:x="600" gr:y="1005" attributeOrder="cls20o#att113o cls20o#att114o cls20o#att115o cls20o#att116o cls20o#att126o cls20o#att176o" db:database="dbD1" db:table="sub_personale">
     <Attribute id="cls20o#att113o" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls20o#att116o" name="Ruolo" type="string" db:column="ruolo"/>
     <Attribute id="cls20o#att115o" name="Cognome" type="string" db:column="cognome"/>
     <Attribute id="cls20o#att114o" name="Nome" type="string" db:column="nome"/>
-    <Attribute id="cls20o#att126o" name="Documenti da caricare" type="boolean" db:table="sub_view_documenti_da_caricare_personale" db:column="documenti_da_caricare">
-      <db:JoinColumn attribute="cls20o#att113o" name="oid"/>
+    <Attribute id="cls20o#att126o" name="Documenti da caricare" type="boolean" db:table="sub_view_documenti_da_caricare_personale" db:column="documenti_da_caricare_tenant_1">
+      <db:JoinColumn attribute="cls20o#att113o" name="personale_oid"/>
+    </Attribute>
+    <Attribute id="cls20o#att176o" name="Documenti da caricare T2" type="boolean" db:table="sub_view_documenti_da_caricare_personale" db:column="documenti_da_caricare_tenant_2">
+      <db:JoinColumn name="personale_oid" attribute="cls20o#att113o"/>
     </Attribute>
   </Class>
   <Association id="as30o" name="Personale_Fornitore" sourceClass="cls20o" targetClass="cls2" db:database="dbD1" db:table="sub_personale">

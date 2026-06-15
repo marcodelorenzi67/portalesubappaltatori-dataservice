@@ -1,0 +1,53 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg3#adf20o" name="Get user" type="read" defaultSuccessPortDefinition="mpkg3#adf20o#spd82o" defaultErrorPortDefinition="mpkg3#adf20o#epd82o">
+  <InputPortDefinition id="mpkg3#adf20o#ipd82o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg3#adf20o#ipd82o#sf709o" to="mpkg3#adf20o#seu97o">
+      <ParameterBinding id="mpkg3#adf20o#ipd82o#sf709o#par898o" source="mpkg3#adf20o#ipd82o#pdp310o" target="mpkg3#adf20o#seu97o#sc190o#kcond109o.userOID" name="KeyCondition109 [oid] - KeyCondition109 [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg3#adf20o#ipd82o#pdp310o" array="false" name="user oid" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg3#adf20o#spd82o" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg3#adf20o#spd82o#pdp311o" array="false" name="User ID" type="string"/>
+    <PortDefinitionParameter id="mpkg3#adf20o#spd82o#pdp312o" array="false" name="Attivo" type="boolean"/>
+    <PortDefinitionParameter id="mpkg3#adf20o#spd82o#pdp313o" array="false" name="Email" type="string"/>
+    <PortDefinitionParameter id="mpkg3#adf20o#spd82o#pdp314o" array="false" name="Nome" type="string"/>
+    <PortDefinitionParameter id="mpkg3#adf20o#spd82o#pdp315o" array="false" name="oid" type="integer" key="true"/>
+    <PortDefinitionParameter id="mpkg3#adf20o#spd82o#pdp316o" array="false" name="Cognome" type="string"/>
+    <PortDefinitionParameter id="mpkg3#adf20o#spd82o#pdp317o" name="Ruoli" array="true" type="integer"/>
+    <PortDefinitionParameter id="mpkg3#adf20o#spd82o#pdp318o" name="tenant" array="true" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg3#adf20o#epd82o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="415" gr:y="145" id="mpkg3#adf20o#seu97o" dataBinding="User">
+      <ConditionalExpression id="mpkg3#adf20o#seu97o#sc190o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg3#adf20o#seu97o#sc190o#kcond109o" name="KeyCondition109" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <DataFlow id="mpkg3#adf20o#seu97o#sf710o" to="mpkg3#adf20o#spd82o" gr:bendpoints="96,-75,-104,-75">
+        <ParameterBinding id="mpkg3#adf20o#seu97o#sf710o#par899o" source="userNameArray" target="mpkg3#adf20o#spd82o#pdp311o" name="User ID - User ID"/>
+        <ParameterBinding id="mpkg3#adf20o#seu97o#sf710o#par900o" source="User#att94oArray" target="mpkg3#adf20o#spd82o#pdp312o" name="Attivo - Attivo"/>
+        <ParameterBinding id="mpkg3#adf20o#seu97o#sf710o#par901o" source="User#att5Array" target="mpkg3#adf20o#spd82o#pdp313o" name="Email - Email"/>
+        <ParameterBinding id="mpkg3#adf20o#seu97o#sf710o#par902o" source="User#att3Array" target="mpkg3#adf20o#spd82o#pdp314o" name="Nome - Nome"/>
+        <ParameterBinding id="mpkg3#adf20o#seu97o#sf710o#par903o" source="userOIDArray" target="mpkg3#adf20o#spd82o#pdp315o" name="oid - oid"/>
+        <ParameterBinding id="mpkg3#adf20o#seu97o#sf710o#par904o" source="User#att4Array" target="mpkg3#adf20o#spd82o#pdp316o" name="Cognome - Cognome"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg3#adf20o#seu97o#sf711o" to="mpkg3#adf20o#seu98o" automaticCoupling="true"/>
+      <DataFlow id="mpkg3#adf20o#seu97o#df226o" to="mpkg3#adf20o#seu99o" automaticCoupling="true"/>
+    </Selector>
+    <Selector gr:x="665" gr:y="220" id="mpkg3#adf20o#seu98o" dataBinding="cls12">
+      <ConditionalExpression id="mpkg3#adf20o#seu98o#sc191o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg3#adf20o#seu98o#sc191o#rcond68o" name="user" predicate="in" implied="false" role="as1p#role1p"/>
+      </ConditionalExpression>
+      <DataFlow id="mpkg3#adf20o#seu98o#sf712o" to="mpkg3#adf20o#spd82o" gr:bendpoints="96,-75,-104,-75">
+        <ParameterBinding id="mpkg3#adf20o#seu98o#sf712o#par905o" source="cls12#att59Array" target="mpkg3#adf20o#spd82o#pdp317o" name="oid - Ruoli"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg3#adf20o#seu98o#sf713o" to="mpkg3#adf20o#seu99o" automaticCoupling="true"/>
+    </Selector>
+    <Selector gr:x="975" gr:y="245" id="mpkg3#adf20o#seu99o" dataBinding="cls1">
+      <SuccessFlow id="mpkg3#adf20o#seu99o#sf714o" to="mpkg3#adf20o#spd82o">
+        <ParameterBinding id="mpkg3#adf20o#seu99o#sf714o#par906o" source="cls1#att1Array" target="mpkg3#adf20o#spd82o#pdp318o" name="oid - tenant"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg3#adf20o#seu99o#sc192o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg3#adf20o#seu99o#sc192o#rcond69o" name="user" predicate="in" implied="false" role="as1#role1"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

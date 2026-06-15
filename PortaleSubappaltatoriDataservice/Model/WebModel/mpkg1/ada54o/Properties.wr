@@ -1,0 +1,173 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada54o" name="Modifica utente interno" defaultSuccessPortDefinition="mpkg1#ada54o#spd81o" defaultErrorPortDefinition="mpkg1#ada54o#epd81o" transaction="true">
+  <InputPortDefinition id="mpkg1#ada54o#ipd81o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ada54o#ipd81o#sf705o" to="mpkg1#ada54o#svu54o" gr:bendpoints="32.0 14.0">
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#sf705o#par891o" source="mpkg1#ada54o#ipd81o#pdp302o" target="mpkg1#ada54o#svu54o.User#att3" name="Nome - Nome"/>
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#sf705o#par892o" source="mpkg1#ada54o#ipd81o#pdp303o" target="mpkg1#ada54o#svu54o#sc189o#kcond108o.userOID" name="KeyCondition108 [oid] - KeyCondition108 [oid]"/>
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#sf705o#par893o" source="mpkg1#ada54o#ipd81o#pdp304o" target="mpkg1#ada54o#svu54o.User#att4" name="Cognome - Cognome"/>
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#sf705o#par907o" source="mpkg1#ada54o#ipd81o#pdp319o" target="mpkg1#ada54o#svu54o.User#att94o" name="Attivo - Attivo"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ada54o#ipd81o#pdp302o" array="false" name="Nome" type="string"/>
+    <PortDefinitionParameter id="mpkg1#ada54o#ipd81o#pdp303o" array="false" name="oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada54o#ipd81o#pdp304o" array="false" name="Cognome" type="string"/>
+    <DataFlow id="mpkg1#ada54o#ipd81o#df222o" to="mpkg1#ada54o#spd81o" gr:bendpoints="8.0 258.0">
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#df222o#par894o" source="mpkg1#ada54o#ipd81o#pdp303o" target="mpkg1#ada54o#spd81o#pdp305o" name="oid - oid"/>
+    </DataFlow>
+    <DataFlow id="mpkg1#ada54o#ipd81o#df225o" to="mpkg1#ada54o#epd81o">
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#df225o#par897o" source="mpkg1#ada54o#ipd81o#pdp303o" target="mpkg1#ada54o#epd81o#pdp308o" name="oid - oid"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg1#ada54o#ipd81o#pdp319o" array="false" name="Attivo" type="boolean"/>
+    <DataFlow id="mpkg1#ada54o#ipd81o#df228o" to="mpkg1#ada54o#cnu11o" gr:bendpoints="22.0 192.0">
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#df228o#par909o" source="mpkg1#ada54o#ipd81o#pdp320o" target="mpkg1#ada54o#cnu11o#sc196o#kcond113o.cls1#att1" name="KeyCondition113 [oid] [Tenant] [Target] - KeyCondition113 [oid] [Tenant] [Target]"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg1#ada54o#ipd81o#pdp320o" array="true" name="oid Tenant" type="integer"/>
+    <DataFlow id="mpkg1#ada54o#ipd81o#df234o" to="mpkg1#ada54o#cnu12o" gr:bendpoints="3.0 360.0">
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#df234o#par916o" source="mpkg1#ada54o#ipd81o#pdp321o" target="mpkg1#ada54o#cnu12o#sc201o#kcond118o.cls12#att59" name="KeyCondition118 [oid] [Ruolo] [Target] - KeyCondition118 [oid] [Ruolo] [Target]"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg1#ada54o#ipd81o#pdp321o" array="true" name="oid Ruoli" type="integer"/>
+    <DataFlow id="mpkg1#ada54o#ipd81o#df237o" to="mpkg1#ada54o#switch29o" gr:bendpoints="22.0 33.0">
+      <ParameterBinding id="mpkg1#ada54o#ipd81o#df237o#par924o" source="mpkg1#ada54o#ipd81o#pdp319o" target="mpkg1#ada54o#switch29o.switch" name="Attivo - Switch"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ada54o#spd81o" name="Success Port" gr:x="0" gr:y="785">
+    <PortDefinitionParameter id="mpkg1#ada54o#spd81o#pdp305o" array="false" name="oid" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg1#ada54o#epd81o" name="Error Port" gr:x="0" gr:y="10">
+    <PortDefinitionParameter id="mpkg1#ada54o#epd81o#pdp308o" array="false" name="oid" type="integer"/>
+  </ErrorPortDefinition>
+  <Operations>
+    <Save gr:x="45" gr:y="55" id="mpkg1#ada54o#svu54o" action="update" dataBinding="User">
+      <ConditionalExpression id="mpkg1#ada54o#svu54o#sc189o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#svu54o#sc189o#kcond108o" name="KeyCondition108" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <DataFlow id="mpkg1#ada54o#svu54o#df229o" to="mpkg1#ada54o#dcnu6o" automaticCoupling="true"/>
+      <DataFlow id="mpkg1#ada54o#svu54o#df230o" to="mpkg1#ada54o#act93o">
+        <ParameterBinding id="mpkg1#ada54o#svu54o#df230o#par911o" source="userOIDArray" target="mpkg1#ada54o#act93o.mpkg1#ada53o#ipd80o#pdp299o" name="oid - oid User"/>
+      </DataFlow>
+      <DataFlow id="mpkg1#ada54o#svu54o#df238o" to="mpkg1#ada54o#act96o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg1#ada54o#svu54o#sf740o" to="mpkg1#ada54o#seu102o" automaticCoupling="true"/>
+    </Save>
+    <Disconnect gr:x="795" gr:y="535" id="mpkg1#ada54o#dcnu6o" association="as1#role1">
+      <SourceConditionalExpression id="mpkg1#ada54o#dcnu6o#sc193o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#dcnu6o#sc193o#kcond110o" name="KeyCondition110" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg1#ada54o#dcnu6o#sc194o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#dcnu6o#sc194o#kcond111o" name="KeyCondition111" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg1#ada54o#dcnu6o#sf719o" to="mpkg1#ada54o#cnu11o">
+        <ParameterBinding id="mpkg1#ada54o#dcnu6o#sf719o#par908o" source="sourceuserOID" target="mpkg1#ada54o#cnu11o#sc195o#kcond112o.userOID" name="Source oid [User] - KeyCondition112 [oid] [User] [Source]"/>
+      </SuccessFlow>
+    </Disconnect>
+    <Selector gr:x="625" gr:y="480" id="mpkg1#ada54o#seu100o" dataBinding="cls1">
+      <SuccessFlow id="mpkg1#ada54o#seu100o#sf718o" to="mpkg1#ada54o#dcnu6o" automaticCoupling="true"/>
+    </Selector>
+    <Connect gr:x="990" gr:y="655" id="mpkg1#ada54o#cnu11o" association="as1#role1">
+      <SourceConditionalExpression id="mpkg1#ada54o#cnu11o#sc195o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#cnu11o#sc195o#kcond112o" name="KeyCondition112" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg1#ada54o#cnu11o#sc196o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#cnu11o#sc196o#kcond113o" name="KeyCondition113" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg1#ada54o#cnu11o#sf721o" to="mpkg1#ada54o#seu101o" automaticCoupling="true"/>
+    </Connect>
+    <Selector gr:x="1235" gr:y="660" id="mpkg1#ada54o#seu101o" dataBinding="cls12">
+      <SuccessFlow id="mpkg1#ada54o#seu101o#sf741o" to="mpkg1#ada54o#act93o" gr:bendpoints="96,-75,-104,-75">
+        <ParameterBinding id="mpkg1#ada54o#seu101o#sf741o#par933o" name="oid - oid Ruolo" source="cls12#att59Array" target="mpkg1#ada54o#act93o.mpkg1#ada53o#ipd80o#pdp298o"/>
+        <ParameterBinding id="mpkg1#ada54o#seu101o#sf741o#par934o" name="Descrizione - scope" source="cls12#att60Array" target="mpkg1#ada54o#act93o.mpkg1#ada53o#ipd80o#pdp301o"/>
+      </SuccessFlow>
+    </Selector>
+    <Selector gr:x="210" gr:y="155" id="mpkg1#ada54o#seu102o" dataBinding="User">
+      <ConditionalExpression id="mpkg1#ada54o#seu102o#sc199o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#seu102o#sc199o#kcond116o" name="KeyCondition116" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <DataFlow id="mpkg1#ada54o#seu102o#df233o" to="mpkg1#ada54o#cnu12o" automaticCoupling="true"/>
+      <DataFlow id="mpkg1#ada54o#seu102o#df235o" to="mpkg1#ada54o#act95o">
+        <ParameterBinding id="mpkg1#ada54o#seu102o#df235o#par918o" source="userNameArray" target="mpkg1#ada54o#act95o._permission_create$userID" name="User ID - User ID"/>
+      </DataFlow>
+      <DataFlow id="mpkg1#ada54o#seu102o#df236o" to="mpkg1#ada54o#act94o">
+        <ParameterBinding id="mpkg1#ada54o#seu102o#df236o#par919o" source="userNameArray" target="mpkg1#ada54o#act94o._permission_create$userID" name="User ID - User ID"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg1#ada54o#seu102o#sf739o" to="mpkg1#ada54o#switch29o" automaticCoupling="true"/>
+      <DataFlow id="mpkg1#ada54o#seu102o#df239o" to="mpkg1#ada54o#act93o">
+        <ParameterBinding id="mpkg1#ada54o#seu102o#df239o#par925o" name="User ID - user" source="userNameArray" target="mpkg1#ada54o#act93o.mpkg1#ada53o#ipd80o#pdp300o"/>
+      </DataFlow>
+      <DataFlow id="mpkg1#ada54o#seu102o#df240o" to="mpkg1#ada54o#act96o">
+        <ParameterBinding id="mpkg1#ada54o#seu102o#df240o#par926o" source="userNameArray" target="mpkg1#ada54o#act96o._identity_update$userID" name="User ID - User ID"/>
+      </DataFlow>
+    </Selector>
+    <Loop id="mpkg1#ada54o#lpu9o" name="ruoli" gr:x="2275" gr:y="715">
+      <SuccessFlow id="mpkg1#ada54o#lpu9o#sf729o" to="mpkg1#ada54o#act95o" code="next">
+        <ParameterBinding id="mpkg1#ada54o#lpu9o#sf729o#par914o" name="Next Element - Scope" source="next" target="mpkg1#ada54o#act95o._permission_create$scope"/>
+        <ParameterBinding id="mpkg1#ada54o#lpu9o#sf729o#par920o" sourceValue="${app.web}" target="mpkg1#ada54o#act95o._permission_create$appID" name="&quot;${app.web}&quot; - App ID"/>
+        <ParameterBinding id="mpkg1#ada54o#lpu9o#sf729o#par921o" sourceValue="APPROVED" target="mpkg1#ada54o#act95o._permission_create$status" name="&quot;APPROVED&quot; - Status"/>
+      </SuccessFlow>
+      <DataFlow id="mpkg1#ada54o#lpu9o#df232o" to="mpkg1#ada54o#act94o">
+        <ParameterBinding id="mpkg1#ada54o#lpu9o#df232o#par915o" name="Next Element - Scope" source="next" target="mpkg1#ada54o#act94o._permission_create$scope"/>
+        <ParameterBinding id="mpkg1#ada54o#lpu9o#df232o#par922o" sourceValue="${app.ds}" target="mpkg1#ada54o#act94o._permission_create$appID" name="&quot;${app.ds}&quot; - App ID"/>
+        <ParameterBinding id="mpkg1#ada54o#lpu9o#df232o#par923o" sourceValue="APPROVED" target="mpkg1#ada54o#act94o._permission_create$status" name="&quot;APPROVED&quot; - Status"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg1#ada54o#lpu9o#sf730o" to="mpkg1#ada54o#spd81o" automaticCoupling="true" code="end"/>
+    </Loop>
+    <Connect gr:x="1860" gr:y="700" id="mpkg1#ada54o#cnu12o" association="as1p#role1p">
+      <SourceConditionalExpression id="mpkg1#ada54o#cnu12o#sc200o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#cnu12o#sc200o#kcond117o" name="KeyCondition117" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg1#ada54o#cnu12o#sc201o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#cnu12o#sc201o#kcond118o" name="KeyCondition118" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg1#ada54o#cnu12o#sf733o" to="mpkg1#ada54o#seu103o" automaticCoupling="true"/>
+    </Connect>
+    <Selector gr:x="2095" gr:y="690" id="mpkg1#ada54o#seu103o" dataBinding="cls12">
+      <SuccessFlow id="mpkg1#ada54o#seu103o#sf734o" to="mpkg1#ada54o#lpu9o">
+        <ParameterBinding id="mpkg1#ada54o#seu103o#sf734o#par917o" source="cls12#att60Array" target="mpkg1#ada54o#lpu9o.array" name="Descrizione - Input Array"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg1#ada54o#seu103o#sc202o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada54o#seu103o#sc202o#kcond119o" name="KeyCondition119" predicate="in" implied="false"/>
+      </ConditionalExpression>
+    </Selector>
+    <Switch gr:x="375" gr:y="225" id="mpkg1#ada54o#switch29o" name="attivo">
+      <SuccessFlow id="mpkg1#ada54o#switch29o#sf736o" to="mpkg1#ada54o#act96o" code="true">
+        <ParameterBinding id="mpkg1#ada54o#switch29o#sf736o#par927o" sourceValue="false" target="mpkg1#ada54o#act96o._identity_update$disabled" name="&quot;false&quot; - Is Disabled"/>
+        <ParameterBinding id="mpkg1#ada54o#switch29o#sf736o#par928o" sourceValue="false" target="mpkg1#ada54o#act96o._identity_update$expired" name="&quot;false&quot; - Is Expired"/>
+        <ParameterBinding id="mpkg1#ada54o#switch29o#sf736o#par929o" sourceValue="false" target="mpkg1#ada54o#act96o._identity_update$locked" name="&quot;false&quot; - Is Locked"/>
+      </SuccessFlow>
+      <Case value="true"/>
+      <SuccessFlow id="mpkg1#ada54o#switch29o#sf738o" to="mpkg1#ada54o#act96o">
+        <ParameterBinding id="mpkg1#ada54o#switch29o#sf738o#par930o" sourceValue="true" target="mpkg1#ada54o#act96o._identity_update$disabled" name="&quot;true&quot; - Is Disabled"/>
+        <ParameterBinding id="mpkg1#ada54o#switch29o#sf738o#par931o" sourceValue="true" target="mpkg1#ada54o#act96o._identity_update$expired" name="&quot;true&quot; - Is Expired"/>
+        <ParameterBinding id="mpkg1#ada54o#switch29o#sf738o#par932o" sourceValue="true" target="mpkg1#ada54o#act96o._identity_update$locked" name="&quot;true&quot; - Is Locked"/>
+      </SuccessFlow>
+    </Switch>
+  </Operations>
+  <Action id="mpkg1#ada54o#act93o" gr:x="1435" gr:y="620" definition="mpkg1#ada53o">
+    <Events>
+      <SuccessEvent id="mpkg1#ada54o#act93o#scce93o" definition="mpkg1#ada53o#spd80o">
+        <SuccessFlow id="mpkg1#ada54o#act93o#scce93o#sf731o" to="mpkg1#ada54o#cnu12o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ada54o#act93o#erre96o" definition="mpkg1#ada53o#epd80o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg1#ada54o#act94o" authServiceRes="_permission_create" gr:x="2450" gr:y="920">
+    <Events>
+      <SuccessEvent id="mpkg1#ada54o#act94o#scce94o">
+        <SuccessFlow id="mpkg1#ada54o#act94o#scce94o#sf727o" to="mpkg1#ada54o#lpu9o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ada54o#act94o#erre100o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg1#ada54o#act95o" authServiceRes="_permission_create" gr:x="2030" gr:y="925">
+    <Events>
+      <SuccessEvent id="mpkg1#ada54o#act95o#scce95o">
+        <SuccessFlow id="mpkg1#ada54o#act95o#scce95o#sf728o" to="mpkg1#ada54o#act94o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ada54o#act95o#erre99o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg1#ada54o#act96o" gr:x="420" gr:y="365" authServiceRes="_identity_update">
+    <Events>
+      <SuccessEvent id="mpkg1#ada54o#act96o#scce96o">
+        <SuccessFlow id="mpkg1#ada54o#act96o#scce96o#sf737o" to="mpkg1#ada54o#seu100o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ada54o#act96o#erre101o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

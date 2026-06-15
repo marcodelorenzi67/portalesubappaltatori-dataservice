@@ -28,3 +28,12 @@ alter table "public"."sub_tenant"  add column  "omnia"  bool;
 -- Personale_Contatto [as34o]
 alter table "public"."sub_personale"  add column  "contatto_oid"  int4;
 alter table "public"."sub_personale"   add constraint fk_personale_contatto foreign key ("contatto_oid") references "public"."contatto" ("oid");
+
+-- User_Ruolo [as1p]
+create table "public"."sub_user_ruolo" (
+   "user_oid"  int4 not null,
+   "ruolo_oid"  int4 not null,
+  primary key ("user_oid", "ruolo_oid")
+);
+alter table "public"."sub_user_ruolo"   add constraint fk_user_ruolo_user foreign key ("user_oid") references "public"."sub_user" ("oid");
+alter table "public"."sub_user_ruolo"   add constraint fk_user_ruolo_ruolo foreign key ("ruolo_oid") references "public"."sub_ruolo" ("oid");
