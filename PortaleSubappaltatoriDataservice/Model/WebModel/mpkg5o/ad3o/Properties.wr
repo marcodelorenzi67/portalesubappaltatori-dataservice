@@ -130,6 +130,10 @@
         <ParameterBinding id="mpkg5o#ad3o#seu44o#df162o#par637o" source="cls5#att23Array" target="mpkg5o#ad3o#pcu4o#pcp4o" name="Documento - documento"/>
         <ParameterBinding id="mpkg5o#ad3o#seu44o#df162o#par643o" source="cls5#att24Array" target="mpkg5o#ad3o#pcu4o#pcp5o" name="Descrizione - descrizione"/>
       </DataFlow>
+      <DataFlow id="mpkg5o#ad3o#seu44o#df249o" to="mpkg5o#ad3o#seu109o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ad3o#seu44o#df250o" to="mpkg5o#ad3o#act100o">
+        <ParameterBinding id="mpkg5o#ad3o#seu44o#df250o#par964o" source="cls5#att88oArray" target="mpkg5o#ad3o#act100o.mpkg2#ada3#ipd4#pdp253o" name="Tipologia - tipologiaDocumento"/>
+      </DataFlow>
     </Selector>
     <Switch gr:x="1450" gr:y="490" id="mpkg5o#ad3o#switch22o" name="modulo">
       <Case value="true"/>
@@ -174,6 +178,17 @@ return date.toLocalDate().minusDays(i)</ScriptText>
       <Case value="0"/>
       <SuccessFlow id="mpkg5o#ad3o#switch23o#sf547o" to="mpkg5o#ad3o#act48o" automaticCoupling="true" code="0"/>
     </Switch>
+    <Selector gr:x="1655" gr:y="770" id="mpkg5o#ad3o#seu109o" dataBinding="cls2">
+      <SuccessFlow id="mpkg5o#ad3o#seu109o#sf758o" to="mpkg5o#ad3o#act100o">
+        <ParameterBinding id="mpkg5o#ad3o#seu109o#sf758o#par960o" sourceValue="${msg.docRigettato}" target="mpkg5o#ad3o#act100o.mpkg2#ada3#ipd4#pdp9" name="&quot;${msg.docRigettato}&quot; - codice messaggio"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu109o#sf758o#par961o" source="cls2#att10Array" target="mpkg5o#ad3o#act100o.mpkg2#ada3#ipd4#pdp12" name="Cognome Referente - Cognome"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu109o#sf758o#par962o" source="cls2#att12Array" target="mpkg5o#ad3o#act100o.mpkg2#ada3#ipd4#pdp10" name="Email - Email"/>
+        <ParameterBinding id="mpkg5o#ad3o#seu109o#sf758o#par963o" source="cls2#att9Array" target="mpkg5o#ad3o#act100o.mpkg2#ada3#ipd4#pdp11" name="Nome Referente - Nome"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg5o#ad3o#seu109o#sc209o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ad3o#seu109o#sc209o#rcond74o" name="documento" predicate="in" implied="false" role="as6#role11"/>
+      </ConditionalExpression>
+    </Selector>
   </Operations>
   <Action id="mpkg5o#ad3o#act46o" definition="mpkg5o#adf10o" gr:x="320" gr:y="105">
     <Events>
@@ -215,9 +230,17 @@ return date.toLocalDate().minusDays(i)</ScriptText>
   <Action id="mpkg5o#ad3o#act60o" definition="mpkg2#ada19o" gr:x="1465" gr:y="870">
     <Events>
       <SuccessEvent id="mpkg5o#ad3o#act60o#scce60o" definition="mpkg2#ada19o#spd27o">
-        <SuccessFlow id="mpkg5o#ad3o#act60o#scce60o#sf437o" to="mpkg5o#ad3o#spd39o" automaticCoupling="true"/>
+        <SuccessFlow id="mpkg5o#ad3o#act60o#scce60o#sf437o" to="mpkg5o#ad3o#seu109o" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="mpkg5o#ad3o#act60o#erre63o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ad3o#act100o" gr:x="1950" gr:y="885" definition="mpkg2#ada3">
+    <Events>
+      <SuccessEvent id="mpkg5o#ad3o#act100o#scce100o" definition="mpkg2#ada3#spd4">
+        <SuccessFlow id="mpkg5o#ad3o#act100o#scce100o#sf757o" to="mpkg5o#ad3o#spd39o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ad3o#act100o#erre105o" definition="mpkg2#ada3#epd4"/>
     </Events>
   </Action>
 </ActionDefinition>

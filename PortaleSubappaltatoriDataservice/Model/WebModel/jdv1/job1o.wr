@@ -10,4 +10,5 @@
       <ErrorEvent id="jdv1#job1o#act76o#erre79o" definition="tlads0#ada40o#epd61o"/>
     </Events>
   </Action>
+  <Trigger id="jdv1#job1o#trg1o" name="Trigger1" schedulePolicy="everyDay" hours="01" minutes="00" seconds="00"/>
 </Job>

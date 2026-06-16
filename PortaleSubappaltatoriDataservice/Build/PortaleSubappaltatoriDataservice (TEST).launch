@@ -22,6 +22,10 @@
         <mapEntry key="type" value="Generate Data Service"/>
     </mapAttribute>
     <mapAttribute key="tasks.task2">
+        <mapEntry key="type" value="Copy Additional Folders"/>
+        <mapEntry key="webContentFolders" value="Build/DS Deploy/Test/WEB-INF"/>
+    </mapAttribute>
+    <mapAttribute key="tasks.task3">
         <mapEntry key="deleteDeploymentFolder" value="true"/>
         <mapEntry key="fileName" value="${project_name}.war"/>
         <mapEntry key="type" value="WAR"/>

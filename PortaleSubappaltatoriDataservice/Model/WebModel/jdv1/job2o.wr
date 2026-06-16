@@ -1,4 +1,4 @@
-<Job xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="115" gr:y="195" id="jdv1#job2o" name="Documenti scaduti">
+<Job xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="115" gr:y="250" id="jdv1#job2o" name="Documenti scaduti">
   <Operations>
     <InitJob id="jdv1#job2o#iju2o" name="Init Job" gr:x="0" gr:y="0">
       <SuccessFlow id="jdv1#job2o#iju2o#sf565o" to="jdv1#job2o#act79o" automaticCoupling="true"/>
@@ -10,4 +10,5 @@
       <ErrorEvent id="jdv1#job2o#act79o#erre82o" definition="tlads0#ada42o#epd63o"/>
     </Events>
   </Action>
+  <Trigger id="jdv1#job2o#trg2o" name="Trigger2" schedulePolicy="everyDay" hours="02" minutes="00" seconds="00"/>
 </Job>
