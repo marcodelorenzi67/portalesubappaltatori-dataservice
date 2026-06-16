@@ -54,7 +54,7 @@
       <SuccessFlow id="mpkg1#ada53o#lpu8o#sf700o" to="mpkg1#ada53o#act91o" code="next">
         <ParameterBinding id="mpkg1#ada53o#lpu8o#sf700o#par890o" source="next" target="mpkg1#ada53o#act91o._permission_delete$oid" name="Next Element - oid"/>
       </SuccessFlow>
-      <SuccessFlow id="mpkg1#ada53o#lpu8o#sf701o" to="mpkg1#ada53o#spd80o" code="end"/>
+      <SuccessFlow id="mpkg1#ada53o#lpu8o#sf701o" to="mpkg1#ada53o#spd80o" code="end" automaticCoupling="true"/>
     </Loop>
   </Operations>
   <Action id="mpkg1#ada53o#act91o" gr:x="725" gr:y="450" authServiceRes="_permission_delete">

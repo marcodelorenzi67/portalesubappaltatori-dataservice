@@ -52,6 +52,7 @@
         <ParameterBinding id="mpkg5o#ada44o#seu73o#df181o#par748o" source="as11#role21_cls8#att37Array" target="mpkg5o#ada44o#svu50o.as11#role21.cls8#att37" name="DocumentiToTipologia Documenti.oid - Tipologia Documenti.oid(DocumentiToTipologia Documenti)"/>
         <ParameterBinding id="mpkg5o#ada44o#seu73o#df181o#par749o" source="cls5#att91oArray" target="mpkg5o#ada44o#svu50o.cls5#att91o" name="Valutato il - Valutato il"/>
       </DataFlow>
+      <DataFlow id="mpkg5o#ada44o#seu73o#df248o" to="mpkg5o#ada44o#seu108o" automaticCoupling="true"/>
     </Selector>
     <Save id="mpkg5o#ada44o#svu49o" dataBinding="cls5" action="update" gr:x="680" gr:y="215">
       <ConditionalExpression id="mpkg5o#ada44o#svu49o#sc148o" defaultPolicy="fill" booleanOperator="and">
@@ -60,14 +61,33 @@
         <AttributesCondition id="mpkg5o#ada44o#svu49o#sc148o#acond68o" name="corrente" predicate="eq" booleanOperator="or" implied="false" attributes="cls5#att35" value="true"/>
         <AssociationRoleCondition id="mpkg5o#ada44o#svu49o#sc148o#rcond40o" name="tipologia" predicate="in" implied="false" role="as11#role22"/>
       </ConditionalExpression>
-      <SuccessFlow id="mpkg5o#ada44o#svu49o#sf584o" to="mpkg5o#ada44o#svu50o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg5o#ada44o#svu49o#sf584o" to="mpkg5o#ada44o#seu108o"/>
     </Save>
     <Save gr:x="1030" gr:y="225" id="mpkg5o#ada44o#svu50o" action="create" dataBinding="cls5">
-      <SuccessFlow id="mpkg5o#ada44o#svu50o#sf585o" to="mpkg5o#ada44o#act80o">
-        <ParameterBinding id="mpkg5o#ada44o#svu50o#sf585o#par750o" sourceValue="${tipoAzioneLog.documentoCondivisoImportato}" target="mpkg5o#ada44o#act80o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.documentoCondivisoImportato}&quot; - Tipo azione"/>
-        <ParameterBinding id="mpkg5o#ada44o#svu50o#sf585o#par751o" sourceImplicitParameter="userName" target="mpkg5o#ada44o#act80o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
-        <ParameterBinding id="mpkg5o#ada44o#svu50o#sf585o#par753o" source="cls5#att22Array" target="mpkg5o#ada44o#act80o.mpkg2#ada19o#ipd27o#pdp196o" name="oid - Documenti.oid(LogToDocumenti)"/>
+      <DataFlow id="mpkg5o#ada44o#svu50o#df246o" to="mpkg5o#ada44o#act80o">
+        <ParameterBinding id="mpkg5o#ada44o#svu50o#df246o#par952o" name="oid - Documenti.oid(LogToDocumenti)" source="cls5#att22Array" target="mpkg5o#ada44o#act80o.mpkg2#ada19o#ipd27o#pdp196o"/>
+        <ParameterBinding id="mpkg5o#ada44o#svu50o#df246o#par953o" name="User ID - User id" target="mpkg5o#ada44o#act80o.mpkg2#ada19o#ipd27o#pdp94o" sourceImplicitParameter="userName"/>
+        <ParameterBinding id="mpkg5o#ada44o#svu50o#df246o#par954o" name="&quot;${tipoAzioneLog.documentoCondivisoImportato}&quot; - Tipo azione" sourceValue="${tipoAzioneLog.documentoCondivisoImportato}" target="mpkg5o#ada44o#act80o.mpkg2#ada19o#ipd27o#pdp93o"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg5o#ada44o#svu50o#sf754o" to="mpkg5o#ada44o#svu55o">
+        <ParameterBinding id="mpkg5o#ada44o#svu50o#sf754o#par955o" source="cls5#att22Array" target="mpkg5o#ada44o#svu55o.as26o#role51o.cls5#att22" name="oid - Documenti.oid(LogToDocumenti)"/>
       </SuccessFlow>
+    </Save>
+    <Selector gr:x="930" gr:y="390" id="mpkg5o#ada44o#seu108o" dataBinding="cls13o">
+      <ConditionalExpression id="mpkg5o#ada44o#seu108o#sc207o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ada44o#seu108o#sc207o#rcond73o" name="documento" predicate="in" implied="false" role="as26o#role52o"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada44o#seu108o#sf755o" to="mpkg5o#ada44o#svu50o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ada44o#seu108o#df247o" to="mpkg5o#ada44o#svu55o">
+        <ParameterBinding id="mpkg5o#ada44o#seu108o#df247o#par956o" source="as21o#role41o_cls2#att6Array" target="mpkg5o#ada44o#svu55o.as21o#role41o.cls2#att6" name="LogToFornitore.oid - Fornitore.oid(LogToFornitore)"/>
+        <ParameterBinding id="mpkg5o#ada44o#seu108o#df247o#par957o" source="cls13o#att69oArray" target="mpkg5o#ada44o#svu55o.cls13o#att69o" name="Timestamp log - Timestamp log"/>
+        <ParameterBinding id="mpkg5o#ada44o#seu108o#df247o#par958o" source="cls13o#att70oArray" target="mpkg5o#ada44o#svu55o.cls13o#att70o" name="Tipo azione - Tipo azione"/>
+        <ParameterBinding id="mpkg5o#ada44o#seu108o#df247o#par959o" source="as20o#role39o_userOIDArray" target="mpkg5o#ada44o#svu55o.as20o#role39o.userOID" name="LogToUser.oid - User.oid(LogToUser)"/>
+      </DataFlow>
+      <SortAttribute attribute="cls13o#att68o" order="ascending"/>
+    </Selector>
+    <Save gr:x="1210" gr:y="385" id="mpkg5o#ada44o#svu55o" action="create" dataBinding="cls13o" bulk="true" skipBlankRecords="true">
+      <SuccessFlow id="mpkg5o#ada44o#svu55o#sf756o" to="mpkg5o#ada44o#act80o" automaticCoupling="true"/>
     </Save>
   </Operations>
   <Action id="mpkg5o#ada44o#act80o" gr:x="1280" gr:y="210" definition="mpkg2#ada19o">

@@ -1,0 +1,36 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ada55o" name="Sollecito documento" defaultSuccessPortDefinition="mpkg5o#ada55o#spd83o" defaultErrorPortDefinition="mpkg5o#ada55o#epd83o">
+  <InputPortDefinition id="mpkg5o#ada55o#ipd83o" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#ada55o#ipd83o#pdp322o" array="false" name="documento [oid]" type="integer"/>
+    <SuccessFlow id="mpkg5o#ada55o#ipd83o#sf750o" to="mpkg5o#ada55o#seu105o">
+      <ParameterBinding id="mpkg5o#ada55o#ipd83o#sf750o#par943o" name="documento [oid] - documenti [oid]" source="mpkg5o#ada55o#ipd83o#pdp322o" target="mpkg5o#ada55o#seu105o#sc203o#rcond70o.cls5#att22"/>
+    </SuccessFlow>
+    <DataFlow id="mpkg5o#ada55o#ipd83o#df243o" to="mpkg5o#ada55o#act98o" gr:bendpoints="266.0 59.0">
+      <ParameterBinding id="mpkg5o#ada55o#ipd83o#df243o#par944o" source="mpkg5o#ada55o#ipd83o#pdp323o" target="mpkg5o#ada55o#act98o.mpkg2#ada3#ipd4#pdp253o" name="tipologiaDocumento - tipologiaDocumento"/>
+      <ParameterBinding id="mpkg5o#ada55o#ipd83o#df243o#par951o" source="mpkg5o#ada55o#ipd83o#pdp324o" target="mpkg5o#ada55o#act98o.mpkg2#ada3#ipd4#pdp9" name="codice messaggio - codice messaggio"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada55o#ipd83o#pdp323o" array="false" name="tipologiaDocumento" type="string"/>
+    <PortDefinitionParameter id="mpkg5o#ada55o#ipd83o#pdp324o" array="false" name="codice messaggio" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ada55o#spd83o" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg5o#ada55o#epd83o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector id="mpkg5o#ada55o#seu105o" gr:x="325" gr:y="155" dataBinding="cls2">
+      <ConditionalExpression id="mpkg5o#ada55o#seu105o#sc203o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ada55o#seu105o#sc203o#rcond70o" name="documenti" predicate="in" implied="false" role="as6#role11"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada55o#seu105o#sf745o" to="mpkg5o#ada55o#act98o">
+        <ParameterBinding id="mpkg5o#ada55o#seu105o#sf745o#par938o" name="Cognome Referente - Cognome" source="cls2#att10Array" target="mpkg5o#ada55o#act98o.mpkg2#ada3#ipd4#pdp12"/>
+        <ParameterBinding id="mpkg5o#ada55o#seu105o#sf745o#par939o" name="Email - Email" source="cls2#att12Array" target="mpkg5o#ada55o#act98o.mpkg2#ada3#ipd4#pdp10"/>
+        <ParameterBinding id="mpkg5o#ada55o#seu105o#sf745o#par940o" name="Nome Referente - Nome" source="cls2#att9Array" target="mpkg5o#ada55o#act98o.mpkg2#ada3#ipd4#pdp11"/>
+      </SuccessFlow>
+    </Selector>
+  </Operations>
+  <Action id="mpkg5o#ada55o#act98o" definition="mpkg2#ada3" gr:x="650" gr:y="175">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada55o#act98o#scce98o" definition="mpkg2#ada3#spd4">
+        <SuccessFlow id="mpkg5o#ada55o#act98o#scce98o#sf747o" to="mpkg5o#ada55o#spd83o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada55o#act98o#erre103o" definition="mpkg2#ada3#epd4"/>
+    </Events>
+  </Action>
+</ActionDefinition>

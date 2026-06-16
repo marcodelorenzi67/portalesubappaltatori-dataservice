@@ -105,7 +105,10 @@
         <ParameterBinding id="mpkg1#ada54o#lpu9o#df232o#par922o" sourceValue="${app.ds}" target="mpkg1#ada54o#act94o._permission_create$appID" name="&quot;${app.ds}&quot; - App ID"/>
         <ParameterBinding id="mpkg1#ada54o#lpu9o#df232o#par923o" sourceValue="APPROVED" target="mpkg1#ada54o#act94o._permission_create$status" name="&quot;APPROVED&quot; - Status"/>
       </DataFlow>
-      <SuccessFlow id="mpkg1#ada54o#lpu9o#sf730o" to="mpkg1#ada54o#spd81o" automaticCoupling="true" code="end"/>
+      <SuccessFlow id="mpkg1#ada54o#lpu9o#sf730o" to="mpkg1#ada54o#act97o" code="end">
+        <ParameterBinding id="mpkg1#ada54o#lpu9o#sf730o#par935o" sourceValue="${tipoAzioneLog.modificaUtenteInterno}" target="mpkg1#ada54o#act97o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.modificaUtenteInterno}&quot; - Tipo azione"/>
+        <ParameterBinding id="mpkg1#ada54o#lpu9o#sf730o#par936o" sourceImplicitParameter="userName" target="mpkg1#ada54o#act97o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
+      </SuccessFlow>
     </Loop>
     <Connect gr:x="1860" gr:y="700" id="mpkg1#ada54o#cnu12o" association="as1p#role1p">
       <SourceConditionalExpression id="mpkg1#ada54o#cnu12o#sc200o" defaultPolicy="fill" booleanOperator="and">
@@ -168,6 +171,14 @@
         <SuccessFlow id="mpkg1#ada54o#act96o#scce96o#sf737o" to="mpkg1#ada54o#seu100o" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="mpkg1#ada54o#act96o#erre101o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg1#ada54o#act97o" gr:x="2580" gr:y="715" definition="mpkg2#ada19o">
+    <Events>
+      <SuccessEvent id="mpkg1#ada54o#act97o#scce97o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg1#ada54o#act97o#scce97o#sf742o" to="mpkg1#ada54o#spd81o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg1#ada54o#act97o#erre102o" definition="mpkg2#ada19o#epd27o"/>
     </Events>
   </Action>
 </ActionDefinition>

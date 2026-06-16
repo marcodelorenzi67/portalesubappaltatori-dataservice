@@ -10,7 +10,7 @@
       <ParameterBinding id="mpkg5o#ada26o#ipd38o#sf323o#par376o" source="mpkg5o#ada26o#ipd38o#pdp137o" target="mpkg5o#ada26o#seu42o#sc84o#kcond49o.cls5#att22" name="oid - KeyCondition49 [oid]"/>
     </SuccessFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg5o#ada26o#spd38o" name="Success Port" gr:x="0" gr:y="220"/>
+  <SuccessPortDefinition id="mpkg5o#ada26o#spd38o" name="Success Port" gr:x="0" gr:y="165"/>
   <ErrorPortDefinition id="mpkg5o#ada26o#epd38o" name="Error Port" gr:x="0" gr:y="300"/>
   <Operations>
     <Save gr:x="300" gr:y="255" id="mpkg5o#ada26o#svu16o" action="update" dataBinding="cls5" bulk="true">
@@ -39,6 +39,21 @@
       <ConditionalExpression id="mpkg5o#ada26o#seu56o#sc115o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg5o#ada26o#seu56o#sc115o#kcond69o" name="KeyCondition69" predicate="in" implied="false"/>
       </ConditionalExpression>
+      <DataFlow id="mpkg5o#ada26o#seu56o#df244o" to="mpkg5o#ada26o#act99o">
+        <ParameterBinding id="mpkg5o#ada26o#seu56o#df244o#par946o" source="cls5#att88oArray" target="mpkg5o#ada26o#act99o.mpkg2#ada3#ipd4#pdp253o" name="Tipologia - tipologiaDocumento"/>
+      </DataFlow>
+      <DataFlow id="mpkg5o#ada26o#seu56o#df245o" to="mpkg5o#ada26o#seu107o" automaticCoupling="true"/>
+    </Selector>
+    <Selector gr:x="990" gr:y="300" id="mpkg5o#ada26o#seu107o" dataBinding="cls2">
+      <SuccessFlow id="mpkg5o#ada26o#seu107o#sf752o" to="mpkg5o#ada26o#act99o">
+        <ParameterBinding id="mpkg5o#ada26o#seu107o#sf752o#par947o" name="&quot;${msg.docDaInserire}&quot; - codice messaggio" sourceValue="${msg.docDaInserire}" target="mpkg5o#ada26o#act99o.mpkg2#ada3#ipd4#pdp9"/>
+        <ParameterBinding id="mpkg5o#ada26o#seu107o#sf752o#par948o" source="cls2#att10Array" target="mpkg5o#ada26o#act99o.mpkg2#ada3#ipd4#pdp12" name="Cognome Referente - Cognome"/>
+        <ParameterBinding id="mpkg5o#ada26o#seu107o#sf752o#par949o" source="cls2#att12Array" target="mpkg5o#ada26o#act99o.mpkg2#ada3#ipd4#pdp10" name="Email - Email"/>
+        <ParameterBinding id="mpkg5o#ada26o#seu107o#sf752o#par950o" source="cls2#att9Array" target="mpkg5o#ada26o#act99o.mpkg2#ada3#ipd4#pdp11" name="Nome Referente - Nome"/>
+      </SuccessFlow>
+      <ConditionalExpression id="mpkg5o#ada26o#seu107o#sc206o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ada26o#seu107o#sc206o#rcond72o" name="documenti" predicate="in" implied="false" role="as6#role11"/>
+      </ConditionalExpression>
     </Selector>
   </Operations>
   <Action id="mpkg5o#ada26o#act45o" gr:x="320" gr:y="105" definition="mpkg5o#adf10o">
@@ -51,12 +66,20 @@
       <ErrorEvent id="mpkg5o#ada26o#act45o#erre47o" definition="mpkg5o#adf10o#epd36o"/>
     </Events>
   </Action>
-  <Action id="mpkg5o#ada26o#act59o" definition="mpkg2#ada19o" gr:x="730" gr:y="405">
+  <Action id="mpkg5o#ada26o#act59o" definition="mpkg2#ada19o" gr:x="735" gr:y="415">
     <Events>
       <SuccessEvent id="mpkg5o#ada26o#act59o#scce59o" definition="mpkg2#ada19o#spd27o">
-        <SuccessFlow id="mpkg5o#ada26o#act59o#scce59o#sf436o" to="mpkg5o#ada26o#spd38o" automaticCoupling="true"/>
+        <SuccessFlow id="mpkg5o#ada26o#act59o#scce59o#sf753o" to="mpkg5o#ada26o#seu107o" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="mpkg5o#ada26o#act59o#erre62o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ada26o#act99o" gr:x="1220" gr:y="320" definition="mpkg2#ada3">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada26o#act99o#scce99o" definition="mpkg2#ada3#spd4">
+        <SuccessFlow id="mpkg5o#ada26o#act99o#scce99o#sf751o" to="mpkg5o#ada26o#spd38o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada26o#act99o#erre104o" definition="mpkg2#ada3#epd4"/>
     </Events>
   </Action>
 </ActionDefinition>
