@@ -1,0 +1,21 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada3p" name="Modifica Stato" defaultSuccessPortDefinition="mpkg1#ada3p#spd3p" defaultErrorPortDefinition="mpkg1#ada3p#epd3p">
+  <InputPortDefinition id="mpkg1#ada3p#ipd3p" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ada3p#ipd3p#sf11p" to="mpkg1#ada3p#svu3p">
+      <ParameterBinding id="mpkg1#ada3p#ipd3p#sf11p#par10p" source="mpkg1#ada3p#ipd3p#pdp7p" target="mpkg1#ada3p#svu3p.cls15o#att84o" name="Descrizione - Descrizione"/>
+      <ParameterBinding id="mpkg1#ada3p#ipd3p#sf11p#par11p" source="mpkg1#ada3p#ipd3p#pdp6p" target="mpkg1#ada3p#svu3p#sc4p#kcond3p.cls15o#att83o" name="Stato - KeyCondition3 [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ada3p#ipd3p#pdp6p" name="Stato" array="false" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada3p#ipd3p#pdp7p" name="Descrizione" array="false" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ada3p#spd3p" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg1#ada3p#epd3p" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Save gr:x="350" gr:y="245" id="mpkg1#ada3p#svu3p" action="update" dataBinding="cls15o">
+      <ConditionalExpression id="mpkg1#ada3p#svu3p#sc4p" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada3p#svu3p#sc4p#kcond3p" name="KeyCondition3" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg1#ada3p#svu3p#sf13p" to="mpkg1#ada3p#spd3p" automaticCoupling="true"/>
+      <ErrorFlow id="mpkg1#ada3p#svu3p#ef2p" to="mpkg1#ada3p#epd3p" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+</ActionDefinition>

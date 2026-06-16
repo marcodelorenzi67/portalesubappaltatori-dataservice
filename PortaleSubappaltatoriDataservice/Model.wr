@@ -4,7 +4,7 @@
 <WebProject xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:gr="http://www.webratio.com/2006/WebML/Graph" outputPath="${webapps_loc}/${project_name}" gr:showUnitContent="true" gr:showTooltip="true" enableProjectDependencies="true" toolVersion="9.3.1" db:dataServicesSchema="public" db:dataServicesTablePrefix="WR_">
   <ServiceDataProviders>
     <IdentityProvider/>
-    <SMTPServer id="smtp1" name="Mail" jndiName="java:comp/env/mail/aws" defaultFrom="tommaso.garimoldi@webratio.com"/>
+    <SMTPServer id="smtp1" name="Mail" jndiName="java:comp/env/mail/aws" defaultFrom="maurizio.ferrario@webratio.com"/>
   </ServiceDataProviders>
   <Roles>
     <Role id="anonymous_user" name="Anonymous User"/>

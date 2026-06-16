@@ -1,0 +1,23 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg1#ada2p" name="Modifica tenant" defaultSuccessPortDefinition="mpkg1#ada2p#spd2p" defaultErrorPortDefinition="mpkg1#ada2p#epd2p">
+  <InputPortDefinition id="mpkg1#ada2p#ipd2p" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg1#ada2p#ipd2p#sf8p" to="mpkg1#ada2p#svu2p">
+      <ParameterBinding id="mpkg1#ada2p#ipd2p#sf8p#par7p" source="mpkg1#ada2p#ipd2p#pdp3p" target="mpkg1#ada2p#svu2p.cls1#att175o" name="Omnia - Omnia"/>
+      <ParameterBinding id="mpkg1#ada2p#ipd2p#sf8p#par8p" source="mpkg1#ada2p#ipd2p#pdp4p" target="mpkg1#ada2p#svu2p.cls1#att2" name="Nome - Nome"/>
+      <ParameterBinding id="mpkg1#ada2p#ipd2p#sf8p#par9p" source="mpkg1#ada2p#ipd2p#pdp5p" target="mpkg1#ada2p#svu2p#sc3p#kcond2p.cls1#att1" name="KeyCondition2 [oid] - KeyCondition2 [oid]"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg1#ada2p#ipd2p#pdp3p" array="false" name="Omnia" type="boolean"/>
+    <PortDefinitionParameter id="mpkg1#ada2p#ipd2p#pdp4p" array="false" name="Nome" type="string"/>
+    <PortDefinitionParameter id="mpkg1#ada2p#ipd2p#pdp5p" array="false" name="Tenant" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg1#ada2p#spd2p" name="Success Port" gr:x="0" gr:y="30"/>
+  <ErrorPortDefinition id="mpkg1#ada2p#epd2p" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Save gr:x="355" gr:y="260" id="mpkg1#ada2p#svu2p" action="update" dataBinding="cls1">
+      <ConditionalExpression id="mpkg1#ada2p#svu2p#sc3p" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg1#ada2p#svu2p#sc3p#kcond2p" name="KeyCondition2" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg1#ada2p#svu2p#sf10p" to="mpkg1#ada2p#spd2p" automaticCoupling="true"/>
+      <ErrorFlow id="mpkg1#ada2p#svu2p#ef3p" to="mpkg1#ada2p#epd2p" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+</ActionDefinition>

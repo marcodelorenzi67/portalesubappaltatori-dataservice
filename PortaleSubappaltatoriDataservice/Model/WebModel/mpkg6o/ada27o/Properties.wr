@@ -27,6 +27,12 @@
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df177o#par714o" source="mpkg6o#ada27o#ipd40o#pdp144o" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp92o" name="fornitore - Fornitore oid"/>
       <ParameterBinding id="mpkg6o#ada27o#ipd40o#df177o#par715o" sourceImplicitParameter="userName" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp94o" name="User ID - User id"/>
     </DataFlow>
+    <DataFlow id="mpkg6o#ada27o#ipd40o#df4p" to="mpkg6o#ada27o#scu1p">
+      <ParameterBinding id="mpkg6o#ada27o#ipd40o#df4p#par19p" source="mpkg6o#ada27o#ipd40o#pdp146o" target="mpkg6o#ada27o#scu1p.fileIn" name="Documento - fileIn"/>
+    </DataFlow>
+    <DataFlow id="mpkg6o#ada27o#ipd40o#df5p" to="mpkg6o#ada27o#seu2p">
+      <ParameterBinding id="mpkg6o#ada27o#ipd40o#df5p#par20p" source="mpkg6o#ada27o#ipd40o#pdp147o" target="mpkg6o#ada27o#seu2p#sc5p#kcond4p.cls5#att22" name="oid - KeyCondition4 [oid]"/>
+    </DataFlow>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg6o#ada27o#spd40o" name="Success Port" gr:x="0" gr:y="525"/>
   <ErrorPortDefinition id="mpkg6o#ada27o#epd40o" name="Error Port" gr:x="0" gr:y="10"/>
@@ -49,6 +55,23 @@
         <ParameterBinding id="mpkg6o#ada27o#svu45o#sf554o#par716o" sourceValue="${tipoAzioneLog.documentoStoricizzato}" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.documentoStoricizzato}&quot; - Tipo azione"/>
       </SuccessFlow>
     </Save>
+    <Script gr:x="645" gr:y="395" id="mpkg6o#ada27o#scu1p" name="Rename" script="WEB-INF/groovy/rinominaNomeFile.groovy">
+      <SuccessFlow id="mpkg6o#ada27o#scu1p#sf14p" to="mpkg6o#ada27o#svu21o">
+        <ParameterBinding id="mpkg6o#ada27o#scu1p#sf14p#par13p" source="result" target="mpkg6o#ada27o#svu21o.cls5#att23_name" name="Result - Documento [file name]"/>
+      </SuccessFlow>
+      <ErrorFlow id="mpkg6o#ada27o#scu1p#ef4p" to="mpkg6o#ada27o#svu21o" automaticCoupling="true"/>
+    </Script>
+    <Selector gr:x="405" gr:y="380" id="mpkg6o#ada27o#seu2p" name="Documento" dataBinding="cls5">
+      <ConditionalExpression id="mpkg6o#ada27o#seu2p#sc5p" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg6o#ada27o#seu2p#sc5p#kcond4p" name="KeyCondition4" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg6o#ada27o#seu2p#sf15p" to="mpkg6o#ada27o#scu1p">
+        <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par14p" source="cls5#att97oArray" target="mpkg6o#ada27o#scu1p.azienda" name="Fornitore - azienda"/>
+        <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par15p" source="cls5#att4pArray" target="mpkg6o#ada27o#scu1p.cognome" name="Cognome personale - cognome"/>
+        <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par16p" source="cls5#att3pArray" target="mpkg6o#ada27o#scu1p.nome" name="Nome personale - nome"/>
+        <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par17p" source="cls5#att5pArray" target="mpkg6o#ada27o#scu1p.pattern" name="Pattern file - pattern"/>
+      </SuccessFlow>
+    </Selector>
   </Operations>
   <Action id="mpkg6o#ada27o#act50o" gr:x="420" gr:y="110" definition="mpkg6o#ada22o">
     <Events>
@@ -62,10 +85,11 @@
   </Action>
   <Action id="mpkg6o#ada27o#act51o" gr:x="495" gr:y="250" definition="mpkg5o#adf10o">
     <Events>
-      <SuccessEvent id="mpkg6o#ada27o#act51o#scce50o" definition="mpkg5o#adf10o#spd36o">
-        <SuccessFlow id="mpkg6o#ada27o#act51o#scce50o#sf354o" to="mpkg6o#ada27o#svu21o">
-          <ParameterBinding id="mpkg6o#ada27o#act51o#scce50o#sf354o#par410o" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg6o#ada27o#svu21o.as24o#role47o.cls15o#att83o" name="oid - Stato Allegato.oid(AllegatiToStato Allegato)"/>
-        </SuccessFlow>
+      <SuccessEvent id="mpkg6o#ada27o#act51o#scce50o" definition="mpkg5o#adf10o#spd36o" gr:pinned="true" gr:side="4" gr:pos="0">
+        <SuccessFlow id="mpkg6o#ada27o#act51o#scce50o#sf354o" to="mpkg6o#ada27o#seu2p"/>
+        <DataFlow id="mpkg6o#ada27o#act51o#scce50o#df3p" to="mpkg6o#ada27o#svu21o">
+          <ParameterBinding id="mpkg6o#ada27o#act51o#scce50o#df3p#par12p" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg6o#ada27o#svu21o.as24o#role47o.cls15o#att83o" name="oid - Stato Documento.oid(AllegatiToStato Allegato)"/>
+        </DataFlow>
       </SuccessEvent>
       <ErrorEvent id="mpkg6o#ada27o#act51o#erre53o" definition="mpkg5o#adf10o#epd36o"/>
     </Events>
