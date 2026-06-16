@@ -312,7 +312,8 @@
   <UserServices>
     <UserServiceOperation type="read"/>
   </UserServices>
-  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola2" username="postgres" password="password" schema="public" tableExportPrefix="sub_"/>
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
+  </db:Database>
   <srs:Resources>
     <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
       <srs:AuthServiceOutput name="User ID" serverProperty="userID" ref="_identity__me_$userID" key="true" keyTemplate="{userID?}" location="body" cardinality="1" type="string"/>
@@ -692,7 +693,7 @@
       <db:JoinColumn attribute="cls1#att1" name="tenant_oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls2" name="Fornitore" duration="persistent" gr:x="485" gr:y="735" attributeOrder="cls2#att6 cls2#att7 cls2#att8 cls2#att9 cls2#att10 cls2#att12 cls2#att66 cls2#att72o cls2#att79o cls2#att80o cls2#att82o cls2#att93o cls2#att129o cls2#att177o cls2#att178o cls2#att179o cls2#att180o" db:database="dbD1" db:table="sub_fornitore">
+  <Class id="cls2" name="Fornitore" duration="persistent" gr:x="485" gr:y="735" attributeOrder="cls2#att6 cls2#att7 cls2#att8 cls2#att9 cls2#att10 cls2#att12 cls2#att66 cls2#att72o cls2#att79o cls2#att80o cls2#att82o cls2#att93o cls2#att129o cls2#att177o cls2#att178o cls2#att179o cls2#att180o cls2#att181o" db:database="dbD1" db:table="sub_fornitore">
     <Attribute id="cls2#att6" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls2#att12" name="Email" type="string" db:column="email" key="false"/>
     <Attribute id="cls2#att10" name="Cognome Referente" type="string" db:column="cognome_referente" key="false"/>
@@ -717,6 +718,9 @@
     </Attribute>
     <Attribute id="cls2#att180o" name="Documenti da caricare personale T2" type="boolean" db:table="sub_view_fornitore_documenti_da_caricare_personale" db:column="documenti_da_caricare_tenant_2">
       <db:JoinColumn name="fornitore_oid" attribute="cls2#att6"/>
+    </Attribute>
+    <Attribute id="cls2#att181o" name="Owner" type="integer" db:table="sub_view_fornitore_tenant_principale" db:column="tenant_oid">
+      <db:JoinColumn attribute="cls2#att6" name="fornitore_oid"/>
     </Attribute>
   </Class>
   <Association id="as2" name="User_Fornitore" sourceClass="User" targetClass="cls2" db:database="dbD1" db:table="sub_user">
