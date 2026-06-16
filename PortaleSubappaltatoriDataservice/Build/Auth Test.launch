@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.webratio.ide.deploy.core.AuthServerLaunchConfigurationType">
+    <stringAttribute key="authenticationBaseUrl" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesAccessTokenDuration" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesKeyPassword" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesMaxLoginAttemptsNumber" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesOpenidSessionDuration" value="30"/>
+    <stringAttribute key="authenticationServices.authenticationServicesOpenidSessioncookieDomain" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesOpenidSessioncookiePath" value=""/>
+    <booleanAttribute key="authenticationServices.authenticationServicesOpenidSupport" value="false"/>
+    <stringAttribute key="authenticationServices.authenticationServicesPasswordDuration" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesPrivateKeyAlias" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesPrivateKeyFile" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesPrivateKeyFilePassword" value=""/>
+    <stringAttribute key="authenticationServices.authenticationServicesRefreshTokenDuration" value=""/>
+    <stringAttribute key="main.adminAppId" value=""/>
+    <stringAttribute key="main.adminAppName" value=""/>
+    <stringAttribute key="main.adminAppSecret" value=""/>
+    <stringAttribute key="main.adminBuildMode" value="debug"/>
+    <stringAttribute key="main.appId" value="wr-auth"/>
+    <stringAttribute key="main.appName" value="wr-auth"/>
+    <stringAttribute key="main.appSecret" value="d3ItYXV0aA=="/>
+    <stringAttribute key="main.buildMode" value="debug"/>
+    <booleanAttribute key="main.skipBuildAdminApp" value="true"/>
+    <booleanAttribute key="providers.$authdb$.databaseProvider.databaseGeneral.databaseGeneralIgnoreSchema" value="false"/>
+    <stringAttribute key="providers.$authdb$.databaseProvider.databaseGeneral.databaseGeneralJndiName" value="java:comp/env/jdbc/inregola"/>
+    <stringAttribute key="providers.$authdb$.databaseProvider.databaseGeneral.databaseGeneralSchema" value=""/>
+    <stringAttribute key="providers.$authdb$.databaseProvider.databaseGeneral.databaseGeneralTableExportPrefix" value="auth_"/>
+    <stringAttribute key="providers.$authdb$.databaseProvider.databaseGeneral.databaseGeneralType" value="PostgreSQL 9 - 12"/>
+    <mapAttribute key="tasks.task0">
+        <mapEntry key="type" value="Clear Deployment Folder"/>
+    </mapAttribute>
+    <mapAttribute key="tasks.task1">
+        <mapEntry key="stopOnErrors" value="true"/>
+        <mapEntry key="type" value="Generate Data Service"/>
+    </mapAttribute>
+    <mapAttribute key="tasks.task2">
+        <mapEntry key="type" value="Copy Additional Folders"/>
+        <mapEntry key="webContentFolders" value="Build/Auth Deploy/Test/WEB-INF"/>
+    </mapAttribute>
+    <mapAttribute key="tasks.task3">
+        <mapEntry key="deleteDeploymentFolder" value="true"/>
+        <mapEntry key="fileName" value="${project_name}.war"/>
+        <mapEntry key="type" value="WAR"/>
+    </mapAttribute>
+    <stringAttribute key="wr-configuration-dtd-version" value="1.0.0.2"/>
+</launchConfiguration>

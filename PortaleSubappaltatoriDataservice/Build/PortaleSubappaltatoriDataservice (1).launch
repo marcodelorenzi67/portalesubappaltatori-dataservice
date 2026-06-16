@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.webratio.ide.deploy.core.DataServiceLocalLaunchConfigurationType">
+    <stringAttribute key="authenticationBaseUrl" value="http://192.168.250.108:8080/wr-auth"/>
+    <stringAttribute key="main.appId" value="PortaleSubappaltatoriDataservice"/>
+    <stringAttribute key="main.appName" value="PortaleSubappaltatoriDataservice"/>
+    <stringAttribute key="main.appSecret" value="UG9ydGFsZVN1YmFwcGFsdGF0b3JpRGF0YXNlcnZpY2U="/>
+    <stringAttribute key="main.appVersion" value="0.0.1"/>
+    <stringAttribute key="main.buildMode" value="debug"/>
+    <stringAttribute key="model.general.outputPath" value="${webapps_loc}/${project_name}"/>
+    <booleanAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralIgnoreSchema" value="false"/>
+    <stringAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralJndiName" value="java:comp/env/jdbc/inregola"/>
+    <stringAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralSchema" value="public"/>
+    <stringAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralTableExportPrefix" value="sub_"/>
+    <stringAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralType" value="PostgreSQL 9 - 12"/>
+    <stringAttribute key="providers.$smtp1$.smtpServer.smtpServerGeneral.smtpFrom" value="_Omnia@elettromeccanicagalli.it"/>
+    <stringAttribute key="providers.$smtp1$.smtpServer.smtpServerGeneral.smtpJndiName" value="java:comp/env/mail/omniaMail"/>
+    <mapAttribute key="tasks.task0">
+        <mapEntry key="type" value="Clear Deployment Folder"/>
+    </mapAttribute>
+    <mapAttribute key="tasks.task1">
+        <mapEntry key="stopOnErrors" value="true"/>
+        <mapEntry key="type" value="Generate Data Service"/>
+    </mapAttribute>
+    <mapAttribute key="tasks.task2">
+        <mapEntry key="deleteDeploymentFolder" value="true"/>
+        <mapEntry key="fileName" value="${project_name}.war"/>
+        <mapEntry key="type" value="WAR"/>
+    </mapAttribute>
+    <stringAttribute key="wr-configuration-dtd-version" value="1.0.0.2"/>
+</launchConfiguration>
