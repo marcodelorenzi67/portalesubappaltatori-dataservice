@@ -51,7 +51,7 @@
     </ParameterCollector>
     <Selector gr:x="300" gr:y="-15" id="tlads0#ada13#seu1p" dataBinding="cls12">
       <ConditionalExpression id="tlads0#ada13#seu1p#sc2p" defaultPolicy="fill" booleanOperator="and">
-        <AttributesCondition id="tlads0#ada13#seu1p#sc2p#acond1p" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="countDistinct(as1p#role2p.userName)"/>
+        <AttributesCondition id="tlads0#ada13#seu1p#sc2p#acond1p" name="userID" predicate="eq" booleanOperator="or" implied="false" attributes="as1p#role2p.userName"/>
         <AttributesCondition id="tlads0#ada13#seu1p#sc2p#acond2p" name="ruolo" predicate="eq" booleanOperator="or" implied="false" attributes="cls12#att60" value="${scope.admin}|${scope.responsabile}|${scope.gestione}|${scope.fornitore}"/>
       </ConditionalExpression>
       <SuccessFlow id="tlads0#ada13#seu1p#sf5p" to="tlads0#ada13#pcu1p">
@@ -61,7 +61,7 @@
         <ParameterBinding id="tlads0#ada13#seu1p#sf6p#par4p" sourceValue="true" target="tlads0#ada13#pcu1p#pcp1p" name="&quot;true&quot; - lettura"/>
       </SuccessFlow>
     </Selector>
-    <ParameterCollector gr:x="600" gr:y="45" id="tlads0#ada13#pcu1p" name="Parameter Collector 1">
+    <ParameterCollector gr:x="705" gr:y="55" id="tlads0#ada13#pcu1p" name="Parameter Collector 1">
       <SuccessFlow id="tlads0#ada13#pcu1p#sf7p" to="tlads0#ada13#switch4" automaticCoupling="true"/>
       <DataFlow id="tlads0#ada13#pcu1p#df2p" to="tlads0#ada13#spd20">
         <ParameterBinding id="tlads0#ada13#pcu1p#df2p#par6p" source="tlads0#ada13#pcu1p#pcp1p" target="tlads0#ada13#spd20#pdp2p" name="lettura - lettura"/>
