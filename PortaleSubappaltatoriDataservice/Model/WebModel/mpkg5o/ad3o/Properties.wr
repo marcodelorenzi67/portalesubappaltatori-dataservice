@@ -177,6 +177,7 @@ return date.toLocalDate().minusDays(i)</ScriptText>
       </SuccessFlow>
       <Case value="0"/>
       <SuccessFlow id="mpkg5o#ad3o#switch23o#sf547o" to="mpkg5o#ad3o#act48o" automaticCoupling="true" code="0"/>
+      <SuccessFlow id="mpkg5o#ad3o#switch23o#sf759o" to="mpkg5o#ad3o#act48o" automaticCoupling="true" code="&lt;EMPTY&gt;"/>
     </Switch>
     <Selector gr:x="1655" gr:y="770" id="mpkg5o#ad3o#seu109o" dataBinding="cls2">
       <SuccessFlow id="mpkg5o#ad3o#seu109o#sf758o" to="mpkg5o#ad3o#act100o">

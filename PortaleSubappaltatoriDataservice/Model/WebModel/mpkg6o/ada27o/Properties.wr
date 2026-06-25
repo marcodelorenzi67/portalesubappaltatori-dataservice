@@ -54,6 +54,7 @@
         <ParameterBinding id="mpkg6o#ada27o#svu45o#sf554o#par713o" source="cls5#att22Array" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp196o" name="oid - Documenti.oid(LogToDocumenti)"/>
         <ParameterBinding id="mpkg6o#ada27o#svu45o#sf554o#par716o" sourceValue="${tipoAzioneLog.documentoStoricizzato}" target="mpkg6o#ada27o#act77o.mpkg2#ada19o#ipd27o#pdp93o" name="&quot;${tipoAzioneLog.documentoStoricizzato}&quot; - Tipo azione"/>
       </SuccessFlow>
+      <SuccessFlow id="mpkg6o#ada27o#svu45o#sf760o" to="mpkg6o#ada27o#spd40o" automaticCoupling="true" code="Not Found" gr:bendpoints="247.0 26.0"/>
     </Save>
     <Script gr:x="645" gr:y="395" id="mpkg6o#ada27o#scu1p" name="Rename" script="WEB-INF/groovy/rinominaNomeFile.groovy">
       <SuccessFlow id="mpkg6o#ada27o#scu1p#sf14p" to="mpkg6o#ada27o#svu21o">
