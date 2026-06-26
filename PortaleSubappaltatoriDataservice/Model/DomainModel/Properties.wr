@@ -78,6 +78,7 @@
     <ActionService definition="mpkg5o#ada55o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg1#ada2p" roles="rl5" method="create"/>
     <ActionService definition="mpkg1#ada3p" roles="rl5" method="create"/>
+    <ActionService definition="mpkg1#ada56o" method="create" roles="rl1 rl2 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1" dataServiceCaching="noCache">
     <ServiceClass class="User" associationRoles="as1#role1 as1p#role1p as2#role3">
