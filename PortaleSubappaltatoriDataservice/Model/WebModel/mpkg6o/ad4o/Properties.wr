@@ -6,26 +6,39 @@
       <ParameterBinding id="mpkg6o#ad4o#ipd45o#df128o#par508o" name="Letta - Letta" source="mpkg6o#ad4o#ipd45o#pdp184o" target="mpkg6o#ad4o#svu27o.cls14o#att98o"/>
       <ParameterBinding id="mpkg6o#ad4o#ipd45o#df128o#par509o" name="KeyCondition62 [oid] - KeyCondition62 [oid]" source="mpkg6o#ad4o#ipd45o#pdp183o" target="mpkg6o#ad4o#svu27o#sc102o#kcond63o.cls14o#att73o"/>
     </DataFlow>
-    <SuccessFlow id="mpkg6o#ad4o#ipd45o#sf405o" to="mpkg6o#ad4o#act58o">
-      <ParameterBinding id="mpkg6o#ad4o#ipd45o#sf405o#par510o" source="mpkg6o#ad4o#ipd45o#pdp185o" target="mpkg6o#ad4o#act58o.mpkg6o#ada22o#ipd31o#pdp100o" name="fornitore - fornitore"/>
-    </SuccessFlow>
     <PortDefinitionParameter id="mpkg6o#ad4o#ipd45o#pdp185o" array="false" name="fornitore" type="integer"/>
+    <PortDefinitionParameter id="mpkg6o#ad4o#ipd45o#pdp329o" name="lettaIl" array="false" type="timestamp"/>
+    <DataFlow id="mpkg6o#ad4o#ipd45o#df269o" to="mpkg6o#ad4o#act58o">
+      <ParameterBinding id="mpkg6o#ad4o#ipd45o#df269o#par1014o" name="fornitore - fornitore" source="mpkg6o#ad4o#ipd45o#pdp185o" target="mpkg6o#ad4o#act58o.mpkg6o#ada22o#ipd31o#pdp100o"/>
+    </DataFlow>
+    <SuccessFlow id="mpkg6o#ad4o#ipd45o#sf797o" to="mpkg6o#ad4o#switch33o">
+      <ParameterBinding id="mpkg6o#ad4o#ipd45o#sf797o#par1015o" name="lettaIl - Switch" source="mpkg6o#ad4o#ipd45o#pdp329o" target="mpkg6o#ad4o#switch33o.switch"/>
+    </SuccessFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg6o#ad4o#spd45o" name="Success Port" gr:x="0" gr:y="165"/>
-  <ErrorPortDefinition id="mpkg6o#ad4o#epd45o" name="Error Port" gr:x="0" gr:y="300"/>
+  <SuccessPortDefinition id="mpkg6o#ad4o#spd45o" name="Success Port" gr:x="0" gr:y="400"/>
+  <ErrorPortDefinition id="mpkg6o#ad4o#epd45o" name="Error Port" gr:x="0" gr:y="180"/>
   <Operations>
-    <Save id="mpkg6o#ad4o#svu27o" gr:x="425" gr:y="225" action="update" dataBinding="cls14o">
+    <Save id="mpkg6o#ad4o#svu27o" gr:x="420" gr:y="285" action="update" dataBinding="cls14o">
       <ConditionalExpression id="mpkg6o#ad4o#svu27o#sc102o" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="mpkg6o#ad4o#svu27o#sc102o#kcond63o" name="KeyCondition62" predicate="in" implied="false"/>
         <AttributesCondition id="mpkg6o#ad4o#svu27o#sc102o#acond50o" name="Backoffice" predicate="eq" booleanOperator="or" implied="false" attributes="cls14o#att76o" value="true"/>
       </ConditionalExpression>
       <SuccessFlow id="mpkg6o#ad4o#svu27o#sf403o" to="mpkg6o#ad4o#spd45o" automaticCoupling="true"/>
     </Save>
+    <Time gr:x="515" gr:y="160" id="mpkg6o#ad4o#tmu13o" name="Time">
+      <SuccessFlow id="mpkg6o#ad4o#tmu13o#sf781o" to="mpkg6o#ad4o#svu27o">
+        <ParameterBinding id="mpkg6o#ad4o#tmu13o#sf781o#par992o" source="currentTimestamp" target="mpkg6o#ad4o#svu27o.cls14o#att184o" name="Current/Input Timestamp - Letta il"/>
+      </SuccessFlow>
+    </Time>
+    <Switch gr:x="190" gr:y="105" id="mpkg6o#ad4o#switch33o" name="letta">
+      <SuccessFlow id="mpkg6o#ad4o#switch33o#sf794o" to="mpkg6o#ad4o#spd45o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg6o#ad4o#switch33o#sf795o" to="mpkg6o#ad4o#act58o" automaticCoupling="true" code="&lt;EMPTY&gt;"/>
+    </Switch>
   </Operations>
-  <Action id="mpkg6o#ad4o#act58o" gr:x="380" gr:y="30" definition="mpkg6o#ada22o">
+  <Action id="mpkg6o#ad4o#act58o" gr:x="380" gr:y="25" definition="mpkg6o#ada22o">
     <Events>
       <SuccessEvent id="mpkg6o#ad4o#act58o#scce58o" definition="mpkg6o#ada22o#spd31o">
-        <SuccessFlow id="mpkg6o#ad4o#act58o#scce58o#sf404o" to="mpkg6o#ad4o#svu27o" automaticCoupling="true"/>
+        <SuccessFlow id="mpkg6o#ad4o#act58o#scce58o#sf404o" to="mpkg6o#ad4o#tmu13o" automaticCoupling="true"/>
       </SuccessEvent>
       <ErrorEvent id="mpkg6o#ad4o#act58o#erre61o" definition="mpkg6o#ada22o#epd31o"/>
     </Events>

@@ -13,18 +13,25 @@
     <DataFlow id="mpkg5o#ada52o#ipd78o#df219o" to="mpkg5o#ada52o#seu93o" gr:bendpoints="-10.0 192.0">
       <ParameterBinding id="mpkg5o#ada52o#ipd78o#df219o#par881o" source="mpkg5o#ada52o#ipd78o#pdp292o" target="mpkg5o#ada52o#seu93o#sc183o#rcond67o.cls2#att6" name="fornitore [oid] - fornitore [oid]"/>
     </DataFlow>
+    <DataFlow id="mpkg5o#ada52o#ipd78o#df262o" to="mpkg5o#ada52o#seu113o" gr:bendpoints="5.0 134.0">
+      <ParameterBinding id="mpkg5o#ada52o#ipd78o#df262o#par997o" name="fornitore [oid] - fornitore [oid]" source="mpkg5o#ada52o#ipd78o#pdp292o" target="mpkg5o#ada52o#seu113o#sc214o#rcond77o.cls2#att6"/>
+    </DataFlow>
+    <DataFlow id="mpkg5o#ada52o#ipd78o#df265o" to="mpkg5o#ada52o#act105o" gr:bendpoints="1.0 167.0">
+      <ParameterBinding id="mpkg5o#ada52o#ipd78o#df265o#par1001o" name="fornitore [oid] - Fornitore.oid(PersonaleToFornitore)" source="mpkg5o#ada52o#ipd78o#pdp292o" target="mpkg5o#ada52o#act105o.mpkg5o#ada36o#ipd57o#pdp226o"/>
+    </DataFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg5o#ada52o#spd78o" name="Success Port" gr:x="0" gr:y="30"/>
-  <ErrorPortDefinition id="mpkg5o#ada52o#epd78o" name="Error Port" gr:x="0" gr:y="300"/>
+  <SuccessPortDefinition id="mpkg5o#ada52o#spd78o" name="Success Port" gr:x="0" gr:y="320"/>
+  <ErrorPortDefinition id="mpkg5o#ada52o#epd78o" name="Error Port" gr:x="0" gr:y="40"/>
   <Operations>
     <Selector gr:x="335" gr:y="90" id="mpkg5o#ada52o#seu90o" dataBinding="cls21o">
       <SuccessFlow id="mpkg5o#ada52o#seu90o#sf677o" to="mpkg5o#ada52o#spd78o" automaticCoupling="true" code="Not Found"/>
       <ConditionalExpression id="mpkg5o#ada52o#seu90o#sc178o" defaultPolicy="fill" booleanOperator="and">
         <AssociationRoleCondition id="mpkg5o#ada52o#seu90o#sc178o#rcond64o" name="fornitore" predicate="in" implied="false" role="as33o#role67o"/>
       </ConditionalExpression>
-      <SuccessFlow id="mpkg5o#ada52o#seu90o#sf678o" to="mpkg5o#ada52o#seu91o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg5o#ada52o#seu90o#sf787o" to="mpkg5o#ada52o#seu113o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ada52o#seu90o#df263o" to="mpkg5o#ada52o#seu91o" automaticCoupling="true"/>
     </Selector>
-    <Selector gr:x="510" gr:y="240" id="mpkg5o#ada52o#seu91o" dataBinding="cls22o">
+    <Selector gr:x="1075" gr:y="510" id="mpkg5o#ada52o#seu91o" dataBinding="cls22o">
       <ConditionalExpression id="mpkg5o#ada52o#seu91o#sc179o" defaultPolicy="fill" booleanOperator="and">
         <AssociationRoleCondition id="mpkg5o#ada52o#seu91o#sc179o#rcond65o" name="azienda" predicate="in" implied="false" role="rel1o#role66o"/>
         <AssociationRoleCondition id="mpkg5o#ada52o#seu91o#sc179o#rcond66o" name="fornitore" predicate="notIn" implied="false" role="as30o#role60o.as34o#role69o"/>
@@ -37,7 +44,7 @@
       </DataFlow>
       <SuccessFlow id="mpkg5o#ada52o#seu91o#sf686o" to="mpkg5o#ada52o#seu93o" automaticCoupling="true"/>
     </Selector>
-    <Selector gr:x="890" gr:y="395" id="mpkg5o#ada52o#seu93o" dataBinding="cls1">
+    <Selector gr:x="1415" gr:y="635" id="mpkg5o#ada52o#seu93o" dataBinding="cls1">
       <SuccessFlow id="mpkg5o#ada52o#seu93o#sf687o" to="mpkg5o#ada52o#act90o">
         <ParameterBinding id="mpkg5o#ada52o#seu93o#sf687o#par882o" source="cls1#att1Array" target="mpkg5o#ada52o#act90o.mpkg5o#ada36o#ipd57o#pdp228o" name="oid - Tenant"/>
       </SuccessFlow>
@@ -45,11 +52,39 @@
         <AssociationRoleCondition id="mpkg5o#ada52o#seu93o#sc183o#rcond67o" name="fornitore" predicate="in" implied="false" role="as5#role9"/>
       </ConditionalExpression>
     </Selector>
+    <Selector id="mpkg5o#ada52o#seu113o" gr:x="475" gr:y="250" dataBinding="cls22o">
+      <ConditionalExpression id="mpkg5o#ada52o#seu113o#sc214o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ada52o#seu113o#sc214o#rcond76o" name="azienda" predicate="in" implied="false" role="rel1o#role66o"/>
+        <AssociationRoleCondition id="mpkg5o#ada52o#seu113o#sc214o#rcond77o" name="fornitore" predicate="in" implied="false" role="as30o#role60o.as34o#role69o"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada52o#seu113o#sf785o" to="mpkg5o#ada52o#seu91o" automaticCoupling="true" code="Not Found"/>
+      <DataFlow id="mpkg5o#ada52o#seu113o#df261o" to="mpkg5o#ada52o#act90o" gr:bendpoints="96,-75,-104,-75">
+        <ParameterBinding id="mpkg5o#ada52o#seu113o#df261o#par994o" name="cognome - Cognome" source="cls22o#att153oArray" target="mpkg5o#ada52o#act90o.mpkg5o#ada36o#ipd57o#pdp225o"/>
+        <ParameterBinding id="mpkg5o#ada52o#seu113o#df261o#par995o" name="oid - Contatto.oid(PersonaleToContatto)" source="cls22o#att152oArray" target="mpkg5o#ada52o#act90o.mpkg5o#ada36o#ipd57o#pdp297o"/>
+        <ParameterBinding id="mpkg5o#ada52o#seu113o#df261o#par996o" name="nome - Nome" source="cls22o#att154oArray" target="mpkg5o#ada52o#act90o.mpkg5o#ada36o#ipd57o#pdp222o"/>
+      </DataFlow>
+      <SuccessFlow id="mpkg5o#ada52o#seu113o#sf793o" to="mpkg5o#ada52o#act105o" gr:bendpoints="96,-75,-104,-75">
+        <ParameterBinding id="mpkg5o#ada52o#seu113o#sf793o#par1009o" name="ContattoToPersonale.oid - oid" source="as34o#role70o_cls20o#att113oArray" target="mpkg5o#ada52o#act105o.mpkg5o#ada36o#ipd57o#pdp223o"/>
+        <ParameterBinding id="mpkg5o#ada52o#seu113o#sf793o#par1010o" name="oid - Contatto.oid(PersonaleToContatto)" source="cls22o#att152oArray" target="mpkg5o#ada52o#act105o.mpkg5o#ada36o#ipd57o#pdp297o"/>
+        <ParameterBinding id="mpkg5o#ada52o#seu113o#sf793o#par1011o" name="nome - Nome" source="cls22o#att154oArray" target="mpkg5o#ada52o#act105o.mpkg5o#ada36o#ipd57o#pdp222o"/>
+        <ParameterBinding id="mpkg5o#ada52o#seu113o#sf793o#par1012o" name="cognome - Cognome" source="cls22o#att153oArray" target="mpkg5o#ada52o#act105o.mpkg5o#ada36o#ipd57o#pdp225o"/>
+      </SuccessFlow>
+    </Selector>
   </Operations>
-  <Action id="mpkg5o#ada52o#act90o" gr:x="1130" gr:y="315" definition="mpkg5o#ada36o">
+  <Action id="mpkg5o#ada52o#act90o" gr:x="1665" gr:y="655" definition="mpkg5o#ada36o" name="Importa nuovo personale">
     <Events>
-      <SuccessEvent id="mpkg5o#ada52o#act90o#scce90o" definition="mpkg5o#ada36o#spd57o"/>
+      <SuccessEvent id="mpkg5o#ada52o#act90o#scce90o" definition="mpkg5o#ada36o#spd57o">
+        <SuccessFlow id="mpkg5o#ada52o#act90o#scce90o#sf782o" to="mpkg5o#ada52o#spd78o" automaticCoupling="true"/>
+      </SuccessEvent>
       <ErrorEvent id="mpkg5o#ada52o#act90o#erre93o" definition="mpkg5o#ada36o#epd57o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ada52o#act105o" definition="mpkg5o#ada36o" gr:x="730" gr:y="450" name="Modifica personale esistente">
+    <Events>
+      <SuccessEvent id="mpkg5o#ada52o#act105o#scce105o" definition="mpkg5o#ada36o#spd57o">
+        <SuccessFlow id="mpkg5o#ada52o#act105o#scce105o#sf790o" to="mpkg5o#ada52o#seu91o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ada52o#act105o#erre110o" definition="mpkg5o#ada36o#epd57o"/>
     </Events>
   </Action>
 </ActionDefinition>

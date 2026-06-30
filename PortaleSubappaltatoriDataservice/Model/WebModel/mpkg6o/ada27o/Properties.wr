@@ -67,7 +67,7 @@
         <KeyCondition id="mpkg6o#ada27o#seu2p#sc5p#kcond4p" name="KeyCondition4" predicate="in" implied="false"/>
       </ConditionalExpression>
       <SuccessFlow id="mpkg6o#ada27o#seu2p#sf15p" to="mpkg6o#ada27o#scu1p">
-        <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par14p" source="cls5#att97oArray" target="mpkg6o#ada27o#scu1p.azienda" name="Fornitore - azienda"/>
+        <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par14p" source="cls5#att183oArray" target="mpkg6o#ada27o#scu1p.azienda" name="Fornitore - azienda"/>
         <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par15p" source="cls5#att4pArray" target="mpkg6o#ada27o#scu1p.cognome" name="Cognome personale - cognome"/>
         <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par16p" source="cls5#att3pArray" target="mpkg6o#ada27o#scu1p.nome" name="Nome personale - nome"/>
         <ParameterBinding id="mpkg6o#ada27o#seu2p#sf15p#par17p" source="cls5#att5pArray" target="mpkg6o#ada27o#scu1p.pattern" name="Pattern file - pattern"/>

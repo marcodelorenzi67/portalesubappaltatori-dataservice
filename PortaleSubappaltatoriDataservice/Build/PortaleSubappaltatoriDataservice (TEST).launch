@@ -12,7 +12,7 @@
     <stringAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralSchema" value="public"/>
     <stringAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralTableExportPrefix" value="sub_"/>
     <stringAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralType" value="PostgreSQL 9 - 12"/>
-    <stringAttribute key="providers.$smtp1$.smtpServer.smtpServerGeneral.smtpFrom" value="_Omnia@elettromeccanicagalli.it"/>
+    <stringAttribute key="providers.$smtp1$.smtpServer.smtpServerGeneral.smtpFrom" value="portale-subappaltatori@eiffageitaly.it"/>
     <stringAttribute key="providers.$smtp1$.smtpServer.smtpServerGeneral.smtpJndiName" value="java:comp/env/mail/omniaMail"/>
     <mapAttribute key="tasks.task0">
         <mapEntry key="type" value="Clear Deployment Folder"/>

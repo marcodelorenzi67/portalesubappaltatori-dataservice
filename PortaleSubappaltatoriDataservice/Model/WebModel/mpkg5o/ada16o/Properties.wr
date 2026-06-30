@@ -24,6 +24,7 @@
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par195o" source="mpkg5o#ada16o#ipd24o#pdp76o" target="mpkg5o#ada16o#svu9o.cls2#att12" name="Email - Email"/>
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par218o" source="mpkg5o#ada16o#ipd24o#pdp88o" target="mpkg5o#ada16o#svu9o.as13#role25.cls10#att45" name="Tipologia Azienda.oid(FornitoreToTipologia Azienda) - Tipologia Azienda.oid(FornitoreToTipologia Azienda)"/>
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par439o" source="mpkg5o#ada16o#ipd24o#pdp166o" target="mpkg5o#ada16o#svu9o.cls2#att93o" name="Username - Username"/>
+      <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf192o#par989o" source="mpkg5o#ada16o#ipd24o#pdp326o" target="mpkg5o#ada16o#svu9o.cls2#att182o" name="Alias - Alias"/>
     </DataFlow>
     <SuccessFlow id="mpkg5o#ada16o#ipd24o#sf613o" to="mpkg5o#ada16o#switch25o">
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#sf613o#par790o" source="mpkg5o#ada16o#ipd24o#pdp269o" target="mpkg5o#ada16o#switch25o.switch" name="Azienda oid - Switch"/>
@@ -35,6 +36,7 @@
     <DataFlow id="mpkg5o#ada16o#ipd24o#df196o" to="mpkg5o#ada16o#seu81o">
       <ParameterBinding id="mpkg5o#ada16o#ipd24o#df196o#par796o" source="mpkg5o#ada16o#ipd24o#pdp269o" target="mpkg5o#ada16o#seu81o#sc159o#rcond50o.cls21o#att130o" name="Azienda oid - azienda [oid]"/>
     </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ada16o#ipd24o#pdp326o" array="false" name="Alias" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada16o#spd24o" name="Success Port" gr:x="0" gr:y="280">
     <PortDefinitionParameter id="mpkg5o#ada16o#spd24o#pdp86o" array="false" name="oid" type="integer"/>
@@ -118,6 +120,7 @@
       <SuccessFlow id="mpkg5o#ada16o#seu81o#sf622o" to="mpkg5o#ada16o#svu51o">
         <ParameterBinding id="mpkg5o#ada16o#seu81o#sf622o#par797o" source="cls22o#att153oArray" target="mpkg5o#ada16o#svu51o.cls20o#att115o" name="cognome - Cognome"/>
         <ParameterBinding id="mpkg5o#ada16o#seu81o#sf622o#par798o" source="cls22o#att154oArray" target="mpkg5o#ada16o#svu51o.cls20o#att114o" name="nome - Nome"/>
+        <ParameterBinding id="mpkg5o#ada16o#seu81o#sf622o#par993o" source="cls22o#att152oArray" target="mpkg5o#ada16o#svu51o.as34o#role69o.cls22o#att152o" name="oid - Contatto.oid(PersonaleToContatto)"/>
       </SuccessFlow>
     </Selector>
     <Delete gr:x="2290" gr:y="700" id="mpkg5o#ada16o#dlu12o" dataBinding="cls20o">

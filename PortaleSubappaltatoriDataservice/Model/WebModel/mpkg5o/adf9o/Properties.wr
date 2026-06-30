@@ -17,6 +17,7 @@
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp168o" array="false" name="Username" type="string"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp270o" array="false" name="Importato" type="boolean"/>
     <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp271o" array="false" name="Azienda omnia oid" type="integer"/>
+    <PortDefinitionParameter id="mpkg5o#adf9o#spd34o#pdp328o" array="false" name="Alias" type="string"/>
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg5o#adf9o#epd34o" name="Error Port" gr:x="0" gr:y="365"/>
   <Operations>
@@ -35,6 +36,7 @@
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par442o" source="cls2#att93oArray" target="mpkg5o#adf9o#spd34o#pdp168o" name="Username - Username"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par806o" source="cls2#att129oArray" target="mpkg5o#adf9o#spd34o#pdp270o" name="Importato - Importato"/>
         <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par807o" source="as33o#role67o_cls21o#att130oArray" target="mpkg5o#adf9o#spd34o#pdp271o" name="FornitoreToAzienda.oid - FornitoreToAzienda.oid"/>
+        <ParameterBinding id="mpkg5o#adf9o#seu36o#sf282o#par991o" source="cls2#att182oArray" target="mpkg5o#adf9o#spd34o#pdp328o" name="Alias - Alias"/>
       </DataFlow>
       <SuccessFlow id="mpkg5o#adf9o#seu36o#sf283o" to="mpkg5o#adf9o#seu37o" automaticCoupling="true"/>
     </Selector>

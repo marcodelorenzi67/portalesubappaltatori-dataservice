@@ -8,10 +8,12 @@
     <PortDefinitionParameter id="mpkg1#ada48o#ipd72o#pdp281o" array="false" name="oid Categoria" type="integer"/>
     <DataFlow id="mpkg1#ada48o#ipd72o#df214o" to="mpkg1#ada48o#spd72o">
       <ParameterBinding id="mpkg1#ada48o#ipd72o#df214o#par842o" source="mpkg1#ada48o#ipd72o#pdp280o" target="mpkg1#ada48o#spd72o#pdp282o" name="oid Tipologia Documenti - oid Tipologia Documenti"/>
+      <ParameterBinding id="mpkg1#ada48o#ipd72o#df214o#par1016o" source="mpkg1#ada48o#ipd72o#pdp281o" target="mpkg1#ada48o#spd72o#pdp330o" name="oid Categoria - oid Categoria"/>
     </DataFlow>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg1#ada48o#spd72o" name="Success Port" gr:x="0" gr:y="30">
     <PortDefinitionParameter id="mpkg1#ada48o#spd72o#pdp282o" array="false" name="oid Tipologia Documenti" type="integer"/>
+    <PortDefinitionParameter id="mpkg1#ada48o#spd72o#pdp330o" array="false" name="oid Categoria" type="integer"/>
   </SuccessPortDefinition>
   <ErrorPortDefinition id="mpkg1#ada48o#epd72o" name="Error Port" gr:x="0" gr:y="300"/>
   <Operations>
