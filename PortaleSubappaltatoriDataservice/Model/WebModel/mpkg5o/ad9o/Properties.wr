@@ -1,0 +1,95 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ad9o" name="Carica documento BO" defaultSuccessPortDefinition="mpkg5o#ad9o#spd85o" defaultErrorPortDefinition="mpkg5o#ad9o#epd85o">
+  <InputPortDefinition id="mpkg5o#ad9o#ipd85o" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="mpkg5o#ad9o#ipd85o#pdp332o" name="fornitore" type="integer" array="false"/>
+    <DataFlow id="mpkg5o#ad9o#ipd85o#df270o" to="mpkg5o#ad9o#svu58o" gr:bendpoints="8.0 162.0">
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df270o#par1019o" name="Descrizione - Descrizione" source="mpkg5o#ad9o#ipd85o#pdp333o" target="mpkg5o#ad9o#svu58o.cls5#att24"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df270o#par1020o" name="Documento - Documento" source="mpkg5o#ad9o#ipd85o#pdp334o" target="mpkg5o#ad9o#svu58o.cls5#att23"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df270o#par1021o" name="KeyCondition55 [oid] - KeyCondition55 [oid]" source="mpkg5o#ad9o#ipd85o#pdp335o" target="mpkg5o#ad9o#svu58o#sc217o#kcond125o.cls5#att22"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df270o#par1022o" name="Data scadenza - Data scadenza" source="mpkg5o#ad9o#ipd85o#pdp336o" target="mpkg5o#ad9o#svu58o.cls5#att99o"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df270o#par1024o" name="Note fornitore - Note fornitore" source="mpkg5o#ad9o#ipd85o#pdp338o" target="mpkg5o#ad9o#svu58o.cls5#att121o"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ad9o#ipd85o#pdp333o" name="Descrizione" type="string" array="false"/>
+    <PortDefinitionParameter id="mpkg5o#ad9o#ipd85o#pdp334o" name="Documento" type="blob" array="false"/>
+    <PortDefinitionParameter id="mpkg5o#ad9o#ipd85o#pdp335o" name="oid" type="integer" array="false"/>
+    <DataFlow id="mpkg5o#ad9o#ipd85o#df271o" to="mpkg5o#ad9o#act108o" gr:bendpoints="25.0 154.0">
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df271o#par1025o" name="fornitore - Fornitore oid" source="mpkg5o#ad9o#ipd85o#pdp332o" target="mpkg5o#ad9o#act108o.mpkg2#ada19o#ipd27o#pdp92o"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df271o#par1026o" name="User ID - User id" target="mpkg5o#ad9o#act108o.mpkg2#ada19o#ipd27o#pdp94o" sourceImplicitParameter="userName"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df271o#par1027o" name="&quot;${tipoAzioneLog.caricatoAllegatoDaFornitore}&quot; - Tipo azione" sourceValue="${tipoAzioneLog.caricatoAllegatoDaBackoffice}" target="mpkg5o#ad9o#act108o.mpkg2#ada19o#ipd27o#pdp93o"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ad9o#ipd85o#pdp336o" name="Data scadenza" type="date" array="false"/>
+    <PortDefinitionParameter id="mpkg5o#ad9o#ipd85o#pdp338o" name="Note fornitore" type="string" array="false"/>
+    <DataFlow id="mpkg5o#ad9o#ipd85o#df273o" to="mpkg5o#ad9o#scu5o" gr:bendpoints="38.0 183.0">
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df273o#par1030o" name="Documento - fileIn" source="mpkg5o#ad9o#ipd85o#pdp334o" target="mpkg5o#ad9o#scu5o.fileIn"/>
+    </DataFlow>
+    <DataFlow id="mpkg5o#ad9o#ipd85o#df274o" to="mpkg5o#ad9o#seu116o" gr:bendpoints="43.0 96.0">
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df274o#par1031o" name="oid - KeyCondition4 [oid]" source="mpkg5o#ad9o#ipd85o#pdp335o" target="mpkg5o#ad9o#seu116o#sc219o#kcond126o.cls5#att22"/>
+    </DataFlow>
+    <SuccessFlow id="mpkg5o#ad9o#ipd85o#sf809o" to="mpkg5o#ad9o#act107o">
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#sf809o#par1044o" sourceValue="${statoAllegato.valutazione}" target="mpkg5o#ad9o#act107o.mpkg5o#adf10o#ipd36o#pdp132o" name="&quot;${statoAllegato.valutazione}&quot; - codice"/>
+    </SuccessFlow>
+    <DataFlow id="mpkg5o#ad9o#ipd85o#df277o" to="mpkg5o#ad9o#act110o" gr:bendpoints="-3.0 254.0">
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df277o#par1046o" source="mpkg5o#ad9o#ipd85o#pdp336o" target="mpkg5o#ad9o#act110o.mpkg5o#ad3o#ipd39o#pdp187o" name="Data scadenza - Data scadenza"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df277o#par1047o" source="mpkg5o#ad9o#ipd85o#pdp333o" target="mpkg5o#ad9o#act110o.mpkg5o#ad3o#ipd39o#pdp188o" name="Descrizione - Descrizione"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df277o#par1048o" sourceValue="false" target="mpkg5o#ad9o#act110o.mpkg5o#ad3o#ipd39o#pdp239o" name="&quot;false&quot; - modulo"/>
+      <ParameterBinding id="mpkg5o#ad9o#ipd85o#df277o#par1049o" source="mpkg5o#ad9o#ipd85o#pdp335o" target="mpkg5o#ad9o#act110o.mpkg5o#ad3o#ipd39o#pdp140o" name="oid - oid"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ad9o#spd85o" name="Success Port" gr:x="0" gr:y="505"/>
+  <ErrorPortDefinition id="mpkg5o#ad9o#epd85o" name="Error Port" gr:x="0" gr:y="10"/>
+  <Operations>
+    <Save id="mpkg5o#ad9o#svu58o" gr:x="790" gr:y="330" action="update" dataBinding="cls5">
+      <ConditionalExpression id="mpkg5o#ad9o#svu58o#sc217o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ad9o#svu58o#sc217o#kcond125o" name="KeyCondition55" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ad9o#svu58o#sf799o" to="mpkg5o#ad9o#act108o">
+        <ParameterBinding id="mpkg5o#ad9o#svu58o#sf799o#par1032o" name="oid - Documenti.oid(LogToDocumenti)" source="cls5#att22Array" target="mpkg5o#ad9o#act108o.mpkg2#ada19o#ipd27o#pdp196o"/>
+      </SuccessFlow>
+    </Save>
+    <Script id="mpkg5o#ad9o#scu5o" name="Rename" gr:x="645" gr:y="395" script="WEB-INF/groovy/rinominaNomeFile.groovy">
+      <SuccessFlow id="mpkg5o#ad9o#scu5o#sf802o" to="mpkg5o#ad9o#svu58o">
+        <ParameterBinding id="mpkg5o#ad9o#scu5o#sf802o#par1035o" name="Result - Documento [file name]" source="result" target="mpkg5o#ad9o#svu58o.cls5#att23_name"/>
+      </SuccessFlow>
+      <ErrorFlow id="mpkg5o#ad9o#scu5o#ef5o" to="mpkg5o#ad9o#svu58o" automaticCoupling="true"/>
+    </Script>
+    <Selector id="mpkg5o#ad9o#seu116o" name="Documento" gr:x="505" gr:y="225" dataBinding="cls5">
+      <ConditionalExpression id="mpkg5o#ad9o#seu116o#sc219o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ad9o#seu116o#sc219o#kcond126o" name="KeyCondition4" predicate="in" implied="false"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ad9o#seu116o#sf803o" to="mpkg5o#ad9o#scu5o">
+        <ParameterBinding id="mpkg5o#ad9o#seu116o#sf803o#par1036o" name="Fornitore - azienda" source="cls5#att183oArray" target="mpkg5o#ad9o#scu5o.azienda"/>
+        <ParameterBinding id="mpkg5o#ad9o#seu116o#sf803o#par1037o" name="Cognome personale - cognome" source="cls5#att4pArray" target="mpkg5o#ad9o#scu5o.cognome"/>
+        <ParameterBinding id="mpkg5o#ad9o#seu116o#sf803o#par1038o" name="Nome personale - nome" source="cls5#att3pArray" target="mpkg5o#ad9o#scu5o.nome"/>
+        <ParameterBinding id="mpkg5o#ad9o#seu116o#sf803o#par1039o" name="Pattern file - pattern" source="cls5#att5pArray" target="mpkg5o#ad9o#scu5o.pattern"/>
+      </SuccessFlow>
+    </Selector>
+  </Operations>
+  <Action id="mpkg5o#ad9o#act107o" definition="mpkg5o#adf10o" gr:x="385" gr:y="95">
+    <Events>
+      <SuccessEvent id="mpkg5o#ad9o#act107o#scce107o" definition="mpkg5o#adf10o#spd36o" gr:pinned="true" gr:side="4" gr:pos="3">
+        <SuccessFlow id="mpkg5o#ad9o#act107o#scce107o#sf805o" to="mpkg5o#ad9o#seu116o" automaticCoupling="true"/>
+        <DataFlow id="mpkg5o#ad9o#act107o#scce107o#df276o" to="mpkg5o#ad9o#svu58o">
+          <ParameterBinding id="mpkg5o#ad9o#act107o#scce107o#df276o#par1041o" name="oid - Stato Documento.oid(AllegatiToStato Allegato)" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg5o#ad9o#svu58o.as24o#role47o.cls15o#att83o"/>
+        </DataFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ad9o#act107o#erre112o" definition="mpkg5o#adf10o#epd36o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ad9o#act108o" definition="mpkg2#ada19o" gr:x="1040" gr:y="415">
+    <Events>
+      <SuccessEvent id="mpkg5o#ad9o#act108o#scce108o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg5o#ad9o#act108o#scce108o#sf806o" to="mpkg5o#ad9o#act110o">
+          <ParameterBinding id="mpkg5o#ad9o#act108o#scce108o#sf806o#par1045o" sourceValue="true" target="mpkg5o#ad9o#act110o.mpkg5o#ad3o#ipd39o#pdp143o" name="&quot;true&quot; - approva"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ad9o#act108o#erre113o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ad9o#act110o" gr:x="1290" gr:y="485" definition="mpkg5o#ad3o">
+    <Events>
+      <SuccessEvent id="mpkg5o#ad9o#act110o#scce110o" definition="mpkg5o#ad3o#spd39o">
+        <SuccessFlow id="mpkg5o#ad9o#act110o#scce110o#sf810o" to="mpkg5o#ad9o#spd85o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ad9o#act110o#erre115o" definition="mpkg5o#ad3o#epd39o"/>
+    </Events>
+  </Action>
+</ActionDefinition>
