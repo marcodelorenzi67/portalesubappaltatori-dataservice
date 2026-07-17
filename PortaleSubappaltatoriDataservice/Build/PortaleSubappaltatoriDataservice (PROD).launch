@@ -4,7 +4,7 @@
     <stringAttribute key="main.appId" value="PortaleSubappaltatoriDataservice"/>
     <stringAttribute key="main.appName" value="PortaleSubappaltatoriDataservice"/>
     <stringAttribute key="main.appSecret" value="UG9ydGFsZVN1YmFwcGFsdGF0b3JpRGF0YXNlcnZpY2U="/>
-    <stringAttribute key="main.appVersion" value="0.0.1"/>
+    <stringAttribute key="main.appVersion" value="1.0.0"/>
     <stringAttribute key="main.buildMode" value="debug"/>
     <stringAttribute key="model.general.outputPath" value="${webapps_loc}/${project_name}"/>
     <booleanAttribute key="providers.$dbD1$.databaseProvider.databaseGeneral.databaseGeneralIgnoreSchema" value="false"/>

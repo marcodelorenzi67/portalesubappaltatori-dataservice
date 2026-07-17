@@ -11,6 +11,7 @@
       <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par429o" source="mpkg5o#ada23o#ipd33o#pdp162o" target="mpkg5o#ada23o#svu13o.cls2#att79o" name="Attrezzature - Attrezzature"/>
       <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par430o" source="mpkg5o#ada23o#ipd33o#pdp163o" target="mpkg5o#ada23o#svu13o.cls2#att82o" name="Prodotti e Sostanze chimiche - Prodotti e Sostanze chimiche"/>
       <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par431o" source="mpkg5o#ada23o#ipd33o#pdp164o" target="mpkg5o#ada23o#svu13o.cls2#att80o" name="Mezzi - Mezzi"/>
+      <ParameterBinding id="mpkg5o#ada23o#ipd33o#sf269o#par13o" source="mpkg5o#ada23o#ipd33o#pdp1o" target="mpkg5o#ada23o#svu13o.cls2#att182o" name="Alias - Alias"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp109o" array="false" name="Tipologia Azienda.oid" type="integer"/>
     <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp110o" array="false" name="Email" type="string"/>
@@ -22,6 +23,7 @@
     <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp162o" array="false" name="Attrezzature" type="boolean"/>
     <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp163o" array="false" name="Prodotti e Sostanze chimiche" type="boolean"/>
     <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp164o" array="false" name="Mezzi" type="boolean"/>
+    <PortDefinitionParameter id="mpkg5o#ada23o#ipd33o#pdp1o" array="false" name="Alias" type="string"/>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada23o#spd33o" name="Success Port" gr:x="0" gr:y="65"/>
   <ErrorPortDefinition id="mpkg5o#ada23o#epd33o" name="Error Port" gr:x="0" gr:y="300"/>
