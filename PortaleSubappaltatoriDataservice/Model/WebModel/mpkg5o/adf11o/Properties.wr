@@ -41,7 +41,7 @@
         <ParameterBinding id="mpkg5o#adf11o#seu48o#sf362o#par422o" source="cls8#att37Array" target="mpkg5o#adf11o#spd41o#pdp155o" name="oid - oid"/>
       </SuccessFlow>
       <ConditionalExpression id="mpkg5o#adf11o#seu48o#sc94o" defaultPolicy="fill" booleanOperator="and">
-        <KeyCondition id="mpkg5o#adf11o#seu48o#sc94o#kcond56o" name="KeyCondition56" predicate="notIn" implied="false"/>
+        <KeyCondition id="mpkg5o#adf11o#seu48o#sc94o#kcond56o" name="KeyCondition56" predicate="notIn" implied="true"/>
         <AttributesCondition id="mpkg5o#adf11o#seu48o#sc94o#acond52o" name="macroCategoriaCodice" predicate="eq" booleanOperator="or" implied="false" attributes="as12#role23.cls9#att43"/>
         <AttributesCondition id="mpkg5o#adf11o#seu48o#sc94o#acond60o" name="codice" predicate="neq" booleanOperator="and" implied="true" attributes="cls8#att120o"/>
       </ConditionalExpression>

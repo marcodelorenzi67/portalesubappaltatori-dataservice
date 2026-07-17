@@ -12,6 +12,9 @@
     <DataFlow id="mpkg5o#ada45o#ipd69o#df184o" to="mpkg5o#ada45o#cnu7o" gr:bendpoints="9.0 176.0">
       <ParameterBinding id="mpkg5o#ada45o#ipd69o#df184o#par767o" source="mpkg5o#ada45o#ipd69o#pdp266o" target="mpkg5o#ada45o#cnu7o#sc154o#kcond90o.cls1#att1" name="tenant [oid] - KeyCondition90 [oid] [Tenant] [Target]"/>
     </DataFlow>
+    <DataFlow id="mpkg5o#ada45o#ipd69o#df3o" to="mpkg5o#ada45o#cnu1o">
+      <ParameterBinding id="mpkg5o#ada45o#ipd69o#df3o#par5o" source="mpkg5o#ada45o#ipd69o#pdp266o" target="mpkg5o#ada45o#cnu1o#sc3o#kcond2o.cls1#att1" name="tenant [oid] - KeyCondition2 [oid] [Tenant] [Target]"/>
+    </DataFlow>
   </InputPortDefinition>
   <SuccessPortDefinition id="mpkg5o#ada45o#spd69o" name="Success Port" gr:x="0" gr:y="60">
     <PortDefinitionParameter id="mpkg5o#ada45o#spd69o#pdp268o" name="altro tenant" type="boolean"/>
@@ -38,13 +41,14 @@
         <ParameterBinding id="mpkg5o#ada45o#seu77o#sf599o#par765o" sourceValue="false" target="mpkg5o#ada45o#spd69o#pdp268o" name="&quot;false&quot; - altro tenant"/>
         <ParameterBinding id="mpkg5o#ada45o#seu77o#sf599o#par766o" sourceValue="false" target="mpkg5o#ada45o#spd69o#pdp267o" name="&quot;false&quot; - presente"/>
       </SuccessFlow>
-      <SuccessFlow id="mpkg5o#ada45o#seu77o#sf600o" to="mpkg5o#ada45o#cnu7o" automaticCoupling="true"/>
       <DataFlow id="mpkg5o#ada45o#seu77o#df185o" to="mpkg5o#ada45o#seu78o">
         <ParameterBinding id="mpkg5o#ada45o#seu77o#df185o#par774o" source="as13#role25_cls10#att45Array" target="mpkg5o#ada45o#seu78o#sc155o#rcond45o.cls10#att45" name="FornitoreToTipologia Azienda.oid - tipo azienda [oid]"/>
       </DataFlow>
       <DataFlow id="mpkg5o#ada45o#seu77o#df189o" to="mpkg5o#ada45o#seu79o">
         <ParameterBinding id="mpkg5o#ada45o#seu77o#df189o#par780o" source="as13#role25_cls10#att45Array" target="mpkg5o#ada45o#seu79o#sc157o#rcond48o.cls10#att45" name="FornitoreToTipologia Azienda.oid - tipo azienda [oid]"/>
       </DataFlow>
+      <SuccessFlow id="mpkg5o#ada45o#seu77o#sf4o" to="mpkg5o#ada45o#seu1o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ada45o#seu77o#df2o" to="mpkg5o#ada45o#cnu7o" automaticCoupling="true"/>
     </Selector>
     <Connect gr:x="930" gr:y="280" id="mpkg5o#ada45o#cnu7o" association="as5#role9">
       <SourceConditionalExpression id="mpkg5o#ada45o#cnu7o#sc153o" defaultPolicy="fill" booleanOperator="and">
@@ -113,6 +117,21 @@
         <ParameterBinding id="mpkg5o#ada45o#seu80o#df190o#par781o" source="cls20o#att113oArray" target="mpkg5o#ada45o#lpu5o.array" name="oid - Input Array"/>
       </DataFlow>
     </Selector>
+    <Selector gr:x="500" gr:y="425" id="mpkg5o#ada45o#seu1o" dataBinding="User">
+      <ConditionalExpression id="mpkg5o#ada45o#seu1o#sc1o" defaultPolicy="fill" booleanOperator="and">
+        <AssociationRoleCondition id="mpkg5o#ada45o#seu1o#sc1o#rcond1o" name="fornitore" predicate="in" implied="false" role="as2#role4"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada45o#seu1o#sf6o" to="mpkg5o#ada45o#cnu1o" automaticCoupling="true"/>
+    </Selector>
+    <Connect gr:x="730" gr:y="475" id="mpkg5o#ada45o#cnu1o" association="as1#role1">
+      <SourceConditionalExpression id="mpkg5o#ada45o#cnu1o#sc2o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada45o#cnu1o#sc2o#kcond1o" name="KeyCondition1" predicate="in" implied="false"/>
+      </SourceConditionalExpression>
+      <TargetConditionalExpression id="mpkg5o#ada45o#cnu1o#sc3o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg5o#ada45o#cnu1o#sc3o#kcond2o" name="KeyCondition2" predicate="in" implied="false"/>
+      </TargetConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada45o#cnu1o#sf7o" to="mpkg5o#ada45o#cnu7o" automaticCoupling="true"/>
+    </Connect>
   </Operations>
   <Action id="mpkg5o#ada45o#act81o" definition="mpkg2#ada19o" gr:x="2715" gr:y="245">
     <Events>
