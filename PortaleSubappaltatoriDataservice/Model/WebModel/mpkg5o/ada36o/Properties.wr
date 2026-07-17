@@ -42,6 +42,7 @@
         <AssociationRoleCondition id="mpkg5o#ada36o#seu61o#sc121o#rcond26o" name="tipo azienda" predicate="in" implied="false" role="as14#role27"/>
         <AttributesCondition id="mpkg5o#ada36o#seu61o#sc121o#acond57o" name="cod macrotipologia AZ" predicate="eq" booleanOperator="or" implied="false" value="${macroTipologia.personali}" attributes="as12#role23.cls9#att43"/>
       </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada36o#seu61o#sf10o" to="mpkg5o#ada36o#act66o" automaticCoupling="true" code="Not Found"/>
     </Selector>
     <Switch gr:x="500" gr:y="260" id="mpkg5o#ada36o#switch19o" name="oid?">
       <SuccessFlow id="mpkg5o#ada36o#switch19o#sf475o" to="mpkg5o#ada36o#act66o">

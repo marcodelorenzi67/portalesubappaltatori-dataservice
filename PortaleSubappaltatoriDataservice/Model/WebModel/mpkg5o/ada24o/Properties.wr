@@ -49,7 +49,7 @@
         <ParameterBinding id="mpkg5o#ada24o#lpu2o#sf289o#par344o" source="next" target="mpkg5o#ada24o#svu15o.as19#role37.cls1#att1" name="Next Element - Tenant.oid(AllegatiToTenant)"/>
       </SuccessFlow>
     </Loop>
-    <Save gr:x="525" gr:y="295" id="mpkg5o#ada24o#svu15o" action="create" dataBinding="cls5" bulk="true">
+    <Save gr:x="525" gr:y="295" id="mpkg5o#ada24o#svu15o" action="create" dataBinding="cls5" bulk="true" skipBlankRecords="false">
       <SuccessFlow id="mpkg5o#ada24o#svu15o#sf292o" to="mpkg5o#ada24o#act44o">
         <ParameterBinding id="mpkg5o#ada24o#svu15o#sf292o#par533o" source="cls5#att22Array" target="mpkg5o#ada24o#act44o.mpkg2#ada19o#ipd27o#pdp196o" name="oid - Documenti.oid(LogToDocumenti)"/>
       </SuccessFlow>
