@@ -3,7 +3,7 @@
     <stringAttribute key="authenticationBaseUrl" value="http://192.168.250.109:8080/wr-auth"/>
     <stringAttribute key="main.appId" value="PortaleSubappaltatoriDataservice"/>
     <stringAttribute key="main.appName" value="PortaleSubappaltatoriDataservice"/>
-    <stringAttribute key="main.appSecret" value="UG9ydGFsZVN1YmFwcGFsdGF0b3JpRGF0YXNlcnZpY2U="/>
+    <stringAttribute key="main.appSecret" value="OXpkSHB0MEJXUExHSGNSRDQ3ckhLUnlxY1lVUUo2d1M="/>
     <stringAttribute key="main.appVersion" value="1.0.0"/>
     <stringAttribute key="main.buildMode" value="debug"/>
     <stringAttribute key="model.general.outputPath" value="${webapps_loc}/${project_name}"/>

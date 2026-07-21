@@ -19,7 +19,7 @@
     <stringAttribute key="main.adminBuildMode" value="debug"/>
     <stringAttribute key="main.appId" value="wr-auth"/>
     <stringAttribute key="main.appName" value="wr-auth"/>
-    <stringAttribute key="main.appSecret" value="d3ItYXV0aA=="/>
+    <stringAttribute key="main.appSecret" value="NFBUMHRnVVNYZjJlbmpFMnRuQmp4dVI3MnllYnhTcjA="/>
     <stringAttribute key="main.buildMode" value="debug"/>
     <booleanAttribute key="main.skipBuildAdminApp" value="true"/>
     <booleanAttribute key="providers.$authdb$.databaseProvider.databaseGeneral.databaseGeneralIgnoreSchema" value="false"/>

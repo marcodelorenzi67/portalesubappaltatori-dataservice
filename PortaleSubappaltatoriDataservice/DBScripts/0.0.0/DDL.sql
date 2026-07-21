@@ -176,7 +176,7 @@ create table "public"."sub_user_invitati" (
    "username"  varchar(255)  not null,
    "cognome"  varchar(255),
    "nome"  varchar(255),
-  primary key ("email")
+  primary key ("username")
 );
 
 
@@ -333,7 +333,7 @@ create table "public"."sub_user_invitati_tenant" (
    "tenant_oid"  int4 not null,
   primary key ("user_invitati_email", "tenant_oid")
 );
-alter table "public"."sub_user_invitati_tenant"   add constraint fk_user_invitati_tenant_user_i foreign key ("user_invitati_email") references "public"."sub_user_invitati" ("email");
+alter table "public"."sub_user_invitati_tenant"   add constraint fk_user_invitati_tenant_user_i foreign key ("user_invitati_email") references "public"."sub_user_invitati" ("username");
 alter table "public"."sub_user_invitati_tenant"   add constraint fk_user_invitati_tenant_tenant foreign key ("tenant_oid") references "public"."sub_tenant" ("oid");
 
 
@@ -366,7 +366,7 @@ create table "public"."sub_user_invitati_ruolo" (
    "ruolo_oid"  int4 not null,
   primary key ("user_invitati_email", "ruolo_oid")
 );
-alter table "public"."sub_user_invitati_ruolo"   add constraint fk_user_invitati_ruolo_user_in foreign key ("user_invitati_email") references "public"."sub_user_invitati" ("email");
+alter table "public"."sub_user_invitati_ruolo"   add constraint fk_user_invitati_ruolo_user_in foreign key ("user_invitati_email") references "public"."sub_user_invitati" ("username");
 alter table "public"."sub_user_invitati_ruolo"   add constraint fk_user_invitati_ruolo_ruolo foreign key ("ruolo_oid") references "public"."sub_ruolo" ("oid");
 
 -- Tipologia Allegati [cls8]
