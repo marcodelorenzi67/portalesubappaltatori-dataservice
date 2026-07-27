@@ -1,0 +1,49 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg6o#ada1o" name="Elimina documento fornitore" defaultSuccessPortDefinition="mpkg6o#ada1o#spd1o" defaultErrorPortDefinition="mpkg6o#ada1o#epd1o">
+  <InputPortDefinition id="mpkg6o#ada1o#ipd1o" gr:x="0" gr:y="30">
+    <SuccessFlow id="mpkg6o#ada1o#ipd1o#sf13o" to="mpkg6o#ada1o#act1o">
+      <ParameterBinding id="mpkg6o#ada1o#ipd1o#sf13o#par14o" source="mpkg6o#ada1o#ipd1o#pdp2o" target="mpkg6o#ada1o#act1o.mpkg6o#ada22o#ipd31o#pdp100o" name="fornitore - fornitore"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="mpkg6o#ada1o#ipd1o#pdp2o" array="false" name="fornitore" type="integer"/>
+    <DataFlow id="mpkg6o#ada1o#ipd1o#df6o" to="mpkg6o#ada1o#svu1o" gr:bendpoints="6.0 168.0">
+      <ParameterBinding id="mpkg6o#ada1o#ipd1o#df6o#par17o" source="mpkg6o#ada1o#ipd1o#pdp3o" target="mpkg6o#ada1o#svu1o#sc5o#kcond3o.cls5#att22" name="KeyCondition3 [oid] - KeyCondition3 [oid]"/>
+      <ParameterBinding id="mpkg6o#ada1o#ipd1o#df6o#par22o" source="mpkg6o#ada1o#ipd1o#pdp2o" target="mpkg6o#ada1o#svu1o#sc5o#rcond5o.cls2#att6" name="fornitore - fornitore [oid]"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg6o#ada1o#ipd1o#pdp3o" array="false" name="oid documento" type="integer"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg6o#ada1o#spd1o" name="Success Port" gr:x="0" gr:y="405"/>
+  <ErrorPortDefinition id="mpkg6o#ada1o#epd1o" name="Error Port" gr:x="0" gr:y="65"/>
+  <Operations>
+    <Save gr:x="690" gr:y="280" id="mpkg6o#ada1o#svu1o" action="update" dataBinding="cls5">
+      <ConditionalExpression id="mpkg6o#ada1o#svu1o#sc5o" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="mpkg6o#ada1o#svu1o#sc5o#kcond3o" name="KeyCondition3" predicate="in" implied="false"/>
+        <AttributesCondition id="mpkg6o#ada1o#svu1o#sc5o#acond3o" name="stato in valutazione" predicate="eq" booleanOperator="or" implied="false" attributes="as24o#role47o.cls15o#att85o" value="${statoAllegato.valutazione}"/>
+        <AssociationRoleCondition id="mpkg6o#ada1o#svu1o#sc5o#rcond5o" name="fornitore" predicate="in" implied="false" role="as6#role12"/>
+      </ConditionalExpression>
+      <SuccessFlow id="mpkg6o#ada1o#svu1o#sf16o" to="mpkg6o#ada1o#spd1o" automaticCoupling="true"/>
+    </Save>
+  </Operations>
+  <Action id="mpkg6o#ada1o#act1o" gr:x="390" gr:y="70" definition="mpkg6o#ada22o">
+    <Events>
+      <SuccessEvent id="mpkg6o#ada1o#act1o#scce1o" definition="mpkg6o#ada22o#spd31o">
+        <SuccessFlow id="mpkg6o#ada1o#act1o#scce1o#sf14o" to="mpkg6o#ada1o#act2o">
+          <ParameterBinding id="mpkg6o#ada1o#act1o#scce1o#sf14o#par18o" sourceValue="${statoAllegato.inserito}" target="mpkg6o#ada1o#act2o.mpkg5o#adf10o#ipd36o#pdp132o" name="&quot;${statoAllegato.inserito}&quot; - codice"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg6o#ada1o#act1o#erre1o" definition="mpkg6o#ada22o#epd31o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg6o#ada1o#act2o" gr:x="435" gr:y="205" definition="mpkg5o#adf10o">
+    <Events>
+      <SuccessEvent id="mpkg6o#ada1o#act2o#scce2o" definition="mpkg5o#adf10o#spd36o">
+        <SuccessFlow id="mpkg6o#ada1o#act2o#scce2o#sf15o" to="mpkg6o#ada1o#svu1o">
+          <ParameterBinding id="mpkg6o#ada1o#act2o#scce2o#sf15o#par19o" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg6o#ada1o#svu1o.as24o#role47o.cls15o#att83o" name="oid - Stato Documento.oid(AllegatiToStato Allegato)"/>
+          <ParameterBinding id="mpkg6o#ada1o#act2o#scce2o#sf15o#par20o" sourceValue="$$NULL$$" target="mpkg6o#ada1o#svu1o.cls5#att23" name="NULL - Documento"/>
+          <ParameterBinding id="mpkg6o#ada1o#act2o#scce2o#sf15o#par23o" sourceValue="$$NULL$$" target="mpkg6o#ada1o#svu1o.cls5#att127o" name="NULL - Data Alert"/>
+          <ParameterBinding id="mpkg6o#ada1o#act2o#scce2o#sf15o#par24o" sourceValue="$$NULL$$" target="mpkg6o#ada1o#svu1o.cls5#att99o" name="NULL - Data scadenza"/>
+          <ParameterBinding id="mpkg6o#ada1o#act2o#scce2o#sf15o#par25o" sourceValue="$$NULL$$" target="mpkg6o#ada1o#svu1o.cls5#att24" name="NULL - Descrizione"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg6o#ada1o#act2o#erre2o" definition="mpkg5o#adf10o#epd36o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

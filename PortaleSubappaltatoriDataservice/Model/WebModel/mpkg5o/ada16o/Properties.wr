@@ -99,6 +99,7 @@
         <AssociationRoleCondition id="mpkg5o#ada16o#seu39o#sc78o#rcond16o" name="tipo azienda" predicate="in" implied="false" role="as14#role27"/>
         <AttributesCondition id="mpkg5o#ada16o#seu39o#sc78o#acond56o" name="cod macrotipologia AZ" predicate="eq" booleanOperator="or" implied="false" value="${macroTipologia.aziendali}" attributes="as12#role23.cls9#att43"/>
       </ConditionalExpression>
+      <SuccessFlow id="mpkg5o#ada16o#seu39o#sf17o" to="mpkg5o#ada16o#switch27o" automaticCoupling="true" code="Not Found"/>
     </Selector>
     <Switch gr:x="165" gr:y="175" id="mpkg5o#ada16o#switch25o" name="Omnia">
       <SuccessFlow id="mpkg5o#ada16o#switch25o#sf614o" to="mpkg5o#ada16o#svu9o">
@@ -145,6 +146,7 @@
         <ParameterBinding id="mpkg5o#ada16o#seu82o#df198o#par801o" name="&quot;true&quot; - Mandatory" sourceValue="true" target="mpkg5o#ada16o#act84o.mpkg5o#ada24o#ipd35o#pdp136o"/>
       </DataFlow>
       <SuccessFlow id="mpkg5o#ada16o#seu82o#sf623o" to="mpkg5o#ada16o#lpu6o" automaticCoupling="true"/>
+      <SuccessFlow id="mpkg5o#ada16o#seu82o#sf18o" to="mpkg5o#ada16o#act31o" automaticCoupling="true" code="Not Found"/>
     </Selector>
     <Loop id="mpkg5o#ada16o#lpu6o" name="personale" gr:x="3610" gr:y="745">
       <SuccessFlow id="mpkg5o#ada16o#lpu6o#sf625o" to="mpkg5o#ada16o#act84o" code="next">

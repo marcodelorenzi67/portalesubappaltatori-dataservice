@@ -4,16 +4,8 @@
       <ParameterBinding id="mpkg3#ada9#ipd15#sf131#par142" source="mpkg3#ada9#ipd15#pdp41" target="mpkg3#ada9#seu18#sc34#acond15" name="userID - userID"/>
     </SuccessFlow>
     <PortDefinitionParameter id="mpkg3#ada9#ipd15#pdp41" array="false" name="userID" type="string"/>
-    <PortDefinitionParameter id="mpkg3#ada9#ipd15#pdp42" name="password" array="false" type="string"/>
-    <DataFlow id="mpkg3#ada9#ipd15#df45" to="mpkg3#ada9#spd15">
-      <ParameterBinding id="mpkg3#ada9#ipd15#df45#par156" source="mpkg3#ada9#ipd15#pdp41" target="mpkg3#ada9#spd15#pdp44" name="userID - userID"/>
-      <ParameterBinding id="mpkg3#ada9#ipd15#df45#par157" source="mpkg3#ada9#ipd15#pdp42" target="mpkg3#ada9#spd15#pdp45" name="password - password"/>
-    </DataFlow>
   </InputPortDefinition>
-  <SuccessPortDefinition id="mpkg3#ada9#spd15" name="Success Port" gr:x="0" gr:y="605">
-    <PortDefinitionParameter id="mpkg3#ada9#spd15#pdp44" array="false" name="userID" type="string"/>
-    <PortDefinitionParameter id="mpkg3#ada9#spd15#pdp45" array="false" name="password" type="string"/>
-  </SuccessPortDefinition>
+  <SuccessPortDefinition id="mpkg3#ada9#spd15" name="Success Port" gr:x="0" gr:y="605"/>
   <ErrorPortDefinition id="mpkg3#ada9#epd15" name="Error Port" gr:x="0" gr:y="80"/>
   <Operations>
     <Selector gr:x="185" gr:y="80" id="mpkg3#ada9#seu18" dataBinding="User">
