@@ -315,7 +315,7 @@
   <UserServices>
     <UserServiceOperation type="read"/>
   </UserServices>
-  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola2" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
+  <db:Database id="dbD1" name="Database" type="PostgreSQL 9 - 12" url="jdbc:postgresql://localhost:5432/InRegola" username="postgres" password="password" schema="public" tableExportPrefix="sub_">
   </db:Database>
   <srs:Resources>
     <srs:AuthService name="Read My Profile" serverResourceName="auth/myProfile" method="read" ref="_identity__me_">
@@ -798,6 +798,7 @@
           <Type value="image/jpeg"/>
           <Type value="image/png"/>
           <Type value="application/msword"/>
+          <Type value="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
         </FileTypesValidationRule>
       </VRules>
     </Attribute>
