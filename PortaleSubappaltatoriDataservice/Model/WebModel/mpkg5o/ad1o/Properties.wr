@@ -1,0 +1,82 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="mpkg5o#ad1o" name="Crea documentazione aggiuntiva BO" defaultSuccessPortDefinition="mpkg5o#ad1o#spd2o" defaultErrorPortDefinition="mpkg5o#ad1o#epd2o">
+  <InputPortDefinition id="mpkg5o#ad1o#ipd2o" gr:x="0" gr:y="-15">
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp4o" name="Tenant" type="integer" array="true"/>
+    <DataFlow id="mpkg5o#ad1o#ipd2o#df7o" to="mpkg5o#ad1o#svu2o" gr:bendpoints="6.0 145.0">
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par26o" name="Tipologia Allegati.oid(AllegatiToTipologia Allegati) - Tipologia Allegati.oid(AllegatiToTipologia Allegati)" source="mpkg5o#ad1o#ipd2o#pdp5o" target="mpkg5o#ad1o#svu2o.as11#role21.cls8#att37"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par27o" name="Fornitore.oid(DocumentazioneToFornitore) - Fornitore.oid(DocumentazioneToFornitore)" source="mpkg5o#ad1o#ipd2o#pdp6o" target="mpkg5o#ad1o#svu2o.as6#role11.cls2#att6"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par28o" name="Mandatory - Mandatory" source="mpkg5o#ad1o#ipd2o#pdp7o" target="mpkg5o#ad1o#svu2o.cls5#att90o"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par29o" name="Identificativo - Identificativo" source="mpkg5o#ad1o#ipd2o#pdp8o" target="mpkg5o#ad1o#svu2o.cls5#att108o"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par30o" name="Modello - Modello" source="mpkg5o#ad1o#ipd2o#pdp9o" target="mpkg5o#ad1o#svu2o.cls5#att109o"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par31o" name="Descrizione - Descrizione" source="mpkg5o#ad1o#ipd2o#pdp10o" target="mpkg5o#ad1o#svu2o.cls5#att24"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par32o" name="Seriale - Seriale" source="mpkg5o#ad1o#ipd2o#pdp11o" target="mpkg5o#ad1o#svu2o.cls5#att107o"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par33o" name="Categoria.oid(DocumentiToCategoria) - Categoria.oid(DocumentiToCategoria)" source="mpkg5o#ad1o#ipd2o#pdp12o" target="mpkg5o#ad1o#svu2o.as29o#role57o.cls18o#att105o"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df7o#par34o" name="Data scadenza - Data scadenza" source="mpkg5o#ad1o#ipd2o#pdp13o" target="mpkg5o#ad1o#svu2o.cls5#att99o"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp5o" name="Tipologia Allegati.oid(AllegatiToTipologia Allegati)" type="integer" array="true"/>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp6o" name="Fornitore.oid" type="integer" array="false"/>
+    <DataFlow id="mpkg5o#ad1o#ipd2o#df8o" to="mpkg5o#ad1o#lpu10o" gr:bendpoints="42.0 36.0">
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df8o#par35o" name="Tenant - Input Array" source="mpkg5o#ad1o#ipd2o#pdp4o" target="mpkg5o#ad1o#lpu10o.array"/>
+    </DataFlow>
+    <DataFlow id="mpkg5o#ad1o#ipd2o#df9o" to="mpkg5o#ad1o#act4o" gr:bendpoints="16.0 85.0">
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df9o#par36o" name="Fornitore.oid - Fornitore oid" source="mpkg5o#ad1o#ipd2o#pdp6o" target="mpkg5o#ad1o#act4o.mpkg2#ada19o#ipd27o#pdp92o"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df9o#par37o" name="User ID - User id" target="mpkg5o#ad1o#act4o.mpkg2#ada19o#ipd27o#pdp94o" sourceImplicitParameter="userName"/>
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df9o#par38o" name="&quot;${tipoAzioneLog.inseritoTipoAllegatoPerFornitore}&quot; - Tipo azione" sourceValue="${tipoAzioneLog.inseritoTipoAllegatoPerFornitore}" target="mpkg5o#ad1o#act4o.mpkg2#ada19o#ipd27o#pdp93o"/>
+    </DataFlow>
+    <DataFlow id="mpkg5o#ad1o#ipd2o#df10o" to="mpkg5o#ad1o#spd2o" gr:bendpoints="21.0 75.0">
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#df10o#par39o" name="Fornitore.oid - Fornitore.oid" source="mpkg5o#ad1o#ipd2o#pdp6o" target="mpkg5o#ad1o#spd2o#pdp14o"/>
+    </DataFlow>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp7o" name="Mandatory" type="boolean" array="false"/>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp8o" name="Identificativo" type="string" array="false"/>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp9o" name="Modello" type="string" array="false"/>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp10o" name="Descrizione" type="string" array="true"/>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp11o" name="Seriale" type="string" array="false"/>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp12o" name="Categoria.oid(DocumentiToCategoria)" type="integer" array="false"/>
+    <PortDefinitionParameter id="mpkg5o#ad1o#ipd2o#pdp13o" name="Data scadenza" type="date" array="true"/>
+    <SuccessFlow id="mpkg5o#ad1o#ipd2o#sf26o" to="mpkg5o#ad1o#act3o" gr:bendpoints="null 59.0">
+      <ParameterBinding id="mpkg5o#ad1o#ipd2o#sf26o#par46o" name="&quot;${statoAllegato.bozza}&quot; - codice" sourceValue="${statoAllegato.bozza}" target="mpkg5o#ad1o#act3o.mpkg5o#adf10o#ipd36o#pdp132o"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="mpkg5o#ad1o#spd2o" name="Success Port" gr:x="0" gr:y="140">
+    <PortDefinitionParameter id="mpkg5o#ad1o#spd2o#pdp14o" name="Fornitore.oid" type="integer" array="false"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="mpkg5o#ad1o#epd2o" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Loop id="mpkg5o#ad1o#lpu10o" name="Tenant" gr:x="650" gr:y="50">
+      <SuccessFlow id="mpkg5o#ad1o#lpu10o#sf19o" to="mpkg5o#ad1o#spd2o" automaticCoupling="true" code="end"/>
+      <SuccessFlow id="mpkg5o#ad1o#lpu10o#sf20o" to="mpkg5o#ad1o#svu2o" code="next">
+        <ParameterBinding id="mpkg5o#ad1o#lpu10o#sf20o#par41o" name="Next Element - Tenant.oid(AllegatiToTenant)" source="next" target="mpkg5o#ad1o#svu2o.as19#role37.cls1#att1"/>
+      </SuccessFlow>
+    </Loop>
+    <Save id="mpkg5o#ad1o#svu2o" gr:x="525" gr:y="295" action="create" dataBinding="cls5" bulk="true">
+      <SuccessFlow id="mpkg5o#ad1o#svu2o#sf21o" to="mpkg5o#ad1o#act4o">
+        <ParameterBinding id="mpkg5o#ad1o#svu2o#sf21o#par42o" name="oid - Documenti.oid(LogToDocumenti)" source="cls5#att22Array" target="mpkg5o#ad1o#act4o.mpkg2#ada19o#ipd27o#pdp196o"/>
+      </SuccessFlow>
+    </Save>
+    <Time id="mpkg5o#ad1o#tmu1o" name="Time" gr:x="480" gr:y="10">
+      <SuccessFlow id="mpkg5o#ad1o#tmu1o#sf22o" to="mpkg5o#ad1o#lpu10o" automaticCoupling="true"/>
+      <DataFlow id="mpkg5o#ad1o#tmu1o#df12o" to="mpkg5o#ad1o#svu2o">
+        <ParameterBinding id="mpkg5o#ad1o#tmu1o#df12o#par43o" name="&quot;true&quot; - Corrente" sourceValue="true" target="mpkg5o#ad1o#svu2o.cls5#att35"/>
+        <ParameterBinding id="mpkg5o#ad1o#tmu1o#df12o#par44o" name="Current/Input Timestamp - Created At" source="currentTimestamp" target="mpkg5o#ad1o#svu2o.cls5#att36"/>
+      </DataFlow>
+    </Time>
+  </Operations>
+  <Action id="mpkg5o#ad1o#act3o" definition="mpkg5o#adf10o" gr:x="45" gr:y="25">
+    <Events>
+      <SuccessEvent id="mpkg5o#ad1o#act3o#scce3o" definition="mpkg5o#adf10o#spd36o">
+        <SuccessFlow id="mpkg5o#ad1o#act3o#scce3o#sf23o" to="mpkg5o#ad1o#tmu1o" automaticCoupling="true"/>
+        <DataFlow id="mpkg5o#ad1o#act3o#scce3o#df13o" to="mpkg5o#ad1o#svu2o" gr:bendpoints="39.0 139.0">
+          <ParameterBinding id="mpkg5o#ad1o#act3o#scce3o#df13o#par45o" name="oid - Stato Allegato.oid(AllegatiToStato Allegato)" source="mpkg5o#adf10o#spd36o#pdp133o" target="mpkg5o#ad1o#svu2o.as24o#role47o.cls15o#att83o"/>
+        </DataFlow>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ad1o#act3o#erre3o" definition="mpkg5o#adf10o#epd36o"/>
+    </Events>
+  </Action>
+  <Action id="mpkg5o#ad1o#act4o" definition="mpkg2#ada19o" gr:x="785" gr:y="190">
+    <Events>
+      <SuccessEvent id="mpkg5o#ad1o#act4o#scce4o" definition="mpkg2#ada19o#spd27o">
+        <SuccessFlow id="mpkg5o#ad1o#act4o#scce4o#sf24o" to="mpkg5o#ad1o#lpu10o" automaticCoupling="true"/>
+      </SuccessEvent>
+      <ErrorEvent id="mpkg5o#ad1o#act4o#erre4o" definition="mpkg2#ada19o#epd27o"/>
+    </Events>
+  </Action>
+</ActionDefinition>

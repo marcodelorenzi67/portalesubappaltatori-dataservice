@@ -53,7 +53,7 @@
     <ActionService definition="mpkg5o#adf13o" method="read" roles="rl1 rl2 rl3 rl5"/>
     <ActionService definition="mpkg6o#ad5o" method="create" roles="rl4"/>
     <ActionService definition="mpkg6o#ad6o" method="create" roles="rl4"/>
-    <ActionService definition="mpkg6o#adf15o" method="read" roles="rl4"/>
+    <ActionService definition="mpkg6o#adf15o" method="read" roles="rl1 rl2 rl4 rl5"/>
     <ActionService definition="mpkg5o#ada36o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg6o#ada37o" method="create" roles="rl4"/>
     <ActionService definition="mpkg5o#ada38o" method="create" roles="rl1 rl2 rl5"/>
@@ -81,6 +81,7 @@
     <ActionService definition="mpkg1#ada56o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg5o#ad9o" method="create" roles="rl1 rl2 rl5"/>
     <ActionService definition="mpkg6o#ada1o" method="create" roles="rl4"/>
+    <ActionService definition="mpkg5o#ad1o" method="create" roles="rl1 rl2 rl5"/>
   </ActionServices>
   <DataServices db:dataServicesDatabase="dbD1" dataServiceCaching="noCache">
     <ServiceClass class="User" associationRoles="as1#role1 as1p#role1p as2#role3">
@@ -1166,7 +1167,7 @@
       <db:JoinColumn attribute="cls5#att22" name="oid"/>
     </AssociationRole2>
   </Association>
-  <Class id="cls21o" name="Azienda" db:database="dbD1" duration="persistent" db:table="azienda" gr:x="125" gr:y="885">
+  <Class id="cls21o" name="Azienda" db:database="dbD1" duration="persistent" db:table="azienda" gr:x="125" gr:y="885" attributeOrder="cls21o#att130o cls21o#att131o cls21o#att132o cls21o#att133o cls21o#att134o cls21o#att135o cls21o#att136o cls21o#att137o cls21o#att138o cls21o#att139o cls21o#att140o cls21o#att141o cls21o#att142o cls21o#att143o cls21o#att144o cls21o#att145o cls21o#att146o cls21o#att147o cls21o#att148o cls21o#att149o cls21o#att150o cls21o#att151o cls21o#att1o">
     <Attribute id="cls21o#att130o" name="oid" db:column="oid" type="integer" key="true"/>
     <Attribute id="cls21o#att131o" name="Ragione Sociale" db:column="ragione_sociale" type="string" key="false"/>
     <Attribute id="cls21o#att132o" name="note" db:column="note" type="string" key="false"/>
@@ -1189,6 +1190,9 @@
     <Attribute id="cls21o#att149o" name="createdat" db:column="createdat" type="timestamp" key="false"/>
     <Attribute id="cls21o#att150o" name="updatedat" db:column="updatedat" type="timestamp" key="false"/>
     <Attribute id="cls21o#att151o" name="emailDatoreLavoro" db:column="email_datore_lavoro" type="string" key="false"/>
+    <Attribute id="cls21o#att1o" name="Importata" type="boolean" db:table="sub_v_azienda_importata" db:column="importata">
+      <db:JoinColumn attribute="cls21o#att130o" name="oid"/>
+    </Attribute>
   </Class>
   <Class id="cls22o" name="Contatto" db:database="dbD1" duration="persistent" db:table="contatto" gr:x="-235" gr:y="880">
     <Attribute id="cls22o#att152o" name="oid" db:column="oid" type="integer" key="true"/>
